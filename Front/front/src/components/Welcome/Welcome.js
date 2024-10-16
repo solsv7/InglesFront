@@ -1,17 +1,12 @@
-// Welcome.js
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import './welcome.css';
 
-const Welcome = () => {
-    const location = useLocation();
-    const { userName } = location.state || {}; // Obtener el nombre del usuario desde el estado
-
+const Welcome = ({ studentName }) => {
     return (
-        <div className="welcome-container">
-            <h1>Bienvenido, {userName || 'Usuario'}!</h1>
-            <p>¡Gracias por iniciar sesión!</p>
+        <div>
+            <h1>Bienvenido, {studentName ? studentName : 'usuario'}!</h1>
         </div>
     );
 };
 
-export default Welcome;
+export default Welcome; 
