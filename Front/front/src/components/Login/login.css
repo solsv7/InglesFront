@@ -1,0 +1,55 @@
+/* Estilos para el contenedor del formulario de login */
+.login-container {
+    position: relative; 
+}
+
+.login-form {
+    display: none; 
+    position: relative; 
+    top: 75px; 
+    right: 50px; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+}
+
+
+.login-container:hover .login-form {
+    display: block;
+}
+
+
+.error-message {
+    color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #B40A00;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #172764; 
+}
