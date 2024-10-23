@@ -115,13 +115,13 @@ body{
     background-color: white;
     border-radius: 22px;
     color: #B40A00;
-    border: solid 1px black;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease; 
+    border: solid 1px #B40A00;
 }
 .logout-button:hover{
     background: #B40A00;
