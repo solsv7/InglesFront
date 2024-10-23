@@ -1,0 +1,27 @@
+.contenido{
+    background-color:rgb(226, 223, 223);
+    color: rgb(135, 139, 136);
+    text-align: center;
+    height: 100px;
+}
+.Redes{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 60px;
+}
+.red{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    font-size: 15px;
+}
+.imagenes{
+    height: 17px;
+    filter: contrast(100%) invert(100%);      
+}
+h4{
+    padding: 10px;
+    font-size: 12px;
+}

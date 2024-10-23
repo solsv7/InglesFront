@@ -1,0 +1,172 @@
+/* header.css */
+body{
+    margin: 0px;
+}
+.header {
+    height: 83px;
+    background: rgb(253, 253, 253);
+    box-shadow: 0px 4px 6.6px rgba(0, 0, 0, 0.25);
+    border-bottom-left-radius: 19px;
+    border-bottom-right-radius: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto; 
+}
+
+.logo img {
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    background-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding: 15px;
+    height: 63px;
+    margin-bottom: -13px;
+    box-shadow: 0px 5px 15px black;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Reduce el espacio entre los enlaces */
+}
+
+.nav-links a {
+    font-size: 15.5px;
+    font-family: 'Inter', sans-serif;
+    color: #1f0c49;
+
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.3s; 
+}
+
+.nav-links a:hover {
+    color: #c21010; /* Cambia el color del texto al pasar el mouse a un azul más claro */
+}
+
+
+
+.login-button {
+    padding: 10px 35px; /* Ajustar el espaciado interno */
+    background-color: #B40A00;
+    border-radius: 22px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    z-index: 0;
+}
+.login-button:hover{
+    background-color: white;
+    color:  #B40A00;
+    border: solid 0.5px #B40A00;
+    padding: 9px 34px;
+}
+.boton{
+    margin: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.lbl-switch{
+    display:inline-block;
+    width: 55px;
+    height: 30px;
+    background: #aaa;
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+}
+#btn-switch:checked~ .lbl-switch{
+    background: #6161A0FF;
+    width: 55px;
+}
+#btn-switch:checked~ .lbl-switch::after{
+    left: 28px;
+}
+.lbl-switch:after{
+    position: absolute;
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 100px;
+    top: 4px;
+    left: 5px;
+    transition: 0.3s;
+}
+#btn-switch{
+    display: none;
+}
+
+.logout-button {
+    padding: 10px 20px; 
+    background-color: white;
+    border-radius: 22px;
+    color: #B40A00;
+    border: solid 1px black;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+.logout-button:hover{
+    background: #B40A00;
+    color: white;
+}
+.ftPerfil{
+    width: 40px;
+}
+.ftPerfil:hover{
+    cursor: pointer;
+}
+.log-perf{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+@keyframes enter {
+    from{
+        display: none;
+        opacity: 0;
+        top: -50px;
+    }
+    to{
+        display: block;
+        opacity: 1;
+        top: 90px;
+        position: absolute;
+    }
+    
+}
+@keyframes leave {
+    from{
+        display: block;
+        opacity: 1;
+        top: 90px;
+        position: absolute;
+    }
+    to{
+        display: none;
+        opacity: 0;
+        top: -50px;
+    }
+    
+}
+
+
+
