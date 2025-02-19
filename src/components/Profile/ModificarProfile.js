@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './Modificar.css';
 import axios from "axios";
 import Imagen1 from '../../images/imgsPerfil/first-pic.png';
@@ -12,12 +13,13 @@ import Imagen8 from '../../images/imgsPerfil/eighth-pic.png';
 
 const ModificarProfile = () => {
     const [profileData, setProfileData] = useState(null);
-    const [photoIndex, setPhotoIndex] = useState(0); // Almacena el índice de la foto seleccionada
-    const [showOptions, setShowOptions] = useState(false); // Mostrar opciones de fotos
-    const [mail, setMail] = useState(""); // Correo
-    const [contactNumber, setContactNumber] = useState(""); // Número de contacto
-    const [parentContact, setParentContact] = useState(""); // Número de contacto del adulto
-    const user = JSON.parse(localStorage.getItem("user")) || {}; // Si es null, asigna un objeto vacío
+    const [photoIndex, setPhotoIndex] = useState(0);
+    const [showOptions, setShowOptions] = useState(false);
+    const [mail, setMail] = useState("");
+    const [contactNumber, setContactNumber] = useState("");
+    const [parentContact, setParentContact] = useState("");
+    const user = JSON.parse(localStorage.getItem("user")) || {};
+    const navigate = useNavigate();
 
     const photoMap = [
         Imagen1, Imagen2, Imagen3,
@@ -32,10 +34,10 @@ const ModificarProfile = () => {
                 const response = await axios.get("http://localhost:3001/api/perf-info", { params });
                 const profile = response.data[0];
                 setProfileData(profile);
-                setPhotoIndex(profile?.id_foto || 0); // Asignar índice de la foto
-                setMail(profile?.mail || ""); // Asignar correo
-                setContactNumber(profile?.whatsapp || ""); // Asignar número de contacto
-                setParentContact(profile?.whatsapp_adulto || ""); // Asignar contacto adulto
+                setPhotoIndex(profile?.id_foto || 0);
+                setMail(profile?.mail || "");
+                setContactNumber(profile?.whatsapp || "");
+                setParentContact(profile?.whatsapp_adulto || "");
             } catch (error) {
                 console.error("Error al obtener la información:", error);
             }
@@ -45,29 +47,30 @@ const ModificarProfile = () => {
     }, [user.id_alumno, user.id_profesor]);
 
     const handleImageClick = () => {
-        setShowOptions(!showOptions); // Alterna el estado de mostrar opciones
+        setShowOptions(!showOptions);
     };
 
     const handlePhotoSelect = (index) => {
-        setPhotoIndex(index); // Actualiza el índice de la foto seleccionada
-        setShowOptions(false); // Cierra las opciones
+        setPhotoIndex(index);
+        setShowOptions(false);
     };
 
     const handleSave = async () => {
         const updatedData = {
-            id_alumno: user.id_alumno || null, // Puede ser nulo
-            id_profesor: user.id_profesor || null, // Puede ser nulo
+            id_alumno: user.id_alumno || null,
+            id_profesor: user.id_profesor || null,
             id_foto: photoIndex,
             mail,
             whatsapp: contactNumber,
             whatsapp_adulto: parentContact,
-            id_perfil: profileData?.id_perfil || null, // Incluye id_perfil si existe
+            id_perfil: profileData?.id_perfil || null,
         };
 
         try {
-            console.log('la informacion que viaja es esta: ', updatedData);
-            const response = await axios.put("http://localhost:3001/api/actualizar-perfil", updatedData);
+            console.log('la información que viaja es esta: ', updatedData);
+            await axios.put("http://localhost:3001/api/actualizar-perfil", updatedData);
             alert("Información actualizada exitosamente");
+            navigate("/home-student");
         } catch (error) {
             console.error("Error al actualizar la información:", error);
             alert("Ocurrió un error al actualizar la información");

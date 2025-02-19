@@ -85,7 +85,8 @@ let content;
       <nav className="nav-links">
         {/* Navegación */}
         <h3 className="btn btn-left" ><Link to='/' className='linkStyle'>Inicio</Link></h3>
-        <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Videos</Link></h3>
+        <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Sobre Nosotros</Link></h3>
+
 
         {/* Contenedor de login */}
         <div className="login-container">

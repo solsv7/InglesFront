@@ -24,6 +24,7 @@ import Register from './components/HomePageComponents/Register/Register';
 import BuscadorAlumnos from './components/functionalComponent/UserRegistration/newStudentCreate';
 import VerTodaBandeja from './components/Advices/VerTodaBandeja';
 import ModificarProfile from './components/Profile/ModificarProfile';
+import AdminSchedules from './components/SchedulesPageComponents/AdminSchedules';
 
 
 
@@ -60,6 +61,8 @@ const App = () => {
             <Route path='/Buscador' element={<BuscadorAlumnos />} />
             <Route path='/All-Msg' element={<VerTodaBandeja />} />
             <Route path='/Modificar' element={<ModificarProfile />} />
+            <Route path='/AdminSchedules' element={<AdminSchedules />} />
+
             </Routes>
             </AnimatePresence>
             
