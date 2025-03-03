@@ -62,6 +62,18 @@
   font-family: 'Paradose';
   src: url('../src/fonts/Ws\ Paradose\ Demo.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'HelloGood';
+  src: url('../src/fonts/hellogoodoldstyle-Regular\ dafont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Bebas';
+  src: url('../src/fonts/BebasNeue-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Romelio';
+  src: url('../src/fonts/Romelio.ttf') format('truetype');
+}
 *{
   margin: 0px;
   padding: 0%;

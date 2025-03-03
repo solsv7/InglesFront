@@ -1,0 +1,24 @@
+.Contenido-Accept{
+    justify-self: center;
+    text-align: center;
+    width: 800px;
+    background-color: #fff;
+    font-family: 'Allenoire';
+    padding-bottom: 50px;
+}
+.Contenido-Accept h2{
+    background-color: rgb(27,24,24);
+    color: white;
+    padding: 20px 0px 20px 0px;
+    font-size: 2.5vw;
+    font-weight: lighter;
+}
+.lista-Estudiantes{
+    justify-self: center;
+}
+.student-item{
+    height: 50px;
+}
+.select-button{
+    margin-top: 0px ;
+}

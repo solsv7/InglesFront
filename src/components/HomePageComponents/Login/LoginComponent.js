@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import transition from '../../../transition';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
@@ -8,7 +9,7 @@ import { Link } from 'react-router-dom';
 const LoginComponent = () => {
     const [dni, setDni] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
+    const [showErrorPopup, setShowErrorPopup] = useState(false);
     const navigate = useNavigate();
     const { setUserName } = useContext(UserContext); // Usar el contexto
 
@@ -35,7 +36,7 @@ const LoginComponent = () => {
                 navigate('/');
             }
         } catch (err) {
-            setError('Usuario o Contraseña incorrectos');
+            setShowErrorPopup(true);
             console.log(err);
         }
     };
@@ -50,7 +51,7 @@ const LoginComponent = () => {
                 className='DniInput'
                     type="text"
                     value={dni}
-                    onChange={(e) => {setDni(e.target.value);setError(''); }}
+                    onChange={(e) => {setDni(e.target.value);setShowErrorPopup(''); }}
                     placeholder="DNI"
                     required
                 />
@@ -59,11 +60,22 @@ const LoginComponent = () => {
                 className='PasswordInput'
                     type="password"
                     value={password}
-                    onChange={(e) => {setPassword(e.target.value);setError(''); }}
+                    onChange={(e) => {setPassword(e.target.value);setShowErrorPopup(''); }}
                     placeholder="Contraseña"
                     required
                 />
-                {error && <div className="msgError">{error}</div>}
+                {showErrorPopup && (
+                <div className="popup-overlay">
+                    <div className="popup-content error-popup">
+                        <h4>❌</h4>
+                        <h3>Error al Ingresar</h3>
+                        <p>El DNI o clave son incorrectos. Intenta nuevamente.</p>
+                        <button className="popup-btn" onClick={() => setShowErrorPopup(false)}>
+                            OK
+                        </button>
+                    </div>
+                </div>
+            )}
                 <button type="submit" className='BTNSignIn'>Iniciar sesion</button>
                 </div>
                 <div className='register-part'>
@@ -74,4 +86,4 @@ const LoginComponent = () => {
     );
 };
 
-export default LoginComponent;
+export default transition(LoginComponent);

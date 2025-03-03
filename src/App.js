@@ -24,6 +24,9 @@ import Register from './components/HomePageComponents/Register/Register';
 import BuscadorAlumnos from './components/functionalComponent/UserRegistration/newStudentCreate';
 import VerTodaBandeja from './components/Advices/VerTodaBandeja';
 import ModificarProfile from './components/Profile/ModificarProfile';
+import AcceptStudents from './components/functionalComponent/UserRegistration/AcceptStudents';
+import AboutUs from './components/AboutUs/AboutUs';
+import CheckForms from './components/functionalComponent/UserRegistration/CheckForms';
 
 
 
@@ -60,6 +63,9 @@ const App = () => {
             <Route path='/Buscador' element={<BuscadorAlumnos />} />
             <Route path='/All-Msg' element={<VerTodaBandeja />} />
             <Route path='/Modificar' element={<ModificarProfile />} />
+            <Route path='/Accept' element={<AcceptStudents />} />
+            <Route path='/About' element={<AboutUs />} />
+            <Route path='/CheckForms' element={<CheckForms />} />
             </Routes>
             </AnimatePresence>
             

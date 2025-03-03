@@ -4,7 +4,7 @@ import './WorkInProgress.css';
 
 const WorkInProgress = () => {
     return(
-        <div>
+        <div className="contentWork">
             <h3 className="TextoMantenimiento">Ups... Este apartado aun sigue en desarrollo, vuelve en otro momento</h3>
             <img src={Robot} alt="" className="ImagenRobot"/>
         </div>

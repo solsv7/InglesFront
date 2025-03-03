@@ -74,6 +74,92 @@
     position: absolute;
     margin-top: 520px;
 }
+/* Fondo oscuro con transición */
+.popup-overlay {
+    position: fixed;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 6000;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+/* Contenedor del popup con efecto de aparición */
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeZoomIn 0.3s ease-in-out forwards;
+}
+.popup-content h3{
+    font-family: 'Allenoire', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: -30px;
+}
+.popup-content h4{
+    color: green;
+    font-size: 60px;
+    margin: -20px;
+}
+.popup-content p{
+    font-family: 'Romelio', Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    color: rgb(66, 62, 62);
+    font-size: 1vw;
+}
+/* Botón de cerrar */
+.popup-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color:rgb(27,24,24);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-family: 'Allenoire', Arial, Helvetica, sans-serif;
+}
+
+.popup-btn:hover {
+    background-color: #470f8f;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animación de zoom + fade */
+@keyframes fadeZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animación de salida */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 @media (max-width:600px) {
     .formularioRegister{
         margin-top: 100px;
@@ -90,5 +176,17 @@
     }
     .msgError{
         font-family: 'Paradose';
+    }
+    .popup-content{
+        height: 300px;
+    }
+    .popup-content h4{
+        font-size: 10vw;
+    }
+    .popup-content h3{
+        font-size: 5vw;
+    }
+    .popup-content p{
+        font-size: 3vw;
     }
 }

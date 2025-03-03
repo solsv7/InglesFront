@@ -1,9 +1,10 @@
 .Formulario-Videos{
 position: relative;
+margin: 0 auto;
+display: block;
 justify-self: center;
 width: 40vw;
 background-color: rgb(250, 245, 245);
-padding: 20px;
 z-index: 1;
 }
 .Formulario-Videos::before{
@@ -25,16 +26,17 @@ z-index: 1;
     font-family: 'Allenoire';
     font-weight: lighter;
     margin-top: -30px;
-    padding: 20px;
+    padding: 20px 0px 20px 0px ;
     background-color: rgb(27,24,24);
     color: white;
     width: 40vw;
     text-align: center;
 }
 .separador-form{
+    justify-self: center;
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 30vw;
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
@@ -58,9 +60,12 @@ z-index: 1;
     font-family: 'Allenoire';
     transition: background-color 0.3s ease;
     font-size: 20px;
-    width: 100%;
+    display: block;
+    justify-self: center;
+    width: 90%;
     height: 50px;
     border-radius: 5px;
+    margin: 20px;
 }
 .enviar-boton:hover{
     background-color: rgb(209, 55, 55);
@@ -71,11 +76,16 @@ z-index: 1;
 }
 @media (max-width:600px) {
     .Formulario-Videos{
-        margin-top: 100px;
+        width: 80vw;
+    }
+    .Formulario-Videos::before{
+        width: 80vw;
     }
     .Formulario-Videos>h1{
-        padding: 20px;
-        margin-top: -20px;
+        width: 80vw;
         
+    }
+    .separador-form{
+        width: 60vw;
     }
 }

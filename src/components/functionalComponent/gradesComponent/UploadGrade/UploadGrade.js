@@ -101,7 +101,7 @@ const UploadGrade = ({ selectedStudentId }) => {
   return (
     <div className="upload-grade-container">
       <div className="cycle-year-selector">
-        <label htmlFor="cycleYear" className='seleccionar'>Seleccionar ciclo:</label>
+        <label htmlFor="cycleYear" className='seleccionar'>Seleccionar ciclo</label>
         <input
           type="number"
           id="cycleYear"
@@ -172,7 +172,7 @@ const UploadGrade = ({ selectedStudentId }) => {
             Subir/Editar Notas
           </button>
           <button type="button" onClick={handleReset} className="BotonReset">
-            Limpiar Cambios
+            Borrar
           </button>
         </div>
       </form>

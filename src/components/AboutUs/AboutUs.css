@@ -1,0 +1,116 @@
+.TextoInfo{
+    text-align: center;
+    justify-self: center;
+    font-family: 'Allenoire';
+}
+.TextoInfo h1 {
+    font-size: 5.5vw;
+    margin-bottom: 20px;
+    position: relative; /* Importante para que el ::after se posicione correctamente */
+    background-image: url('../../images/stthomas5.jpg');
+    background-size: cover;
+    background-position: 0 -180px;
+    height: 300px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    color: white;
+    font-weight: lighter;
+    z-index: 1; /* Asegura que el texto esté sobre la capa oscura */
+    box-shadow: 1px 0px 10px black;
+}
+
+/* Capa oscura */
+.TextoInfo h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ajusta la opacidad aquí */
+    z-index: -1; /* Envía la capa detrás del texto */
+}
+
+.Testimonios {
+    text-align: center;
+    width: 800px;
+    display: flex;
+    align-items: center; /* Centra los elementos hijos en el eje Y */
+    justify-content: space-between; /* Mantiene el texto y el carousel separados */
+    margin: 0 auto;
+    box-shadow: 1px 0px 5px gray;
+    padding: 0px 20px 0px 20px;
+    height: 600px;
+}
+
+.TextoTestimonios {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centra el contenido verticalmente */
+    text-align: center;
+    gap: 50px;
+}
+
+.TextoTestimonios h1{
+    color: rgb(224, 75, 75);
+    font-family: 'HelloGood';
+    font-size: 4vw;
+}
+.TextoTestimonios h3{
+    color: rgb(128, 125, 125);
+    font-family: 'Sinerva';
+}
+.Informacion {
+    box-shadow: 1px 0px 5px gray;
+    padding: 20px;
+    width: 800px;
+    position: relative; /* Asegura que no interfiera con otros elementos */
+    z-index: 2; /* Mantiene el contenido sobre el fondo */
+    justify-self: center;
+    font-family: 'HelloGood';
+    display: flex;
+}
+.TextoAbout h2{
+    color: rgb(224, 75, 75);
+    font-size: 3vw;
+    text-align: center;
+}
+.TextoAbout h3{
+    color: rgb(128, 125, 125);
+    text-align: center;
+    font-family: 'Sinerva';
+    font-size: 1.5vw;
+    
+}
+@media (max-width:600px) {
+    .TextoInfo h1 {
+        height: 200px;
+    }
+    .Informacion{
+        width: 80vw;
+        margin-bottom: 50px;
+    }
+    .TextoAbout h2{
+        margin-top: -20px;
+        font-size: 8vw;
+    }
+    .TextoAbout h3{
+        font-size: 3.8vw;
+    }
+    .Testimonios{
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        width: 80vw;
+        height: 850px;
+        margin-bottom: 40px;
+    }
+    .Testimonios h1{
+        font-size:  8vw;
+    }
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import transition from "../../transition";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import './Profile.css';
@@ -28,17 +29,26 @@ const Profile = () => {
     
     useEffect(() => {
         const fetchProfileInfo = async () => {
-            const params = { id_alumno: user.id_alumno, id_profesor: user.id_profesor };
+            const params = { id_rol: user.rol, id: user.id };
+    
             try {
                 const response = await axios.get("http://localhost:3001/api/perf-info", { params });
-                setProfileData(response.data[0]); // Asignar los datos obtenidos
+                console.log('La informacion de perfil es:', response.data);
+    
+                if (response.data[0].id_perfil !== null) {
+                    setProfileData(response.data[0]); // Solo asignar si hay datos
+                    console.log('los parametros que se envian son:', params);
+                    console.log('La informacion de perfil es:', response.data);
+                } else {
+                    console.warn('El usuario con rol 4 no tiene perfil disponible.');
+                }
             } catch (error) {
                 console.error('Error al obtener la información:', error);
             }
         };
-
+    
         fetchProfileInfo();
-    }, [user.id_alumno, user.id_profesor]);
+    }, [user.rol, user.id]);    
 
     useEffect(() => {
         const fetchPhoto = () => {
@@ -73,9 +83,9 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="extra-info">
-                        <h1>Información adicional</h1>
-                        <h4>Correo: {profileData?.mail || 'No disponible'}</h4>
-                        <h4>Num. Contacto: {profileData?.whatsapp || 'No disponible'}</h4>
+                        <h1>Informacion adicional</h1>
+                        <h4>Correo: {profileData?.mail || 'Sin informacion'}</h4>
+                        <h4>Num. Contacto: {profileData?.whatsapp || 'Sin informacion'}</h4>
                     </div>
                     <div className="noce">
                         <button><Link to='/Modificar' className="modifyBTN">Modificar Informacion</Link></button>
@@ -99,9 +109,9 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="extra-info">
-                        <h1>Información adicional</h1>
-                        <h4>Correo: {profileData?.mail || 'No se ha proporcionado'}</h4>
-                        <h4>Num. Contacto: {profileData?.whatsapp || 'No se ha proporcionado'}</h4>
+                        <h1>Informacion adicional</h1>
+                        <h4>Correo: {profileData?.mail || 'Sin informacion'}</h4>
+                        <h4>Num. Contacto: {profileData?.whatsapp || 'Sin informacion'}</h4>
                     </div>
                     <div className="noce">
                         <button><Link to='/Modificar' className="modifyBTN">Modificar Informacion</Link></button>
@@ -125,10 +135,10 @@ const Profile = () => {
                         </div>
                     </div>
                     <div className="extra-info">
-                        <h1>Información adicional</h1>
-                        <h4>Correo: {profileData?.mail || 'No se ha proporcionado'}</h4>
-                        <h4>Num. Contacto: {profileData?.whatsapp || 'No se ha proporcionado'}</h4>
-                        <h4>Num. Contacto Adulto: {profileData?.whatsapp_adulto || 'No se ha proporcionado'}</h4>
+                        <h1>Informacion adicional</h1>
+                        <h4>Correo: {profileData?.mail || 'Sin informacion'}</h4>
+                        <h4>Num. Contacto: {profileData?.whatsapp || 'Sin informacion'}</h4>
+                        <h4>Num. Contacto Adulto: {profileData?.whatsapp_adulto || 'Sin informacion'}</h4>
                     </div>
                     <div className="noce">
                         <button><Link to='/Modificar' className="modifyBTN">Modificar Informacion</Link></button>
@@ -141,4 +151,4 @@ const Profile = () => {
     return <div className="contenidoProfile">{content}</div>;
 };
 
-export default Profile;
+export default transition(Profile);

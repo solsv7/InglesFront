@@ -44,7 +44,7 @@
         padding: 20px;
         background-color: rgb(31, 31, 112); /* Aplica el fondo azul al contenedor completo */
         margin-bottom: 290px;
-        margin-top: 200px;
+        margin-top: 300px;
         
     }
 
@@ -71,11 +71,12 @@
     }
 
     #ImagenDeLoader {
-        height: 120px;
+        height: 140px;
         width: auto;
         padding: 10px;
         display: block;
         margin-left: auto; /* Empuja la imagen a la derecha */
         margin-right: 40px;
+        margin-top: -20px;
     }
 }

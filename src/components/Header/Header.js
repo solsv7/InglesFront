@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './header.css';
-import Login from '../HomePageComponents/Login/LoginComponent';
 import Sidebar from '../sidebar/sidebar';
 import BandejaMSG from '../Advices/BandejaMSG';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../functionalComponent/UserContext/UserContext';
 import { Link } from 'react-router-dom';
 
@@ -13,56 +12,28 @@ const Header = () => {
   const { handleLogout } = useContext(UserContext);
   const navigate = useNavigate();
 
+  let content = user?.rol === 3 ? <BandejaMSG /> : <div className='Nada'></div>;
 
+  let validateSidebar = user?.rol === 4 
+    ? <div className='cerrarGuest'><h3 onClick={handleLogout}>Cerrar Sesion</h3></div>
+    : <div className="BTNSidebar"><Sidebar /></div>;
 
-  
-let content;
-    if (user?.rol == 3 ){
-      content = (
-        <div>
-            <BandejaMSG />
-        </div>
-      );
-    } else {
-      content = (
-          <div className='Nada'>
-          </div>
-      );
-  }
-  let validateSidebar;
-  if (user?.rol == 4 ){
-    validateSidebar = (
-      <div className='cerrarGuest'>
-        <h3 onClick={handleLogout}>Cerrar Sesion</h3>
-      </div>
-          
-    );
-  }else {
-    validateSidebar = (
-      <div className="BTNSidebar">
-        <Sidebar />
-      </div>
-    );
-}
-
-  // Redirección basada en el rol del usuario
   const checkRole = () => {
     switch (user?.rol) {
-      case 1:
-        navigate('/home-admin');
-        break;
-      case 2:
-        navigate('/home-teacher');
-        break;
-      case 3:
-        navigate('/home-student');
-        break;
-      default:
-        navigate('/');
-        break;
+      case 1: navigate('/home-admin'); break;
+      case 2: navigate('/home-teacher'); break;
+      case 3: navigate('/home-student'); break;
+      default: navigate('/'); break;
     }
   };
-  
+
+  // Definir el botón basado en el rol del usuario
+  let botonInscripcion = null;
+  if (user?.rol >= 1 && user?.rol <= 3) {
+    botonInscripcion = <h3 className="btn btn-left"><Link to='/All-Vids' className='linkStyle'>Videos</Link></h3>;
+  } else if (user?.rol === 4) {
+    botonInscripcion = <h3 className="btn btn-left ins-button"><Link to='/Inscription' className='linkStyle'>Inscribirme</Link></h3>;
+  }
 
   return (
     <header className="header">
@@ -83,33 +54,36 @@ let content;
         </div>
       </div>
       <nav className="nav-links">
-        {/* Navegación */}
-        <h3 className="btn btn-left" ><Link to='/' className='linkStyle'>Inicio</Link></h3>
-        <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Videos</Link></h3>
+        <h3 className="btn btn-left"><Link to='/' className='linkStyle'>Inicio</Link></h3>
+        <h3 className="btn btn-left"><Link to='/About' className='linkStyle'>Sobre Nosotros</Link></h3>
+        {botonInscripcion}
 
-        {/* Contenedor de login */}
         <div className="login-container">
-          {token ? (
-            <div className="log-perf">
-              <h3 className="btn btn-left ins-button" ><Link to='/Inscription' className='linkStyle'>Inscripcion</Link></h3>
-                <h3 className="btn btn-left" id="user" onClick={checkRole}>
-                  {user.nombre || 'Usuario'}
-                </h3>
-              <div className='BTNAvisos'>
-                {content}
-              </div>
-              <div >
-                {validateSidebar}
-              </div>
-            </div>
-          ) : (
-            <>
-                <button className="login-button"><Link to='/Login' className='EstiloLink'>Ingresar</Link></button>
-                
-            </>
-        )}
-    </div>
-</nav>
+  {token ? (
+    user?.rol !== 4 ? (
+      // Para usuarios con rol distinto de 4
+      <div className="log-perf">
+        <h3 className="btn btn-left" id="user" onClick={checkRole}>
+          {user.nombre || 'Usuario'}
+        </h3>
+        <div className='BTNAvisos'>{content}</div>
+        <div className='BotonSidebar'>{validateSidebar}</div>
+      </div>
+    ) : (
+      // Para usuarios con rol 4 (solo botón de Cerrar Sesión)
+      <div className="cerrarGuest">
+        <h3 onClick={handleLogout}>Cerrar Sesion</h3>
+      </div>
+    )
+  ) : (
+    // Si no hay token, muestra "Ingresar"
+    <button className="login-button">
+      <Link to='/Login' className='EstiloLink'>Ingresar</Link>
+    </button>
+  )}
+</div>
+
+      </nav>
     </header>
   );
 };

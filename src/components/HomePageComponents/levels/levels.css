@@ -122,9 +122,11 @@
 }
 @media (max-width:600px) {
     .ContainerLevels{
-        margin-bottom: -300px;
+        margin-bottom: -150px;
+        margin-top: -100px;
         width: 100vw;
-        height: 500px;
+        height: 400px;
+        box-shadow: 0px 22px 20px 1px rgba(102, 102, 81, 0.205);
     }
     .Bloques{
         position: relative;

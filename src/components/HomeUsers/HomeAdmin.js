@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
+import Profile from '../Profile/Profile';
 import { useNavigate } from 'react-router-dom';
 import transition from "../../transition";
 
@@ -30,8 +31,7 @@ const HomeAdmin = () => {
 
     return (
         <div>
-            <h1 className='nombreUsuario'>Bienvenido, Administrador {user?.nombre}!</h1>
-            
+            <Profile />
         </div>
     );
 };

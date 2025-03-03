@@ -1,7 +1,7 @@
 .contenidoProfile{
     background: white;
     box-shadow: 1px 0px 5px gray;
-    width: 700px;
+    width: 60vw;
     justify-self: center;
 }
 .Contenido-Perfil>h2{
@@ -16,38 +16,41 @@
     width: 600px;
     margin-top: -70px;
     padding: 50px;
+    justify-self: center;
 }
 .user-w-pic {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    gap: 175px; /* Espaciado entre los elementos */
-    padding: 20px; /* Espaciado interno */
-    height: 150px; /* Ajustar la altura al contenido */
-    width: 100%; /* Ajusta al contenedor padre */
+    justify-content: center; 
+    align-items: center; 
+    gap: 175px; 
+    padding: 20px; 
+    height: 120px; 
+    width: 100%; 
 }
 
 .user {
     display: flex;
-    flex-direction: column; /* Colocar los textos en columna */
-    align-items: center; /* Centrar horizontalmente */
-    text-align: center; /* Alinear texto */
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
 }
-.user h2{
-    font-size: 50px;
+.user-w-pic .user h2{
+    font-size: 4vw;
+    font-family: 'Allenoire';
 }
-.user h4{
-    font-size: 20px;
+.user-w-pic .user h4{
+    font-size: 2vw;
+    font-family: 'Ristorante';
 }
 .user h2, .user h4 {
-    margin: 5px 0; /* Espaciado entre elementos */
+    margin: 5px 0; 
 }
 
 .pic img {
-    max-width: 150px; /* Ajustar tamaño de la imagen */
+    max-width: 150px; 
     height: auto;
-    border-radius: 50%; /* Convertir la imagen en circular si es necesario */
-    border: 2px solid #ccc; /* Opcional: Borde decorativo */
+    border-radius: 50%; 
+    border: 2px solid #858585; 
     margin-top: -20px;
 }
 .userData h3{
@@ -56,23 +59,33 @@
 .Rol{
     color: rgb(228, 32, 32);
 }
+.extra-info{
+    background-color: white;
+    box-shadow: 1px 0px 20px gray;
+}
+.extra-info h4{
+    padding: 10px;
+}
 .noce{
     display: flex;
-    margin-left: 260px;
-    justify-self: center;
+    margin:  0 auto;
+    justify-content: center;
 }
 .noce>button{
     font-family: 'allenoire';
-    font-size: 15px;
+    font-size: 1.5vw;
     letter-spacing: 0.5px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 12px;
     border: none;
+    text-align: center;
+    align-items: center;
     background-color: rgb(27, 24, 24);
 }
 .modifyBTN{
     color: white;
     text-decoration: none;
+    justify-self: center;
 }
 .noce>button:hover{
     background-color: #470f8f;
@@ -96,4 +109,34 @@
     width: 100%;
     margin: 0px;
     margin-left: 0px;
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+    font-family: 'Allenoire';
+}
+.extra-info h4{
+    font-family: 'Allenoire';
+    color: grey;
+    margin-left: 30px;
+    padding-bottom: 30px;
+}
+@media (max-width:600px) {
+    .contenidoProfile{
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        width: 90vw;
+    }
+    .user-w-pic{
+        gap: 50px;
+    }
+    .extra-info{
+        width: 70vw;
+        justify-self: center;
+    }
+    .user h2{
+        font-size: 4vw !important;
+    }
+    .Rol{
+        font-size: 4vw !important;
+    }
 }
