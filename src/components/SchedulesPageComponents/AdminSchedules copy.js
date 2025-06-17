@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './AdminSchedules.css';
-import { FaEdit, FaSave, FaPlus, FaTrashAlt } from 'react-icons/fa';
+import { FaEdit, FaSave, FaPlus } from 'react-icons/fa';
 
 const diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
 
@@ -104,23 +104,6 @@ const EditarClase = ({ horarios, niveles, cargarHorarios }) => {
     .catch(error => console.error("Error al actualizar la clase:", error));
   };
 
-  const eliminarClase = (id_clase) => {
-    if (window.confirm("¿Estás seguro de que deseas eliminar esta clase?")) {
-      fetch("http://localhost:3001/api/clases/eliminar", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id_clase }),
-      })
-      .then(response => response.json())
-      .then(() => {
-        cargarHorarios();
-      })
-      .catch(error => console.error("Error al eliminar la clase:", error));
-    }
-  };
-
   return (
     <div className="TablaHorarios">
       <h3>Clases Registradas</h3>
@@ -154,12 +137,7 @@ const EditarClase = ({ horarios, niveles, cargarHorarios }) => {
                     ) : (
                       <>
                         {clase ? clase.nivel_nombre : "-"}
-                        {clase && (
-                          <>
-                            <FaEdit onClick={() => manejarEditarCelda(dia, intervalo)} style={{ marginLeft: 8, cursor: 'pointer' }} />
-                            <FaTrashAlt onClick={() => eliminarClase(clase.id_clase)} style={{ marginLeft: 8, cursor: 'pointer' }} />
-                          </>
-                        )}
+                        {clase && <FaEdit onClick={() => manejarEditarCelda(dia, intervalo)} style={{ marginLeft: 8, cursor: 'pointer' }} />}
                       </>
                     )}
                   </td>
