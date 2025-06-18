@@ -19,7 +19,7 @@ const AsistenciasPage = () => {
         <button onClick={() => setVista('rango')}>Totales por Rango</button>
       </div>
 
-      <div className="vista-activa">
+        <div className="vista-activa">
         {vista === 'registrar' && <RegistroAsistencias />}
         {vista === 'por-fecha' && <VerAsistenciasPorFecha />}
         {vista === 'totales' && <TotalesPorClase />}
