@@ -1,86 +1,94 @@
-.login-container > .login-form  {
-    display: none; 
-    position:fixed;
-    top: 90px;
-    left: 81.5%;
-    background: rgba(0, 0, 0, 0.11);
-    border-radius: 10px; 
-    padding: 30px; 
-    z-index: 2000; 
-    width: 150px;
-    backdrop-filter: blur(2px);
-    border: solid 1px white;
-    
-    
-   
-}
-.login-container {
-    display: flex; /* Cambia el contenedor de login a flex */
-    align-items: center; /* Centra los elementos */
-    
+.ContenidoLogin {
+    position: relative;
+    justify-self: center;
+    height: 550px;
+    width: 500px;
+    background-color: white; /* Mantiene el fondo blanco */
+    box-shadow: 0px 1px 20px gray;
+    margin-bottom: 50px;
+    font-family: 'Allenoire';
+    border-bottom-right-radius: 22.5px;
+    border-bottom-left-radius: 22.5px;
+    z-index: 1; /* Asegura que el contenido esté encima */
 }
 
-/* Otros estilos */
+/* Capa semitransparente con la misma imagen de fondo */
+.ContenidoLogin::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../images/PatronFondo.png); 
+    background-size: cover;
+    opacity: 0.6; 
+    border-bottom-right-radius: 22.5px;
+    border-bottom-left-radius: 22.5px;
+    z-index: -1; 
+}
+
 .error-message {
     color: #B40A00;
 }
-
-form {
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-input[type="text"] {
-    display: block;
-    height: 20px;
-    opacity: 100%;
-    background-color: rgb(223, 233, 223);
-    width: 150px;
-    margin-bottom: 20px;
-        
-}
-input[type="password"]{
-    display: block;
-    height: 20px;
-    opacity: 100%;
-    background-color: rgb(223, 233, 223);
-    width: 150px;
-    margin-bottom: 20px;   
-    
-}
-
-
-button[type="submit"] {
-    background-color: #000000;
-    color: white;
+.BTNSignIn{
+    background-color: rgb(27, 24, 24);
+    height: 40px;
+    width: 15vw;
     border: none;
-    padding: 10px;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 154px;
-    transition: 0.2s ease-in-out;
-    font-family: 'Paradose';
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+    margin-bottom: -30px;
+    font-family: 'Allenoire';
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
 
-button[type="submit"]:hover {
-    background-color: #eaebf1; 
-    color: #000000;
-    
 }
-#formularioLogin{
-    justify-content: center;
+.BTNSignIn:hover{
+    background-color: #B40A00;
+}
+.formularioLogin>div {
+    display: flex;
+    flex-direction: column;
     align-items: center;
- 
 }
-.msgError{
-    color:#B40A00;
+.formularioLogin>div>h2{
+    background-color: rgb(27, 24, 24);
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    padding: 20px 0px 20px 0px;
+    font-size: 30px;
+    font-family: 'Allenoire';
+    font-weight: lighter;
+}
+.ContentLogin>input{
+    width: 15vw;
+}
+.msgError {
+    color: #B40A00;
     text-align: center;
     padding-bottom: 15px;
     font-family: 'Ristorante';
+    font-size: 15px;
+    position: absolute;
+    margin-top: 400px;
+}
+@media (max-width:600px) {
+    .ContenidoLogin{
+        margin-top: 100px;
+        width: 450px;
+        height: 650px;
+    }
+    .formularioLogin>.ContentLogin>input{
+        width: 200px;
+        height: 30px;
+    }
+    .BTNSignIn{
+        height: 70px;
+        width: 200px;
+    }
+    .msgError{
+        font-family: 'Paradose';
+    }
 }

@@ -1,0 +1,164 @@
+.upload-grade {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 50px;
+    width: 800px;
+    justify-self: center;
+    margin-bottom: 55px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px rgb(189, 188, 188);
+  }
+  
+  .Tabla-Grades {
+    margin: 20px 0;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    font-family: 'Allenoire';
+  }
+  .inputNota{
+    height: 30px;
+    width: 120px;
+    text-align: center;
+    margin-top: 0px;
+  }
+  .Tabla-Grades th, .Tabla-Grades td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-family: 'Allenoire';
+  }
+  
+
+  
+  /* Para el centro del campo de búsqueda */
+  .student-search {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .botonesGrades{
+    display: flex;
+    gap: 30px;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    
+  }
+  .BotonSubir {
+    padding: 10px 20px ;
+    background-color: #fa3838 ;
+    color: white ;
+    border: none ;
+    border-radius: 4px ;
+    cursor: pointer ;
+    margin-top: 10px ;
+    font-family: 'Paradose';
+    font-size: 20px;
+    width: 200px;
+  }
+
+  .BotonSubir:hover {
+    background-color: #29154e ;
+  }
+  .BotonReset{
+    padding: 10px 20px ;
+    background-color: #2e2828 ;
+    color: white ;
+    border: none ;
+    border-radius: 4px ;
+    cursor: pointer ;
+    margin-top: 10px ;
+    font-family: 'Paradose';
+    font-size: 20px;
+    width: 200px;
+  }
+  .BotonReset:hover{
+    background-color: #111010;
+  }
+  
+  #yearSelect {
+    width: 200px;
+    padding: 10px;
+    margin: 10px auto;
+    border: 2px solid #2e2929;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-family: 'Paradose';
+    font-size: 16px;
+    color: #2e2929;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#yearSelect:hover {
+    background-color: #e6e6e6;
+}
+
+#yearSelect:focus {
+    outline: none;
+    border-color: #706565;
+}
+
+label[for="yearSelect"] {
+    display: block;
+    font-family: 'Allenoire';
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #2e2929;
+}
+
+.BotonConfirmarCiclo {
+    padding: 10px 20px;
+    background-color: #fa3838;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Paradose';
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.BotonConfirmarCiclo:hover {
+    background-color: #29154e;
+}
+
+.BotonesCiclo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    gap: 20px;
+}
+
+.year-confirmation {
+    font-family: 'Allenoire';
+    text-align: center;
+    font-size: 18px;
+    color: #2e2929;
+    margin-top: 10px;
+}
+
+.seleccionar {
+  font-family: 'Allenoire', Courier, monospace;
+  margin-left: 310px;
+}

@@ -1,125 +1,186 @@
-.ContainerLevels{
+.ContainerLevels {
     background-color: #f1efee;
     width: 100%;
-    box-shadow: 0px 2px 20px beige;
-    height: 646px;
-    
+    box-shadow: 0px 22px 20px 1px rgba(102, 102, 81, 0.205);
+    height: 87vh;
 }
-.text>h2{
-    padding: 40px;
-    font-size: 50px;
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    width: 100%;
+    text-align: center;
+}
+
+.text>h2 {
+    width: 50vw;
+    height: 20vh;
+    font-size: 4vw;
+    margin-top: 76vh;
+    border-radius: 35.5px;
+    display: flex;
+    justify-content: center; /* Centra el texto dentro del h2 */
+    align-items: center; /* Centra verticalmente */
+    position: absolute;
+    color: white;
+    background-color: rgb(27,24,24 );
+    z-index: 10;
+}
+
+.text>h4 {
+    height: 10px;
+    width: 125px;
+    font-size: 15px;
     font-weight: lighter;
     font-family: 'Allenoire';
     color: #141414;
     background-color: rgb(230, 225, 225);
-    width: 600px;
-    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 520px;
-    left: 23%;
-    border-radius: 50px;
+    padding: 2px;
+    top: 350px;
+    left: 44.5%;
     filter: invert(1);
-    z-index: 1700;
-}
-.text>h4{
     z-index: 1800;
-    color: #141414;
-    filter: invert(1);
-    padding: 10px;
-    position: absolute;
-    left: 44%;
-    top: 610px;
-    font-weight: lighter;
-    font-family: 'Allenoire';
-    background-color: rgb(230, 225, 225);
 }
-.bar{
+
+.bar {
     position: absolute;
     z-index: 1750;
     height: 5px;
-    top: 625px;
+    top: 352px;
     left: 30%;
     width: 500px;
     background: white;
 }
-#ImagenEn{
-    position: absolute;
-    height: 500px;
-    right: 0px;
-    z-index: 1400;
-    top: 100px;
-    mask-image: linear-gradient(black 91%,transparent);
-}
-#ImagenPor{
-    position: absolute;
-    height: 500px;
-    left: 0px;
-    z-index: 1400;
-    top: 100px;
-    mask-image: linear-gradient(black 91%,transparent);
-}
-.BloqueLvL{
+.Bloques{
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
     display: flex;
-    position: absolute;
-    opacity: 10%;
-    top: 90px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Soria';
-    font-weight: lighter;
-    gap: 15px;
-    font-size: 147px;
-    z-index: 1100;
+    flex-direction: column;
+    font-size: 10vw;
+    margin-top: -6vh;
+    z-index: 5;
+    font-family: 'Allenoire';
 }
-.BloqueLvL2{
+.BloqueLvL2,.BloqueLvL3,.BloqueLvL4{
     display: flex;
-    position: absolute;
-    opacity: 30%;
-    top: 80px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Soria';
-    font-weight: lighter;
-    gap: 15px;
-    font-size: 147px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    
 }
-.BloqueLvL3{
+#ImagenPor, #ImagenEn {
+    width: 100vw; /* Se ajusta al ancho de la pantalla */
+    max-width: 50vw; /* Tamaño máximo para que no se vea gigante */
+    height: auto; /* Mantiene la proporción */
+    display: block; /* Asegura que se comporten bien en mobile */
+    margin: 0 auto; /* Centra las imágenes */
+    margin-top: -100vh;
+    object-fit: contain;     
+    mask-image: linear-gradient(black 91%, transparent);
+    z-index: 10;
+}
+.ContImgs{
     display: flex;
-    position: absolute;
-    opacity: 55%;
-    top: 240px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Soria';
-    font-weight: lighter;
-    gap: 15px;
-    font-size: 147px;
+    justify-content: space-between;
+    padding-top: 90px;
 }
-.BloqueLvL>h4,.BloqueLvL2>h4,.BloqueLvL3>h4,.BloqueLvL4>h4{
+
+.BloqueLvL>h4, .BloqueLvL2>h4, .BloqueLvL3>h4, .BloqueLvL4>h4 {
     color: black;
 }
-.BloqueLvL>#por,.BloqueLvL3>#por{
+
+.BloqueLvL>#por, .BloqueLvL3>#por {
     color: yellow;
 }
-.BloqueLvL>#eng,.BloqueLvL3>#eng{
+
+.BloqueLvL>#eng, .BloqueLvL3>#eng {
     color: red;
 }
-.BloqueLvL4{
-    display: flex;
-    position: absolute;
-    opacity: 80%;
-    top: 400px;
-    align-items: center;
-    font-family: 'Soria';
-    gap: 15px;
-    font-size: 147px;
+.BloqueLvL2 {
+    opacity: 30%;
 }
-#por{
+
+.BloqueLvL3 {
+    opacity: 55%;
+}
+
+.BloqueLvL4 {
+    opacity: 80%;
+}
+
+#por {
     color: rgb(53, 110, 27);
 }
-#eng{
+
+#eng {
     color: rgb(48, 48, 184);
+}
+@media (max-width:600px) {
+    .ContainerLevels{
+        margin-bottom: -300px;
+        width: 100vw;
+        height: 500px;
+    }
+    .Bloques{
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        font-size: 9.85vw;
+        margin-top: -16vh;
+        z-index: 5;
+
+    }
+    .BloqueLvL2,.BloqueLvL3,.BloqueLvL4{
+        display: flex;
+        margin-top: -20px;
+        margin-bottom: -20px;
+        
+    }
+    #ImagenPor, #ImagenEn {
+            width: 50vw; /* Se ajusta al ancho de la pantalla */
+            max-width: 300px; /* Tamaño máximo para que no se vea gigante */
+            height: auto; /* Mantiene la proporción */
+            display: block; /* Asegura que se comporten bien en mobile */
+            margin: 0 auto; /* Centra las imágenes */
+            margin-top: -34vh;
+            object-fit: contain;     
+    }
+    .text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+        width: 100%;
+        text-align: center;
+    }
+    
+    .text>h2 {
+        width: 350px;
+        height: 9vh;
+        font-size: 6vw;
+        margin-top: 18vh;
+        border-radius: 35.5px;
+        display: flex;
+        justify-content: center; /* Centra el texto dentro del h2 */
+        align-items: center; /* Centra verticalmente */
+        position: relative;
+        color: white;
+        background-color: rgb(27,24,24 );
+        z-index: 10;
+    }
+    
+    .text>h4{
+        display: none;
+        
+    }
+    .text>.bar{
+       display: none;
+    }
 }

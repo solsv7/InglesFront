@@ -1,0 +1,107 @@
+.table-container {
+    width: 1100px;
+    padding-bottom: 40px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    background-color: rgb(255, 255, 255);
+}
+
+.table-container > h2 {
+    text-align: center;
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    font-size: 30px;
+    color: white;
+    background-color: rgb(27,24,24);
+    padding: 10px 0px 10px 0px;
+}
+
+.Tabla-Notas {
+    width: 1000px;
+    border-collapse: collapse;
+    justify-self: center;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    font-family: 'Paradose';
+    letter-spacing: 0.5px;
+    font-weight: lighter;
+}
+
+#NotaNumero {
+    font-family: 'Allenoire';
+}
+
+.Periodo {
+    background-color: #706565;
+    color: white;
+}
+
+th {
+    background-color: #2e2929;
+    color: white;
+    font-family: 'Allenoire';
+}
+
+tr:nth-child(even) {
+    background-color: #e6cfcf;
+}
+
+tr:hover {
+    background-color: #d1c5f3;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+#yearSelect {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #2e2929;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-family: 'Allenoire';
+    font-size: 16px;
+    color: #2e2929;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#yearSelect:hover {
+    background-color: #e6e6e6;
+}
+
+#yearSelect:focus {
+    outline: none;
+    border-color: #706565;
+}
+
+label[for="yearSelect"] {
+    display: block;
+    font-family: 'Allenoire';
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: #2e2929;
+}
+.contenidoSelect{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-self: center;
+    height: 90px;
+    gap: 10px;
+}
+.mensajeError{
+    font-family: 'Ristorante';
+    color: gray;
+    position: absolute;
+    justify-self: center;
+    margin-top: 95px;
+    left: 50%; /* Mueve el elemento al 50% del ancho del contenedor */
+    transform: translateX(-50%); /* Compensa la mitad del ancho del elemento */
+}

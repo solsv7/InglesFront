@@ -1,15 +1,97 @@
 .Horarios{
+    padding: 0px;
+    margin: 0px;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-.Niveles{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-.TablaHorarios{
-    width: 1000px;
     justify-self: center;
+    padding-bottom: 40px;
+    margin-top: -440px;
+    position: absolute;
+}
+.Horarios>h3{
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    color: #ffffff;
+    background-color: rgb(27, 27, 27);
+    width: 400px;
     border-radius: 22px;
+    position: absolute;
+    left: 440px;
+    margin-top: -100px;
+    box-shadow: 1px 1px 10px black;
+}
+.TablaHorarios {
+    width: 1000px;
+    position: absolute;
+    margin-top: -20px;
+    left: 10vw;
+    border-radius: 22px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.TablaHorarios>th{
+    color: #141414 ;
+    background-color: rgb(230, 225, 225) ;
+    
+}
+.niveles{
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    
+}
+.Horas{
+    font-family: 'Allenoire';
+    font-weight: lighter;
+}
+#TLC{
+    border-top-left-radius: 22px;
+}
+#TRC{
+    border-top-right-radius: 22px;
+}
+#BLC{
+    border-bottom-left-radius: 22px;
+}
+#BRC{
+    border-bottom-right-radius: 22px;
+}
+@media (max-width:600px) {
+    .Horarios {
+        width: 100vw;
+        margin-top: -760px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los elementos */
+    }
+
+    .Horarios > h3 {
+        font-size: 5vw;
+        width: 90vw;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        left: auto;
+    }
+
+    .TablaHorarios {
+        width: 90vw; /* Asegura que la tabla sea responsive */
+        margin: 0 auto; /* Centra la tabla */
+        left: auto; /* Elimina desplazamientos laterales */
+        position: relative; /* Para evitar que se salga del flujo */
+    }
+    .SeparadorTabla>table{
+        height: 50px;
+    }
+    .TablaHorarios>tr>td,.TablaHorarios>tr>th{
+        font-size: 2vw;
+    }
+    .TablaHorarios>tr{
+        width: 2px;
+    }
+    .Horas{
+        width: 10px;
+    }
+   
 }

@@ -1,0 +1,99 @@
+.contenidoProfile{
+    background: white;
+    box-shadow: 1px 0px 5px gray;
+    width: 700px;
+    justify-self: center;
+}
+.Contenido-Perfil>h2{
+    color: white;
+    background-color: rgb(22, 17, 17);
+    padding: 10px;
+    text-align: center;
+    font-family: 'allenoire';
+    font-size: 35px;
+}
+.userData{
+    width: 600px;
+    margin-top: -70px;
+    padding: 50px;
+}
+.user-w-pic {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    gap: 175px; /* Espaciado entre los elementos */
+    padding: 20px; /* Espaciado interno */
+    height: 150px; /* Ajustar la altura al contenido */
+    width: 100%; /* Ajusta al contenedor padre */
+}
+
+.user {
+    display: flex;
+    flex-direction: column; /* Colocar los textos en columna */
+    align-items: center; /* Centrar horizontalmente */
+    text-align: center; /* Alinear texto */
+}
+.user h2{
+    font-size: 50px;
+}
+.user h4{
+    font-size: 20px;
+}
+.user h2, .user h4 {
+    margin: 5px 0; /* Espaciado entre elementos */
+}
+
+.pic img {
+    max-width: 150px; /* Ajustar tamaño de la imagen */
+    height: auto;
+    border-radius: 50%; /* Convertir la imagen en circular si es necesario */
+    border: 2px solid #ccc; /* Opcional: Borde decorativo */
+    margin-top: -20px;
+}
+.userData h3{
+    font-size: 30px;
+}
+.Rol{
+    color: rgb(228, 32, 32);
+}
+.noce{
+    display: flex;
+    margin-left: 260px;
+    justify-self: center;
+}
+.noce>button{
+    font-family: 'allenoire';
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(27, 24, 24);
+}
+.modifyBTN{
+    color: white;
+    text-decoration: none;
+}
+.noce>button:hover{
+    background-color: #470f8f;
+}
+
+.BTNSave{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nombreUsuario{
+    justify-self: center;
+    font-family: 'Allenoire';
+    margin-bottom: -30px;
+}
+.extra-info {
+    width: 600px;
+}
+.extra-info h1{
+    background-color: rgb(212, 207, 207);
+    width: 100%;
+    margin: 0px;
+    margin-left: 0px;
+}

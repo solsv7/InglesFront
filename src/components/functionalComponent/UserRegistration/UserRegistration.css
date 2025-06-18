@@ -1,0 +1,97 @@
+.user-registration {
+    width: 700px;
+    margin: 70px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    font-family: 'Allenoire', sans-serif; /* Fuente más estilizada */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-registration h2 {
+    text-align: center;
+    color: #ffffff; /* Color rojo similar a tu estilo */
+    font-family: 'Allenoire';
+    width: 660px;
+    padding: 20px;
+    margin: 0%;
+    margin-bottom: 20px;
+    font-size: 30px;
+    background-color: rgb(27, 24, 24);
+}
+.MarcoFormulario{
+    margin-left: 50px;
+    width: 600px;
+    border: solid 1px rgb(189, 183, 183);
+    padding: 20px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-bottom: 80px;
+    border-radius: 25px;
+
+}
+.user-registration form div {
+    margin: 0px;
+    width: 350px;
+    justify-self: center;
+}
+
+.user-registration label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: -30px;
+    font-family: 'Paradose', sans-serif;
+}
+.user-registration input,
+.user-registration select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Allenoire', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-registration input:focus,
+.user-registration select:focus {
+    outline: none;
+    border-color: #c71919; /* Resalta en rojo */
+    box-shadow: 0 0 5px rgba(199, 25, 25, 0.5); /* Efecto de enfoque */
+}
+
+.BotonCrearUser{
+    margin-left: 95px;
+    background-color: black;
+    border: none;
+    color: white;
+    font-family: 'Allenoire';
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    width: 40vw;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.BotonCrearUser:hover{
+    background-color: rgb(209, 55, 55);
+    color: rgb(245, 237, 237);
+}
+.success {
+    color: #28a745;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,14 @@
+.TextoMantenimiento{
+    color: gray;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: lighter;
+    justify-self: center;
+    width: 350px;
+    text-align: center;
+    font-size: 20px;
+}
+.ImagenRobot{
+    height: 200px;
+    opacity: 50%;
+    margin-left: 500px;
+}

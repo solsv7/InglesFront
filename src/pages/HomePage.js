@@ -3,16 +3,17 @@ import Homepag from "../components/HomePageComponents/homepage/homepage"
 import Niveles from "../components/HomePageComponents/levels/levels";
 import TextAbout from "../components/AboutPageComponents/TextAbout/TextAbout";
 import Schedules from "../components/SchedulesPageComponents/Schedules";
-import DifClases from "../components/HomePageComponents/difClases/difClases"
+import Gallery from "../components/Gallery/Gallery";
 import transition from "../transition";
 
 const HomePage = () =>{
     return(
         <div>
-            <Niveles />
-            <Homepag />
+            <Niveles/>
+            <Homepag/>
             <TextAbout/>
-            <Schedules />
+            <Schedules/>
+            <Gallery/>
         </div>
     )
 }

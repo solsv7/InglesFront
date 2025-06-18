@@ -1,0 +1,128 @@
+/* Estilos para el componente GradesComponent */
+
+/* Contenedor principal */
+.grades-component {
+    width: 100%;
+    max-width: 600px; /* Limita el ancho máximo */
+    margin: 70px auto; /* Centra el componente */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25); /* Sombra */
+    background-color: white; /* Fondo blanco */
+    font-family: 'Inter', sans-serif; /* Fuente consistente */
+}
+
+/* Título */
+.grades-component h2 {
+    text-align: center; /* Centra el título */
+    color: #B40A00; /* Color similar al encabezado de la tabla */
+    margin-bottom: 20px;
+}
+
+/* Formulario de calificaciones */
+.grades-component form div {
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+/* Etiquetas de los campos */
+.grades-component label {
+    display: block; /* Para que las etiquetas estén encima de los campos */
+    font-weight: bold;
+    color: #333; /* Texto oscuro */
+    margin-bottom: 5px;
+}
+
+/* Campos de entrada y selección */
+.grades-component input,
+.grades-component select {
+    width: 100%; /* Campos ocupan todo el ancho */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif; /* Fuente consistente */
+    box-sizing: border-box;
+}
+
+/* Estilo cuando los campos están en foco */
+.grades-component input:focus,
+.grades-component select:focus {
+    outline: none;
+    border-color: #B40A00; /* Color de enfoque */
+    box-shadow: 0 0 5px rgba(180, 10, 0, 0.5); /* Resalta en enfoque */
+}
+
+/* Botón de acción */
+.grades-component button {
+    width: 100%; /* Botón ocupa todo el ancho */
+    padding: 12px;
+    background-color: #B40A00; /* Color rojo del encabezado */
+    color: white; /* Texto blanco */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover sobre el botón */
+.grades-component button:hover {
+    background-color: #990800; /* Oscurece ligeramente al pasar el mouse */
+}
+
+/* Mensajes de éxito */
+.grades-component .success {
+    color: #28a745; /* Verde para mensajes de éxito */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Mensajes de error */
+.grades-component .error {
+    color: #dc3545; /* Rojo para mensajes de error */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Tabla de calificaciones */
+.grades-component table {
+    width: 100%; /* Ancho completo de la tabla */
+    border-collapse: collapse; /* Eliminar el espacio entre celdas */
+    margin-top: 20px;
+}
+
+.grades-component th,
+.grades-component td {
+    padding: 12px;
+    text-align: center; /* Centra el texto */
+    border: 1px solid #ddd; /* Borde de las celdas */
+}
+
+.grades-component th {
+    background-color: #B40A00; /* Fondo rojo para los encabezados */
+    color: white; /* Texto blanco */
+    font-weight: bold;
+}
+
+.grades-component tr:nth-child(even) {
+    background-color: #f2f2f2; /* Fondo gris claro para filas pares */
+}
+
+.grades-component tr:hover {
+    background-color: #ddd; /* Fondo gris claro cuando pasa el mouse */
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+    .grades-component {
+        padding: 15px;
+    }
+
+    .grades-component button,
+    .grades-component input,
+    .grades-component select {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

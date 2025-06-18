@@ -1,0 +1,104 @@
+.Contenido-Modificar{
+    justify-self: center;
+    width: 600px;
+    background-color: white;
+}
+.Contenido-Modificar h1{
+    text-align: center;
+    background-color: rgb(27, 24,24);
+    padding: 20px 0px 20px 0px;
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    font-size: 30px;
+    color: white;
+}
+.user h2{
+    font-size: 30px;
+}
+.info-extra{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    border: solid 1px gray;
+    background-color: rgb(238, 232, 232);
+    width: 190px;
+    height: 550px;
+    margin-left: 50px;
+    padding: 1px 20px 20px 20px;
+    margin-top: -150px;
+}
+.info-extra h4,.info-extra h2{
+    font-family: 'Allenoire';
+    font-weight: lighter;
+}
+.info-extra h2{
+    font-size: 20px;
+    background-color: #fff;
+    padding: 5px;
+}
+.pics-container h3{
+    text-align: center;
+}
+.pics-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 175px;
+    padding: 20px;
+    height: 150px;
+    width: 100%;
+    position: relative; /* Añadido para posicionamiento relativo */
+    padding-left: 150px;
+
+}
+
+.pic {
+    position: relative; /* Añadido para posicionamiento relativo */
+    background-color: rgb(27, 24, 24);
+    padding: 30px 10px 10px 10px;
+    border-radius: 50%;
+}
+.noce button{
+    width: 250px;
+    margin-left: -260px;
+    margin-bottom: 20px;
+}
+.noce button:hover{
+    cursor: pointer;
+}
+.saveBTN{
+    text-decoration: none;
+    color: white;
+}
+
+
+.photo-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: -16px;
+    position: absolute;
+    top: 100%; /* Posiciona el menú justo debajo de la imagen */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(27, 24, 24);
+    padding: 10px;
+    
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    z-index: 1; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+.photo-option {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border 0.3s ease;
+}
+
+.photo-option:hover {
+    border: 2px solid blue;
+}

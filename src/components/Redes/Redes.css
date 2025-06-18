@@ -1,28 +1,43 @@
-.container-redes{
+.container-redes {
     height: 30px;
     z-index: 3000;
     position: fixed;
     top: 80%;
     right: 1%;
-
 }
-.container-redes>ul{
+
+.container-redes > ul {
     list-style: none;
 }
-#instalogo{
+
+#instalogo {
     height: 30px;
     padding: 5px;
     background-color: rgb(216, 64, 115);
-    border-top-left-radius:15px ;
+    border-top-left-radius: 15px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 16px;
-    
 }
-#facelogo{
+
+#facelogo {
     height: 30px;
     padding: 5px;
     background-color: rgb(56, 44, 107);
-    border-top-left-radius:15px ;
+    border-top-left-radius: 15px;
     border-top-right-radius: 16px;
     border-bottom-left-radius: 16px;
+}
+
+/* Estilos Responsive */
+@media (max-width: 600px) {
+    .container-redes{
+        position: fixed;
+        left: 440px;
+    }
+    #facelogo{
+        margin-top: 0px;
+    }
+    #instalogo{
+        margin-bottom: -40px;
+    }
 }

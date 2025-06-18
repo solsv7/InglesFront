@@ -1,26 +1,81 @@
-.todo{
+.todo {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.TextoHome{
+.TextoHome {
     color: white;
     font-size: 50px;
-    background-color: rgb(31,31,112);
+    background-color: rgb(31, 31, 112);
     padding: 80px;
 }
-.TextoHome>h2{
-    font-family: 'Allenoire';
-}
-.TextoHome>h3{
-    font-family:'Paradose';
-    font-weight: lighter;
 
+.TextoHome > h2 {
+    font-family: 'Allenoire';
+    font-size: 60px;
+    width: 600px;
 }
-.contenedor{
+
+.TextoHome > h3 {
+    font-family: 'Paradose';
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.contenedor {
     display: flex;
     width: 950px;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+}
+#ImagenDeLoader{
+    height: 350px;
+    padding: 25px;
+}
+@media (max-width: 600px) {
+    .todo {
+        display: flex;
+        flex-direction: row; /* Mantiene la imagen a la derecha y el texto a la izquierda */
+        justify-content: space-between; /* Separa los elementos */
+        align-items: center;
+        width: 100%;
+        height: 200px;
+        padding: 20px;
+        background-color: rgb(31, 31, 112); /* Aplica el fondo azul al contenedor completo */
+        margin-bottom: 290px;
+        margin-top: 200px;
+        
+    }
+
+    .TextoHome {
+        background-color: none;
+        font-size: 15px;
+        padding: 15px;
+        text-align: left; /* Asegura que el texto quede alineado a la izquierda */
+        height: auto;
+        width: 50%; /* Que el texto use la mitad de la pantalla */
+        color: white; /* Mantiene el texto blanco */
+    }
+
+    .TextoHome > h2 {
+        font-size: 20px;
+        width: 100%;
+        margin: 0;
+    }
+
+    .TextoHome > h3 {
+        font-size: 16px;
+        text-align: left;
+        font-style: italic;
+    }
+
+    #ImagenDeLoader {
+        height: 120px;
+        width: auto;
+        padding: 10px;
+        display: block;
+        margin-left: auto; /* Empuja la imagen a la derecha */
+        margin-right: 40px;
+    }
 }

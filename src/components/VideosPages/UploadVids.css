@@ -1,0 +1,81 @@
+.Formulario-Videos{
+position: relative;
+justify-self: center;
+width: 40vw;
+background-color: rgb(250, 245, 245);
+padding: 20px;
+z-index: 1;
+}
+.Formulario-Videos::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40vw;
+    height: 100%;
+    background-image: url(../../images/PatronFondo.png); 
+    background-size: 99%;
+    opacity: 0.4; 
+    border-bottom-right-radius: 22.5px;
+    border-bottom-left-radius: 22.5px;
+    z-index: -1; 
+}
+.Formulario-Videos>h1{
+    justify-self: center;
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    margin-top: -30px;
+    padding: 20px;
+    background-color: rgb(27,24,24);
+    color: white;
+    width: 40vw;
+    text-align: center;
+}
+.separador-form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgb(199, 196, 196);
+}
+.separador-form>label{
+    font-size: 20px;
+    font-family: 'Allenoire';
+}
+.separador-form>input{
+    height: 30px;
+}
+.campo-texto{
+    width: 100%;
+    height: 100px;
+}
+.enviar-boton{
+    background-color: black;
+    border: none;
+    color: white;
+    font-family: 'Allenoire';
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+}
+.enviar-boton:hover{
+    background-color: rgb(209, 55, 55);
+    color: rgb(245, 237, 237);
+}
+.Options{
+    height: 40px;
+}
+@media (max-width:600px) {
+    .Formulario-Videos{
+        margin-top: 100px;
+    }
+    .Formulario-Videos>h1{
+        padding: 20px;
+        margin-top: -20px;
+        
+    }
+}

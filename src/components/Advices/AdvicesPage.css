@@ -1,0 +1,58 @@
+.AdviceContent{
+    background-color: white;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 10px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding-bottom: 20px;
+}
+.AdviceContent .advicesForm .SelectType, .AdviceContent .advicesForm div{
+    margin-left: 150px;
+}
+.AdviceContent h1{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0px 20px 0px;
+    background-color: rgb(27, 24, 24);
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    color: white;
+    margin: 0px;
+}
+.OpcionesAlumnos{
+    width: 500px;
+}
+.AdviceContent select{
+    padding: 10px;
+    width: 300px;
+}
+.AdviceContent .boton-enviar{
+    background-color: black;
+    border: none;
+    color: white;
+    font-family: 'Allenoire';
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    width: 40vw;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 40px;
+}
+.AdviceContent .boton-enviar:hover{
+    background-color: rgb(209, 55, 55);
+    color: rgb(245, 237, 237);
+}
+.advicesForm select{
+    margin: 0px;
+}
+textarea{
+    width: 300px;
+}

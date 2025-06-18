@@ -1,12 +1,10 @@
-/* src/components/Sidebar.css */
-
 /* Estilos básicos */
 .sidebar {
     position: fixed;
     top: 110px;
     left: 100%; /* Inicialmente fuera de la pantalla */
     width: 150px;
-    height: 265px;
+    height: 360px;
     background-color: #f1efee;
     color: rgb(44, 40, 40);
     padding: 20px;
@@ -17,30 +15,44 @@
     font-weight: lighter;
     z-index: 2100;
   }
+  .sidebar.rol-3{
+    height: 270px;
+  }
+  
   .Divparasepararyquedebonito{
-    padding: 5px;
-    margin-top: 10px;
+    margin-top: -30px;
   }
   .sidebar.open {
     left: 87.5%; /* La sidebar se desliza al abrir */
     width: 120px;
   }
+  .sidebar.closed>.Divparasepararyquedebonito{
+    margin-top: -30px;
+  }
+  .sidebar.closed>h2{
+    margin-top: 0px;
+    padding: 0px;
+  }
+  .sidebar.open>h2{
+    margin: 0;
+  }
   #Blue2{
-    padding-top: 5px;
+    padding-top: 10px;
     height: 30px;
     background-color: rgb(31, 31, 112);
   }
   #Red2{
-    padding-top: 5px;
+    padding-top: 10px;
     height: 30px;
     background-color: rgb(199, 25, 25);
   }
-  .OpcionesSidebar{
-    display: flex;
-    flex-direction: column;
-    border-radius: 50px;
-    gap: 5px;
+  #Blue2:hover{
+    background-color: rgb(22, 22, 92);
   }
+  #Red2:hover{
+    background-color: rgb(151, 20, 20);
+  }
+ 
   .toggle-button, .close-button {
     background-color: #333;
     color: white;
@@ -68,16 +80,15 @@
     font-size: 24px;
     background: transparent;
   }
-  
-  .OpcionSidebar:hover{
-    color: rgb(171, 171, 209);
-  }
   .OpcionSidebar{
     color: rgb(227, 241, 231);
     font-family: 'Allenoire';
     font-weight: lighter;
     font-size: 18px;
-    height: 20px;
+    height: 30px;
+    margin-top: 1px;
+    margin-bottom: 3px;
+    
   }
   .LogOutBTN{
     background-color: rgb(44, 40, 40);
@@ -87,8 +98,10 @@
     border-bottom-left-radius: 12px;
     font-family: 'Allenoire';
     font-size: 15px;
-    height: 60px;
+    height: 60px !important;
+    width: 120px !important;
     color: white;
+    margin-top: 0px;
   }
   .LogOutBTN:hover{
     color: white;

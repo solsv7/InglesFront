@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { UserContext } from '../UserContext/UserContext'; // Asegúrate de que tu contexto esté bien configurado.
+import { UserContext } from '../functionalComponent/UserContext/UserContext'; // Asegúrate de que tu contexto esté bien configurado.
 import './ProfilePageComponent.css';
 import edit from '../../images/iconos/lapiz.png';
 import save from '../../images/iconos/disco.png';

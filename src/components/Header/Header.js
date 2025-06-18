@@ -1,72 +1,118 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './header.css';
 import Login from '../HomePageComponents/Login/LoginComponent';
-import axios from 'axios';
 import Sidebar from '../sidebar/sidebar';
+import BandejaMSG from '../Advices/BandejaMSG';
+import { useNavigate} from 'react-router-dom';
+import { UserContext } from '../functionalComponent/UserContext/UserContext';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../UserContext/UserContext'; // Importar el contexto
-import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-    const token = localStorage.getItem('token');
-    const { userName} = useContext(UserContext); // Usar el contexto
-    const { setUserName } = useContext(UserContext); 
-    const [show, setShow] = useState(false);
-    
-    function changeVis() {
-        setShow(!show);
-        if (show) {
-            document.getElementById('formulario').style.animation = 'leave 1s ease-in-out';
-            document.getElementById('formulario').style.display = 'none';
-        } else {
-            document.getElementById('formulario').style.animation = 'enter 1s ease-in-out';
-            document.getElementById('formulario').style.display = 'block';
-        }
-    }
-    
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const { handleLogout } = useContext(UserContext);
+  const navigate = useNavigate();
 
-    return (
+
+
+  
+let content;
+    if (user?.rol == 3 ){
+      content = (
         <div>
-            <header className="header">
-                <div className='ContenedorTitle'>
-                    <div className="Title">
-                        <div className='Titl'><p id='Blue'>S</p><p id='Red'>t</p></div><div className='Titl'><p id='Blue'>T</p><p id='Red'>h</p><p id='Blue'>o</p><p id='Red'>m</p><p id='Blue'>a</p><p id='Blue'>s</p></div>
-                    </div>
-                </div>
-                <nav className="nav-links">
-                    <h3><Link to="/" className='btn btn-left'>Home</Link></h3>
-                    <h3><Link to="/AboutPage" className='btn btn-left'>About Us</Link></h3>
-                    <h3><Link to="/SchedulePage" className='btn btn-left'>Schedule</Link></h3>
-                    <h3><Link to="/BlogPage" className='btn btn-left'>Blog</Link></h3>
-                    <h3><Link to="/VideosPage" className='btn btn-left'>Videos</Link></h3>
-                    <div className="login-container">
-                        {token ? (
-                            <div className="log-perf">
-                                <button>
-                                    <Link to="/ProfilePage" id='user'>
-                                    <h3 className='btn btn-left'  id='user'>
-                                    {userName ? `${userName}` : "Username"}
-                                    </h3>
-                                    </Link>
-                                </button>
-                                <div className='BTNSidebar'>
-                                <Sidebar />
-                                </div>
-                            </div>
-                        ) : (
-                            <>
-                                <button className="login-button" onClick={changeVis}>Sign In</button>
-                                
-                                <div className="login-form" id="formulario">
-                                    <Login />
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </nav>
-            </header>
+            <BandejaMSG />
         </div>
+      );
+    } else {
+      content = (
+          <div className='Nada'>
+          </div>
+      );
+  }
+  let validateSidebar;
+  if (user?.rol == 4 ){
+    validateSidebar = (
+      <div className='cerrarGuest'>
+        <h3 onClick={handleLogout}>Cerrar Sesion</h3>
+      </div>
+          
     );
+  }else {
+    validateSidebar = (
+      <div className="BTNSidebar">
+        <Sidebar />
+      </div>
+    );
+}
+
+  // Redirección basada en el rol del usuario
+  const checkRole = () => {
+    switch (user?.rol) {
+      case 1:
+        navigate('/home-admin');
+        break;
+      case 2:
+        navigate('/home-teacher');
+        break;
+      case 3:
+        navigate('/home-student');
+        break;
+      default:
+        navigate('/');
+        break;
+    }
+  };
+  
+
+  return (
+    <header className="header">
+      <div className="ContenedorTitle">
+        <div className="Title">
+          <div className="Word">
+            <p id="Blue">S</p>
+            <p id="Red">t</p>
+          </div>
+          <div className="Word">
+            <p id="Blue">T</p>
+            <p id="Red">h</p>
+            <p id="Blue">o</p>
+            <p id="Red">m</p>
+            <p id="Blue">a</p>
+            <p id="Blue">s</p>
+          </div>
+        </div>
+      </div>
+      <nav className="nav-links">
+        {/* Navegación */}
+        <h3 className="btn btn-left" ><Link to='/' className='linkStyle'>Inicio</Link></h3>
+        <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Sobre Nosotros</Link></h3>
+
+
+        {/* Contenedor de login */}
+        <div className="login-container">
+          {token ? (
+            <div className="log-perf">
+              <h3 className="btn btn-left ins-button" ><Link to='/Inscription' className='linkStyle'>Inscripcion</Link></h3>
+                <h3 className="btn btn-left" id="user" onClick={checkRole}>
+                  {user.nombre || 'Usuario'}
+                </h3>
+              <div className='BTNAvisos'>
+                {content}
+              </div>
+              <div >
+                {validateSidebar}
+              </div>
+            </div>
+          ) : (
+            <>
+                <button className="login-button"><Link to='/Login' className='EstiloLink'>Ingresar</Link></button>
+                
+            </>
+        )}
+    </div>
+</nav>
+    </header>
+  );
 };
 
 export default Header;
