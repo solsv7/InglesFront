@@ -9,17 +9,19 @@ const RegistroAsistencias = () => {
   const [totales, setTotales] = useState([]);
   const [asistenciasCargadas, setAsistenciasCargadas] = useState([]);
 
-  useEffect(() => {
+    useEffect(() => {
     const fetchClases = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/clases`);
+        const res = await axios.get(`http://localhost:3001/api/clases-alumnos/clases-por-fecha?fecha=${fecha}`);
         setClases(res.data);
+        setIdClaseSeleccionada(''); // Reiniciar clase seleccionada al cambiar la fecha
       } catch (error) {
-        console.error('Error al obtener clases:', error);
+        console.error('Error al obtener clases por fecha:', error);
       }
     };
     fetchClases();
   }, [fecha]);
+
 
   const handleSeleccionClase = async (idClase) => {
     setIdClaseSeleccionada(idClase);
@@ -87,10 +89,12 @@ const RegistroAsistencias = () => {
   <option value="">Seleccionar clase</option>
   {clases.map(clase => (
     <option key={clase.id_clase} value={clase.id_clase}>
-      {clase.nivel_nombre} - {clase.dia_nombre} - {clase.hora_inicio?.slice(0, 5)}
+      {clase.nivel} - {clase.dia} - {clase.hora_inicio?.slice(0, 5)}
     </option>
   ))}
 </select>
+
+
 
 
       </div>
