@@ -1,6 +1,6 @@
 /* Estilo base similar al de Niveles */
 .ContenedorNiveles {
-  max-width: 800px;
+  max-width: 600px;
   margin: 60px auto;
   padding: 20px;
   background-color: #ffffff;
@@ -18,16 +18,21 @@
   margin-bottom: 30px;
 }
 
-.FormularioNivel select,
-.FormularioNivel button {
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width: 400px;
+
+
+.select-button {
+  background-color: #29154e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 8px;
 }
 
+.select-button:hover {
+  background-color: #fa3838;
+}
 .FormularioNivel button {
   background-color: #fa3838;
   color: #fff;
@@ -35,6 +40,14 @@
   font-family: 'Paradose';
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+.FormularioNivel button {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 400px;
 }
 
 .FormularioNivel button:hover {
@@ -49,7 +62,7 @@
 
 .ListaNiveles th,
 .ListaNiveles td {
-  padding: 12px;
+  padding: 10px;
   text-align: center;
   border: 1px solid #ddd;
 }
@@ -64,9 +77,9 @@
 }
 
 .ListaNiveles button {
-  margin: 0 5px;
-  padding: 6px 12px;
-  font-size: 14px;
+  margin: 0 2px;
+  padding: 5px 8px;
+  font-size: 11px;
   background-color: #fa3838;
   color: #fff;
   border: none;
@@ -79,7 +92,6 @@
   background-color: #29154e;
 }
 
-/* Mejora visual para StudentSearch dentro del formulario */
 .content-StudentSearch {
   width: 100%;
   max-width: 400px;
@@ -112,19 +124,7 @@
   border-bottom: 1px solid #eee;
 }
 
-.select-button {
-  background-color: #29154e;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
 
-.select-button:hover {
-  background-color: #fa3838;
-}
 
 .Mensaje-Seleccionado {
   margin: 0;
@@ -132,7 +132,7 @@
 }
 
 .Mensaje-Seleccionado2 {
-  font-size: 18px;
+  font-size: 17px;
   color: #29154e;
   font-weight: bold;
 }

@@ -1,0 +1,125 @@
+.asistencias-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+  font-family: 'Allenoire', sans-serif;
+}
+
+.asistencias-page h1,
+.asistencias-page h2,
+.asistencias-page h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #29154e;
+}
+
+.nav-botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.nav-botones button {
+  background-color: #29154e;
+  color: #fff;
+  font-family: 'Paradose';
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-botones button:hover {
+  background-color: #fa3838;
+}
+
+.form-busqueda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-busqueda input,
+.form-busqueda select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-family: 'Allenoire';
+  width: 100%;
+  max-width: 250px;
+}
+
+.form-busqueda button {
+  background-color: #fa3838;
+  color: #fff;
+  font-family: 'Paradose';
+  font-size: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-busqueda button:hover {
+  background-color: #29154e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Allenoire', sans-serif;
+  margin-top: 10px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-family: 'Allenoire', sans-serif;
+
+}
+
+th {
+  background-color: #2e2828;
+  color: white;
+}
+
+td {
+  background-color: #ffffff;
+}
+
+.tabla-asistencias input[type='radio'] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.btn-registrar {
+  background-color: #fa3838;
+  color: #fff;
+  font-family: 'Paradose';
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 20px auto;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-registrar:hover {
+  background-color: #29154e;
+}
+

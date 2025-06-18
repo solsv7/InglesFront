@@ -50,6 +50,7 @@ const Sidebar = () => {
             <Link to="/Niveles"><h4 className='OpcionSidebar' id='Red2'>Niveles</h4></Link>
             <Link to="/Periodos"><h4 className='OpcionSidebar' id='Red2'>Periodos</h4></Link>
             <Link to="/Inscribir-clases"><h4 className='OpcionSidebar' id='Red2'>Alumnos</h4></Link>
+            <Link to="/Asistencias"><h4 className='OpcionSidebar' id='Red2'>Asistencias</h4></Link>
 
 
             <button onClick={handleLogout} className='LogOutBTN'>Cerrar Sesion</button>

@@ -28,6 +28,7 @@ import AdminSchedules from './components/SchedulesPageComponents/AdminSchedules'
 import NivelesPage from './components/NivelesPage/Niveles.js'
 import PeriodosPage from './components/PeriodosComponent/Periodos.js'
 import InscribirClases from './components/InscripcionesClases/Inscripciones.js'
+import AsistenciasPage from './components/Asistencias/AsistenciasPage.js'
 
 
 
@@ -68,6 +69,7 @@ const App = () => {
             <Route path='/Niveles' element={<NivelesPage />} />
             <Route path='/Periodos' element={<PeriodosPage />} />
             <Route path='/Inscribir-clases' element={<InscribirClases />} />
+            <Route path='/Asistencias' element={<AsistenciasPage />} />
 
 
             </Routes>
