@@ -18,9 +18,7 @@ const AgregarClase = ({ niveles, cargarHorarios }) => {
 
     fetch("http://localhost:3001/api/clases", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id_nivel: nuevoNivel,
         id_dia: idDia,
@@ -28,15 +26,15 @@ const AgregarClase = ({ niveles, cargarHorarios }) => {
         hora_fin: horaFin
       })
     })
-    .then(response => response.json())
-    .then(() => {
-      cargarHorarios();
-      setNuevoNivel("");
-      setIdDia(1);
-      setHoraInicio("");
-      setHoraFin("");
-    })
-    .catch(error => console.error("Error al agregar la clase:", error));
+      .then(response => response.json())
+      .then(() => {
+        cargarHorarios();
+        setNuevoNivel("");
+        setIdDia(1);
+        setHoraInicio("");
+        setHoraFin("");
+      })
+      .catch(error => console.error("Error al agregar la clase:", error));
   };
 
   return (
@@ -63,9 +61,12 @@ const AgregarClase = ({ niveles, cargarHorarios }) => {
 const EditarClase = ({ horarios, niveles, cargarHorarios }) => {
   const [editandoCelda, setEditandoCelda] = useState(null);
   const [nuevoNivel, setNuevoNivel] = useState("");
+  const [nuevoInicio, setNuevoInicio] = useState("");
+  const [nuevoFin, setNuevoFin] = useState("");
 
-  // Se generan los intervalos únicos basados en la hora de inicio y fin
-  const intervalosTiempo = Array.from(new Set(horarios.map(c => `${c.hora_inicio} - ${c.hora_fin}`))).sort();
+  const intervalosTiempo = Array.from(
+    new Set(horarios.map(c => `${c.hora_inicio} - ${c.hora_fin}`))
+  ).sort();
 
   const obtenerClase = (dia, intervalo) => {
     const [horaInicio] = intervalo.split(" - ");
@@ -75,49 +76,53 @@ const EditarClase = ({ horarios, niveles, cargarHorarios }) => {
   const manejarEditarCelda = (dia, intervalo) => {
     const clase = obtenerClase(dia, intervalo);
     if (clase) {
-      setEditandoCelda({ dia, intervalo, id_clase: clase.id_clase, id_dia: clase.id_dia, id_horario: clase.id_horario });
+      setEditandoCelda({
+        dia,
+        intervalo,
+        id_clase: clase.id_clase,
+        id_dia: clase.id_dia,
+      });
       setNuevoNivel(clase.id_nivel);
+      setNuevoInicio(clase.hora_inicio);
+      setNuevoFin(clase.hora_fin);
     }
   };
 
   const manejarGuardarEdicion = () => {
-    if (!editandoCelda || !nuevoNivel) return;
+    if (!editandoCelda || !nuevoNivel || !nuevoInicio || !nuevoFin) return;
 
     fetch("http://localhost:3001/api/clases", {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id_clase: editandoCelda.id_clase,
         id_dia: editandoCelda.id_dia,
         id_nivel: nuevoNivel,
-        id_horario: editandoCelda.id_horario,
+        hora_inicio: nuevoInicio,
+        hora_fin: nuevoFin
       }),
     })
-    .then(response => response.json())
-    .then(() => {
-      setEditandoCelda(null);
-      setNuevoNivel("");
-      cargarHorarios();
-    })
-    .catch(error => console.error("Error al actualizar la clase:", error));
+      .then(response => response.json())
+      .then(() => {
+        setEditandoCelda(null);
+        setNuevoNivel("");
+        setNuevoInicio("");
+        setNuevoFin("");
+        cargarHorarios();
+      })
+      .catch(error => console.error("Error al actualizar la clase:", error));
   };
 
   const eliminarClase = (id_clase) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar esta clase?")) {
       fetch("http://localhost:3001/api/clases/eliminar", {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_clase }),
       })
-      .then(response => response.json())
-      .then(() => {
-        cargarHorarios();
-      })
-      .catch(error => console.error("Error al eliminar la clase:", error));
+        .then(response => response.json())
+        .then(() => cargarHorarios())
+        .catch(error => console.error("Error al eliminar la clase:", error));
     }
   };
 
@@ -144,11 +149,13 @@ const EditarClase = ({ horarios, niveles, cargarHorarios }) => {
                     {editandoCelda && editandoCelda.dia === dia && editandoCelda.intervalo === intervalo ? (
                       <>
                         <select value={nuevoNivel} onChange={(e) => setNuevoNivel(e.target.value)}>
-                          <option value="">Selecciona un nivel</option>
-                          {niveles.map(nivel => (
-                            <option key={nivel.id_nivel} value={nivel.id_nivel}>{nivel.nombre}</option>
+                          <option value="">Nivel</option>
+                          {niveles.map(n => (
+                            <option key={n.id_nivel} value={n.id_nivel}>{n.nombre}</option>
                           ))}
                         </select>
+                        <input type="time" value={nuevoInicio} onChange={(e) => setNuevoInicio(e.target.value)} />
+                        <input type="time" value={nuevoFin} onChange={(e) => setNuevoFin(e.target.value)} />
                         <button onClick={manejarGuardarEdicion}><FaSave /></button>
                       </>
                     ) : (
@@ -194,10 +201,7 @@ const AdminSchedules = () => {
 
   return (
     <div className="Horarios">
-      {/* Primer componente: Agregar Clase */}
       <AgregarClase niveles={niveles} cargarHorarios={cargarHorarios} />
-
-      {/* Segundo componente: Editar Clase */}
       <EditarClase horarios={horarios} niveles={niveles} cargarHorarios={cargarHorarios} />
     </div>
   );

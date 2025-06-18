@@ -25,6 +25,9 @@ import BuscadorAlumnos from './components/functionalComponent/UserRegistration/n
 import VerTodaBandeja from './components/Advices/VerTodaBandeja';
 import ModificarProfile from './components/Profile/ModificarProfile';
 import AdminSchedules from './components/SchedulesPageComponents/AdminSchedules';
+import NivelesPage from './components/NivelesPage/Niveles.js'
+import PeriodosPage from './components/PeriodosComponent/Periodos.js'
+import InscribirClases from './components/InscripcionesClases/Inscripciones.js'
 
 
 
@@ -62,6 +65,10 @@ const App = () => {
             <Route path='/All-Msg' element={<VerTodaBandeja />} />
             <Route path='/Modificar' element={<ModificarProfile />} />
             <Route path='/AdminSchedules' element={<AdminSchedules />} />
+            <Route path='/Niveles' element={<NivelesPage />} />
+            <Route path='/Periodos' element={<PeriodosPage />} />
+            <Route path='/Inscribir-clases' element={<InscribirClases />} />
+
 
             </Routes>
             </AnimatePresence>

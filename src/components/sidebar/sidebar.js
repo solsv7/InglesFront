@@ -42,11 +42,15 @@ const Sidebar = () => {
       content = (
         <div className='OpcionesSidebar'>
             <Link to="/home-teacher"><h4 className='OpcionSidebar' id='Red2'>Perfil</h4></Link>
-            <Link to="/Crear-usuarios"><h4 className='OpcionSidebar' id='Red2'>Alumnos</h4></Link>
+            <Link to="/Crear-usuarios"><h4 className='OpcionSidebar' id='Red2'>Registrar</h4></Link>
             <Link to="/Upload-Marks"><h4 className='OpcionSidebar' id='Red2'>Subir Notas</h4></Link>
             <Link to="/upload-vids"><h4 className='OpcionSidebar' id='Red2'>Recursos</h4></Link>
             <Link to="/Advices"><h4 className='OpcionSidebar' id='Red2'>Avisos</h4></Link>
-            <Link to="/AdminSchedules"><h4 className='OpcionSidebar' id='Red2'>Horarios</h4></Link>
+            <Link to="/AdminSchedules"><h4 className='OpcionSidebar' id='Red2'>Clases</h4></Link>
+            <Link to="/Niveles"><h4 className='OpcionSidebar' id='Red2'>Niveles</h4></Link>
+            <Link to="/Periodos"><h4 className='OpcionSidebar' id='Red2'>Periodos</h4></Link>
+            <Link to="/Inscribir-clases"><h4 className='OpcionSidebar' id='Red2'>Alumnos</h4></Link>
+
 
             <button onClick={handleLogout} className='LogOutBTN'>Cerrar Sesion</button>
         </div>

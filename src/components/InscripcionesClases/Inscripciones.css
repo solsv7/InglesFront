@@ -1,0 +1,146 @@
+/* Estilo base similar al de Niveles */
+.ContenedorNiveles {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Allenoire', sans-serif;
+}
+
+.FormularioNivel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.FormularioNivel select,
+.FormularioNivel button {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 400px;
+}
+
+.FormularioNivel button {
+  background-color: #fa3838;
+  color: #fff;
+  border: none;
+  font-family: 'Paradose';
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.FormularioNivel button:hover {
+  background-color: #29154e;
+}
+
+.ListaNiveles table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Allenoire', sans-serif;
+}
+
+.ListaNiveles th,
+.ListaNiveles td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.ListaNiveles th {
+  background-color: #2e2828;
+  color: white;
+}
+
+.ListaNiveles td {
+  background-color: #ffffff;
+}
+
+.ListaNiveles button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #fa3838;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Allenoire';
+  cursor: pointer;
+}
+
+.ListaNiveles button:hover {
+  background-color: #29154e;
+}
+
+/* Mejora visual para StudentSearch dentro del formulario */
+.content-StudentSearch {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.Input-Buscar {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.lista-Estudiantes {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.student-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.select-button {
+  background-color: #29154e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.select-button:hover {
+  background-color: #fa3838;
+}
+
+.Mensaje-Seleccionado {
+  margin: 0;
+  font-weight: bold;
+}
+
+.Mensaje-Seleccionado2 {
+  font-size: 18px;
+  color: #29154e;
+  font-weight: bold;
+}
+
+.erase-button {
+  font-size: 14px;
+  color: #fa3838;
+  cursor: pointer;
+  margin: 5px 0;
+  text-decoration: underline;
+}
