@@ -25,10 +25,14 @@ import BuscadorAlumnos from './components/functionalComponent/UserRegistration/n
 import VerTodaBandeja from './components/Advices/VerTodaBandeja';
 import ModificarProfile from './components/Profile/ModificarProfile';
 import AdminSchedules from './components/SchedulesPageComponents/AdminSchedules';
-import NivelesPage from './components/NivelesPage/Niveles.js'
-import PeriodosPage from './components/PeriodosComponent/Periodos.js'
-import InscribirClases from './components/InscripcionesClases/Inscripciones.js'
-import AsistenciasPage from './components/Asistencias/AsistenciasPage.js'
+import NivelesPage from './components/NivelesPage/Niveles.js';
+import PeriodosPage from './components/PeriodosComponent/Periodos.js';
+import InscribirClases from './components/InscripcionesClases/Inscripciones.js';
+import AsistenciasPage from './components/Asistencias/AsistenciasPage.js';
+import AsistenciasPageAlumno from './components/Asistencias/AsistenciasPageAlumno.js';
+import CuotasRouterPage from './components/CuotasPage/CuotasRouterPage.js';
+
+
 
 
 
@@ -70,6 +74,9 @@ const App = () => {
             <Route path='/Periodos' element={<PeriodosPage />} />
             <Route path='/Inscribir-clases' element={<InscribirClases />} />
             <Route path='/Asistencias' element={<AsistenciasPage />} />
+            <Route path="/mis-asistencias" element={<AsistenciasPageAlumno />} />
+            <Route path="/cuotas/*" element={<CuotasRouterPage />} />
+
 
 
             </Routes>

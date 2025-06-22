@@ -1,128 +1,84 @@
 .content-StudentSearch {
-  width: 770px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  padding-bottom: 40px;
-  border: 1px solid #ddd;
-  border-radius: 10px; /* Bordes más redondeados */
-  background-color: #f9f9f9;
-  text-align: center;
-  font-family: 'Allenoire', sans-serif; /* Fuente similar */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* Sombra para más profundidad */
-}
-.content-StudentSearch>input{
-  width: 330px;
-  margin-left: -330px;
-}
-.content-StudentSearch>h2{
-  margin-left: -330px;
-  margin-bottom: -20px;
-}
-.Input-Buscar {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-bottom: 25px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #c71919; /* Resalta en rojo */
-  box-shadow: 0 0 5px rgba(199, 25, 25, 0.5); /* Efecto de enfoque */
-}
-
-.search-button {
-  padding: 12px 25px;
-  background-color: rgb(199, 25, 25);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Allenoire', sans-serif;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
 }
 
+.Input-Buscar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: inherit;
+  margin-bottom: 10px;
+}
 
-.lista-Estudiantes{
-  list-style: none;
+.Mensaje-Seleccionado {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.erase-button {
+  font-size: 14px;
+  color: #fa3838;
+  cursor: pointer;
+  margin-bottom: 10px;
+  user-select: none;
+}
+
+.Mensaje-Seleccionado2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #29154e;
+  margin: 10px 0;
+}
+
+.lista-Estudiantes {
+  list-style-type: none;
   padding: 0;
-  margin: 0;
-  width: 350px;
-  margin-left: -330px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .student-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-family: 'Allenoire', sans-serif;
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
 }
 
 .select-button {
-  padding: 8px 15px;
-  background-color: rgb(199, 25, 25);
-  color: white;
+  background-color: #29154e;
+  color: #fff;
+  font-family: 'Paradose';
   border: none;
-  border-radius: 20px;
+  border-radius: 6px;
+  padding: 6px 12px;
   cursor: pointer;
-  font-family: 'Allenoire', sans-serif;
-  font-weight: bold;
-  margin: 0px;
-}
-.select-button:hover{
-  background-color: #2a119c;
-}
-.erase-button{
-  position: absolute;
-  right: 460px;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 140px;
-  cursor: pointer;
-  border: solid 1px black;
-}
-.erase-button:hover{
-  color: white;
-  font-weight: lighter;
-  background-color: black;
+  transition: background-color 0.3s ease;
 }
 
-.Mensaje-Seleccionado{
-  background-color: rgb(34, 31, 31);
-  border-radius: 10px;
-  text-align: center;
-  font-size: 16px;
-  padding: 15px;
-  color: #f3ebeb;
-  height: 20px;
-  position: absolute;
-  right: 420px;
+.select-button:hover {
+  background-color: #fa3838;
 }
-.Mensaje-Seleccionado2{
-  position: absolute;
-  right: 420px;
-  top:210px;
-  border: solid 15px rgb(34, 31, 31) ;
-  padding: 3px;
-  width: 166px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.a{
-  padding: 5px;
+
+@media (max-width: 600px) {
+  .student-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .select-button {
+    width: 100%;
+  }
 }

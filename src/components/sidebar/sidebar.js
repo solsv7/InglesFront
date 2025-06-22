@@ -51,7 +51,7 @@ const Sidebar = () => {
             <Link to="/Periodos"><h4 className='OpcionSidebar' id='Red2'>Periodos</h4></Link>
             <Link to="/Inscribir-clases"><h4 className='OpcionSidebar' id='Red2'>Alumnos</h4></Link>
             <Link to="/Asistencias"><h4 className='OpcionSidebar' id='Red2'>Asistencias</h4></Link>
-
+            <Link to="/cuotas"><h4 className='OpcionSidebar' id='Red2'>Cuotas</h4></Link>
 
             <button onClick={handleLogout} className='LogOutBTN'>Cerrar Sesion</button>
         </div>
@@ -63,6 +63,9 @@ const Sidebar = () => {
               <Link to="/Student-Marks"><h4 className='OpcionSidebar' id='Red2'>Mis Notas</h4></Link>
               <Link to="/All-Msg"><h4 className='OpcionSidebar' id='Red2'>Avisos</h4></Link>
               <Link to="/All-Vids"><h4 className='OpcionSidebar' id='Red2'>Recursos</h4></Link>
+              <Link to="/mis-asistencias"><h4 className='OpcionSidebar' id='Red2'>Asistencias</h4></Link>
+              
+
               
               <button onClick={handleLogout} className='LogOutBTN'>Cerrar Sesion</button>
           </div>
