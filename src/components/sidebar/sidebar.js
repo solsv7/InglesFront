@@ -64,7 +64,8 @@ const Sidebar = () => {
               <Link to="/All-Msg"><h4 className='OpcionSidebar' id='Red2'>Avisos</h4></Link>
               <Link to="/All-Vids"><h4 className='OpcionSidebar' id='Red2'>Recursos</h4></Link>
               <Link to="/mis-asistencias"><h4 className='OpcionSidebar' id='Red2'>Asistencias</h4></Link>
-              
+              <Link to="/diccionario"><h4 className='OpcionSidebar' id='Red2'>Diccionario</h4></Link>
+
 
               
               <button onClick={handleLogout} className='LogOutBTN'>Cerrar Sesion</button>

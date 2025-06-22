@@ -31,6 +31,7 @@ import InscribirClases from './components/InscripcionesClases/Inscripciones.js';
 import AsistenciasPage from './components/Asistencias/AsistenciasPage.js';
 import AsistenciasPageAlumno from './components/Asistencias/AsistenciasPageAlumno.js';
 import CuotasRouterPage from './components/CuotasPage/CuotasRouterPage.js';
+import DiccionarioIngles from './components/DiccionarioIngles/DiccionarioIngles.js';
 
 
 
@@ -76,6 +77,7 @@ const App = () => {
             <Route path='/Asistencias' element={<AsistenciasPage />} />
             <Route path="/mis-asistencias" element={<AsistenciasPageAlumno />} />
             <Route path="/cuotas/*" element={<CuotasRouterPage />} />
+            <Route path="/diccionario*" element={<DiccionarioIngles />} />
 
 
 
