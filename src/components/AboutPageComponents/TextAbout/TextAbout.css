@@ -1,7 +1,4 @@
-*{
-    margin-top: 40px;
-    padding: 0;
-}
+
 .ContenedorAbout{
     padding-bottom: 130px;
     margin-top: 0px;
@@ -65,10 +62,7 @@
     margin-top: 5px;
     font-size: 80px;
 }
-.Years>h3{
-    margin-top: -40px;
-    
-}
+
 @media (max-width:600px){
     .ContenedorAbout{
         background: none;

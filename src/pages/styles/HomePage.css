@@ -1,0 +1,419 @@
+.contenido-home{
+    padding-top: 130px;
+    background-color: #f0eded;
+}
+.home-lenguajes {
+    display: flex;
+    height: 80vh;
+    justify-content: space-between;
+    padding: 0; 
+}
+.texto-inicio {
+    flex: 1 1 50%;
+    text-align: start;
+    padding: 0px 30px;
+    height: 100%;
+    width: 50vw;
+    z-index: 3;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.texto-inicio h1 {
+    font-size: 50px;
+    font-weight: lighter;
+    font-family: 'Neka';
+    color: rgb(32, 31, 31);
+    
+}
+.texto-inicio p{
+    color: rgb(63, 60, 60);
+    margin-top: -5px;
+}
+.texto-inicio button{
+    width: 150px;
+    font-size: 20px;
+    background-color: rgb(39, 13, 99);
+    border: solid 0.1px rgb(39, 13, 99);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: white;
+    transition:  0.3s ease-in-out;
+    font-weight: lighter;
+    letter-spacing: 0.1px;
+    font-family: 'Neka';
+}
+.texto-inicio button:hover{
+    background-color: white;
+    color:  rgb(39, 13, 99);
+}
+
+
+
+
+
+    /* Estilos del slider */
+.slid-inicio {
+    flex: 1 1 50%;
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+.slider-inicio {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    z-index: 2;
+    overflow: hidden;
+}
+.slider-inicio,
+.slider-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 0;
+}
+
+.slider-track img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    transition: 0.3s ease-in-out;
+}
+.slider-track img:hover{
+    filter: brightness(1);
+}
+.slider-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.slider-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: 0.3s ease-in-out;
+}
+
+.slider-item:hover img {
+  filter: brightness(1);
+}
+
+.slider-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.slider-item:hover .slider-label {
+  opacity: 1;
+}
+
+
+
+        
+
+
+    /* Estilos segunda parte */
+
+.formas-aprender{
+    
+    width: 100%;
+    padding-top: 50px;
+    text-align: start;
+    color: rgb(32, 31, 31);
+}
+.formas-titulo{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+}
+.formas-titulo div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.formas-titulo div button{
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 150px;
+    font-size: 20px;
+    background-color: rgb(39, 13, 99);
+    border: solid 0.1px rgb(39, 13, 99);
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 0.1px;
+    font-family: 'Neka';
+    transition:  0.3s ease-in-out;
+}
+.formas-titulo div button:hover{
+    background-color: white;
+    color:  rgb(39, 13, 99);
+}
+.formas-aprender h1{
+    font-size: 60px;
+    font-weight: lighter;
+    font-family: 'Neka';
+    
+}
+.formas-aprender h3{
+    font-weight: lighter;
+    width: 100%;
+}
+.cuadros{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding-top: 50px;
+    color: white;
+    padding-bottom: 30px;
+    height: auto;
+}
+.cuadros div{
+    border-radius: 15px;
+    width: 300px;
+}
+.cuadros div div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cuadros div div h2{
+    font-size: 30px;
+    font-weight: lighter;
+    display: flex;
+    color:  rgb(22, 22, 22);
+    font-family: 'Neka';
+    text-align: center;
+}
+.cuadros p{
+    width: 300px;
+    color: rgb(63, 60, 60);
+}
+.presencial,.mixto,.virtual{
+    border: solid 0.1px white;
+    box-shadow: 0px 1px 10px rgba(22, 22, 22, 0.397);
+    text-align: start;
+    padding: 20px;
+    transition: 0.2s ease-in-out;
+    height: 450px;
+}
+.presencial:hover, .mixto:hover, .virtual:hover{
+    transform: scale(1.01);
+    position: relative;
+}
+.cuadros div img{
+    height: 200px;
+    width: 100%;
+}
+.contact-button{
+    width: 150px;
+    font-size: 20px;
+    color: white;
+    font-family: 'Neka';
+    background-color: rgb(211, 19, 19);
+    border: solid 0.1px rgb(235, 233, 238);
+    transition:  0.3s ease-in-out;
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+.contact-button:hover{
+    background-color: rgb(39, 13, 99);
+    border: solid 0.1px rgb(235, 233, 238);
+    color: white;
+}
+#sub-title{
+    margin-left: 10px;
+    width: auto;
+    font-size: 18px;
+    font-family: 'OneStory';
+}
+
+
+
+
+
+
+/* titulo ubicacion */
+.contenedor-ubicacion{
+    margin-top: -30px;
+    padding-top: 30px;
+}
+.titulo-ubicacion{
+    font-size: 30px;
+    text-align: end;
+    padding: 30px;
+    padding-bottom: 30px;
+}
+.titulo-ubicacion h1{
+    font-weight: lighter;
+    font-family: 'Neka';
+    color: rgb(32, 31, 31);
+    font-size: 50px;
+}
+.titulo-ubicacion p{
+    font-size: 20px;
+    color: rgb(63, 60, 60);
+    font-weight: lighter;
+}
+.frame-ubicacion{
+    overflow: hidden;
+}
+.frame-ubicacion iframe{
+    width: 100vw;
+    height: 400px;
+    margin-bottom: 0px;
+    border: none;
+}
+
+
+
+
+
+
+/* estilos de los eventos */
+
+.home-eventos {
+    display: flex;
+    flex-direction: row; 
+    height: 80vh; 
+    width: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.slid-eventos {
+    flex: 1 1 50%;
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start; 
+    padding: 0;
+}
+
+.texto-eventos {
+    flex: 1 1 50%;
+    width: 50vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 30px;
+    text-align: start;
+}
+.texto-eventos h1{
+    text-align: end;
+    font-family: 'Neka';
+    color: rgb(32, 31, 31);
+    font-weight: lighter;
+    font-size: 50px;
+}
+.texto-eventos p{
+    color: rgb(63, 60, 60);
+    margin-top: -10px;
+    text-align: end;
+}
+.texto-eventos button{
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: 150px;
+    font-size: 20px;
+    background-color: rgb(39, 13, 99);
+    border: solid 0.1px rgb(39, 13, 99);
+    color: white;
+    font-weight: lighter;
+    letter-spacing: 0.1px;
+    font-family: 'Neka';
+    transition:  0.3s ease-in-out;
+    align-self: flex-end;
+}
+.texto-eventos button:hover{
+    background-color: white;
+    color:  rgb(39, 13, 99);
+}
+@media (max-width:700px) {
+    .cuadros{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        gap: 50px;
+    }
+    .home-lenguajes{
+        margin-bottom: -200px;
+    }
+    .formas-titulo{
+        margin-top: 0px;
+    }
+    .formas-titulo div{
+        display: flex;
+        flex-direction: column;
+    }
+    .formas-titulo h1{
+        font-size: 40px ;
+    }
+
+    /* responsive del slider*/
+    .slid-inicio,.slid-eventos{
+        position: absolute;
+        z-index: 5;
+        height: 600px;
+        width: 100vw !important;
+        filter: brightness(0.5);
+    }
+    .slid-eventos{
+        height: 750px;
+    }
+    .texto-inicio, .texto-eventos{
+        position: relative;
+        z-index: 6;
+    }
+    .texto-inicio h1, .texto-eventos h1{
+        color: white;
+    }
+    .texto-inicio p, .texto-eventos p{
+        color: gainsboro;
+    }
+    .titulo-ubicacion h1{
+        width: 100%;
+        font-size: 35px;
+    }
+    .titulo-ubicacion p{
+        font-size: 20px;
+        width: 100%;
+    }
+    .texto-eventos{
+        width: 100%;
+    }
+}
