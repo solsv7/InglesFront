@@ -1,52 +1,56 @@
-/* Estilos básicos */
+/* Ajuste principal para scroll */
 .sidebar {
-    position: fixed;
-    top: 110px;
-    left: 100%; /* Inicialmente fuera de la pantalla */
-    width: 150px;
-    height: 360px;
-    background-color: #f1efee;
-    color: rgb(44, 40, 40);
-    padding: 20px;
-    transition: left 0.3s ease;
-    box-shadow: 0px 9px 10px rgba(0, 0, 0, 0.5);
-    border-bottom-left-radius: 16px;
-    font-family: 'Paradose';
-    font-weight: lighter;
-    z-index: 2100;
-  }
-  .sidebar.rol-1{
-    height: 290px;
-  }
-  .sidebar.rol-3{
-    height: 270px;
-  }
-  
+  position: fixed;
+  top: 110px;
+  right: -300px; /* Oculta fuera de la pantalla */
+  left: auto;
+  width: 180px;
+  max-height: calc(100vh - 30vh); /* Altura dinámica según viewport */
+  overflow-y: auto; /* Habilita scroll vertical si se necesita */
+  background-color: #f1efee;
+  color: rgb(44, 40, 40);
+  padding: 20px;
+  transition: right 0.3s ease;
+  box-shadow: 0px 9px 10px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 16px;
+  font-family: 'Paradose';
+  font-weight: lighter;
+  z-index: 2100;
+}
+
+/* Eliminamos height fija por rol */
+.sidebar.rol-1,
+.sidebar.rol-3 {
+  height: auto; /* Deja que el contenido determine la altura */
+}
+
+/* Estilo de scrollbar (opcional) */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 3px;
+}
+
   .Divparasepararyquedebonito{
     margin-top: -30px;
   }
   .sidebar.open {
-    left: 87.5%; /* La sidebar se desliza al abrir */
-    width: 120px;
+    right: 0px;
   }
   .sidebar.closed>.Divparasepararyquedebonito{
     margin-top: -30px;
   }
-  .sidebar.closed>h2{
-    margin-top: 0px;
-    padding: 0px;
-  }
-  .sidebar.open>h2{
-    margin: 0;
-  }
   #Blue2{
-    padding-top: 10px;
-    height: 30px;
+    margin-top: 30px;
+    width: 160px;
+    padding: 10px;
     background-color: rgb(31, 31, 112);
   }
   #Red2{
-    padding-top: 10px;
-    height: 30px;
+    width: 160px;
+    padding: 10px;
     background-color: rgb(199, 25, 25);
   }
   #Blue2:hover{
@@ -67,13 +71,11 @@
   
   .toggle-button {
     background: none;
-    margin-right: 35px;
   }
   .toggle-button > img {
     height: 30px;
     width: 25px;
     display: flex;
-    padding: 0 20px;
   }
   
   .close-button {
@@ -83,18 +85,24 @@
     font-size: 24px;
     background: transparent;
   }
+  .OpcionesSidebar{
+    text-align: center;
+  }
   .OpcionSidebar{
     color: rgb(227, 241, 231);
-    font-family: 'Allenoire';
+    font-family: 'Neka';
+    letter-spacing: 0.5px;
     font-weight: lighter;
-    font-size: 18px;
-    height: 30px;
-    margin-top: 1px;
+    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
     margin-bottom: 3px; 
   }
   .OpcionSidebaruno{
     color: rgb(227, 241, 231);
-    font-family: 'Allenoire';
+    font-family: 'Neka';
     font-weight: lighter;
     font-size: 18px;
     height: 100% !important;
@@ -106,13 +114,15 @@
   .LogOutBTN{
     background-color: rgb(44, 40, 40);
     border: none;
-    padding: 10px;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
-    font-family: 'Allenoire';
-    font-size: 15px;
-    height: 60px !important;
-    width: 120px ;
+    font-family: 'Neka';
+    font-size: 20px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     color: white;
     margin-top: 0px;
   }
@@ -131,22 +141,25 @@
   .sidebar a:hover {
     color: #ddd;
   }
-  @media (max-width:600px){
-    .sidebar.open {
-      left: 75vw; /* La sidebar se desliza al abrir */
-      width: 120px;
-      top: 3vh;
-      height: 50vh;
-      mask-image: linear-gradient(black 61%, transparent);
-    }
-    .sidebar.closed{
-      width: 120px;
-      top: 3vh;
-      height: 50vh;
-      mask-image: linear-gradient(black 61%, transparent);
-    }
-    .LogOutBTN{
-      width: 120px;
-    }
-    
+  @media (max-width: 600px) {
+  .sidebar {
+    top: 130px; /* Igual a la altura del header */
+    width: 85vw;
+    right: -85vw;
+    height: calc(100vh - 130px);
+    border-radius: 0;
+  }
+
+  .sidebar.open {
+    right: 0;
+  }
+
+  .sidebar.closed {
+    right: -85vw;
+  }
+
+  .LogOutBTN {
+    width: 100%;
+  }
 }
+

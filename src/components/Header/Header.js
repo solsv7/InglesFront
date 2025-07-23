@@ -100,43 +100,7 @@ const Header = () => {
             </button>
           )}
         </div>
-      </div>
-<<<<<<< HEAD
-      <nav className="nav-links">
-        {/* Navegación */}
-        <h3 className="btn btn-left" ><Link to='/' className='linkStyle'>Inicio</Link></h3>
-        <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Sobre Nosotros</Link></h3>
-
-
-        <div className="login-container">
-  {token ? (
-    user?.rol !== 4 ? (
-      // Para usuarios con rol distinto de 4
-      <div className="log-perf">
-        <h3 className="btn btn-left" id="user" onClick={checkRole}>
-          {user.nombre || 'Usuario'}
-        </h3>
-        <div className='BTNAvisos'>{content}</div>
-        <div className='BotonSidebar'>{validateSidebar}</div>
-      </div>
-    ) : (
-      // Para usuarios con rol 4 (solo botón de Cerrar Sesión)
-      <div className="cerrarGuest">
-        <h3 onClick={handleLogout}>Cerrar Sesion</h3>
-      </div>
-    )
-  ) : (
-    // Si no hay token, muestra "Ingresar"
-    <button className="login-button">
-      <Link to='/Login' className='EstiloLink'>Ingresar</Link>
-    </button>
-  )}
-</div>
-
-      </nav>
-    </header>
-=======
-      
+      </div>      
       {/*<nav className="nav-links">
         <h3 className="btn btn-left"><Link to='/' className='linkStyle'>Inicio</Link></h3>
         <h3 className="btn btn-left"><Link to='/About' className='linkStyle'>Sobre Nosotros</Link></h3>
@@ -145,7 +109,6 @@ const Header = () => {
       <Navbar />
     </div>
     
->>>>>>> lauti
   );
 };
 

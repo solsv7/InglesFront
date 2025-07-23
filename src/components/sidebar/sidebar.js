@@ -42,7 +42,7 @@ const Sidebar = () => {
     } else if (user.rol === 2){
       content = (
         <div className='OpcionesSidebar'>
-            <Link to="/home-teacher"><h4 className='OpcionSidebar' id='Red2'>Perfil</h4></Link>
+            <Link to="/home-teacher"><h4 className='OpcionSidebar' id='Blue2'>Perfil</h4></Link>
             <Link to="/Crear-usuarios"><h4 className='OpcionSidebar' id='Red2'>Registrar</h4></Link>
             <Link to="/Upload-Marks"><h4 className='OpcionSidebar' id='Red2'>Subir Notas</h4></Link>
             <Link to="/upload-vids"><h4 className='OpcionSidebar' id='Red2'>Recursos</h4></Link>
@@ -90,7 +90,6 @@ const Sidebar = () => {
 
       {}
       <div className={`sidebar ${isOpen ? 'open' : 'closed'} rol-${user.rol}`}>
-        <h2>Opciones</h2>
         <div className='Divparasepararyquedebonito'>
           {content}
         </div>

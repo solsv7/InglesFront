@@ -36,6 +36,7 @@ import AsistenciasPage from './components/Asistencias/AsistenciasPage.js';
 import AsistenciasPageAlumno from './components/Asistencias/AsistenciasPageAlumno.js';
 import CuotasRouterPage from './components/CuotasPage/CuotasRouterPage.js';
 import DiccionarioIngles from './components/DiccionarioIngles/DiccionarioIngles.js';
+import Navbar from './components/Navbar/Navbar.js';
 
 
 
