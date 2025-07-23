@@ -74,20 +74,28 @@
   font-family: 'Romelio';
   src: url('../src/fonts/Romelio.ttf') format('truetype');
 }
-*{
-  margin: 0px;
-  padding: 0%;
-  margin-top: 0px;
-  padding-top: 0px;
+@font-face {
+  font-family: 'OneStory';
+  src: url('../src/assets/fonts/OneStory.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Allenoire';
+  src: url('../src/assets/fonts/Allenoire\ Font.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Neka';
+  src: url('../src/assets/fonts/Neka\ Laurent\ \(Demo_Font\).ttf') format('truetype');
 }
 body{
     background-attachment: fixed;
     background-color: #f1efee;
+    margin: 0px;
+    padding: 0px;
     
 }
 .slide-in{
   position: fixed;
-  top: -40px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
@@ -98,7 +106,7 @@ body{
 
 .slide-out{
   position: fixed;
-  top: -40px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100vh;

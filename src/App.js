@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import SchedulesPage from './pages/SchedulesPage';
@@ -89,7 +90,7 @@ const App = () => {
 
             </Routes>
             </AnimatePresence>
-            
+            <Footer />
         </>
     );
 };

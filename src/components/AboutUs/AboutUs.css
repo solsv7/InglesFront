@@ -15,7 +15,8 @@
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
     color: white;
     font-weight: lighter;
     z-index: 1; /* Asegura que el texto esté sobre la capa oscura */
