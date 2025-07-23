@@ -4,7 +4,7 @@
     top: 110px;
     left: 100%; /* Inicialmente fuera de la pantalla */
     width: 150px;
-    height: 280px;
+    height: 360px;
     background-color: #f1efee;
     color: rgb(44, 40, 40);
     padding: 20px;
@@ -19,7 +19,7 @@
     height: 290px;
   }
   .sidebar.rol-3{
-    height: 230px;
+    height: 270px;
   }
   
   .Divparasepararyquedebonito{

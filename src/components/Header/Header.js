@@ -54,9 +54,10 @@ const Header = () => {
         </div>
       </div>
       <nav className="nav-links">
-        <h3 className="btn btn-left"><Link to='/' className='linkStyle'>Inicio</Link></h3>
-        <h3 className="btn btn-left"><Link to='/About' className='linkStyle'>Sobre Nosotros</Link></h3>
-        {botonInscripcion}
+        {/* Navegación */}
+        <h3 className="btn btn-left" ><Link to='/' className='linkStyle'>Inicio</Link></h3>
+        <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Sobre Nosotros</Link></h3>
+
 
         <div className="login-container">
   {token ? (

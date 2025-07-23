@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './StudentSearch.css'; 
+import './StudentSearch.css';
+
 
 const StudentSearch = ({ onSelectStudent }) => {
   const [students, setStudents] = useState([]);
@@ -49,7 +50,6 @@ const StudentSearch = ({ onSelectStudent }) => {
 
   return (
     <div className="content-StudentSearch">
-      <h2>Subir Notas</h2>
       <input
         type="text"
         placeholder="Buscar alumno por nombre"

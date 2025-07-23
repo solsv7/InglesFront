@@ -27,6 +27,16 @@ import ModificarProfile from './components/Profile/ModificarProfile';
 import AcceptStudents from './components/functionalComponent/UserRegistration/AcceptStudents';
 import AboutUs from './components/AboutUs/AboutUs';
 import CheckForms from './components/functionalComponent/UserRegistration/CheckForms';
+import AdminSchedules from './components/SchedulesPageComponents/AdminSchedules';
+import NivelesPage from './components/NivelesPage/Niveles.js';
+import PeriodosPage from './components/PeriodosComponent/Periodos.js';
+import InscribirClases from './components/InscripcionesClases/Inscripciones.js';
+import AsistenciasPage from './components/Asistencias/AsistenciasPage.js';
+import AsistenciasPageAlumno from './components/Asistencias/AsistenciasPageAlumno.js';
+import CuotasRouterPage from './components/CuotasPage/CuotasRouterPage.js';
+import DiccionarioIngles from './components/DiccionarioIngles/DiccionarioIngles.js';
+
+
 
 
 
@@ -66,6 +76,17 @@ const App = () => {
             <Route path='/Accept' element={<AcceptStudents />} />
             <Route path='/About' element={<AboutUs />} />
             <Route path='/CheckForms' element={<CheckForms />} />
+            <Route path='/AdminSchedules' element={<AdminSchedules />} />
+            <Route path='/Niveles' element={<NivelesPage />} />
+            <Route path='/Periodos' element={<PeriodosPage />} />
+            <Route path='/Inscribir-clases' element={<InscribirClases />} />
+            <Route path='/Asistencias' element={<AsistenciasPage />} />
+            <Route path="/mis-asistencias" element={<AsistenciasPageAlumno />} />
+            <Route path="/cuotas/*" element={<CuotasRouterPage />} />
+            <Route path="/diccionario*" element={<DiccionarioIngles />} />
+
+
+
             </Routes>
             </AnimatePresence>
             

@@ -1,0 +1,104 @@
+/* CuotasPage.css */
+
+.cuotas-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+  font-family: 'Allenoire', sans-serif;
+}
+
+.cuotas-page h1,
+.cuotas-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #29154e;
+}
+
+.nav-botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.nav-botones button {
+  background-color: #29154e;
+  color: #fff;
+  font-family: 'Paradose';
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-botones button:hover {
+  background-color: #fa3838;
+}
+
+.form-cuota {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto 30px;
+}
+
+.form-cuota label {
+  font-weight: bold;
+  font-size: 15px;
+  color: #29154e;
+}
+
+.form-cuota input,
+.form-cuota select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-family: 'Allenoire';
+}
+
+.form-cuota button {
+  background-color: #fa3838;
+  color: #fff;
+  font-family: 'Paradose';
+  font-size: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-cuota button:hover {
+  background-color: #29154e;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Allenoire', sans-serif;
+  margin-top: 10px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #2e2828;
+  color: white;
+}
+
+td {
+  background-color: #ffffff;
+}

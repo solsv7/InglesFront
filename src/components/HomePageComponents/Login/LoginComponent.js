@@ -27,11 +27,11 @@ const LoginComponent = () => {
 
             // Redirigir según el rol del usuario
             if (user.rol === 1) {
-                navigate('/home-admin');
+                navigate('/');
             } else if (user.rol === 2) {
-                navigate('/home-teacher');
+                navigate('/');
             } else if (user.rol === 3) {
-                navigate('/home-student');
+                navigate('/');
             } else {
                 navigate('/');
             }

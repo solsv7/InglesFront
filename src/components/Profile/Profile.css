@@ -113,30 +113,75 @@
     text-align: center;
     font-family: 'Allenoire';
 }
-.extra-info h4{
-    font-family: 'Allenoire';
-    color: grey;
-    margin-left: 30px;
-    padding-bottom: 30px;
+/* Estilos para la sección de cuota */
+.cuota-info {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-@media (max-width:600px) {
-    .contenidoProfile{
-        display: block;
-        margin: 0 auto;
-        position: relative;
-        width: 90vw;
-    }
-    .user-w-pic{
-        gap: 50px;
-    }
-    .extra-info{
-        width: 70vw;
-        justify-self: center;
-    }
-    .user h2{
-        font-size: 4vw !important;
-    }
-    .Rol{
-        font-size: 4vw !important;
-    }
+
+.cuota-info.success {
+    background-color: #f0fff0;
+    border-left: 4px solid #4CAF50;
+}
+
+.cuota-info.warning {
+    background-color: #fff8e1;
+    border-left: 4px solid #FFC107;
+}
+
+.cuota-info.error {
+    background-color: #ffebee;
+    border-left: 4px solid #F44336;
+}
+
+.cuota-info h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.cuota-details {
+    margin: 10px 0;
+}
+
+.cuota-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.estado-paga {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.estado-pendiente {
+    color: #FFC107;
+    font-weight: bold;
+}
+
+.estado-vencida {
+    color: #F44336;
+    font-weight: bold;
+}
+
+.renovar-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #29154e;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.renovar-btn:hover {
+    background-color: #fa3838;
+}
+
+.cuota-loading {
+    padding: 15px;
+    color: #666;
+    font-style: italic;
 }

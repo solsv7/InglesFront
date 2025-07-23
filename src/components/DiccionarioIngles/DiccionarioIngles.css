@@ -1,0 +1,113 @@
+/* DiccionarioIngles.css */
+
+.diccionario-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.08);
+  font-family: 'Allenoire', sans-serif;
+}
+
+.diccionario-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #29154e;
+}
+
+.diccionario-busqueda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.diccionario-busqueda input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  font-family: 'Allenoire';
+  width: 100%;
+  max-width: 400px;
+}
+
+.diccionario-busqueda button {
+  background-color: #fa3838;
+  color: #fff;
+  font-family: 'Paradose';
+  font-size: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.diccionario-busqueda button:hover {
+  background-color: #29154e;
+}
+
+.error-mensaje {
+  color: red;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.resultado-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+
+.resultado-container h3 {
+  color: #29154e;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.meaning-container {
+  margin-bottom: 20px;
+}
+
+.meaning-container strong {
+  display: block;
+  text-align: center;
+  color: #2e2828;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.meaning-container ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meaning-container li {
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.resultado-traduccion {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f0f4ff;
+  border-radius: 10px;
+  border-left: 4px solid #29154e;
+}
+
+.resultado-traduccion h3 {
+  color: #29154e;
+  margin-bottom: 10px;
+}
+
+.resultado-traduccion p {
+  font-size: 18px;
+  color: #2e2828;
+}

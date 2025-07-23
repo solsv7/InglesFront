@@ -1,0 +1,137 @@
+
+.Horarios{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 5px ;
+    width: 450px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px rgb(189, 188, 188);
+    margin: 60px 450px;
+}
+
+.TablaHorarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 0px 50px;
+    width: 800px;
+    height: 1000px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px rgb(189, 188, 188);
+    margin: 20px -380px;
+    margin-top: 1700px;
+
+}
+.AgregarClase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.AgregarClase h3 {
+    font-family: 'Allenoire';
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.AgregarClase select,
+.AgregarClase input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    font-family: 'Allenoire';
+}
+
+.AgregarClase input[type="time"] {
+    font-family: Allenoire, sans-serif;
+}
+
+.AgregarClase button {
+    padding: 10px 20px;
+    background-color: #fa3838;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Paradose';
+    font-size: 18px;
+    width: 200px;
+    margin-top: 10px;
+}
+
+.AgregarClase button:hover {
+    background-color: #29154e;
+
+}
+
+.TablaHorarios h3 {
+    font-family: 'Allenoire';
+    text-align: center;
+    font-size: 30px;
+}
+
+.TablaHorarios table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Allenoire';
+}
+
+.TablaHorarios th, .TablaHorarios td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.TablaHorarios th {
+    background-color: #2e2828;
+    color: white;
+}
+
+.TablaHorarios td {
+    background-color: white;
+}
+
+.TablaHorarios td, 
+.TablaHorarios th,
+.TablaHorarios select,
+.TablaHorarios input {
+    font-family: Allenoire, sans-serif;
+}
+
+.TablaHorarios select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.TablaHorarios button {
+    padding: 5px 10px;
+    background-color: #fa3838;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Paradose';
+}
+
+.TablaHorarios button:hover {
+    background-color: #29154e;
+}
+
+.FaEdit {
+    color: #fa3838;
+    cursor: pointer;
+}

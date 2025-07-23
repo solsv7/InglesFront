@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import transition from "../../transition";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Modificar.css';
 import axios from "axios";
 import Imagen1 from '../../images/imgsPerfil/first-pic.png';
@@ -21,6 +22,8 @@ const ModificarProfile = () => {
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [showErrorPopup, setShowErrorPopup] = useState(false); 
     const user = JSON.parse(localStorage.getItem("user")) || {};
+    const [showOptions, setShowOptions] = useState(false);
+    const navigate = useNavigate();
     
     let redirectPath = "/";
     if (user.rol === 1) redirectPath = "/home-admin";
@@ -52,15 +55,21 @@ const ModificarProfile = () => {
         };
 
         fetchProfileInfo();
-    }, [user.id]);
+    }, [user.id_alumno, user.id_profesor]);
+
+    const handleImageClick = () => {
+        setShowOptions(!showOptions);
+    };
 
     const handlePhotoSelect = (index) => {
         setPhotoIndex(index);
+        setShowOptions(false);
     };
 
     const handleSave = async () => {
         const updatedData = {
-            id: user.id || null,
+            id_alumno: user.id_alumno || null,
+            id_profesor: user.id_profesor || null,
             id_foto: photoIndex,
             mail,
             whatsapp: contactNumber,
@@ -69,9 +78,10 @@ const ModificarProfile = () => {
         };
 
         try {
-            console.log('Información enviada:', updatedData);
+            console.log('la información que viaja es esta: ', updatedData);
             await axios.put("http://localhost:3001/api/actualizar-perfil", updatedData);
-            setShowSuccessPopup(true);
+            alert("Información actualizada exitosamente");
+            navigate("/home-student");
         } catch (error) {
             console.error("Error al actualizar la información:", error);
             setShowErrorPopup(true);// 🚨 
