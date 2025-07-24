@@ -69,7 +69,7 @@ const CrearUsuarioNuevo = () => {
         try {
             for (const usuario of excelData) {
                 console.log('Enviando usuario:', usuario); // 🔹 Agregar este log
-                await axios.post('http://localhost:3001/api/crear-alumno-nuevo', usuario);
+                await axios.post('https://inglesback-stx6.onrender.com/api/crear-alumno-nuevo', usuario);
             }
     
             alert('Usuarios creados con éxito');

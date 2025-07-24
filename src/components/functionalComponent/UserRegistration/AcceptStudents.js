@@ -12,7 +12,7 @@ const AcceptStudents = () => {
     useEffect(() => {
         const fetchNewUser = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/obtenerAlumnos', {
+                const response = await axios.get('https://inglesback-stx6.onrender.com/api/obtenerAlumnos', {
                     params: { option: "formularios" }
                 });
                 setNewUsers(response.data);

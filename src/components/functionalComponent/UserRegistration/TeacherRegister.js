@@ -30,7 +30,7 @@ const CrearUsuario = () => {
 
 
         try {
-            const response = await fetch('http://localhost:3001/api/crear-profesor-nuevo', {
+            const response = await fetch('https://inglesback-stx6.onrender.com/api/crear-profesor-nuevo', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

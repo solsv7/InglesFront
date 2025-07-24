@@ -19,7 +19,7 @@ const Profile = () => {
 
     const saveChanges = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/api/update-profile", profileData);
+            const response = await axios.post("https://inglesback-stx6.onrender.com/api/update-profile", profileData);
             alert('Cambios guardados con éxito');
             setProfileData(response.data); // Actualiza el estado con los nuevos datos
         } catch (error) {
@@ -32,7 +32,7 @@ const Profile = () => {
             const params = { id_rol: user.rol, id: user.id };
     
             try {
-                const response = await axios.get("http://localhost:3001/api/perf-info", { params });
+                const response = await axios.get("https://inglesback-stx6.onrender.com/api/perf-info", { params });
                 console.log('La informacion de perfil es:', response.data);
     
                 if (response.data[0].id_perfil !== null) {

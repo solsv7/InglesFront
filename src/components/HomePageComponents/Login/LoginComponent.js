@@ -16,7 +16,7 @@ const LoginComponent = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/api/auth/login', { dni, password });
+            const response = await axios.post('https://inglesback-stx6.onrender.com/api/auth/login', { dni, password });
             const { token, user } = response.data;
 
             localStorage.setItem('token', token);

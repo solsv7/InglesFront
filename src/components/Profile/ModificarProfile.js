@@ -38,7 +38,7 @@ const ModificarProfile = () => {
             const params = { id_rol: user.rol, id: user.id };
 
             try {
-                const response = await axios.get("http://localhost:3001/api/perf-info", { params });
+                const response = await axios.get("https://inglesback-stx6.onrender.com/api/perf-info", { params });
                 console.log("Información recopilada de perfil:", response.data);
                 const profile = response.data[0];
                 setProfileData(profile);
@@ -70,7 +70,7 @@ const ModificarProfile = () => {
 
         try {
             console.log('Información enviada:', updatedData);
-            await axios.put("http://localhost:3001/api/actualizar-perfil", updatedData);
+            await axios.put("https://inglesback-stx6.onrender.com/api/actualizar-perfil", updatedData);
             setShowSuccessPopup(true);
         } catch (error) {
             console.error("Error al actualizar la información:", error);

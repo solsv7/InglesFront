@@ -20,7 +20,7 @@ const CheckForms = () => {
 
         const fetchFormData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/obtenerFormularios/${id}`);
+                const response = await axios.get(`https://inglesback-stx6.onrender.com/api/obtenerFormularios/${id}`);
                 setFormData(response.data); // Guarda la info en el estado
             } catch (err) {
                 setError("Error al obtener el formulario.");
@@ -39,7 +39,7 @@ const CheckForms = () => {
     
         try {
             // 1️⃣ Primero, procesa la opción de aceptación/rechazo
-            const response = await axios.post("http://localhost:3001/api/aceptarUsuario", { id, opcion });
+            const response = await axios.post("https://inglesback-stx6.onrender.com/api/aceptarUsuario", { id, opcion });
             const email = response.data.email; 
             console.log("Respuesta del servidor:", response.data);
         
@@ -48,7 +48,7 @@ const CheckForms = () => {
                 }
 
             // 2️⃣ Luego, envía el correo con la decisión
-            await axios.post("http://localhost:3001/api/mailIngresoUsuario", { opcion, email });
+            await axios.post("https://inglesback-stx6.onrender.com/api/mailIngresoUsuario", { opcion, email });
 
             console.log("Usuario procesado y correo enviado correctamente.");
             navigate('/Accept');
