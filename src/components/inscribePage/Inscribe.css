@@ -1,4 +1,3 @@
-
 .Contenido-Formulario{
 justify-self: center;
 background-color: rgb(250, 245, 245);
@@ -42,7 +41,18 @@ padding: 20px;
     height: 50px;
     border-radius: 5px;
 }
+#Campo-nombre{
+   text-transform: lowercase;
+}
+#Campo-Nombre::first-letter { 
+    text-transform: uppercase; 
+} 
 .enviar-btn:hover{
     background-color: rgb(209, 55, 55);
     color: rgb(245, 237, 237);
+}
+@media (max-width:600px) {
+    .Contenido-Formulario{
+        margin-top: 20vh;
+    }
 }

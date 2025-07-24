@@ -28,7 +28,7 @@ const GradesTable = () => {
     useEffect(() => {
         const fetchPeriods = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/periodos');
+                const response = await axios.get('https://inglesback-stx6.onrender.com/api/periodos');
                 console.log('Se han solicitado los periodos');
                 setPeriods(response.data);
             } catch (error) {
@@ -44,7 +44,7 @@ const GradesTable = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/categories');
+                const response = await axios.get('https://inglesback-stx6.onrender.com/api/categories');
                 console.log('Se ha solicitado las categorias');
                 setCategories(response.data);
             } catch (error) {
@@ -61,7 +61,7 @@ const GradesTable = () => {
             const fetchGrades = async () => {
                 try {
                     console.log('Se han solicitado las notas');
-                    const response = await axios.get(`http://localhost:3001/api/grades/${studentId}/${selectedYear}`);
+                    const response = await axios.get(`https://inglesback-stx6.onrender.com/api/grades/${studentId}/${selectedYear}`);
                     console.log('Parámetros enviados:', { studentId, selectedYear });
                     const fetchedGrades = response.data;
 

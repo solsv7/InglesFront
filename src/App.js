@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import SchedulesPage from './pages/SchedulesPage';
@@ -24,6 +25,7 @@ import Register from './components/HomePageComponents/Register/Register';
 import BuscadorAlumnos from './components/functionalComponent/UserRegistration/newStudentCreate';
 import VerTodaBandeja from './components/Advices/VerTodaBandeja';
 import ModificarProfile from './components/Profile/ModificarProfile';
+<<<<<<< HEAD
 import AdminSchedules from './components/SchedulesPageComponents/AdminSchedules';
 import NivelesPage from './components/NivelesPage/Niveles.js';
 import PeriodosPage from './components/PeriodosComponent/Periodos.js';
@@ -34,6 +36,11 @@ import CuotasRouterPage from './components/CuotasPage/CuotasRouterPage.js';
 import DiccionarioIngles from './components/DiccionarioIngles/DiccionarioIngles.js';
 
 
+=======
+import AcceptStudents from './components/functionalComponent/UserRegistration/AcceptStudents';
+import AboutUs from './components/AboutUs/AboutUs';
+import CheckForms from './components/functionalComponent/UserRegistration/CheckForms';
+>>>>>>> lauti
 
 
 
@@ -70,6 +77,7 @@ const App = () => {
             <Route path='/Buscador' element={<BuscadorAlumnos />} />
             <Route path='/All-Msg' element={<VerTodaBandeja />} />
             <Route path='/Modificar' element={<ModificarProfile />} />
+<<<<<<< HEAD
             <Route path='/AdminSchedules' element={<AdminSchedules />} />
             <Route path='/Niveles' element={<NivelesPage />} />
             <Route path='/Periodos' element={<PeriodosPage />} />
@@ -81,9 +89,14 @@ const App = () => {
 
 
 
+=======
+            <Route path='/Accept' element={<AcceptStudents />} />
+            <Route path='/About' element={<AboutUs />} />
+            <Route path='/CheckForms' element={<CheckForms />} />
+>>>>>>> lauti
             </Routes>
             </AnimatePresence>
-            
+            <Footer />
         </>
     );
 };

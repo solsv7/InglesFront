@@ -32,9 +32,10 @@ const Sidebar = () => {
     if (user.rol === 1){
       content = (
         <div className='OpcionesSidebar'>
-            <Link to="/home-admin"><h4 className='OpcionSidebar' id='Blue2'>Perfil</h4></Link>
-            <Link to="/Not-Ready"><h4 className='OpcionSidebar' id='Red2'>Crear Usuario</h4></Link>
-            <Link to="/Not-Ready"><h4 className='OpcionSidebar' id='Red2'>Modificar Clases</h4></Link>
+            <Link to="/home-admin"><h4 className='OpcionSidebaruno' id='Blue2'>Perfil</h4></Link>
+            <Link to="/Crear-usuarios"><h4 className='OpcionSidebaruno' id='Red2'>Crear Usuario</h4></Link>
+            <Link to="/Not-Ready"><h4 className='OpcionSidebaruno' id='Red2'>Modificar Clases</h4></Link>
+            <Link to="/Accept"><h4 className='OpcionSidebaruno' id='Red2'>Aceptar Usuarios</h4></Link>
             <button onClick={handleLogout} className='LogOutBTN'>Cerrar Sesion</button>
         </div>
       );

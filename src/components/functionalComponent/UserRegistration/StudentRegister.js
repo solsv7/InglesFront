@@ -69,7 +69,7 @@ const CrearUsuarioNuevo = () => {
         try {
             for (const usuario of excelData) {
                 console.log('Enviando usuario:', usuario); // 🔹 Agregar este log
-                await axios.post('http://localhost:3001/api/crear-alumno-nuevo', usuario);
+                await axios.post('https://inglesback-stx6.onrender.com/api/crear-alumno-nuevo', usuario);
             }
     
             alert('Usuarios creados con éxito');
@@ -85,9 +85,9 @@ const CrearUsuarioNuevo = () => {
     
 
     return (
-        <div className="user-registration">
+        <div className="user-registration2">
             <div className='MarcoFormulario2'>
-                <label>Ingrese el formulario del alumno a ingresar</label>
+                <label>Ingrese el formulario del alumno a registrar</label>
                 <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
             </div>
                 <button onClick={handleSubmit} disabled={excelData.length === 0 || loading} className='BotonCrearAlumno'>

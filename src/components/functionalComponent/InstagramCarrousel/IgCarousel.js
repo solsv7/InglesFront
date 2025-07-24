@@ -33,11 +33,11 @@ const InstagramCarousel = () => {
     <div className="carousel-container">
       {/* Botón izquierdo */}
       <button className="carousel-button left" onClick={goToPrevious}>
-        {"<"}
+        {"←"}
       </button>
       {/* Botón derecho */}
       <button className="carousel-button right" onClick={goToNext}>
-        {">"}
+        {"→"}
       </button>
     
         <div className="VideoInstagramWithIndicator">
@@ -46,7 +46,7 @@ const InstagramCarousel = () => {
         key={currentIndex} // Evita problemas con el cambio de iframe
         src={instagramVideos[currentIndex]}
         width="400"
-        height="470"
+        height="450"
         frameBorder="0"
         scrolling="no"
         allowFullScreen

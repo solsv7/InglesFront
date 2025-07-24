@@ -1,104 +1,98 @@
-.Contenido-Modificar{
+.Contenido-Modificar {
+    width: 40vw;
+    position: relative;
+    margin: 0 auto;
+    display: block;
     justify-self: center;
-    width: 600px;
-    background-color: white;
+    width: 40vw;
+    background-color: rgb(250, 245, 245);
+    z-index: 1;
 }
-.Contenido-Modificar h1{
+.Contenido-Modificar::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40vw;
+    height: 100%;
+    background-image: url(../../images/PatronFondo.png); 
+    background-size: 90%;
+    opacity: 0.4; 
+    border-bottom-right-radius: 22.5px;
+    border-bottom-left-radius: 22.5px;
+    z-index: -1; 
+}
+
+.Contenido-Modificar h1 {
     text-align: center;
-    background-color: rgb(27, 24,24);
-    padding: 20px 0px 20px 0px;
+    background-color: rgb(27, 24, 24);
+    padding: 20px 0;
     font-family: 'Allenoire';
-    font-weight: lighter;
     font-size: 30px;
     color: white;
 }
-.user h2{
-    font-size: 30px;
+.Contenido-Modificar h2{
+    text-align: center;
+    font-family: 'Allenoire';
 }
-.info-extra{
+.info-extra {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    border: solid 1px gray;
+    gap: 20px;
+    border: solid 1px rgb(196, 187, 187);
     background-color: rgb(238, 232, 232);
-    width: 190px;
-    height: 550px;
-    margin-left: 50px;
-    padding: 1px 20px 20px 20px;
-    margin-top: -150px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 8px;
+    padding-bottom: 50px;
+    box-shadow: 1px 0px 10px gray;
 }
-.info-extra h4,.info-extra h2{
+
+.info-extra h4 {
     font-family: 'Allenoire';
-    font-weight: lighter;
+    font-size: 18px;
+    padding: 30px;
+    margin-top: -30px;
+    margin-bottom: -30px;
 }
-.info-extra h2{
-    font-size: 20px;
-    background-color: #fff;
-    padding: 5px;
-}
-.pics-container h3{
-    text-align: center;
-}
+
 .pics-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    grid-gap: 10px;
     justify-content: center;
     align-items: center;
-    gap: 175px;
-    padding: 20px;
-    height: 150px;
-    width: 100%;
-    position: relative; /* Añadido para posicionamiento relativo */
-    padding-left: 150px;
-
-}
-
-.pic {
-    position: relative; /* Añadido para posicionamiento relativo */
-    background-color: rgb(27, 24, 24);
-    padding: 30px 10px 10px 10px;
-    border-radius: 50%;
-}
-.noce button{
-    width: 250px;
-    margin-left: -260px;
-    margin-bottom: 20px;
-}
-.noce button:hover{
-    cursor: pointer;
-}
-.saveBTN{
-    text-decoration: none;
-    color: white;
-}
-
-
-.photo-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: -16px;
-    position: absolute;
-    top: 100%; /* Posiciona el menú justo debajo de la imagen */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgb(27, 24, 24);
-    padding: 10px;
-    
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    z-index: 1; /* Asegura que el menú esté por encima de otros elementos */
+    margin: 20px auto;
+    border-radius: 15px;
+    background-color: rgba(43, 38, 38, 0.801);
+    padding-bottom: 30px;
 }
 
 .photo-option {
-    width: 70px;
-    height: 70px;
+    justify-self: center;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     cursor: pointer;
-    border: 2px solid transparent;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    filter: grayscale(90%);
     border-radius: 5px;
-    transition: border 0.3s ease;
 }
 
 .photo-option:hover {
-    border: 2px solid blue;
+    transform: scale(1.1);
+    filter: grayscale(10%);
+}
+
+.photo-option.selected {
+    filter: none; /* La imagen seleccionada no tiene saturación */
+    border: 2px solid rgb(171, 171, 243);
+}
+.saveBTN{
+    color: white;
+    margin-bottom: 30px;
+}
+.saveBTN:hover{
+    background-color: #470f8f;
 }

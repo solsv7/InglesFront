@@ -27,8 +27,11 @@
     position: absolute;
     margin-top: -20px;
     left: 10vw;
-    border-radius: 22px;
+    
     background-color: rgba(255, 255, 255, 0.9);
+}
+.TablaHorarios>tr > td, .TablaHorarios> tr> th{
+    font-size: 1.8vw;
 }
 .TablaHorarios>th{
     color: #141414 ;
@@ -44,18 +47,7 @@
     font-family: 'Allenoire';
     font-weight: lighter;
 }
-#TLC{
-    border-top-left-radius: 22px;
-}
-#TRC{
-    border-top-right-radius: 22px;
-}
-#BLC{
-    border-bottom-left-radius: 22px;
-}
-#BRC{
-    border-bottom-right-radius: 22px;
-}
+
 @media (max-width:600px) {
     .Horarios {
         width: 100vw;

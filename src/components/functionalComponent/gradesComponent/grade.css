@@ -1,10 +1,13 @@
 .table-container {
-    width: 1100px;
+    width: 800px;
+    max-width: 90vw; /* Para evitar desbordamientos */
     padding-bottom: 40px;
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
     background-color: rgb(255, 255, 255);
+    padding: 20px;
+    text-align: center;
 }
 
 .table-container > h2 {
@@ -13,23 +16,26 @@
     font-weight: lighter;
     font-size: 30px;
     color: white;
-    background-color: rgb(27,24,24);
-    padding: 10px 0px 10px 0px;
+    background-color: rgb(27, 24, 24);
+    padding: 15px 0px;
+    border-radius: 10px 10px 0 0;
 }
 
+/* === TABLA === */
 .Tabla-Notas {
-    width: 1000px;
+    width: 100%;
+    max-width: 800px;
     border-collapse: collapse;
-    justify-self: center;
+    margin: 0 auto;
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ccc;
     font-family: 'Paradose';
-    letter-spacing: 0.5px;
     font-weight: lighter;
+    font-size: 16px;
 }
 
 #NotaNumero {
@@ -55,8 +61,12 @@ tr:hover {
     background-color: #d1c5f3;
 }
 
-tr:last-child td {
-    border-bottom: none;
+/* === SELECTOR DE AÑO === */
+.contenidoSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 0;
 }
 
 #yearSelect {
@@ -69,6 +79,7 @@ tr:last-child td {
     font-size: 16px;
     color: #2e2929;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 #yearSelect:hover {
@@ -81,27 +92,53 @@ tr:last-child td {
 }
 
 label[for="yearSelect"] {
-    display: block;
     font-family: 'Allenoire';
     font-size: 18px;
     margin-bottom: 5px;
-    text-align: center;
     color: #2e2929;
 }
-.contenidoSelect{
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-self: center;
-    height: 90px;
-    gap: 10px;
-}
-.mensajeError{
+
+/* === MENSAJE DE ERROR === */
+.mensajeError {
     font-family: 'Ristorante';
     color: gray;
-    position: absolute;
-    justify-self: center;
-    margin-top: 95px;
-    left: 50%; /* Mueve el elemento al 50% del ancho del contenedor */
-    transform: translateX(-50%); /* Compensa la mitad del ancho del elemento */
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+    .table-container {
+        width: 95vw;
+        padding: 15px;
+    }
+
+    .table-container > h2 {
+        font-size: 24px;
+        padding: 10px;
+    }
+
+    .Tabla-Notas {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .Tabla-Notas th, .Tabla-Notas td {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .contenidoSelect {
+        width: 100%;
+    }
+
+    #yearSelect {
+        width: 90%;
+        font-size: 14px;
+    }
+
+    .mensajeError {
+        font-size: 14px;
+        margin-top: 5px;
+    }
 }

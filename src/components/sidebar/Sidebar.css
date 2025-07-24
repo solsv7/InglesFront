@@ -15,6 +15,9 @@
     font-weight: lighter;
     z-index: 2100;
   }
+  .sidebar.rol-1{
+    height: 290px;
+  }
   .sidebar.rol-3{
     height: 270px;
   }
@@ -87,7 +90,17 @@
     font-size: 18px;
     height: 30px;
     margin-top: 1px;
-    margin-bottom: 3px;
+    margin-bottom: 3px; 
+  }
+  .OpcionSidebaruno{
+    color: rgb(227, 241, 231);
+    font-family: 'Allenoire';
+    font-weight: lighter;
+    font-size: 18px;
+    height: 100% !important;
+    width: 120px !important;
+    margin-top: 1px;
+    margin-bottom: 3px; 
     
   }
   .LogOutBTN{
@@ -99,7 +112,7 @@
     font-family: 'Allenoire';
     font-size: 15px;
     height: 60px !important;
-    width: 120px !important;
+    width: 120px ;
     color: white;
     margin-top: 0px;
   }
@@ -118,4 +131,22 @@
   .sidebar a:hover {
     color: #ddd;
   }
-  
+  @media (max-width:600px){
+    .sidebar.open {
+      left: 75vw; /* La sidebar se desliza al abrir */
+      width: 120px;
+      top: 3vh;
+      height: 50vh;
+      mask-image: linear-gradient(black 61%, transparent);
+    }
+    .sidebar.closed{
+      width: 120px;
+      top: 3vh;
+      height: 50vh;
+      mask-image: linear-gradient(black 61%, transparent);
+    }
+    .LogOutBTN{
+      width: 120px;
+    }
+    
+}

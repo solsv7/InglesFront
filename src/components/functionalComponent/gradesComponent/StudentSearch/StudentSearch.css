@@ -1,4 +1,5 @@
 .content-StudentSearch {
+<<<<<<< HEAD
   max-width: 600px;
   margin: 20px auto;
   padding: 15px;
@@ -43,17 +44,70 @@
   list-style-type: none;
   padding: 0;
   margin-top: 10px;
+=======
+  width: 770px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 40px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-family: 'Allenoire', sans-serif;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.content-StudentSearch > h2 {
+  margin-bottom: 10px;
+}
+
+.Input-Buscar {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 300px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Input-Buscar:focus {
+  outline: none;
+  border-color: #c71919;
+  box-shadow: 0 0 5px rgba(199, 25, 25, 0.5);
+}
+
+.lista-Estudiantes {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  width: 80%;
+  max-width: 350px;
+>>>>>>> lauti
 }
 
 .student-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
   background-color: #f9f9f9;
   margin-bottom: 8px;
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #eee;
+=======
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: 'Allenoire', sans-serif;
+  margin-top: 5px;
+>>>>>>> lauti
 }
 
 .select-button {
@@ -64,6 +118,7 @@
   border-radius: 6px;
   padding: 6px 12px;
   cursor: pointer;
+<<<<<<< HEAD
   transition: background-color 0.3s ease;
 }
 
@@ -81,4 +136,84 @@
   .select-button {
     width: 100%;
   }
+=======
+  font-family: 'Allenoire', sans-serif;
+  font-weight: bold;
+}
+
+.select-button:hover {
+  background-color: #2a119c;
+}
+
+.erase-button {
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: solid 1px black;
+  margin-top: 10px;
+  background-color: white;
+  color: black;
+}
+
+.erase-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.Mensaje-Seleccionado {
+  background-color: rgb(34, 31, 31);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px;
+  color: white;
+  width: 80%;
+  max-width: 250px;
+  margin-top: 10px;
+}
+
+.Mensaje-Seleccionado2 {
+  border: solid 15px rgb(34, 31, 31);
+  padding: 5px;
+  width: 80%;
+  max-width: 250px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ✅ Media Query para pantallas pequeñas */
+@media (max-width: 600px) {
+  .content-StudentSearch {
+    width: 90vw;
+    height: auto;
+    padding: 15px;
+  }
+
+  .content-StudentSearch h2 {
+    text-align: center;
+    width: 100%;
+  }
+
+  .Input-Buscar {
+    width: 80%;
+    max-width: 300px;
+    margin: 10px auto;
+  }
+
+  .Mensaje-Seleccionado,
+  .erase-button,
+  .Mensaje-Seleccionado2 {
+    width: 80%;
+    max-width: 250px;
+    margin: 10px auto;
+    text-align: center;
+  }
+
+  .lista-Estudiantes {
+    width: 90%;
+    max-width: 350px;
+    margin: 10px auto;
+  }
+>>>>>>> lauti
 }

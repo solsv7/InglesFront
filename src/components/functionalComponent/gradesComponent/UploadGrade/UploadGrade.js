@@ -13,7 +13,7 @@ const UploadGrade = ({ selectedStudentId }) => {
   useEffect(() => {
     const fetchPeriods = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/periodos');
+        const response = await axios.get('https://inglesback-stx6.onrender.com/api/periodos');
         setPeriods(response.data);
       } catch (error) {
         console.error('Error al obtener los periodos:', error);
@@ -22,7 +22,7 @@ const UploadGrade = ({ selectedStudentId }) => {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/categories');
+        const response = await axios.get('https://inglesback-stx6.onrender.com/api/categories');
         setCategories(response.data);
       } catch (error) {
         console.error('Error al obtener las categorías:', error);
@@ -40,7 +40,7 @@ const UploadGrade = ({ selectedStudentId }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/grades/${selectedStudentId}/${confirmedYear}`
+          `https://inglesback-stx6.onrender.com/api/grades/${selectedStudentId}/${confirmedYear}`
         );
         setGrades(response.data);
       } catch (error) {
@@ -81,7 +81,7 @@ const UploadGrade = ({ selectedStudentId }) => {
 
     try {
       const notasAEnviar = grades.filter((grade) => grade.nota);
-      await axios.post('http://localhost:3001/api/grades/subir', {
+      await axios.post('https://inglesback-stx6.onrender.com/api/grades/subir', {
         notas: notasAEnviar.map((grade) => ({
           idAlumno: selectedStudentId,
           idPeriodo: periods.find((period) => period.nombre === grade.periodo)?.id_periodo,
@@ -101,7 +101,7 @@ const UploadGrade = ({ selectedStudentId }) => {
   return (
     <div className="upload-grade-container">
       <div className="cycle-year-selector">
-        <label htmlFor="cycleYear" className='seleccionar'>Seleccionar ciclo:</label>
+        <label htmlFor="cycleYear" className='seleccionar'>Seleccionar ciclo</label>
         <input
           type="number"
           id="cycleYear"
@@ -172,7 +172,7 @@ const UploadGrade = ({ selectedStudentId }) => {
             Subir/Editar Notas
           </button>
           <button type="button" onClick={handleReset} className="BotonReset">
-            Limpiar Cambios
+            Borrar
           </button>
         </div>
       </form>

@@ -1,17 +1,21 @@
+.user-registration2{
+    height: 40vh;
+    margin-bottom: 30px;
+}
 .MarcoFormulario2{
-
     width: 600px;
     border: solid 1px rgb(189, 183, 183);
     padding: 20px;
     border-radius: 25px;
     margin-left: 30px;
     margin-bottom: 20px;
+    font-family: 'Allenoire';
 }
 .MarcoFormulario2 label{
     justify-self: center;
 }
 .MarcoFormulario2 input[type="file"]{
-    font-family: 'Soria';
+    font-family: 'Ristorante';
     font-weight: bold;
     font-size: 20px;
     width: 500px;
@@ -36,4 +40,23 @@
 .BotonCrearAlumno:hover{
     background-color: rgb(209, 55, 55);
     color: rgb(245, 237, 237);
+}
+
+@media (max-width:600px){
+    .user-registration2{
+        width: 50px;
+        height: 30vh;
+    }
+    .MarcoFormulario2{
+        
+        width: 60vw;
+        font-size: 4vw;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .MarcoFormulario2 input[type="file"]{
+        width: 40vw;
+        font-size: 3vw;
+    }
 }

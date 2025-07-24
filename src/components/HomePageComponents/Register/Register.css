@@ -1,94 +1,161 @@
-.formularioRegister {
+/* Contenedor general con patrón */
+.ContenidoRegister {
     position: relative;
-    justify-self: center;
-    height: 550px;
-    width: 500px;
-    background-color: white; /* Mantiene el fondo blanco */
-    box-shadow: 0px 1px 20px gray;
-    margin-bottom: 50px;
-    font-family: 'Allenoire';
-    border-bottom-right-radius: 22.5px;
-    border-bottom-left-radius: 22.5px;
-    z-index: 1; /* Asegura que el contenido esté encima */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../../../images/PatronFondo.png');
+    background-size: cover;
+    background-position: center;
+    padding-top: 130px;
 }
 
-/* Capa semitransparente con la misma imagen de fondo */
-.formularioRegister::before {
-    content: "";
-    position: absolute;
+/* Caja del formulario */
+.formularioRegister {
+    background-color: white;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.8);
+    font-family: 'Neka', sans-serif;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Título */
+.formularioRegister h2 {
+    font-size: 32px;
+    color: #1e1e1e;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Etiquetas */
+.formularioRegister label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    display: flex;
+    margin: 0 auto;
+    padding-left: 15px;
+}
+
+/* Inputs */
+.NameInput,
+.DniInput,
+.PasswordInput {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+    width: 350px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border 0.2s ease;
+}
+.NameInput:focus,
+.DniInput:focus,
+.PasswordInput:focus {
+    border-color: #271a61;
+}
+
+/* Botón registrar */
+.BTNRegister {
+    margin-top: 20px !important;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    width: 350px;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #271a61;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.BTNRegister:hover {
+    background-color: #1e1550;
+}
+
+/* Popup éxito y error */
+.popup-overlay {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(../../../images/PatronFondo.png); /* Mismo fondo */
-    background-size: cover;
-    opacity: 0.7; /* Ajusta la opacidad según necesites */
-    border-bottom-right-radius: 22.5px;
-    border-bottom-left-radius: 22.5px;
-    z-index: -1; /* Envía la capa al fondo */
-}
-
-.error-message {
-    color: #B40A00;
-}
-.BTNRegister{
-    background-color: rgb(27, 24, 24);
-    height: 40px;
-    width: 15vw;
-    border: none;
-    margin-bottom: -30px;
-    font-family: 'Allenoire';
-    color: white;
-    font-size: 20px;
-    border-radius: 8px;
-
-}
-.BTNRegister:hover{
-    background-color: #B40A00;
-}
-.formularioRegister>div {
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
-.formularioRegister>div>h2{
-    background-color: rgb(27, 24, 24);
-    color: white;
-    width: 100%;
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
     text-align: center;
-    margin: 0px;
-    padding: 20px 0px 20px 0px;
-    font-size: 30px;
-    font-family: 'Allenoire';
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+}
+.popup-content h4 {
+    font-size: 60px;
+    margin: -10px;
+}
+.popup-content h3 {
+    font-family: 'Allenoire', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.popup-content p {
+    font-family: 'Romelio', Arial, Helvetica, sans-serif;
     font-weight: lighter;
+    color: rgb(66, 62, 62);
+    font-size: 16px;
 }
-.ContentRegister>input{
-    width: 15vw;
+.popup-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #271a61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Allenoire', Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s ease;
 }
-.msgError {
-    color: #B40A00;
-    text-align: center;
-    padding-bottom: 15px;
-    font-family: 'Ristorante';
-    font-size: 15px;
-    position: absolute;
-    margin-top: 520px;
+.popup-btn:hover {
+    background-color: #470f8f;
 }
-@media (max-width:600px) {
-    .formularioRegister{
-        margin-top: 100px;
-        width: 450px;
-        height: 650px;
+
+/* Responsive */
+@media (max-width: 600px) {
+    .formularioRegister {
+        width: 90%;
+        padding: 30px 20px;
     }
-    .formularioRegister>.ContentRegister>input{
-        width: 200px;
-        height: 30px;
+    .NameInput,
+    .DniInput,
+    .PasswordInput,
+    .BTNRegister {
+        width: 100%;
     }
-    .BTNRegister{
-        height: 70px;
-        width: 200px;
+    .popup-content h4 {
+        font-size: 10vw;
     }
-    .msgError{
-        font-family: 'Paradose';
+    .popup-content h3 {
+        font-size: 5vw;
+    }
+    .popup-content p {
+        font-size: 3.5vw;
     }
 }

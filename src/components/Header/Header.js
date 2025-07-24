@@ -1,117 +1,124 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './header.css';
-import Login from '../HomePageComponents/Login/LoginComponent';
 import Sidebar from '../sidebar/sidebar';
 import BandejaMSG from '../Advices/BandejaMSG';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../functionalComponent/UserContext/UserContext';
-import { Link } from 'react-router-dom';
+import logo from '../../images/mejorar img.png';
+import Navbar from '../Navbar/Navbar';
 
 const Header = () => {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
   const { handleLogout } = useContext(UserContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300 && window.scrollY > lastScrollY) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
+  const content = user?.rol === 3 ? <BandejaMSG /> : null;
 
-  
-let content;
-    if (user?.rol == 3 ){
-      content = (
-        <div>
-            <BandejaMSG />
-        </div>
-      );
-    } else {
-      content = (
-          <div className='Nada'>
-          </div>
-      );
-  }
-  let validateSidebar;
-  if (user?.rol == 4 ){
-    validateSidebar = (
-      <div className='cerrarGuest'>
-        <h3 onClick={handleLogout}>Cerrar Sesion</h3>
-      </div>
-          
-    );
-  }else {
-    validateSidebar = (
-      <div className="BTNSidebar">
-        <Sidebar />
-      </div>
-    );
-}
+  const validateSidebar = user?.rol === 4 
+    ? <div className='cerrarGuest'><h3 onClick={handleLogout}>Cerrar Sesión</h3></div>
+    : <div className="BTNSidebar"><Sidebar /></div>;
 
-  // Redirección basada en el rol del usuario
   const checkRole = () => {
     switch (user?.rol) {
-      case 1:
-        navigate('/home-admin');
-        break;
-      case 2:
-        navigate('/home-teacher');
-        break;
-      case 3:
-        navigate('/home-student');
-        break;
-      default:
-        navigate('/');
-        break;
+      case 1: navigate('/home-admin'); break;
+      case 2: navigate('/home-teacher'); break;
+      case 3: navigate('/home-student'); break;
+      default: navigate('/'); break;
     }
   };
-  
+
+  const botonInscripcion = user?.rol >= 1 && user?.rol <= 3 ? (
+    <h3 className="btn btn-left"><Link to='/All-Vids' className='linkStyle'>Videos</Link></h3>
+  ) : user?.rol === 4 ? (
+    <h3 className="btn btn-left ins-button"><Link to='/Inscription' className='linkStyle'>Inscribirme</Link></h3>
+  ) : null;
 
   return (
-    <header className="header">
-      <div className="ContenedorTitle">
-        <div className="Title">
-          <div className="Word">
-            <p id="Blue">S</p>
-            <p id="Red">t</p>
-          </div>
-          <div className="Word">
-            <p id="Blue">T</p>
-            <p id="Red">h</p>
-            <p id="Blue">o</p>
-            <p id="Red">m</p>
-            <p id="Blue">a</p>
-            <p id="Blue">s</p>
+    <div
+      className="header-content"
+      style={{
+        transition: 'top 0.3s',
+        position: 'fixed',
+        top: show ? 0 : '-300px',
+        width: '100%',
+        zIndex: 1000
+      }}
+    >
+      <div className="header-top">
+        <div className="header-title">
+          <img alt="logo" src={logo} />
+          <div className="Title">
+            <div className="Word">
+              <p id="Blue">S</p>
+              <p id="Red">t</p>
+            </div>
+            <div className="Word">
+              <p id="Blue">T</p>
+              <p id="Red">h</p>
+              <p id="Blue">o</p>
+              <p id="Red">m</p>
+              <p id="Blue">a</p>
+              <p id="Blue">s</p>
+            </div>
           </div>
         </div>
+<<<<<<< HEAD
       </div>
       <nav className="nav-links">
         {/* Navegación */}
         <h3 className="btn btn-left" ><Link to='/' className='linkStyle'>Inicio</Link></h3>
         <h3 className="btn btn-left" ><Link to='/All-Vids' className='linkStyle'>Sobre Nosotros</Link></h3>
 
+=======
+>>>>>>> lauti
 
-        {/* Contenedor de login */}
         <div className="login-container">
           {token ? (
-            <div className="log-perf">
-              <h3 className="btn btn-left ins-button" ><Link to='/Inscription' className='linkStyle'>Inscripcion</Link></h3>
+            user?.rol !== 4 ? (
+              <div className="log-perf">
                 <h3 className="btn btn-left" id="user" onClick={checkRole}>
-                  {user.nombre || 'Usuario'}
+                  {user?.nombre || 'Usuario'}
                 </h3>
-              <div className='BTNAvisos'>
-                {content}
+                <div className='BTNAvisos'>{content}</div>
+                <div className='BotonSidebar'>{validateSidebar}</div>
               </div>
-              <div >
-                {validateSidebar}
+            ) : (
+              <div className="cerrarGuest">
+                <h3 onClick={handleLogout}>Cerrar Sesión</h3>
               </div>
-            </div>
+            )
           ) : (
-            <>
-                <button className="login-button"><Link to='/Login' className='EstiloLink'>Ingresar</Link></button>
-                
-            </>
-        )}
+            <button className="first-button">
+              <Link to='/Login' className='EstiloLink'>Ingresar</Link>
+            </button>
+          )}
+        </div>
+      </div>
+      
+      {/*<nav className="nav-links">
+        <h3 className="btn btn-left"><Link to='/' className='linkStyle'>Inicio</Link></h3>
+        <h3 className="btn btn-left"><Link to='/About' className='linkStyle'>Sobre Nosotros</Link></h3>
+        {botonInscripcion}
+      </nav>*/}
+      <Navbar />
     </div>
-</nav>
-    </header>
+    
   );
 };
 
