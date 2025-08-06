@@ -12,14 +12,14 @@ const Inscripciones = () => {
   const [claseNueva, setClaseNueva] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/clases')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/clases`)
       .then(res => setClases(res.data))
       .catch(err => console.error('Error al obtener clases:', err));
   }, []);
 
   useEffect(() => {
     if (claseSeleccionada) {
-      axios.get(`http://localhost:3001/api/clases-alumnos/por-clase/${claseSeleccionada}`)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${claseSeleccionada}`)
         .then(res => setInscriptos(res.data))
         .catch(err => console.error('Error al obtener inscriptos:', err));
     } else {
@@ -29,7 +29,7 @@ const Inscripciones = () => {
 
   const inscribirAlumno = () => {
     if (!nuevoAlumno || !claseSeleccionada) return;
-    axios.post('http://localhost:3001/api/clases-alumnos', {
+    axios.post(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
       id_alumno: parseInt(nuevoAlumno),
       id_clase: parseInt(claseSeleccionada)
     })
@@ -37,7 +37,7 @@ const Inscripciones = () => {
         setNuevoAlumno('');
         setClaseNueva('');
         setTimeout(() => {
-          axios.get(`http://localhost:3001/api/clases-alumnos/por-clase/${claseSeleccionada}`)
+          axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${claseSeleccionada}`)
             .then(res => setInscriptos(res.data));
         }, 300);
       })
@@ -46,7 +46,7 @@ const Inscripciones = () => {
 
   const cambiarAlumnoDeClase = (id_alumno) => {
     if (!claseNueva) return;
-    axios.put('http://localhost:3001/api/clases-alumnos', {
+    axios.put(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
       id_alumno,
       id_clase_actual: parseInt(claseSeleccionada),
       id_clase_nueva: parseInt(claseNueva)
@@ -54,14 +54,14 @@ const Inscripciones = () => {
       .then(() => {
         setClaseNueva('');
         setEditandoAlumnoId(null);
-        axios.get(`http://localhost:3001/api/clases-alumnos/por-clase/${claseSeleccionada}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${claseSeleccionada}`)
           .then(res => setInscriptos(res.data));
       })
       .catch(err => console.error('Error al cambiar alumno:', err));
   };
 
   const eliminarInscripcion = (id_alumno) => {
-    axios.delete('http://localhost:3001/api/clases-alumnos', {
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
       data: { id_alumno, id_clase: parseInt(claseSeleccionada) }
     })
       .then(() => {

@@ -1,187 +1,347 @@
-.contenidoProfile{
-    background: white;
-    box-shadow: 1px 0px 5px gray;
-    width: 60vw;
-    justify-self: center;
+.perfil-layout {
+  display: flex;
+  gap: 50px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 100px auto;
+  overflow: hidden;
+  margin-top: 150px;
+  font-family: 'Neka', sans-serif;
 }
-.Contenido-Perfil>h2{
-    color: white;
-    background-color: rgb(22, 17, 17);
-    padding: 10px;
-    text-align: center;
-    font-family: 'allenoire';
-    font-size: 35px;
+
+.perfil-sidebar {
+  background-color: #1c1c1d;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  border: solid 1px rgb(24, 23, 23);
+  width: 200px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
 }
-.userData{
-    width: 600px;
-    margin-top: -70px;
-    padding: 50px;
-    justify-self: center;
+.perfil-contenido {
+  background-color: #ffffff;
+  flex: 1;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
+.perfil-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  margin-bottom: 15px;
+}
+
+.perfil-rol {
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #2d5a96;
+  background-color: white;
+  padding: 0px 20px;
+  width: 170px;
+}
+
+.perfil-menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.perfil-menu li {
+  margin: 15px 0;
+  text-align:left;
+}
+
+.perfil-menu a {
+    width: 170px;
+  color: #fff;
+  font-family: 'Arial';
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.perfil-menu a:hover {
+  
+  color: #4d85ce;
+}
+
+.perfil-contenido {
+  flex: 1;
+  padding: 40px;
+}
+
+.perfil-nombre {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #270d63;
+  font-weight: lighter;
+}
+
+.perfil-info h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: gray;
+  font-weight: lighter;
+  border-bottom: solid 1px gray;
+}
+
+.perfil-info p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #555;
+  font-family: 'Arial';
+}
+
+.contenidoProfile {
+  width: 60vw;
+  justify-self: center;
+  border-radius: 16px;
+  padding-bottom: 30px;
+  animation: fadeInUp 0.6s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Contenido-Perfil > h2 {
+  color: white;
+  background: linear-gradient(90deg, #270d63, #470f8f);
+  padding: 15px;
+  text-align: center;
+  font-family: 'Neka', sans-serif;
+  font-size: 36px;
+  letter-spacing: 1px;
+  border-radius: 16px 16px 0 0;
+}
+
+.userData {
+  width: 600px;
+  padding: 50px;
+  justify-self: center;
+}
+
 .user-w-pic {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    gap: 175px; 
-    padding: 20px; 
-    height: 120px; 
-    width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  padding: 20px;
+  width: 100%;
 }
 
 .user {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.user-w-pic .user h2{
-    font-size: 4vw;
-    font-family: 'Allenoire';
+
+.user h2 {
+  font-size: 2.2rem;
+  font-family: 'Neka', sans-serif;
+  color: #1f1f1f;
+  margin: 5px 0;
 }
-.user-w-pic .user h4{
-    font-size: 2vw;
-    font-family: 'Ristorante';
-}
-.user h2, .user h4 {
-    margin: 5px 0; 
+
+.user h4 {
+  font-size: 1.1rem;
+  color: #b53030;
+  font-family: 'Ristorante', sans-serif;
+  margin: 5px 0;
 }
 
 .pic img {
-    max-width: 150px; 
-    height: auto;
-    border-radius: 50%; 
-    border: 2px solid #858585; 
-    margin-top: -20px;
-}
-.userData h3{
-    font-size: 30px;
-}
-.Rol{
-    color: rgb(228, 32, 32);
-}
-.extra-info{
-    background-color: white;
-    box-shadow: 1px 0px 20px gray;
-}
-.extra-info h4{
-    padding: 10px;
-}
-.noce{
-    display: flex;
-    margin:  0 auto;
-    justify-content: center;
-}
-.noce>button{
-    font-family: 'allenoire';
-    font-size: 1.5vw;
-    letter-spacing: 0.5px;
-    padding: 20px;
-    border-radius: 12px;
-    border: none;
-    text-align: center;
-    align-items: center;
-    background-color: rgb(27, 24, 24);
-}
-.modifyBTN{
-    color: white;
-    text-decoration: none;
-    justify-self: center;
-}
-.noce>button:hover{
-    background-color: #470f8f;
+  max-width: 130px;
+  border-radius: 50%;
+  border: 3px solid rgba(39, 13, 99, 0.4);
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.BTNSave{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.nombreUsuario{
-    justify-self: center;
-    font-family: 'Allenoire';
-    margin-bottom: -30px;
-}
 .extra-info {
-    width: 600px;
+  background-color: rgba(240, 240, 240, 0.95);
+  box-shadow: 0 2px 10px rgba(22, 22, 22, 0.15);
+  padding: 20px;
+  border-radius: 12px;
+  width: 600px;
+  margin-top: 30px;
 }
-.extra-info h1{
-    background-color: rgb(212, 207, 207);
-    width: 100%;
-    margin: 0px;
-    margin-left: 0px;
-    padding: 20px 0px 20px 0px;
-    text-align: center;
-    font-family: 'Allenoire';
+
+.extra-info h1 {
+  background-color: transparent;
+  font-family: 'Neka', sans-serif;
+  font-size: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  color: #292929;
+  margin: 0 0 15px 0;
 }
-/* Estilos para la sección de cuota */
+
+.extra-info h4 {
+  padding: 10px;
+  font-family: 'Neka', sans-serif;
+  font-size: 16px;
+  color: #444;
+}
+
+/* Botón de modificar información */
+.noce {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.noce > button {
+  font-family: 'Neka', sans-serif;
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 25px;
+  background-color: #29154e;
+  color: white;
+  border: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.noce > button:hover {
+  background-color: #fa3838;
+}
+
+.modifyBTN {
+  color: white;
+  text-decoration: none;
+}
+
+/* Estado de cuota */
 .cuota-info {
-    padding: 15px;
-    border-radius: 8px;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: 'Neka', sans-serif;
 }
 
 .cuota-info.success {
-    background-color: #f0fff0;
-    border-left: 4px solid #4CAF50;
+  background-color: #f0fff0;
+  border-left: 4px solid #4CAF50;
 }
 
 .cuota-info.warning {
-    background-color: #fff8e1;
-    border-left: 4px solid #FFC107;
+  background-color: #fff8e1;
+  border-left: 4px solid #FFC107;
 }
 
 .cuota-info.error {
-    background-color: #ffebee;
-    border-left: 4px solid #F44336;
+  background-color: #ffebee;
+  border-left: 4px solid #F44336;
 }
 
 .cuota-info h3 {
-    margin-top: 0;
-    color: #333;
-}
-
-.cuota-details {
-    margin: 10px 0;
+  margin-top: 0;
+  color: #333;
+  font-size: 20px;
 }
 
 .cuota-details p {
-    margin: 5px 0;
-    color: #555;
+  margin: 5px 0;
+  color: #555;
+  font-size: 15px;
 }
 
 .estado-paga {
-    color: #4CAF50;
-    font-weight: bold;
+  color: #4CAF50;
+  font-weight: bold;
 }
 
 .estado-pendiente {
-    color: #FFC107;
-    font-weight: bold;
+  color: #FFC107;
+  font-weight: bold;
 }
 
 .estado-vencida {
-    color: #F44336;
-    font-weight: bold;
+  color: #F44336;
+  font-weight: bold;
 }
 
 .renovar-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #29154e;
-    color: white;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s;
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #29154e;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  font-family: 'Neka';
 }
 
 .renovar-btn:hover {
-    background-color: #fa3838;
+  background-color: #fa3838;
 }
 
+/* Cargando cuotas */
 .cuota-loading {
-    padding: 15px;
-    color: #666;
-    font-style: italic;
+  padding: 15px;
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+
+  .perfil-layout {
+    margin-top: 250px !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    margin: 0 auto;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .perfil-sidebar,
+  .perfil-contenido,
+  .userData,
+  .extra-info {
+    width: 100%;
+    max-width: 500px; /* para evitar que se vean muy estirados */
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .perfil-sidebar {
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .contenidoProfile {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+  }
+
+  .perfil-menu a {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+
+  .perfil-img {
+    width: 120px;
+    height: 120px;
+  }
 }

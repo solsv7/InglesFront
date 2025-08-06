@@ -158,12 +158,15 @@
 
 @media (max-width: 700px) {
   .header-content{
-    height: 120px;
-    background-color: #f0eded;
+    height: auto;
+    background-color: transparent;
+    box-shadow: none;
   }
   .header-top {
     flex-direction: column;
     text-align: center;
+    background-color: #f0eded;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .nav-links {
@@ -184,6 +187,7 @@
   display: flex;
   gap: 20px;
   font-family: 'Allenoire';
+  
 }
 
 .Word {

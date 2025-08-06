@@ -1,3 +1,72 @@
+.sidebar-dropdown {
+  color: white;
+  background-color: rgb(199, 25, 25);
+  width: 180px;
+}
+.dropdown-header {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 20px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.2s ease;
+  height: 50px;
+  background-color: rgb(199, 25, 25);
+  text-align: center;
+}
+.dropdown-header:hover {
+  background-color: rgb(151, 20, 20);
+}
+.dropdown-header h4{
+  font-family: 'Neka';
+  font-weight: lighter;
+  width: 160px;
+}
+
+
+
+.arrow {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+/* Flecha girada cuando está abierto */
+.sidebar-dropdown.open .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+  padding-left: 10px;
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-dropdown.open .dropdown-content {
+  max-height: 500px; /* valor alto para permitir crecer con contenido */
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.dropdown-content a h4 {
+  font-size: 14px;
+  color: #d1d1d1;
+  font-family: 'Arial';
+  padding: 5px 0;
+  margin: 0;
+  transition: color 0.2s ease;
+  margin-bottom: 5px;
+}
+
+.dropdown-content a h4:hover {
+  color: #b5b4b6;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
 /* Ajuste principal para scroll */
 .sidebar {
   position: fixed;
@@ -16,6 +85,8 @@
   font-family: 'Paradose';
   font-weight: lighter;
   z-index: 2100;
+  border-top: solid 20px #f1efee;
+  border-bottom: solid 20px #f1efee;
 }
 
 /* Eliminamos height fija por rol */
@@ -143,8 +214,8 @@
   }
   @media (max-width: 600px) {
   .sidebar {
-    top: 130px; /* Igual a la altura del header */
-    width: 85vw;
+    top: 200px; /* Igual a la altura del header */
+    width: 60vw;
     right: -85vw;
     height: calc(100vh - 130px);
     border-radius: 0;
@@ -153,13 +224,28 @@
   .sidebar.open {
     right: 0;
   }
+  #Blue2, #Red2 {
+    width: 90%;
+    padding: 10px;
+    margin-top: 10px;
+  }
 
   .sidebar.closed {
-    right: -85vw;
+    right: -100vw;
   }
 
   .LogOutBTN {
-    width: 100%;
+    width: 98%;
   }
 }
 
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2000; /* Debajo de la sidebar (2100) */
+}

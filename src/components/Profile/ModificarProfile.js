@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import transition from "../../transition";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Modificar.css';
 import axios from "axios";
+import Swal from 'sweetalert2';
+
 import Imagen1 from '../../images/imgsPerfil/first-pic.png';
 import Imagen2 from '../../images/imgsPerfil/second-pic.png';
 import Imagen3 from '../../images/imgsPerfil/third-pic.png';
@@ -19,12 +20,9 @@ const ModificarProfile = () => {
     const [mail, setMail] = useState("");
     const [contactNumber, setContactNumber] = useState("");
     const [parentContact, setParentContact] = useState("");
-    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-    const [showErrorPopup, setShowErrorPopup] = useState(false); 
     const user = JSON.parse(localStorage.getItem("user")) || {};
-    const [showOptions, setShowOptions] = useState(false);
     const navigate = useNavigate();
-    
+
     let redirectPath = "/";
     if (user.rol === 1) redirectPath = "/home-admin";
     if (user.rol === 2) redirectPath = "/home-teacher";
@@ -39,10 +37,8 @@ const ModificarProfile = () => {
     useEffect(() => {
         const fetchProfileInfo = async () => {
             const params = { id_rol: user.rol, id: user.id };
-
             try {
-                const response = await axios.get("http://localhost:3001/api/perf-info", { params });
-                console.log("Información recopilada de perfil:", response.data);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
                 const profile = response.data[0];
                 setProfileData(profile);
                 setPhotoIndex(profile?.id_foto || 0);
@@ -57,13 +53,8 @@ const ModificarProfile = () => {
         fetchProfileInfo();
     }, [user.id_alumno, user.id_profesor]);
 
-    const handleImageClick = () => {
-        setShowOptions(!showOptions);
-    };
-
     const handlePhotoSelect = (index) => {
         setPhotoIndex(index);
-        setShowOptions(false);
     };
 
     const handleSave = async () => {
@@ -78,81 +69,62 @@ const ModificarProfile = () => {
         };
 
         try {
-            console.log('la información que viaja es esta: ', updatedData);
-            await axios.put("http://localhost:3001/api/actualizar-perfil", updatedData);
-            alert("Información actualizada exitosamente");
-            navigate("/home-student");
+            await axios.put(`${process.env.REACT_APP_API_URL}/api/actualizar-perfil`, updatedData);
+
+            Swal.fire({
+                icon: 'success',
+                title: '¡Perfil actualizado!',
+                text: 'Tu perfil fue modificado correctamente.',
+                confirmButtonColor: '#29154e',
+                confirmButtonText: 'Continuar'
+            }).then(() => navigate(redirectPath));
+
         } catch (error) {
-            console.error("Error al actualizar la información:", error);
-            setShowErrorPopup(true);// 🚨 
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo actualizar el perfil. Intenta más tarde.',
+                confirmButtonColor: '#d33'
+            });
         }
     };
 
     return (
-        <div className="Contenido-Modificar">
-            <h1>Modificar Perfil</h1>
-
-            {/* 📝 Formulario arriba */}
-            <div className="info-extra">
-                <h2>Perfil de {profileData?.nombre}</h2>
-                <h4>Correo :
-                    <input type="text" value={mail} onChange={(e) => setMail(e.target.value)} required />
-                </h4>
-                <h4>Num. Contacto :
-                    <input type="text" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
-                </h4>
-                <h4>Num. Contacto Adulto :
-                    <input type="text" value={parentContact} onChange={(e) => setParentContact(e.target.value)} />
-                </h4>
-            </div>
-
-            <h2>Selecciona una foto de perfil</h2>
-            <div className="pics-container">
-                {photoMap.map((img, index) => (
-                    <img
-                        key={index}
-                        src={img}
-                        alt={`Foto ${index + 1}`}
-                        className={`photo-option ${index === photoIndex ? 'selected' : ''}`}
-                        onClick={() => handlePhotoSelect(index)}
-                    />
-                ))}
-            </div>
-
-            {/* Botón de guardar */}
-            <div className="noce">
-                <button className="saveBTN" onClick={handleSave}>
-                    Guardar Cambios
-                </button>
-            </div>
-
-            {/* ✅ Pop-up de éxito */}
-            {showSuccessPopup && (
-                <div className="popup-overlay">
-                    <div className="popup-content">
-                        <h4>✔</h4>
-                        <h3>Modificación Exitosa</h3>
-                        <p>¡Tu perfil ha sido modificado correctamente!</p>
-                        <Link to={redirectPath}>
-                            <button className="popup-btn">OK</button>
-                        </Link>
-                    </div>
+        <div className="Modificar-Wrapper">
+            <div className="Contenido-Modificar">
+                <h1>Modificar información</h1>
+                <div className="info-extra">
+                    
+                    <h4>Correo :
+                        <input type="email" value={mail} onChange={(e) => setMail(e.target.value)} required />
+                    </h4>
+                    <h4>Num. Contacto :
+                        <input type="text" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
+                    </h4>
+                    <h4>Num. Contacto Adulto :
+                        <input type="text" value={parentContact} onChange={(e) => setParentContact(e.target.value)} />
+                    </h4>
                 </div>
-            )}
 
-            {/* 🚨 Pop-up de error */}
-            {showErrorPopup && (
-                <div className="popup-overlay">
-                    <div className="popup-content error-popup">
-                        <h4>❌</h4>
-                        <h3>Error al Modificar</h3>
-                        <p>Ocurrio un error al actualizar tu perfil. Intenta nuevamente.</p>
-                        <button className="popup-btn" onClick={() => setShowErrorPopup(false)}>
-                            OK
-                        </button>
-                    </div>
+                <h2>Selecciona una foto de perfil</h2>
+                <div className="pics-container">
+                    {photoMap.map((img, index) => (
+                        <img
+                            key={index}
+                            src={img}
+                            alt={`Foto ${index + 1}`}
+                            className={`photo-option ${index === photoIndex ? 'selected' : ''}`}
+                            onClick={() => handlePhotoSelect(index)}
+                        />
+                    ))}
                 </div>
-            )}
+
+                <div className="noce">
+                    <button className="saveBTN" onClick={handleSave}>
+                        Guardar Cambios
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

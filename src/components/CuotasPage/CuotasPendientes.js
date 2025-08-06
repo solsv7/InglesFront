@@ -5,14 +5,14 @@ const CuotasPendientes = () => {
   const [cuotas, setCuotas] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/cuotas/pendientes')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/cuotas/pendientes`)
       .then(res => setCuotas(res.data))
       .catch(err => console.error('Error al obtener cuotas pendientes:', err));
   }, []);
 
   const handleEliminar = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/cuotas/eliminar/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cuotas/eliminar/${id}`);
       setCuotas(prev => prev.filter(c => c.id_cuota !== id));
     } catch (error) {
       console.error('Error al eliminar cuota:', error);
@@ -21,7 +21,7 @@ const CuotasPendientes = () => {
 
   const handleEstadoChange = async (id, nuevoEstado) => {
     try {
-      await axios.put(`http://localhost:3001/api/cuotas/editar/${id}`, { estado_pago: nuevoEstado });
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/cuotas/editar/${id}`, { estado_pago: nuevoEstado });
       setCuotas(prev =>
         prev.map(cuota =>
           cuota.id_cuota === id ? { ...cuota, estado_pago: nuevoEstado } : cuota

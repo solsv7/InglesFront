@@ -13,7 +13,7 @@ const AsistenciasAlumnoPorFecha = () => {
 
   const buscar = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/api/asistencia/fecha`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/fecha`, {
         params: { id_alumno: idAlumno, fecha }
       });
       setAsistencias(res.data);

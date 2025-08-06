@@ -6,7 +6,7 @@ const Schedules = () => {
     const diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
 
     useEffect(() => {
-        fetch("http://localhost:3001/api/clases")
+        fetch(`${process.env.REACT_APP_API_URL}/api/clases`)
             .then(response => response.json())
             .then(data => setClases(data))
             .catch(error => console.error("Error al obtener las clases:", error));

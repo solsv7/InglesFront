@@ -10,7 +10,7 @@ const RegistrarCuota = () => {
   const [fechaVencimiento, setFechaVencimiento] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/planes')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/planes`)
       .then(res => {
         // Si el backend devuelve un solo plan como objeto, lo convertimos en array
         const planesRecibidos = Array.isArray(res.data) ? res.data : [res.data];
@@ -31,7 +31,7 @@ const RegistrarCuota = () => {
     }
 
     try {
-      await axios.post('http://localhost:3001/api/cuotas', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/cuotas`, {
         id_alumno: idAlumno,
         id_plan: idPlan,
         fecha_inicio: fechaInicio,

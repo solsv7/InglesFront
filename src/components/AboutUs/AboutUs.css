@@ -1,117 +1,92 @@
-.TextoInfo{
-    text-align: center;
-    justify-self: center;
-    font-family: 'Allenoire';
+.about-container {
+  padding-top: 130px;
+  background-color: #f0eded;
+  font-family: 'Neka', sans-serif;
 }
-.TextoInfo h1 {
-    font-size: 5.5vw;
-    margin-bottom: 20px;
-    position: relative; /* Importante para que el ::after se posicione correctamente */
-    background-image: url('../../images/stthomas5.jpg');
-    background-size: cover;
-    background-position: 0 -180px;
-    height: 300px;
-    display: flex;
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
+
+/* Hero / Cabecera */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background: url('../../images/stthomas5.jpg') center/cover no-repeat;
+  position: relative;
+  margin-bottom: 40px;
+}
+.hero::after {
+  content: ""; position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.hero h1 {
+  position: relative;
+  color: white;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: lighter;
+  z-index: 1;
+}
+
+/* Sección de Información */
+.info-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  gap: 40px;
+}
+.info-text {
+  flex: 1;
+}
+.info-text h2 {
+  color: #271a61;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 20px;
+}
+.info-text p {
+  color: #403c3c;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  line-height: 1.6;
+  font-family: '';
+}
+.info-image {
+  flex: 1;
+  height: 300px;
+  background: url('../../images/stthomas5.jpg') center/cover no-repeat;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Testimonios */
+.testimonials {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+}
+.testimonials-text h2 {
+  color: #e04b4b;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 🔁 Responsive */
+@media (max-width: 900px) {
+  .info-section {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .info-image {
     width: 100%;
-    overflow-x: hidden;
-    color: white;
-    font-weight: lighter;
-    z-index: 1; /* Asegura que el texto esté sobre la capa oscura */
-    box-shadow: 1px 0px 10px black;
+    height: 250px;
+  }
 }
 
-/* Capa oscura */
-.TextoInfo h1::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Ajusta la opacidad aquí */
-    z-index: -1; /* Envía la capa detrás del texto */
-}
-
-.Testimonios {
-    text-align: center;
-    width: 800px;
-    display: flex;
-    align-items: center; /* Centra los elementos hijos en el eje Y */
-    justify-content: space-between; /* Mantiene el texto y el carousel separados */
-    margin: 0 auto;
-    box-shadow: 1px 0px 5px gray;
-    padding: 0px 20px 0px 20px;
-    height: 600px;
-}
-
-.TextoTestimonios {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Centra el contenido verticalmente */
-    text-align: center;
-    gap: 50px;
-}
-
-.TextoTestimonios h1{
-    color: rgb(224, 75, 75);
-    font-family: 'HelloGood';
-    font-size: 4vw;
-}
-.TextoTestimonios h3{
-    color: rgb(128, 125, 125);
-    font-family: 'Sinerva';
-}
-.Informacion {
-    box-shadow: 1px 0px 5px gray;
-    padding: 20px;
-    width: 800px;
-    position: relative; /* Asegura que no interfiera con otros elementos */
-    z-index: 2; /* Mantiene el contenido sobre el fondo */
-    justify-self: center;
-    font-family: 'HelloGood';
-    display: flex;
-}
-.TextoAbout h2{
-    color: rgb(224, 75, 75);
-    font-size: 3vw;
-    text-align: center;
-}
-.TextoAbout h3{
-    color: rgb(128, 125, 125);
-    text-align: center;
-    font-family: 'Sinerva';
-    font-size: 1.5vw;
-    
-}
-@media (max-width:600px) {
-    .TextoInfo h1 {
-        height: 200px;
-    }
-    .Informacion{
-        width: 80vw;
-        margin-bottom: 50px;
-    }
-    .TextoAbout h2{
-        margin-top: -20px;
-        font-size: 8vw;
-    }
-    .TextoAbout h3{
-        font-size: 3.8vw;
-    }
-    .Testimonios{
-        display: flex;
-        flex-direction: column;
-        justify-self: center;
-        width: 80vw;
-        height: 850px;
-        margin-bottom: 40px;
-    }
-    .Testimonios h1{
-        font-size:  8vw;
-    }
+@media (max-width: 600px) {
+  .hero {
+    height: 200px;
+  }
+  .testimonials {
+    padding: 0 20px;
+  }
 }

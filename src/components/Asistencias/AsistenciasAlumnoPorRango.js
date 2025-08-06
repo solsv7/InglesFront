@@ -14,7 +14,7 @@ const AsistenciasAlumnoPorRango = () => {
 
   const buscar = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/api/asistencia/rango`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/rango`, {
         params: { id_alumno: idAlumno, fecha_inicio: fechaInicio, fecha_fin: fechaFin }
       });
       setResultado(res.data[0]);

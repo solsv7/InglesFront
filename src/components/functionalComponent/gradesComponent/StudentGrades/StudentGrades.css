@@ -1,5 +1,7 @@
 /* Estilos para el componente GradesComponent */
-
+.student-grades{
+    margin-top: 150px !important;
+}
 /* Contenedor principal */
 .grades-component {
     width: 100%;
@@ -114,15 +116,8 @@
 }
 
 /* Responsividad */
-@media screen and (max-width: 768px) {
-    .grades-component {
-        padding: 15px;
-    }
-
-    .grades-component button,
-    .grades-component input,
-    .grades-component select {
-        padding: 10px;
-        font-size: 14px;
-    }
+@media (max-width: 600px) {
+  .student-grades{
+    margin-top: 250px !important;
+  }
 }

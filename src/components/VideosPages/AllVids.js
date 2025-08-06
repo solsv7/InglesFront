@@ -5,12 +5,12 @@ import axios from "axios";
 
 const AllVids = () => {
   const [videos, setVideos] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState("Ingles"); // Idioma por defecto
+  const [selectedLanguage, setSelectedLanguage] = useState("Ingles");
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/all-vids");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/all-vids`);
         setVideos(response.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
@@ -19,51 +19,49 @@ const AllVids = () => {
     fetchVideos();
   }, []);
 
-  // Función para obtener la URL correcta de los videos de YouTube
   const getEmbedURL = (url) => {
     const videoIdMatch = url.match(/(?:\?v=|\/embed\/|youtu\.be\/)([^#&?]*).*/);
     return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : url;
   };
 
-  // Filtrar videos por idioma seleccionado
   const filteredVideos = videos.filter((vid) => vid.idioma === selectedLanguage);
 
   return (
-    <div className="Contenido-Videos">
-      <h1>Todos los Videos</h1>
+    <div className="contenido-videos">
+      <h1 className="titulo-principal">Recursos</h1>
 
-      {/* Selector de idioma */}
-      <div className="TextoSelect"><p>Selecione el idioma de los videos</p></div>
-      <div className="language-selector">
-        <button
-          className={selectedLanguage === "Ingles" ? "active" : ""}
-          onClick={() => setSelectedLanguage("Ingles")}
-        >
-          Ingles
-        </button>
-        <button
-          className={selectedLanguage === "Portugues" ? "active" : ""}
-          onClick={() => setSelectedLanguage("Portugues")}
-        >
-          Portugues
-        </button>
+      <div className="texto-select">
+        <p>Selecciona el idioma de los videos</p>
       </div>
 
-      {/* Mostrar videos filtrados */}
-      <div className="separador-videos">
+      <div className="language-selector">
+        {["Ingles", "Portugues"].map((lang) => (
+          <button
+            key={lang}
+            className={selectedLanguage === lang ? "active" : ""}
+            onClick={() => setSelectedLanguage(lang)}
+          >
+            {lang}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid-videos">
         {filteredVideos.length > 0 ? (
           filteredVideos.map((vids) => (
-            <div key={vids.id_video}>
-              <h3 className="titulos">{vids.titulo}</h3>
-              <iframe
-                src={getEmbedURL(vids.url)}
-                title={vids.titulo}
-                allowFullScreen
-              />
+            <div key={vids.id_video} className="video-card">
+              <h3 className="titulo-video">{vids.titulo}</h3>
+              <div className="video-wrapper">
+                <iframe
+                  src={getEmbedURL(vids.url)}
+                  title={vids.titulo}
+                  allowFullScreen
+                />
+              </div>
             </div>
           ))
         ) : (
-          <p>Aun no hay videos en {selectedLanguage}.</p>
+          <p>No hay videos disponibles en {selectedLanguage}.</p>
         )}
       </div>
     </div>

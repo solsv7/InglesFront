@@ -14,6 +14,8 @@ const Header = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const { handleLogout } = useContext(UserContext);
   const navigate = useNavigate();
+  const showNavbar = !user?.rol; // true si no hay rol
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +50,6 @@ const Header = () => {
   ) : user?.rol === 4 ? (
     <h3 className="btn btn-left ins-button"><Link to='/Inscription' className='linkStyle'>Inscribirme</Link></h3>
   ) : null;
-
   return (
     <div
       className="header-content"
@@ -106,7 +107,8 @@ const Header = () => {
         <h3 className="btn btn-left"><Link to='/About' className='linkStyle'>Sobre Nosotros</Link></h3>
         {botonInscripcion}
       </nav>*/}
-      <Navbar />
+      <Navbar showNavbar={showNavbar} />
+
     </div>
     
   );

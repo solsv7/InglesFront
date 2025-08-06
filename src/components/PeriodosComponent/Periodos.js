@@ -10,7 +10,7 @@ const Periodos = () => {
 
   const obtenerPeriodos = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/api/periodos');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/periodos`);
       setPeriodos(res.data);
     } catch (error) {
       console.error('Error al obtener periodos:', error);
@@ -20,7 +20,7 @@ const Periodos = () => {
   const crearPeriodo = async () => {
     if (!nuevoNombre) return;
     try {
-      await axios.post('http://localhost:3001/api/periodos', { nombre: nuevoNombre });
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/periodos`, { nombre: nuevoNombre });
       setNuevoNombre('');
       obtenerPeriodos();
     } catch (error) {
@@ -30,7 +30,7 @@ const Periodos = () => {
 
   const editarPeriodo = async (id) => {
     try {
-      await axios.put(`http://localhost:3001/api/periodos/${id}`, { nombre: editandoNombre });
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/periodos/${id}`, { nombre: editandoNombre });
       setEditandoId(null);
       setEditandoNombre('');
       obtenerPeriodos();
@@ -41,7 +41,7 @@ const Periodos = () => {
 
   const eliminarPeriodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/periodos/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/periodos/${id}`);
       obtenerPeriodos();
     } catch (error) {
       console.error('Error al eliminar periodo:', error);

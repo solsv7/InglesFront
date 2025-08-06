@@ -9,7 +9,7 @@ const TotalesPorClase = () => {
   useEffect(() => {
     const fetchClases = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/clases');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases`);
         setClases(res.data);
       } catch (error) {
         console.error('Error al obtener clases:', error);
@@ -20,7 +20,7 @@ const TotalesPorClase = () => {
 
   const buscar = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/api/asistencia/totales/${idClase}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/totales/${idClase}`);
       setTotales(res.data);
     } catch (error) {
       console.error('Error al obtener totales:', error);

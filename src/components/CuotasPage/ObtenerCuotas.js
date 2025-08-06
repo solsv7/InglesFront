@@ -10,18 +10,18 @@ const ObtenerCuotas = () => {
   useEffect(() => {
     const anioActual = new Date().getFullYear();
 
-    axios.get(`http://localhost:3001/api/cuotas/anio?anio=${anioActual}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/api/cuotas/anio?anio=${anioActual}`)
       .then(res => setCuotas(res.data))
       .catch(err => console.error('Error al obtener cuotas por año:', err));
 
-    axios.get('http://localhost:3001/api/planes')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/planes`)
       .then(res => setPlanes(Array.isArray(res.data) ? res.data : [res.data]))
       .catch(err => console.error('Error al obtener planes:', err));
   }, []);
 
   const handleEliminar = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/cuotas/eliminar/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cuotas/eliminar/${id}`);
       setCuotas(prev => prev.filter(c => c.id_cuota !== id));
       alert('Cuota eliminada');
     } catch (error) {
@@ -41,7 +41,7 @@ const ObtenerCuotas = () => {
 
   const handleGuardar = async (id) => {
     try {
-      await axios.put(`http://localhost:3001/api/cuotas/editar/${id}`, formData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/cuotas/editar/${id}`, formData);
       alert('Cuota editada con éxito');
       setEditandoId(null);
       setCuotas(prev =>

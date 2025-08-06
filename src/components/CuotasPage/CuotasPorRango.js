@@ -10,7 +10,7 @@ const CuotasPorRango = () => {
   const [formData, setFormData] = useState({});
 
   const fetchPlanes = () => {
-    axios.get('http://localhost:3001/api/planes')
+    axios.get(`${process.env.REACT_APP_API_URL}/api/planes`)
       .then(res => setPlanes(Array.isArray(res.data) ? res.data : [res.data]))
       .catch(err => console.error('Error al obtener planes:', err));
   };
@@ -19,7 +19,7 @@ const CuotasPorRango = () => {
     if (desde && hasta) {
       const d = desde.toISOString().split('T')[0];
       const h = hasta.toISOString().split('T')[0];
-      axios.get(`http://localhost:3001/api/cuotas/rango?desde=${d}&hasta=${h}`)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/cuotas/rango?desde=${d}&hasta=${h}`)
         .then(res => setCuotas(res.data))
         .catch(err => console.error('Error al obtener cuotas por rango:', err));
     }
@@ -31,7 +31,7 @@ const CuotasPorRango = () => {
 
   const handleEliminar = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/cuotas/eliminar/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cuotas/eliminar/${id}`);
       setCuotas(prev => prev.filter(c => c.id_cuota !== id));
       alert('Cuota eliminada');
     } catch (error) {
@@ -51,7 +51,7 @@ const CuotasPorRango = () => {
 
   const handleGuardar = async (id) => {
     try {
-      await axios.put(`http://localhost:3001/api/cuotas/editar/${id}`, formData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/cuotas/editar/${id}`, formData);
       alert('Cuota editada con éxito');
       setEditandoId(null);
       setCuotas(prev =>

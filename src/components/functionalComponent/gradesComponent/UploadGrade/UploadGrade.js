@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaTrash } from 'react-icons/fa';
+import { GoAlertFill } from "react-icons/go";
+
 import './UploadGrade.css';
 
 const UploadGrade = ({ selectedStudentId }) => {
   const [grades, setGrades] = useState([]);
   const [periods, setPeriods] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [cycleYear, setCycleYear] = useState('');
-  const [confirmedYear, setConfirmedYear] = useState(null);
+  
+  const [cycleYear, setCycleYear] = useState(new Date().getFullYear().toString());
+  const [errorMsg, setErrorMsg] = useState('');
 
-  // Cargar periodos y categorías desde la API
   useEffect(() => {
     const fetchPeriods = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/periodos');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/periodos`);
         setPeriods(response.data);
       } catch (error) {
         console.error('Error al obtener los periodos:', error);
@@ -22,7 +25,7 @@ const UploadGrade = ({ selectedStudentId }) => {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/categories');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/categories`);
         setCategories(response.data);
       } catch (error) {
         console.error('Error al obtener las categorías:', error);
@@ -33,25 +36,45 @@ const UploadGrade = ({ selectedStudentId }) => {
     fetchCategories();
   }, []);
 
-  // Cargar notas existentes cuando cambia el alumno o el año confirmado
   useEffect(() => {
-    const fetchExistingGrades = async () => {
-      if (!selectedStudentId || !confirmedYear) return;
+  const fetchExistingGrades = async () => {
+    if (
+      !selectedStudentId ||
+      !cycleYear ||
+      periods.length === 0 ||
+      categories.length === 0
+    ) {
+      return;
+    }
 
-      try {
-        const response = await axios.get(
-          `http://localhost:3001/api/grades/${selectedStudentId}/${confirmedYear}`
-        );
-        setGrades(response.data);
-      } catch (error) {
-        console.error('Error al obtener notas:', error);
-      }
-    };
+    const year = parseInt(cycleYear);
+    if (year < 2020 || year > 2030) {
+      setGrades([]);
+      setErrorMsg('Por favor, ingrese un año entre 2020 y 2030.');
+      return;
+    }
 
-    fetchExistingGrades();
-  }, [selectedStudentId, confirmedYear]);
+    setErrorMsg('');
 
-  // Manejar el cambio de nota
+    try {
+      console.log('Consultando notas con:', selectedStudentId, cycleYear);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/grades/${selectedStudentId}/${cycleYear}`
+      );
+      setGrades(response.data);
+    } catch (error) {
+      console.error('Error al obtener notas:', error.response?.data || error.message);
+      setGrades([]);
+      setErrorMsg('No se pudieron obtener notas para este año.');
+    }
+  };
+
+  fetchExistingGrades();
+}, [selectedStudentId, cycleYear, periods, categories]);
+
+
+
+
   const handleGradeChange = (periodo, tipoNota, value) => {
     const updatedGrades = [...grades];
     const gradeIndex = updatedGrades.findIndex(
@@ -72,22 +95,17 @@ const UploadGrade = ({ selectedStudentId }) => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!confirmedYear) {
-      alert('Por favor, confirme el año antes de enviar las notas.');
-      return;
-    }
+  e.preventDefault();
 
     try {
       const notasAEnviar = grades.filter((grade) => grade.nota);
-      await axios.post('http://localhost:3001/api/grades/subir', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/grades/subir`, {
         notas: notasAEnviar.map((grade) => ({
           idAlumno: selectedStudentId,
           idPeriodo: periods.find((period) => period.nombre === grade.periodo)?.id_periodo,
           idTipoNota: categories.find((category) => category.nombre === grade.tipo_nota)?.id_tipo,
           nota: parseFloat(grade.nota),
-          cicloLectivo: confirmedYear,
+          cicloLectivo: cycleYear, // <--- ✅ cambio acá
         })),
       });
 
@@ -98,87 +116,82 @@ const UploadGrade = ({ selectedStudentId }) => {
     }
   };
 
+
+
   return (
     <div className="upload-grade-container">
       <div className="cycle-year-selector">
-        <label htmlFor="cycleYear" className='seleccionar'>Seleccionar ciclo</label>
+        <label htmlFor="cycleYear" className='seleccionar'>Ciclo Lectivo </label>
         <input
           type="number"
           id="cycleYear"
+          min="2020"
+          max="2030"
           value={cycleYear}
           onChange={(e) => setCycleYear(e.target.value)}
-          placeholder="Ej: 2024"
         />
-        <button
-          type="button"
-          onClick={() => {
-            if (cycleYear) {
-              setConfirmedYear(cycleYear);
-            } else {
-              alert('Por favor, ingrese un año válido antes de confirmar.');
-            }
-          }}
-          className="BotonConfirmarCiclo"
-        >
-          Seleccionar Ciclo
-        </button>
       </div>
-      {confirmedYear && <p className="year-confirmation">Ciclo lectivo confirmado: {confirmedYear}</p>}
-      <form onSubmit={handleSubmit} className="upload-grade">
-        <table className="Tabla-Grades">
-          <thead>
-            <tr>
-              <th>Periodo</th>
-              {categories.map((category) => (
-                <th key={category.id_tipo}>{category.nombre}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {periods.map((period) => (
-              <tr key={period.id_periodo}>
-                <td>{period.nombre}</td>
-                {categories.map((category) => {
-                  const existingGrade = grades.find(
-                    (grade) =>
-                      grade.periodo === period.nombre &&
-                      grade.tipo_nota === category.nombre
-                  );
 
-                  return (
-                    <td key={category.id_tipo}>
-                      <input
-                        type="number"
-                        step="0.5"
-                        className="inputNota"
-                        value={existingGrade ? existingGrade.nota : ''}
-                        onChange={(e) =>
-                          handleGradeChange(
-                            period.nombre,
-                            category.nombre,
-                            e.target.value
-                          )
-                        }
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
+
+      {errorMsg && <p className="error-msg"><GoAlertFill />{errorMsg}</p>}
+
+
+      <form onSubmit={handleSubmit} className="upload-grade">
+        <div className="grades-vertical-table">
+          {/* Encabezado con los periodos */}
+          <div className="table-header">
+            <div className="header-cell category-cell"></div>
+            {periods.map((p, index) => (
+              <div
+                key={p.id_periodo}
+                className={`header-cell ${index % 2 === 0 ? 'col-dark' : 'col-light'}`}
+              >
+                {p.nombre}
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+
+          {/* Filas por categoría */}
+          {categories.map((cat) => (
+            <div key={cat.id_tipo} className="table-row">
+              <div className="category-cell">{cat.nombre}</div>
+              {periods.map((p, index) => {
+                const existingGrade = grades.find(
+                  (g) => g.periodo === p.nombre && g.tipo_nota === cat.nombre
+                );
+
+                return (
+                  <div
+                    key={p.id_periodo}
+                    className={`cell ${index % 2 === 0 ? 'col-dark' : 'col-light'}`}
+                  >
+                    {/* Mostrar el nombre del periodo solo en móvil */}
+                    <span className="mobile-period-label">{p.nombre}</span>
+                    <input
+                      type="number"
+                      step="0.5"
+                      min="0"
+                      max="10"
+                      value={existingGrade ? existingGrade.nota : ''}
+                      onChange={(e) =>
+                        handleGradeChange(p.nombre, cat.nombre, e.target.value)
+                      }
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+
         <div className="botonesGrades">
-          <button type="submit" className="BotonSubir">
-            Subir/Editar Notas
-          </button>
-          <button type="button" onClick={handleReset} className="BotonReset">
-            Borrar
-          </button>
+          <button type="submit" className="BotonSubir">Confirmar Notas</button>
+          <button type="button" onClick={handleReset} className="BotonReset"><FaTrash></FaTrash></button>
         </div>
       </form>
+
     </div>
   );
 };
 
 export default UploadGrade;
-

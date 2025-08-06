@@ -9,7 +9,7 @@ const ResumenAsistenciasAlumno = () => {
     const id_alumno = storedUser?.id_alumno;
 
     if (id_alumno) {
-      axios.get(`http://localhost:3001/api/asistencia/resumen/${id_alumno}`)
+      axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/resumen/${id_alumno}`)
         .then(res => setResumen(res.data[0]))
         .catch(err => console.error('Error al obtener resumen:', err));
     }

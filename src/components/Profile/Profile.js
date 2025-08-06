@@ -22,7 +22,7 @@ const Profile = () => {
 
     const saveChanges = async () => {
         try {
-            const response = await axios.post("http://localhost:3001/api/update-profile", profileData);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/update-profile`, profileData);
             alert('Cambios guardados con éxito');
             setProfileData(response.data);
         } catch (error) {
@@ -35,7 +35,7 @@ const Profile = () => {
             const params = { id_rol: user.rol, id: user.id };
     
             try {
-                const response = await axios.get("http://localhost:3001/api/perf-info", { params });
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
                 console.log('La informacion de perfil es:', response.data);
     
                 if (response.data[0].id_perfil !== null) {
@@ -77,7 +77,7 @@ const Profile = () => {
                 try {
                     const today = new Date().toISOString().split('T')[0]; // Fecha actual en formato YYYY-MM-DD
                     const response = await axios.get(
-                        `http://localhost:3001/api/cuotas/vigentes?id_alumno=${user.id_alumno}&fecha=${today}`
+                        `${process.env.REACT_APP_API_URL}/api/cuotas/vigentes?id_alumno=${user.id_alumno}&fecha=${today}`
                     );
                     
                     // La API ahora devuelve un array, tomamos el primer elemento si existe
@@ -169,83 +169,96 @@ const Profile = () => {
     if (user.rol === 1) {
         UserType = "Administrador";
         content = (
-            <div className="Contenido-Perfil">
-                <h2>Mi Perfil</h2>
-                <div className="userData">
-                    <div className="user-w-pic">
-                        <div className="user">
-                            <h2>{user.nombre}</h2>
-                            <h4 className="Rol">{UserType}</h4>
-                        </div>
-                        <div className="pic">
-                            <img src={photo} alt="Foto de perfil" />
-                        </div>
-                    </div>
-                    <div className="extra-info">
-                        <h1>Informacion adicional</h1>
-                        <h4>Correo: {profileData?.mail || 'Sin informacion'}</h4>
-                        <h4>Num. Contacto: {profileData?.whatsapp || 'Sin informacion'}</h4>
-                    </div>
-                    <div className="noce">
-                        <button><Link to='/Modificar' className="modifyBTN">Modificar Informacion</Link></button>
-                    </div>
-                </div>
+            <div className="perfil-layout">
+                {/* Sidebar */}
+                <aside className="perfil-sidebar">
+                <img src={photo} alt="Perfil" className="perfil-img" />
+                <h2 className="perfil-rol">{UserType}</h2>
+                <ul className="perfil-menu">
+                    <li><Link to="/modificar">Actualizar datos personales</Link></li>
+                    <li><Link to="/cambiar-clave">Actualizar contraseña</Link></li>
+                    <li><Link to="/configuracion">Configuración</Link></li>
+                </ul>
+                </aside>
+
+                {/* Contenido principal */}
+                <main className="perfil-contenido">
+                <h1 className="perfil-nombre">{user.nombre}</h1>
+                <section className="perfil-info">
+                    <h2>Información personal</h2>
+                    <p>📧 Correo: {profileData?.mail || 'Sin información'}</p>
+                    <p>📞 WhatsApp: {profileData?.whatsapp || 'Sin información'}</p>
+                    {user.rol === 3 && (
+                    <p>👤 Adulto responsable: {profileData?.whatsapp_adulto || 'Sin información'}</p>
+                    )}
+                </section>
+                {user.rol === 3 && <CuotaInfoCard />}
+                </main>
             </div>
+
         );
     } else if (user.rol === 2) {
         UserType = "Profesor";
-        content = (
-            <div className="Contenido-Perfil">
-                <h2>Mi Perfil</h2>
-                <div className="userData">
-                    <div className="user-w-pic">
-                        <div className="user">
-                            <h2>{user.nombre}</h2>
-                            <h4 className="Rol">{UserType}</h4>
-                        </div>
-                        <div className="pic">
-                            <img src={photo} alt="Foto de perfil" />
-                        </div>
-                    </div>
-                    <div className="extra-info">
-                        <h1>Informacion adicional</h1>
-                        <h4>Correo: {profileData?.mail || 'Sin informacion'}</h4>
-                        <h4>Num. Contacto: {profileData?.whatsapp || 'Sin informacion'}</h4>
-                    </div>
-                    <div className="noce">
-                        <button><Link to='/Modificar' className="modifyBTN">Modificar Informacion</Link></button>
-                    </div>
-                </div>
+        content = (  
+            <div className="perfil-layout">
+                {/* Sidebar */}
+                <aside className="perfil-sidebar">
+                <img src={photo} alt="Perfil" className="perfil-img" />
+                <h2 className="perfil-rol">{UserType}</h2>
+                <ul className="perfil-menu">
+                    <li><Link to="/modificar">Actualizar datos personales</Link></li>
+                    <li><Link to="/cambiar-clave">Actualizar contraseña</Link></li>
+                    <li><Link to="/configuracion">Configuración</Link></li>
+                </ul>
+                </aside>
+
+                {/* Contenido principal */}
+                <main className="perfil-contenido">
+                <h1 className="perfil-nombre">{user.nombre}</h1>
+                <section className="perfil-info">
+                    <h2>Información personal</h2>
+                    <p>📧 Correo: {profileData?.mail || 'Sin información'}</p>
+                    <p>📞 WhatsApp: {profileData?.whatsapp || 'Sin información'}</p>
+                    {user.rol === 3 && (
+                    <p>👤 Adulto responsable: {profileData?.whatsapp_adulto || 'Sin información'}</p>
+                    )}
+                </section>
+                {user.rol === 3 && <CuotaInfoCard />}
+                </main>
             </div>
         );
     } else if (user.rol === 3) {
         UserType = "Alumno";
         content = (
-            <div className="Contenido-Perfil">
-                <h2>Mi Perfil</h2>
-                <div className="userData">
-                    <div className="user-w-pic">
-                        <div className="user">
-                            <h2>{user.nombre}</h2>
-                            <h4 className="Rol">{UserType}</h4>
-                        </div>
-                        <div className="pic">
-                            <img src={photo} alt="Foto de perfil" />
-                        </div>
-                    </div>
-                    <div className="extra-info">
-                        <h1>Informacion adicional</h1>
-                        <h4>Correo: {profileData?.mail || 'Sin informacion'}</h4>
-                        <h4>Num. Contacto: {profileData?.whatsapp || 'Sin informacion'}</h4>
-                        <h4>Num. Contacto Adulto: {profileData?.whatsapp_adulto || 'Sin informacion'}</h4>
-                    </div>
-                    <CuotaInfoCard />
-                    <div className="noce">
-                        <button><Link to='/Modificar' className="modifyBTN">Modificar Informacion</Link></button>
-                    </div>
+
+                <div className="perfil-layout">
+                    {/* Sidebar */}
+                    <aside className="perfil-sidebar">
+                    <img src={photo} alt="Perfil" className="perfil-img" />
+                    <h2 className="perfil-rol">{UserType}</h2>
+                    <ul className="perfil-menu">
+                        <li><Link to="/modificar">Actualizar datos personales</Link></li>
+                        <li><Link to="/cambiar-clave">Actualizar contraseña</Link></li>
+                        <li><Link to="/configuracion">Configuración</Link></li>
+                    </ul>
+                    </aside>
+
+                    {/* Contenido principal */}
+                    <main className="perfil-contenido">
+                    <h1 className="perfil-nombre">{user.nombre}</h1>
+                    <section className="perfil-info">
+                        <h2>Información personal</h2>
+                        <p>📧 Correo: {profileData?.mail || 'Sin información'}</p>
+                        <p>📞 WhatsApp: {profileData?.whatsapp || 'Sin información'}</p>
+                        {user.rol === 3 && (
+                        <p>👤 Adulto responsable: {profileData?.whatsapp_adulto || 'Sin información'}</p>
+                        )}
+                    </section>
+                    {user.rol === 3 && <CuotaInfoCard />}
+                    </main>
                 </div>
-            </div>
-        );
+                );
+
     }
 
     return <div className="contenidoProfile">{content}</div>;

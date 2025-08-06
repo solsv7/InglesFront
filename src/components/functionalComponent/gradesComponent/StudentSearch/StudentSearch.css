@@ -1,84 +1,134 @@
-.content-StudentSearch {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Allenoire', sans-serif;
+.content-StudentSearch{
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
 }
-
-.Input-Buscar {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  font-family: inherit;
-  margin-bottom: 10px;
-}
-
-.Mensaje-Seleccionado {
-  font-size: 14px;
-  color: #555;
-  margin-top: 5px;
-}
-
-.erase-button {
-  font-size: 14px;
-  color: #fa3838;
-  cursor: pointer;
-  margin-bottom: 10px;
-  user-select: none;
-}
-
-.Mensaje-Seleccionado2 {
-  font-size: 16px;
+.buscador-titulo {
+    width: 100%;
+  padding: 10px 10px!important;
+  box-sizing:content-box;
+  font-family: 'Arial';
   font-weight: bold;
-  color: #29154e;
-  margin: 10px 0;
+  font-size: 32px;
+  font-family: 'Allenoire', sans-serif;
+  color: black;
+  border-bottom: solid 1px grey;
+  display: flex;
+  align-items: left;
+  gap: 10px;
+  margin-bottom: 20px;
+  
+}
+
+.seleccionado-box {
+  background-color: #fdfdfd;
+  border-left: 10px solid #29154e;
+  width: 100%;
+  padding: 0px 10px 0px 0px;
+  box-sizing:content-box;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-family: 'Neka';
+  font-weight: lighter;
+  font-size: 10px;
+}
+
+.boton-borrar {
+  width: 100%;
+  padding: 10px 10px;
+  box-sizing:content-box;
+  font-size: 16px;
+  font-family: 'Neka';
+  font-weight: lighter;
+  border: 2px solid #fa3838;
+  background-color: white;
+  color: #fa3838;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.boton-borrar:hover {
+  background-color: #fa3838;
+  color: white;
+}
+
+.boton-borrar.inactivo {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
+  border: 2px solid #c0c0c0;
+  cursor: not-allowed;
+}
+
+.boton-borrar.inactivo:hover {
+  background-color: #e0e0e0;
+  color: #a0a0a0;
 }
 
 .lista-Estudiantes {
-  list-style-type: none;
-  padding: 0;
+  opacity: 0;
+  width: 100%;
+  padding: 10px 10px !important;
+  box-sizing:content-box;
+  font-family: 'Arial';
+  font-weight: lighter;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  animation: fadeInList 0.4s ease forwards;
   margin-top: 10px;
 }
 
-.student-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f9f9f9;
-  margin-bottom: 8px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #eee;
-}
-
-.select-button {
-  background-color: #29154e;
-  color: #fff;
-  font-family: 'Paradose';
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.select-button:hover {
-  background-color: #fa3838;
-}
-
-@media (max-width: 600px) {
-  .student-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+@keyframes fadeInList {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .select-button {
+.student-item{
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.select-button{
+  padding: 30px;
+  font-size: 20px !important;
+  font-family: 'Neka';
+  letter-spacing: 0.4px;
+}
+@media (max-width:600px) {
+  .content-StudentSearch {
     width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  .buscador-titulo {
+    font-size: 24px;
+    padding: 10px;
+    width: 90vw;
+  }
+  .lista-Estudiantes{
+    margin-top: 10px;
+  }
+  .Input-Buscar{
+    width: 90vw !important;
+    font-size: 16px;
+  }
+  .seleccionado-box {
+    font-size: 8px;
+    padding: 5px;
+  }
+  .boton-borrar {
+    font-size: 14px;
+    padding: 8px;
+    width: 90vw;
+  }
+  .seleccionado-box{
+    width: 90vw;
   }
 }

@@ -1,17 +1,31 @@
-/* Contenedor general con el patrón de fondo */
 .ContenidoLogin {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-image: url('../../../images/PatronFondo.png');
-    background-size: 470px;
-    background-position: center;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e0e0e0 0%, #f9f9f9 100%);
     padding-top: 130px;
+    z-index: 1;
 }
 
-
+/* Fondo animado */
+.ContenidoLogin::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background-image: url('../../../images/PatronFondo.png');
+    background-repeat: repeat;
+    background-size: 40%;
+    background-position: center;
+    opacity: 0.5;
+    animation: moveBackground 15s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
 .formularioLogin {
     background-color: white;
     padding: 40px 30px;
@@ -134,10 +148,3 @@
     background-color: #8f0600;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    .formularioLogin {
-        width: 90%;
-        padding: 30px 20px;
-    }
-}

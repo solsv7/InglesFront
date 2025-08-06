@@ -10,9 +10,11 @@ const GradesTable = () => {
     const [periods, setPeriods] = useState([]);
     const [categories, setCategories] = useState([]);
     const [error, setError] = useState(null);
-    const [selectedYear, setSelectedYear] = useState('2024');  // Año seleccionado
+    const currentYear = new Date().getFullYear().toString();
+    const [selectedYear, setSelectedYear] = useState(currentYear);
 
-    const years = ['2023', '2024', '2025']; // Lista de años (ciclo lectivo)
+
+    const years = ['2023', '2024', '2025', '2026']; // Lista de años (ciclo lectivo)
 
     useEffect(() => {
         // Obtener el ID del estudiante desde el localStorage
@@ -28,7 +30,7 @@ const GradesTable = () => {
     useEffect(() => {
         const fetchPeriods = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/periodos');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/periodos`);
                 console.log('Se han solicitado los periodos');
                 setPeriods(response.data);
             } catch (error) {
@@ -44,7 +46,7 @@ const GradesTable = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/categories');
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/categories`);
                 console.log('Se ha solicitado las categorias');
                 setCategories(response.data);
             } catch (error) {
@@ -57,53 +59,51 @@ const GradesTable = () => {
 
     // Obtener las calificaciones del estudiante para el ciclo lectivo seleccionado
     useEffect(() => {
-        if (studentId) {
-            const fetchGrades = async () => {
-                try {
-                    console.log('Se han solicitado las notas');
-                    const response = await axios.get(`http://localhost:3001/api/grades/${studentId}/${selectedYear}`);
-                    console.log('Parámetros enviados:', { studentId, selectedYear });
-                    const fetchedGrades = response.data;
+  if (studentId && periods.length > 0 && categories.length > 0) {
+    const fetchGrades = async () => {
+      try {
+        console.log('Se han solicitado las notas');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/grades/${studentId}/${selectedYear}`);
+        console.log('Parámetros enviados:', { studentId, selectedYear });
+        const fetchedGrades = response.data;
 
-                    if (fetchedGrades.length === 0) {
-                        setError('No se encontraron calificaciones para este estudiante en este ciclo lectivo.');
-                        setGrades([]);
-                        setOrganizedGrades({});
-                        return;
-                    }
-
-                    setError(null); // Limpiar el error
-                    setGrades(fetchedGrades);
-
-                    // Organizar las calificaciones por periodo y categoría
-                    const gradesByPeriod = fetchedGrades.reduce((acc, grade) => {
-                        const { periodo, tipo_nota, nota } = grade;
-
-                        // Asegurarse que el periodo y categoría sean los correctos.
-                        const periodName = periods.find(p => p.nombre === periodo);
-                        const categoryName = categories.find(c => c.nombre === tipo_nota);
-
-                        // Si el período y categoría existen, añadir la nota al objeto organizado
-                        if (periodName && categoryName) {
-                            if (!acc[periodName.id_periodo]) {
-                                acc[periodName.id_periodo] = {};
-                            }
-                            acc[periodName.id_periodo][categoryName.nombre] = nota;
-                        }
-                        return acc;
-                    }, {});
-
-                    setOrganizedGrades(gradesByPeriod);
-
-                } catch (error) {
-                    console.error('Error al obtener las calificaciones:', error);
-                    setError('Hubo un error al obtener las calificaciones.');
-                }
-            };
-
-            fetchGrades();
+        if (fetchedGrades.length === 0) {
+          setError('No se encontraron calificaciones para este estudiante en este ciclo lectivo.');
+          setGrades([]);
+          setOrganizedGrades({});
+          return;
         }
-    }, [studentId, selectedYear, periods, categories]);
+
+        setError(null);
+        setGrades(fetchedGrades);
+
+        const gradesByPeriod = fetchedGrades.reduce((acc, grade) => {
+          const { periodo, tipo_nota, nota } = grade;
+          const periodName = periods.find(p => p.nombre === periodo);
+          const categoryName = categories.find(c => c.nombre === tipo_nota);
+
+          if (periodName && categoryName) {
+            if (!acc[periodName.id_periodo]) {
+              acc[periodName.id_periodo] = {};
+            }
+            acc[periodName.id_periodo][categoryName.nombre] = nota;
+          }
+
+          return acc;
+        }, {});
+
+        setOrganizedGrades(gradesByPeriod);
+
+      } catch (error) {
+        console.error('Error al obtener las calificaciones:', error);
+        setError('Hubo un error al obtener las calificaciones.');
+      }
+    };
+
+    fetchGrades();
+  }
+}, [studentId, selectedYear, periods, categories]);
+
 
     // Manejar el cambio del ciclo lectivo
     const handleYearChange = (event) => {
@@ -117,39 +117,40 @@ const GradesTable = () => {
 
             {/* Selector de ciclo lectivo */}
             <div className='contenidoSelect'>
-            <label htmlFor="yearSelect">Seleccione el ciclo lectivo:</label>
-            <select id="yearSelect" value={selectedYear} onChange={handleYearChange}>
-                {years.map((year) => (
-                    <option key={year} value={year}>{year}</option>
-                ))}
-            </select>
+                <label htmlFor="yearSelect">Ciclo Lectivo:</label>
+                <input
+                    type="number"
+                    id="yearSelect"
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    min="2020"
+                    max="2030"
+                    />
+
             </div>
             {Object.keys(organizedGrades).length > 0 && (
-                <table className='Tabla-Notas'>
-                    <thead>
-                        <tr>
-                            <th>Periodo</th>
-                            {categories.map((category) => (
-                                <th key={category.id_tipo}>{category.nombre}</th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {periods.map((periodo) => (
-                            <tr key={periodo.id_periodo}>
-                                <td className='Periodo'>{periodo.nombre}</td>
-                                {categories.map((category) => (
-                                    <td key={category.id_tipo} id='NotaNumero'>
-                                        {organizedGrades[periodo.id_periodo]
-                                            ? organizedGrades[periodo.id_periodo][category.nombre] || '-'
-                                            : '-'}
-                                    </td>
-                                ))}
-                            </tr>
+                <div className="grades-vertical-table">
+                    <div className="table-header">
+                    <div className="header-cell category-cell"></div> {/* Ruptura esquina */}
+                    {periods.map((p) => (
+                        <div key={p.id_periodo} className="header-cell">
+                        {p.nombre}
+                        </div>
+                    ))}
+                    </div>
+                    {categories.map((cat) => (
+                    <div key={cat.id_tipo} className="table-row">
+                        <div className="category-cell">{cat.nombre}</div>
+                        {periods.map((p) => (
+                        <div key={p.id_periodo} className="cell">
+                            {organizedGrades[p.id_periodo]?.[cat.nombre] ?? '-'}
+                        </div>
                         ))}
-                    </tbody>
-                </table>
-            )}
+                    </div>
+                    ))}
+                </div>
+                )}
+
         </div>
     );
 };

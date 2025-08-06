@@ -36,7 +36,7 @@
 
         const handleExportExcel = async () => {
             try {
-                await axios.post("http://localhost:3001/api/export-excel", formData);
+                await axios.post(`${process.env.REACT_APP_API_URL}/api/export-excel`, formData);
                 console.log("El archivo se envió");
             } catch (error) {
                 console.error("Error al exportar a Excel:", error);
@@ -46,7 +46,7 @@
         
         const handeForm = async () => {
             try {
-                await axios.post("http://localhost:3001/api/upload-form", formData);
+                await axios.post(`${process.env.REACT_APP_API_URL}/api/upload-form`, formData);
                 console.log("El formulario se envió");
             } catch (error) {
                 console.error("Error al enviar el Formulario:", error);

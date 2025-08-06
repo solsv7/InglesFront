@@ -16,7 +16,7 @@ const AgregarClase = ({ niveles, cargarHorarios }) => {
       return;
     }
 
-    fetch("http://localhost:3001/api/clases", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/clases`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -83,7 +83,7 @@ const EditarClase = ({ horarios, niveles, cargarHorarios }) => {
   const manejarGuardarEdicion = () => {
     if (!editandoCelda || !nuevoNivel) return;
 
-    fetch("http://localhost:3001/api/clases", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/clases`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ const AdminSchedules = () => {
   const [niveles, setNiveles] = useState([]);
 
   const cargarHorarios = () => {
-    fetch("http://localhost:3001/api/clases")
+    fetch(`${process.env.REACT_APP_API_URL}/api/clases`)
       .then(response => response.json())
       .then(data => setHorarios(data))
       .catch(error => console.error("Error al obtener los horarios:", error));
@@ -164,7 +164,7 @@ const AdminSchedules = () => {
 
   useEffect(() => {
     cargarHorarios();
-    fetch("http://localhost:3001/api/niveles")
+    fetch(`${process.env.REACT_APP_API_URL}/api/niveles`)
       .then(response => response.json())
       .then(data => setNiveles(data))
       .catch(error => console.error("Error al obtener los niveles:", error));

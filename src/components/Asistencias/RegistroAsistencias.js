@@ -12,7 +12,7 @@ const RegistroAsistencias = () => {
     useEffect(() => {
     const fetchClases = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/api/clases-alumnos/clases-por-fecha?fecha=${fecha}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/clases-por-fecha?fecha=${fecha}`);
         setClases(res.data);
         setIdClaseSeleccionada(''); // Reiniciar clase seleccionada al cambiar la fecha
       } catch (error) {
@@ -26,14 +26,14 @@ const RegistroAsistencias = () => {
   const handleSeleccionClase = async (idClase) => {
     setIdClaseSeleccionada(idClase);
     try {
-      const resAsistencias = await axios.get(`http://localhost:3001/api/asistencia/por-clase-fecha?id_clase=${idClase}&fecha=${fecha}`);
+      const resAsistencias = await axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/por-clase-fecha?id_clase=${idClase}&fecha=${fecha}`);
       const asistencias = resAsistencias.data;
 
       if (asistencias.length > 0) {
         setAsistenciasCargadas(asistencias);
         setAlumnos([]);
       } else {
-        const resAlumnos = await axios.get(`http://localhost:3001/api/clases-alumnos/por-clase/${idClase}`);
+        const resAlumnos = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${idClase}`);
         const alumnosConEstado = resAlumnos.data.map(alumno => ({
           ...alumno,
           presente: false
@@ -42,7 +42,7 @@ const RegistroAsistencias = () => {
         setAsistenciasCargadas([]);
       }
 
-      const resTotales = await axios.get(`http://localhost:3001/api/asistencia/totales/${idClase}`);
+      const resTotales = await axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/totales/${idClase}`);
       setTotales(resTotales.data);
     } catch (error) {
       console.error('Error al obtener datos:', error);
@@ -67,7 +67,7 @@ const RegistroAsistencias = () => {
           presente: a.presente ? 1 : 0
         }))
       };
-      await axios.post('http://localhost:3001/api/asistencia/registrar', payload);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/asistencia/registrar`, payload);
       alert('Asistencias registradas correctamente');
       handleSeleccionClase(idClaseSeleccionada);
     } catch (error) {

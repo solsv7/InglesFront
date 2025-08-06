@@ -11,7 +11,7 @@ const TotalesPorRango = () => {
   useEffect(() => {
     const fetchClases = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/api/clases');
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases`);
         setClases(res.data);
       } catch (error) {
         console.error('Error al obtener clases:', error);
@@ -22,7 +22,7 @@ const TotalesPorRango = () => {
 
   const buscar = async () => {
     try {
-      const res = await axios.get(`http://localhost:3001/api/asistencia/totales-rango`, {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/asistencia/totales-rango`, {
         params: {
           id_clase: idClase,
           fecha_inicio: fechaInicio,

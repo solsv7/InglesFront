@@ -9,8 +9,22 @@ import Slider from "../components/SliderInicio/SliderInicio";
 import b from '../assets/a.jpg';
 import c from '../assets/b.jpg';
 import a from '../assets/c.jpg';
+import new1 from '../images/new (1).jpg';
+import new2 from '../images/new (2).jpg';
+import new3 from '../images/new (3).jpg';
+
 import './styles/HomePage.css';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/pagination';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import transition from '../transition';
+const overlayText = [
+  "Creando il futuro!",
+  "Criando o futuro!",
+  "Creating future!",
+];
 
 const HomePage = () => {
     return(
@@ -23,7 +37,20 @@ const HomePage = () => {
                     <button>Inscribirme</button>
                 </div>
                 <div className="slid-inicio">
-                    <Slider images={[img1, img2, img3]} className="slider-lenguajes" />
+                <Swiper
+                    modules={[Autoplay, Pagination]}
+                    loop={true}
+                    autoplay={{ delay: 3000 }}
+                    >
+
+                    {[new1,new2,new3].map((src, idx) => (
+                    <SwiperSlide key={idx}>
+                    <img src={src} alt={`slide-${idx}`} />
+                    <div className="slide-overlay">{overlayText[idx]}</div>
+                    </SwiperSlide>
+                ))}
+                </Swiper>
+                    {/*<Slider images={[img1, img2, img3]} className="slider-lenguajes" />*/}
                 </div>
             </div>
             <div className="formas-aprender">
@@ -34,7 +61,7 @@ const HomePage = () => {
                     </div>
                     <div>
                     
-                    <h3>En St. Thomas puedes optar el como puedes aprender, brindamos acceso a clases tanto de manera presencial como virtual o mixtas.</h3>
+                    <p>En St. Thomas puedes optar el como puedes aprender, brindamos acceso a clases tanto de manera presencial como virtual o mixtas.</p>
                     </div>
                 </div>
                 <div className="cuadros">
@@ -78,7 +105,19 @@ const HomePage = () => {
             </div>
             <div className="home-eventos">
                 <div className="slid-eventos">
-                    <Slider images={[gente1, gente2, gente3]} className="slider-eventos" />
+                    <Swiper
+                        modules={[Autoplay, Pagination]}
+                        loop={true}
+                        autoplay={{ delay: 3000 }}
+                        >
+
+                        {[gente1, gente2, gente3].map((src, idx) => (
+                        <SwiperSlide key={idx}>
+                        <img src={src} alt={`slide-${idx}`} />
+                        </SwiperSlide>
+                    ))}
+                    </Swiper>
+                    {/*<Slider images={[gente1, gente2, gente3]} className="slider-eventos" />*/}
                 </div>
                 <div className="texto-eventos">
                     <h1>Nosotros tambien nos divertimos!</h1>

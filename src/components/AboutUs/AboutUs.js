@@ -4,26 +4,27 @@ import './AboutUs.css';
 
 const AboutUs = () => {
     return(
-        <div className="contenedorAboutUs">
-            <div className="TextoInfo">
+        <div className="about-container">
+            <section className="hero">
                 <h1>Sobre Nosotros</h1>
-            </div>
-            
-            <div className="Informacion">
-                <div className="TextoAbout">
-                <h2>¿Que es Saint Thomas?</h2>
-                <h3>En nuestro centro de idiomas, el aprendizaje se convierte en una experiencia natural y significativa. Creemos que dominar un nuevo idioma es abrir una puerta a infinitas oportunidades, y lo hacemos con un enfoque dinamico, divertido y cercano. Desde teatro hasta cocina, pasando por musica y campamentos, cada clase es una nueva aventura. Con mas de 3 decadas de experiencia, seguimos transformando vidas a traves del conocimiento</h3>
+            </section>
+
+            <section className="info-section">
+                <div className="info-text">
+                <h2>¿Qué es Saint Thomas?</h2>
+                <p>En nuestro centro de idiomas… cada clase es una nueva aventura. Con más de 3 décadas de experiencia, seguimos transformando vidas a través del conocimiento.</p>
                 </div>
-                <div className="ImagenAbout"></div>
-            </div>
-            <div className="Testimonios">
-                <div className="TextoTestimonios">
-                <h1>Testimonios de nuestros estudiantes</h1>
-                
+                <div className="info-image"></div>
+            </section>
+
+            <section className="testimonials">
+                <div className="testimonials-text">
+                <h2>Testimonios de nuestros estudiantes</h2>
                 </div>
                 <InstagramCarousel />
+            </section>
             </div>
-        </div>
+
     );
 };
 

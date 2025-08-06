@@ -9,7 +9,7 @@ const Niveles = () => {
   const [editando, setEditando] = useState(null);
 
   const cargarNiveles = () => {
-    fetch('http://localhost:3001/api/niveles')
+    fetch(`${process.env.REACT_APP_API_URL}/api/niveles`)
       .then(res => res.json())
       .then(data => setNiveles(data))
       .catch(err => console.error('Error al obtener niveles:', err));
@@ -22,7 +22,7 @@ const Niveles = () => {
   const agregarNivel = () => {
     if (!nombre || !idioma) return alert('Todos los campos son obligatorios');
 
-    fetch('http://localhost:3001/api/niveles', {
+    fetch(`${process.env.REACT_APP_API_URL}/api/niveles`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nombre, idioma })
@@ -38,7 +38,7 @@ const Niveles = () => {
   const actualizarNivel = () => {
     if (!nombre || !idioma || !editando) return;
 
-    fetch(`http://localhost:3001/api/niveles/${editando}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/niveles/${editando}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nombre, idioma })
@@ -55,7 +55,7 @@ const Niveles = () => {
 const eliminarNivel = (id_nivel) => {
   if (!window.confirm('¿Eliminar este nivel?')) return;
 
-  fetch('http://localhost:3001/api/niveles/eliminar', {
+  fetch(`${process.env.REACT_APP_API_URL}/api/niveles/eliminar`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -19,7 +19,7 @@ const Register = () => {
         setError(null); // Limpiar errores anteriores
 
         try {
-            await axios.post('http://localhost:3001/api/auth/register', { dni, password, nombre });
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, { dni, password, nombre });
 
             // ✅ Mostramos el popup de éxito
             setShowSuccessPopup(true);

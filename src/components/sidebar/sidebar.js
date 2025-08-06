@@ -4,6 +4,7 @@ import {useNavigate, useLocation } from 'react-router-dom';
 import { UserContext } from '../functionalComponent/UserContext/UserContext'; // Importar el contexto
 import './Sidebar.css';
 import menuImagen from '../../images/iconos/menu-hamburguesa.png';
+import SidebarDropdown from './SidebarDropdown';
 import { Link } from 'react-router-dom';
 
 
@@ -45,7 +46,11 @@ const Sidebar = () => {
             <Link to="/home-teacher"><h4 className='OpcionSidebar' id='Blue2'>Perfil</h4></Link>
             <Link to="/Crear-usuarios"><h4 className='OpcionSidebar' id='Red2'>Registrar</h4></Link>
             <Link to="/Upload-Marks"><h4 className='OpcionSidebar' id='Red2'>Subir Notas</h4></Link>
-            <Link to="/upload-vids"><h4 className='OpcionSidebar' id='Red2'>Recursos</h4></Link>
+             <SidebarDropdown title="Recursos">
+              <Link to="/upload-vids"><h4 className='OpcionSidebar' id='Red2'>Subir Videos</h4></Link>
+              <Link to="/All-Vids"><h4 className='OpcionSidebar' id='Red2'>Ver Videos</h4></Link>
+              <Link to="/diccionario"><h4 className='OpcionSidebar' id='Red2'>Diccionario</h4></Link>
+            </SidebarDropdown>
             <Link to="/Advices"><h4 className='OpcionSidebar' id='Red2'>Avisos</h4></Link>
             <Link to="/AdminSchedules"><h4 className='OpcionSidebar' id='Red2'>Clases</h4></Link>
             <Link to="/Niveles"><h4 className='OpcionSidebar' id='Red2'>Niveles</h4></Link>
@@ -82,20 +87,22 @@ const Sidebar = () => {
   }
 
   return (
-    <div>
-      {}
-      <button onClick={toggleSidebar} className="toggle-button">
-        {isOpen } <img src={menuImagen} alt='' id='menuImagen'></img>
-      </button>
+      <>
+        <button onClick={toggleSidebar} className="toggle-button">
+          <img src={menuImagen} alt='' id='menuImagen' />
+        </button>
 
-      {}
-      <div className={`sidebar ${isOpen ? 'open' : 'closed'} rol-${user.rol}`}>
-        <div className='Divparasepararyquedebonito'>
-          {content}
+        {/* Overlay con blur */}
+        {isOpen && <div className="sidebar-overlay" onClick={toggleSidebar} />}
+
+        <div className={`sidebar ${isOpen ? 'open' : 'closed'} rol-${user.rol}`}>
+          <div className='Divparasepararyquedebonito'>
+            {content}
+          </div>
         </div>
-      </div>
-    </div>
-  );
+      </>
+    );
+
 };
 
 export default Sidebar;
