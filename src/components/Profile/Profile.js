@@ -20,38 +20,24 @@ const Profile = () => {
     const [errorCuota, setErrorCuota] = useState(null);
     const user = JSON.parse(localStorage.getItem('user')) || {};
 
-    const saveChanges = async () => {
+
+    useEffect(() => {
+    const fetchProfileInfo = async () => {
+        const params = { id_usuario: user.id };
+
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/update-profile`, profileData);
-            alert('Cambios guardados con éxito');
-            setProfileData(response.data);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
+            if (response.data[0]) {
+                setProfileData(response.data[0]);
+            }
         } catch (error) {
-            alert('Error al guardar los cambios');
+            console.error('Error al obtener la información:', error);
         }
     };
-    
-    useEffect(() => {
-        const fetchProfileInfo = async () => {
-            const params = { id_rol: user.rol, id: user.id };
-    
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
-                console.log('La informacion de perfil es:', response.data);
-    
-                if (response.data[0].id_perfil !== null) {
-                    setProfileData(response.data[0]); // Solo asignar si hay datos
-                    console.log('los parametros que se envian son:', params);
-                    console.log('La informacion de perfil es:', response.data);
-                } else {
-                    console.warn('El usuario con rol 4 no tiene perfil disponible.');
-                }
-            } catch (error) {
-                console.error('Error al obtener la información:', error);
-            }
-        };
-    
-        fetchProfileInfo();
-    }, [user.rol, user.id]);    
+
+    fetchProfileInfo();
+}, [user.id]);
+   
 
     useEffect(() => {
         const fetchPhoto = () => {

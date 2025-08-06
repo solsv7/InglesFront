@@ -4,6 +4,7 @@ import {useNavigate, useLocation } from 'react-router-dom';
 import { UserContext } from '../functionalComponent/UserContext/UserContext'; // Importar el contexto
 import './Sidebar.css';
 import menuImagen from '../../images/iconos/menu-hamburguesa.png';
+import { HiOutlineMenu } from "react-icons/hi";
 import SidebarDropdown from './SidebarDropdown';
 import { Link } from 'react-router-dom';
 
@@ -89,7 +90,7 @@ const Sidebar = () => {
   return (
       <>
         <button onClick={toggleSidebar} className="toggle-button">
-          <img src={menuImagen} alt='' id='menuImagen' />
+          <HiOutlineMenu />
         </button>
 
         {/* Overlay con blur */}

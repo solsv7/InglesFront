@@ -84,10 +84,15 @@ const Header = () => {
           {token ? (
             user?.rol !== 4 ? (
               <div className="log-perf">
+                
+                {user?.rol === 3 && (
+                  <div className='BTNAvisos'>
+                    <BandejaMSG />
+                  </div>
+                )}
                 <h3 className="btn btn-left" id="user" onClick={checkRole}>
                   {user?.nombre || 'Usuario'}
                 </h3>
-                <div className='BTNAvisos'>{content}</div>
                 <div className='BotonSidebar'>{validateSidebar}</div>
               </div>
             ) : (

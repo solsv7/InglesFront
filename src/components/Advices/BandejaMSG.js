@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { UserContext } from "../functionalComponent/UserContext/UserContext";
 import './BandejaMsg.css';
 import axios from "axios";
+import { GoBellFill } from "react-icons/go";
 
 const Avisos = () => {
     const [messages, setMessages] = useState([]); // Últimos mensajes obtenidos
@@ -49,38 +50,30 @@ const Avisos = () => {
 
     return (
         <div className="Contenido-Avisos">
-            {/* Botón de avisos */}
-            <button onClick={handleToggle} className="Megafono" >
-                🕬
+            <button onClick={handleToggle} className="Megafono">
+                <GoBellFill />
+                {unreadCount > 0 && (
+                    <span className="num-avisos">{unreadCount}</span>
+                )}
             </button>
-            <button 
-                onClick={handleToggle} 
-                style={{
-                    backgroundColor: unreadCount > 0 ? "red" : "transparent", // Cambia el color si hay no leídos
-                    
-                }} className="num-avisos"
-            >
-                {unreadCount > 0 ? ` ${unreadCount}` : ""}
-            </button>
-
             {/* Desplegable de mensajes */}
             {isOpen && (
-                <div className="casilla-avisos" >
+                <div className="casilla-avisos">
                     <h4>Ultimos Avisos</h4>
                     <ul>
                         {messages.length > 0 ? (
-                             messages.map((msg) => (
+                            messages.map((msg) => (
                                 <li key={msg.id_mensaje} className="Mensajes">
                                     {msg.mensaje}
-                                </li>
-                            ))
-                        ) : (
-                            <li>No hay mensajes nuevos</li>
-                        )}
-                    </ul>
-                </div>
-            )}
-        </div>
+                            </li>
+                        ))
+                    ) : (
+                        <li>No hay mensajes nuevos</li>
+                    )}
+                </ul>
+            </div>
+        )}
+    </div>
     );
 };
 

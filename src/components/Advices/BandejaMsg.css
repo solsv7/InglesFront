@@ -1,21 +1,28 @@
 .Contenido-Avisos {
-    position: absolute;
-    margin: 0px;
-    top: -5px;
-    right: 150px;
-    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-left: 10px;
 }
 
 .num-avisos {
+    position: absolute;
+    top: -8px;
+    right: -8px;
     color: white;
     font-size: 15px;
-    height: 30px;
-    width: 30px;
-    border-radius: 25px;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
     border: none;
-    position: absolute;
-    right: -10px;
-    top: 10px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-weight: bold;
+    z-index: 1;
 }
 
 .casilla-avisos {
@@ -53,38 +60,46 @@
 }
 
 .Megafono {
-    font-size: 30px;
-    position: absolute;
-    right: -10px;
+    background: none;
     border: none;
-    z-index: 1400;
-    top: 10px;
+    font-size: 32px;
+    cursor: pointer;
+    color: #333;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* === RESPONSIVE: Colocar el botón arriba a la izquierda en pantallas pequeñas === */
 @media (max-width: 600px) {
     .Contenido-Avisos {
-        top: -10.5vh;
-        left: -28vw;
-        right: auto; /* Reseteamos la propiedad right */
+        position: static;
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
     }
 
     .Megafono {
-        left: 0;
-        top: 0;
-        position: absolute;
+        position: static;
+        left: unset;
+        top: unset;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-
     .num-avisos {
-        left: 35px;
-        top: 5px;
+        left: unset;
+        top: unset;
+        right: unset;
         position: absolute;
     }
-
     .casilla-avisos {
-        left: 10px;
-        right: auto;
-        width: 80vw;
-        top: 50px;
+        z-index: 1000;
+        width: 90vw;
+        top: 200px;
     }
 }

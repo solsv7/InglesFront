@@ -22,6 +22,7 @@ const ModificarProfile = () => {
     const [parentContact, setParentContact] = useState("");
     const user = JSON.parse(localStorage.getItem("user")) || {};
     const navigate = useNavigate();
+    console.log("Usuario actual:", user);
 
     let redirectPath = "/";
     if (user.rol === 1) redirectPath = "/home-admin";
@@ -36,7 +37,11 @@ const ModificarProfile = () => {
 
     useEffect(() => {
         const fetchProfileInfo = async () => {
-            const params = { id_rol: user.rol, id: user.id };
+            const params = { 
+                id_rol: user.rol, 
+                id: user.rol === 1 ? user.id : user.rol === 2 ? user.id_profesor : user.id_alumno 
+                };
+
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
                 const profile = response.data[0];
@@ -59,14 +64,13 @@ const ModificarProfile = () => {
 
     const handleSave = async () => {
         const updatedData = {
-            id_alumno: user.id_alumno || null,
-            id_profesor: user.id_profesor || null,
+            id_usuario:user.id,
             id_foto: photoIndex,
             mail,
             whatsapp: contactNumber,
-            whatsapp_adulto: parentContact,
-            id_perfil: profileData?.id_perfil || null,
+            whatsapp_adulto: parentContact || null,     
         };
+        console.log("Datos a enviar:", updatedData);
 
         try {
             await axios.put(`${process.env.REACT_APP_API_URL}/api/actualizar-perfil`, updatedData);
