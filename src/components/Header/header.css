@@ -98,13 +98,23 @@
   text-decoration: none;
   color: white;
 }
-
+.cerrarGuest{
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.cerrarGuest button {
+  font-size: 20px;
+  font-family: 'Neka';
+  font-weight: lighter;
+}
 .cerrarGuest h3 {
   background-color: #B40A00;
   border-radius: 19px;
   color: white;
-  font-size: 18px;
-  font-family: 'Allenoire';
+  font-size: 20px;
+  font-family: 'Neka';
+  font-weight: lighter;
   padding: 10px;
   cursor: pointer;
 }
@@ -143,19 +153,7 @@
   gap: 20px;
 }
 
-.BTNAvisos {
-  height: 20px;
-  width: 20px;
-}
 
-.BTNSidebar {
-  justify-content: center;
-  align-items: center;
-}
-
-.BotonSidebar {
-  display: flex;
-}
 
 @media (max-width: 700px) {
   .header-content{

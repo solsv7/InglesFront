@@ -1,58 +1,104 @@
-.Contenido-Formulario{
-justify-self: center;
-background-color: rgb(250, 245, 245);
-padding: 20px;
-}
-.Contenido-Formulario h1{
+.Contenido-Formulario {
     justify-self: center;
-    font-family: 'Allenoire';
-    font-weight: lighter;
-}
-.separadores-formulario{
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
+    background-color: rgb(250, 245, 245);
+    box-sizing: border-box;
+    margin-top: 120px;
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
     box-shadow: 1px 1px 10px rgb(199, 196, 196);
 }
-.separadores-formulario>label{
-    font-size: 20px;
-    font-family: 'Allenoire';
-}
-.separadores-formulario>input{
-    height: 30px;
-}
-.separadores-formulario>select,.separadores-formulario>option{
-    height: 30px;
-}
-.campo-de-texto{
+
+.Contenido-Formulario h1 {
+    font-family: 'Neka';
+    font-size: 2rem;
+    color: #212122;
+    margin-bottom: 20px;
+    text-align: start;
+    border-bottom: solid 1px gray;
     width: 100%;
+}
+
+.separadores-formulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px 0;
+    margin: 24px 0;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px rgb(199, 196, 196);
+    background: #fff;
+}
+
+.separadores-formulario > label {
+    font-size: 1.1rem;
+    font-family: 'Neka';
+    padding: 0 10px;
+}
+
+.separadores-formulario > input,
+.separadores-formulario > select {
+    width: 100%;
+    padding: 10px;
+    margin: 0 auto 10px auto;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.campo-de-texto {
     height: 100px;
 }
-.enviar-btn{
+
+.enviar-btn {
     background-color: black;
     border: none;
     color: white;
     font-family: 'Allenoire';
-    font-size: 20px;
+    font-size: 1.1rem;
     width: 100%;
     height: 50px;
     border-radius: 5px;
+    margin-top: 20px;
+    transition: background 0.2s;
 }
-#Campo-nombre{
-   text-transform: lowercase;
+
+.enviar-btn:hover {
+    background-color: rgb(209, 55, 55);
+    color: rgb(245, 237, 237);
+}
+
+#Campo-nombre {
+    text-transform: lowercase;
 }
 #Campo-Nombre::first-letter { 
     text-transform: uppercase; 
 } 
-.enviar-btn:hover{
-    background-color: rgb(209, 55, 55);
-    color: rgb(245, 237, 237);
-}
-@media (max-width:600px) {
-    .Contenido-Formulario{
-        margin-top: 20vh;
+
+@media (max-width: 700px) {
+    .Contenido-Formulario {
+        margin-top: 200px !important;
+        padding: 10px 5vw;
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .separadores-formulario {
+        padding: 16px 0;
+        margin: 16px 0;
+        box-shadow: none;
+    }
+    .Contenido-Formulario h1 {
+        font-size: 1.5rem;
+        padding-bottom: 8px;
+    }
+    .enviar-btn {
+        font-size: 1rem;
+        height: 45px;
     }
 }

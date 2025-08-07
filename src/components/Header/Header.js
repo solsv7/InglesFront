@@ -33,7 +33,15 @@ const Header = () => {
   const content = user?.rol === 3 ? <BandejaMSG /> : null;
 
   const validateSidebar = user?.rol === 4 
-    ? <div className='cerrarGuest'><h3 onClick={handleLogout}>Cerrar Sesión</h3></div>
+    ? <div className='cerrarGuest'><h3 onClick={handleLogout}>Cerrar Sesión</h3>
+    <button
+      className="btn btn-left ins-button"
+      onClick={() => navigate('/Inscription')}
+      style={{ marginTop: '10px' }}
+    >
+      Inscribirme
+    </button>
+    </div>
     : <div className="BTNSidebar"><Sidebar /></div>;
 
   const checkRole = () => {
@@ -97,6 +105,12 @@ const Header = () => {
               </div>
             ) : (
               <div className="cerrarGuest">
+                <button
+                  className="btn btn-left ins-button"
+                  onClick={() => navigate('/Inscription')}
+                >
+                  Inscribirme
+                </button>
                 <h3 onClick={handleLogout}>Cerrar Sesión</h3>
               </div>
             )

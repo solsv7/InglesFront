@@ -20,12 +20,12 @@
 }
 
 .Contenido-Modificar h1 {
-    text-align: Left;
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: grey;
-    font-weight: lighter;
-    border-bottom: solid 1px grey;
+  font-size: 36px;
+  color: #212122;
+  margin-bottom: 20px;
+  text-align: start;
+  border-bottom: solid 1px gray;
+  width: 100%;
 }
 
 .Contenido-Modificar h2 {
