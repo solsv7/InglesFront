@@ -3,6 +3,22 @@ import transition from "../../transition";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import './Profile.css';
+import { 
+  FaUser, 
+  FaEnvelope, 
+  FaPhone, 
+  FaUserShield, 
+  FaCreditCard, 
+  FaCalendarAlt,
+  FaEdit,
+  FaKey,
+  FaCog,
+  FaGraduationCap,
+  FaChalkboardTeacher,
+  FaUserTie
+} from 'react-icons/fa';
+
+// Importar imágenes
 import Imagen1 from '../../images/imgsPerfil/first-pic.png';
 import Imagen2 from '../../images/imgsPerfil/second-pic.png';
 import Imagen3 from '../../images/imgsPerfil/third-pic.png';
@@ -20,24 +36,22 @@ const Profile = () => {
     const [errorCuota, setErrorCuota] = useState(null);
     const user = JSON.parse(localStorage.getItem('user')) || {};
 
-
     useEffect(() => {
-    const fetchProfileInfo = async () => {
-        const params = { id_usuario: user.id };
+        const fetchProfileInfo = async () => {
+            const params = { id_usuario: user.id };
 
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
-            if (response.data[0]) {
-                setProfileData(response.data[0]);
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/perf-info`, { params });
+                if (response.data[0]) {
+                    setProfileData(response.data[0]);
+                }
+            } catch (error) {
+                console.error('Error al obtener la información:', error);
             }
-        } catch (error) {
-            console.error('Error al obtener la información:', error);
-        }
-    };
+        };
 
-    fetchProfileInfo();
-}, [user.id]);
-   
+        fetchProfileInfo();
+    }, [user.id]);
 
     useEffect(() => {
         const fetchPhoto = () => {
@@ -54,19 +68,18 @@ const Profile = () => {
         }
     }, [profileData?.id_foto]);
 
-    // Nuevo efecto para obtener información de la cuota
+    // Efecto para obtener información de la cuota
     useEffect(() => {
-        if (user.rol === 3 && user.id_alumno) { // Solo para alumnos
+        if (user.rol === 3 && user.id_alumno) {
             const fetchCuotaInfo = async () => {
                 setLoadingCuota(true);
                 setErrorCuota(null);
                 try {
-                    const today = new Date().toISOString().split('T')[0]; // Fecha actual en formato YYYY-MM-DD
+                    const today = new Date().toISOString().split('T')[0];
                     const response = await axios.get(
                         `${process.env.REACT_APP_API_URL}/api/cuotas/vigentes?id_alumno=${user.id_alumno}&fecha=${today}`
                     );
                     
-                    // La API ahora devuelve un array, tomamos el primer elemento si existe
                     if (response.data && response.data.length > 0) {
                         setCuotaInfo(response.data[0]);
                     } else {
@@ -91,14 +104,24 @@ const Profile = () => {
     // Componente de información de cuota
     const CuotaInfoCard = () => {
         if (loadingCuota) {
-            return <div className="cuota-loading">Cargando información de cuota...</div>;
+            return (
+                <div className="profile-loading">
+                    <div className="loading-spinner"></div>
+                    <p>Cargando información de cuota...</p>
+                </div>
+            );
         }
         
         if (errorCuota) {
             return (
-                <div className="cuota-info error">
-                    <h3>Estado de cuota</h3>
-                    <p>{errorCuota}</p>
+                <div className="profile-card profile-error">
+                    <div className="card-header">
+                        <FaCreditCard className="card-icon" />
+                        <h3>Estado de Cuota</h3>
+                    </div>
+                    <div className="card-content">
+                        <p>{errorCuota}</p>
+                    </div>
                 </div>
             );
         }
@@ -110,9 +133,15 @@ const Profile = () => {
         // Si hay un mensaje (no hay cuotas vigentes)
         if (cuotaInfo.mensaje) {
             return (
-                <div className="cuota-info warning">
-                    <h3>No tienes cuotas activas.</h3>
-                    <p>Acercate a renovarla.</p>
+                <div className="profile-card profile-warning">
+                    <div className="card-header">
+                        <FaCreditCard className="card-icon" />
+                        <h3>Estado de Cuota</h3>
+                    </div>
+                    <div className="card-content">
+                        <p className="warning-message">No tienes cuotas activas</p>
+                        <p className="warning-subtitle">Acércate a renovarla</p>
+                    </div>
                 </div>
             );
         }
@@ -124,130 +153,152 @@ const Profile = () => {
             : fechaVencimiento.toLocaleDateString('es-ES');
         
         const diasRestantes = cuotaInfo.dias_restantes;
+        const isUrgent = diasRestantes <= 7 || cuotaInfo.estado_pago === 'pendiente';
 
         return (
-            <div className={`cuota-info ${cuotaInfo.status === 'success' ? 'success' : 'warning'}`}>
-                <h3>Tu cuota actual</h3>
-                <div className="cuota-details">
-                    <p><strong>Plan:</strong> {cuotaInfo.nombre_plan || 'No especificado'}</p>
-                    <p><strong>Monto:</strong> ${cuotaInfo.monto?.toLocaleString() || '0'}</p>
-                    <p><strong>Estado:</strong> 
-                        <span className={`estado-${cuotaInfo.estado_pago}`}>
-                            {cuotaInfo.estado_pago || 'No especificado'}
-                        </span>
-                    </p>
-                    <p><strong>Vencimiento:</strong> {fechaFormateada}</p>
-                    <p><strong>Días restantes:</strong> {diasRestantes}</p>
+            <div className={`profile-card ${isUrgent ? 'profile-urgent' : 'profile-success'}`}>
+                <div className="card-header">
+                    <FaCreditCard className="card-icon" />
+                    <h3>Tu Cuota Actual</h3>
                 </div>
-                {(diasRestantes <= 7 || cuotaInfo.estado_pago === 'pendiente') && (
-                    <Link to="/pagos" className="renovar-btn">
-                        {cuotaInfo.estado_pago === 'pendiente' ? 'Pagar ahora' : 'Renovar antes del vencimiento'}
-                    </Link>
-                )}
+                <div className="card-content">
+                    <div className="info-grid">
+                        <div className="info-item">
+                            <span className="info-label">Plan:</span>
+                            <span className="info-value">{cuotaInfo.nombre_plan || 'No especificado'}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Monto:</span>
+                            <span className="info-value">${cuotaInfo.monto?.toLocaleString() || '0'}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Estado:</span>
+                            <span className={`status-badge status-${cuotaInfo.estado_pago?.toLowerCase() || 'unknown'}`}>
+                                {cuotaInfo.estado_pago || 'No especificado'}
+                            </span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Vencimiento:</span>
+                            <span className="info-value">{fechaFormateada}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Días restantes:</span>
+                            <span className={`days-count ${diasRestantes <= 7 ? 'urgent' : ''}`}>
+                                {diasRestantes}
+                            </span>
+                        </div>
+                    </div>
+                    {isUrgent && (
+                        <Link to="/pagos" className="action-btn primary-btn">
+                            {cuotaInfo.estado_pago === 'pendiente' ? 'Pagar Ahora' : 'Renovar Antes del Vencimiento'}
+                        </Link>
+                    )}
+                </div>
             </div>
         );
     };
 
-    // Resto del componente permanece igual
-    let content;
-    let UserType = "Usuario";
+    // Obtener icono y título según el rol
+    const getRoleInfo = () => {
+        switch(user.rol) {
+            case 1:
+                return { icon: <FaUserShield />, title: "Administrador", color: "#dc2626" };
+            case 2:
+                return { icon: <FaChalkboardTeacher />, title: "Profesor", color: "#2563eb" };
+            case 3:
+                return { icon: <FaGraduationCap />, title: "Alumno", color: "#059669" };
+            default:
+                return { icon: <FaUser />, title: "Usuario", color: "#6b7280" };
+        }
+    };
 
-    if (user.rol === 1) {
-        UserType = "Administrador";
-        content = (
-            <div className="perfil-layout">
-                {/* Sidebar */}
-                <aside className="perfil-sidebar">
-                <img src={photo} alt="Perfil" className="perfil-img" />
-                <h2 className="perfil-rol">{UserType}</h2>
-                <ul className="perfil-menu">
-                    <li><Link to="/modificar">Actualizar datos personales</Link></li>
-                    <li><Link to="/cambiar-clave">Actualizar contraseña</Link></li>
-                    <li><Link to="/configuracion">Configuración</Link></li>
-                </ul>
-                </aside>
+    const roleInfo = getRoleInfo();
 
-                {/* Contenido principal */}
-                <main className="perfil-contenido">
-                <h1 className="perfil-nombre">{user.nombre}</h1>
-                <section className="perfil-info">
-                    <h2>Información personal</h2>
-                    <p>📧 Correo: {profileData?.mail || 'Sin información'}</p>
-                    <p>📞 WhatsApp: {profileData?.whatsapp || 'Sin información'}</p>
-                    {user.rol === 3 && (
-                    <p>👤 Adulto responsable: {profileData?.whatsapp_adulto || 'Sin información'}</p>
-                    )}
-                </section>
-                {user.rol === 3 && <CuotaInfoCard />}
-                </main>
-            </div>
+    return (
+        <div className="profile-page-wrapper">
+            <div className="profile-container">
 
-        );
-    } else if (user.rol === 2) {
-        UserType = "Profesor";
-        content = (  
-            <div className="perfil-layout">
-                {/* Sidebar */}
-                <aside className="perfil-sidebar">
-                <img src={photo} alt="Perfil" className="perfil-img" />
-                <h2 className="perfil-rol">{UserType}</h2>
-                <ul className="perfil-menu">
-                    <li><Link to="/modificar">Actualizar datos personales</Link></li>
-                    <li><Link to="/cambiar-clave">Actualizar contraseña</Link></li>
-                    <li><Link to="/configuracion">Configuración</Link></li>
-                </ul>
-                </aside>
-
-                {/* Contenido principal */}
-                <main className="perfil-contenido">
-                <h1 className="perfil-nombre">{user.nombre}</h1>
-                <section className="perfil-info">
-                    <h2>Información personal</h2>
-                    <p>📧 Correo: {profileData?.mail || 'Sin información'}</p>
-                    <p>📞 WhatsApp: {profileData?.whatsapp || 'Sin información'}</p>
-                    {user.rol === 3 && (
-                    <p>👤 Adulto responsable: {profileData?.whatsapp_adulto || 'Sin información'}</p>
-                    )}
-                </section>
-                {user.rol === 3 && <CuotaInfoCard />}
-                </main>
-            </div>
-        );
-    } else if (user.rol === 3) {
-        UserType = "Alumno";
-        content = (
-
-                <div className="perfil-layout">
+                <div className="profile-layout">
                     {/* Sidebar */}
-                    <aside className="perfil-sidebar">
-                    <img src={photo} alt="Perfil" className="perfil-img" />
-                    <h2 className="perfil-rol">{UserType}</h2>
-                    <ul className="perfil-menu">
-                        <li><Link to="/modificar">Actualizar datos personales</Link></li>
-                        <li><Link to="/cambiar-clave">Actualizar contraseña</Link></li>
-                        <li><Link to="/configuracion">Configuración</Link></li>
-                    </ul>
+                    <aside className="profile-sidebar">
+                        <div className="profile-card sidebar-card">
+                            <div className="profile-avatar">
+                                <img src={photo} alt="Perfil" className="avatar-image" />
+                                <div className="avatar-overlay">
+                                    <FaUser className="avatar-icon" />
+                                </div>
+                            </div>
+                            
+                            <div className="profile-info">
+                                <h2 className="profile-name">{user.nombre}</h2>
+                                <div className="profile-role">
+                                    {roleInfo.icon}
+                                    <span>{roleInfo.title}</span>
+                                </div>
+                            </div>
+
+                            <nav className="profile-nav">
+                                <Link to="/modificar" className="nav-link">
+                                    <FaEdit className="nav-icon" />
+                                    <span>Actualizar Datos</span>
+                                </Link>
+                                <Link to="/cambiar-clave" className="nav-link">
+                                    <FaKey className="nav-icon" />
+                                    <span>Cambiar Contraseña</span>
+                                </Link>
+                                <Link to="/configuracion" className="nav-link">
+                                    <FaCog className="nav-icon" />
+                                    <span>Configuración</span>
+                                </Link>
+                            </nav>
+                        </div>
                     </aside>
 
                     {/* Contenido principal */}
-                    <main className="perfil-contenido">
-                    <h1 className="perfil-nombre">{user.nombre}</h1>
-                    <section className="perfil-info">
-                        <h2>Información personal</h2>
-                        <p>📧 Correo: {profileData?.mail || 'Sin información'}</p>
-                        <p>📞 WhatsApp: {profileData?.whatsapp || 'Sin información'}</p>
-                        {user.rol === 3 && (
-                        <p>👤 Adulto responsable: {profileData?.whatsapp_adulto || 'Sin información'}</p>
-                        )}
-                    </section>
-                    {user.rol === 3 && <CuotaInfoCard />}
+                    <main className="profile-content">
+                        <div className="profile-card main-card">
+                            <div className="card-header">
+                                <FaUser className="card-icon" />
+                                <h3>Información Personal</h3>
+                            </div>
+                            <div className="card-content">
+                                <div className="info-grid">
+                                    <div className="info-item">
+                                        <FaEnvelope className="info-icon" />
+                                        <div className="info-content">
+                                            <span className="info-label">Correo Electrónico</span>
+                                            <span className="info-value">{profileData?.mail || 'Sin información'}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="info-item">
+                                        <FaPhone className="info-icon" />
+                                        <div className="info-content">
+                                            <span className="info-label">WhatsApp</span>
+                                            <span className="info-value">{profileData?.whatsapp || 'Sin información'}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    {user.rol === 3 && (
+                                        <div className="info-item">
+                                            <FaUserTie className="info-icon" />
+                                            <div className="info-content">
+                                                <span className="info-label">Adulto Responsable</span>
+                                                <span className="info-value">{profileData?.whatsapp_adulto || 'Sin información'}</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Información de cuota solo para alumnos */}
+                        {user.rol === 3 && <CuotaInfoCard />}
                     </main>
                 </div>
-                );
-
-    }
-
-    return <div className="contenidoProfile">{content}</div>;
+            </div>
+        </div>
+    );
 };
 
 export default transition(Profile);

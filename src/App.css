@@ -93,9 +93,6 @@ body{
     padding: 0px;
     
 }
-.main-content {
-  padding-top: 50px; /* 130px header + 40px navbar (ajusta según tu caso) */
-}
 
 .slide-in{
   position: fixed;

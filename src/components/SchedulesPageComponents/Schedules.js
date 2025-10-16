@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 import './Schedules.css';
+import { FaCalendarAlt, FaClock } from 'react-icons/fa';
 
 const Schedules = () => {
     const [clases, setClases] = useState([]);
-    const diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
+    const [isLoading, setIsLoading] = useState(true);
+    const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/api/clases`)
-            .then(response => response.json())
-            .then(data => setClases(data))
-            .catch(error => console.error("Error al obtener las clases:", error));
+        const fetchClases = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/clases`);
+                const data = await response.json();
+                setClases(data);
+            } catch (error) {
+                console.error("Error al obtener las clases:", error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchClases();
     }, []);
 
     // Obtener los intervalos de tiempo únicos y ordenarlos
@@ -19,44 +30,94 @@ const Schedules = () => {
     const obtenerNivelClase = (dia, intervalo) => {
         const [horaInicio] = intervalo.split(" - ");
         
-        // Filtrar clases que coincidan con el día y la hora
         const clasesPorDia = clases.filter(c => c.dia_nombre === dia && c.hora_inicio === horaInicio);
         
         if (clasesPorDia.length > 0) {
-            // Obtener los niveles disponibles para ese horario
             const niveles = clasesPorDia.map(c => c.nivel_nombre).join(", ");
             return niveles;
         } else {
-            return "-"; // Si no hay clases, mostrar "-"
+            return "-";
         }
     };
 
+    if (isLoading) {
+        return (
+            <div className="schedules-loading">
+                <div className="loading-spinner"></div>
+                <p>Cargando horarios...</p>
+            </div>
+        );
+    }
+
     return (
-        <div className="Horarios">
-            <h3>Nuestros Horarios</h3>
-            <div className="SeparadorTabla">
-                <table className="TablaHorarios">
+        <div className="schedules-container">
+            <div className="schedules-header">
+                <FaCalendarAlt className="header-icon" />
+                <h2>Nuestros Horarios</h2>
+                <p>Encuentra el horario que mejor se adapte a tus necesidades</p>
+            </div>
+
+            <div className="table-wrapper">
+                <table className="schedules-table">
                     <thead>
                         <tr>
-                            <th>Hora</th>
+                            <th className="time-header">
+                                <FaClock className="th-icon" />
+                                Horario
+                            </th>
                             {diasSemana.map((dia, index) => (
-                                <th key={index}>{dia}</th>
+                                <th key={index} className="day-header">
+                                    {dia}
+                                </th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
-                        {intervalosTiempo.map((intervalo, index) => (
-                            <tr key={index}>
-                                <td className="Horas">{intervalo}</td>
-                                {diasSemana.map((dia, idx) => (
-                                    <td className="niveles" key={idx}>
-                                        {obtenerNivelClase(dia, intervalo)}
-                                    </td>
-                                ))}
+                        {intervalosTiempo.length > 0 ? (
+                            intervalosTiempo.map((intervalo, index) => (
+                                <tr key={index} className="schedule-row">
+                                    <td className="time-slot">{intervalo}</td>
+                                    {diasSemana.map((dia, idx) => (
+                                        <td 
+                                            key={idx} 
+                                            className={`level-cell ${obtenerNivelClase(dia, intervalo) !== '-' ? 'has-class' : 'no-class'}`}
+                                        >
+                                            {obtenerNivelClase(dia, intervalo)}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan={6} className="no-data">
+                                    No hay horarios disponibles en este momento
+                                </td>
                             </tr>
-                        ))}
+                        )}
                     </tbody>
                 </table>
+            </div>
+
+            {/* Vista móvil alternativa */}
+            <div className="mobile-schedules">
+                {intervalosTiempo.map((intervalo, index) => (
+                    <div key={index} className="mobile-time-slot">
+                        <div className="mobile-time">{intervalo}</div>
+                        <div className="mobile-days">
+                            {diasSemana.map((dia, idx) => {
+                                const nivel = obtenerNivelClase(dia, intervalo);
+                                return (
+                                    <div key={idx} className="mobile-day">
+                                        <span className="day-name">{dia.substring(0, 3)}</span>
+                                        <span className={`day-level ${nivel !== '-' ? 'has-class' : 'no-class'}`}>
+                                            {nivel}
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

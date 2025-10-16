@@ -1,0 +1,263 @@
+/* RegistroAsistencias.css - Estilos Específicos */
+.registro-asistencias-container {
+  font-family: 'Rubik', sans-serif;
+  color: #2d3748;
+}
+
+.registro-asistencias-container h2 {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a296b;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Formulario de Búsqueda */
+.ra-form-busqueda {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.ra-form-busqueda input[type="date"],
+.ra-form-busqueda select {
+  padding: 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: 'Rubik', sans-serif;
+  background: white;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.ra-form-busqueda input[type="date"]:focus,
+.ra-form-busqueda select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Tablas de Asistencias */
+.ra-tabla-container {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.ra-tabla-container h3 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f7fafc;
+}
+
+.ra-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ra-tabla thead {
+  background: linear-gradient(135deg, #1a296b 0%, #4a5568 100%);
+}
+
+.ra-tabla thead th {
+  color: white;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ra-tabla tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.2s ease;
+}
+
+.ra-tabla tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.ra-tabla tbody tr:nth-child(even) {
+  background-color: #f7fafc;
+}
+
+.ra-tabla tbody tr:nth-child(even):hover {
+  background-color: #edf2f7;
+}
+
+.ra-tabla tbody td {
+  padding: 15px 12px;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+/* Radio Buttons Mejorados */
+.ra-radio-group {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.ra-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.ra-radio-label:hover {
+  background-color: #edf2f7;
+}
+
+.ra-radio-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #48bb78;
+  cursor: pointer;
+}
+
+.ra-radio-label.presente {
+  color: #48bb78;
+}
+
+.ra-radio-label.ausente {
+  color: #f56565;
+}
+
+/* Botón Registrar */
+.ra-btn-registrar {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  font-family: 'Rubik', sans-serif;
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.ra-btn-registrar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+}
+
+.ra-btn-registrar:active {
+  transform: translateY(0);
+}
+
+/* Estados de Asistencia */
+.ra-estado-presente {
+  color: #48bb78 !important;
+  background-color: #e6fffa;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ra-estado-ausente {
+  color: #f56565 !important;
+  background-color: #fff5f5;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Porcentajes */
+.ra-porcentaje-alto {
+  color: #48bb78;
+  font-weight: 600;
+}
+
+.ra-porcentaje-medio {
+  color: #ed8936;
+  font-weight: 600;
+}
+
+.ra-porcentaje-bajo {
+  color: #f56565;
+  font-weight: 600;
+}
+
+/* Mensajes de Estado */
+.ra-mensaje-cargando {
+  text-align: center;
+  padding: 40px;
+  color: #718096;
+  font-style: italic;
+}
+
+.ra-mensaje-vacio {
+  text-align: center;
+  padding: 40px;
+  color: #a0aec0;
+  background: #f7fafc;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ra-form-busqueda {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .ra-form-busqueda input[type="date"],
+  .ra-form-busqueda select {
+    min-width: 100%;
+  }
+  
+  .ra-tabla-container {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .ra-tabla {
+    font-size: 0.85rem;
+  }
+  
+  .ra-tabla thead th,
+  .ra-tabla tbody td {
+    padding: 10px 8px;
+  }
+  
+  .ra-radio-group {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .ra-tabla {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .ra-btn-registrar {
+    width: 100%;
+    padding: 16px;
+  }
+}

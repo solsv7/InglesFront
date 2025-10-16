@@ -12,7 +12,7 @@ const StudentGrades = () => {
         <div className="student-grades">
             <StudentSearch onSelectStudent={setSelectedStudentId} />
             <UploadGrade selectedStudentId={selectedStudentId} />
-            <AcceptStudents onSelectStudent={setSelectedStudentId} /> {/* ✅ Se pasa correctamente */}
+            {/* <AcceptStudents onSelectStudent={setSelectedStudentId} />  */}
         </div>
     );
 };

@@ -1,62 +1,361 @@
-.user-registration2{
-    height: 40vh;
-    margin-bottom: 30px;
-}
-.MarcoFormulario2{
-    width: 600px;
-    border: solid 1px rgb(189, 183, 183);
-    padding: 20px;
-    border-radius: 25px;
-    margin-left: 30px;
-    margin-bottom: 20px;
-    font-family: 'Allenoire';
-}
-.MarcoFormulario2 label{
-    justify-self: center;
-}
-.MarcoFormulario2 input[type="file"]{
-    font-family: 'Ristorante';
-    font-weight: bold;
-    font-size: 20px;
-    width: 500px;
-    margin-left: 50px;
-}
-.BotonCrearAlumno{
-    margin-left: 95px;
-    background-color: black;
-    border: none;
-    color: white;
-    font-family: 'Allenoire';
-    transition: background-color 0.3s ease;
-    font-size: 20px;
-    width: 40vw;
-    height: 50px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-}
-.BotonCrearAlumno:hover{
-    background-color: rgb(209, 55, 55);
-    color: rgb(245, 237, 237);
+/* Student.css */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+.student-registration-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
 }
 
-@media (max-width:600px){
-    .user-registration2{
-        width: 50px;
-        height: 30vh;
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.form-section {
+    margin-bottom: 25px;
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Neka', 'Rubik', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 12px;
+}
+
+.label-icon {
+    color: #667eea;
+    font-size: 1rem;
+}
+
+.file-upload-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.file-upload-wrapper:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+.file-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.upload-icon {
+    color: #667eea;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.file-input {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+}
+
+.file-input-label {
+    flex: 1;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px dashed #cbd5e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Rubik', sans-serif;
+    color: #4a5568;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-input-label:hover {
+    background: #edf2f7;
+    border-color: #667eea;
+}
+
+.file-input:focus + .file-input-label {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.file-requirements {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #718096;
+    font-family: 'Rubik', sans-serif;
+}
+
+.info-icon {
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+.preview-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.preview-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 15px;
+    padding: 15px 20px;
+    background: #e2e8f0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.9rem;
+}
+
+.preview-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 15px;
+    padding: 12px 20px;
+    border-bottom: 1px solid #e2e8f0;
+    font-family: 'Rubik', sans-serif;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.preview-row:last-child {
+    border-bottom: none;
+}
+
+.preview-more {
+    padding: 15px 20px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    color: #718096;
+    font-style: italic;
+    background: #edf2f7;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 16px 30px;
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Neka', 'Rubik', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+    margin-top: 10px;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(72, 187, 120, 0.4);
+}
+
+.submit-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-button:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.button-icon {
+    font-size: 1.1rem;
+}
+
+.message {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    .MarcoFormulario2{
-        
-        width: 60vw;
-        font-size: 4vw;
-        text-align: center;
-        display: flex;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.success {
+    background: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.message.error {
+    background: #fed7d7;
+    color: #c53030;
+    border: 1px solid #feb2b2;
+}
+
+.message.warning {
+    background: #feebc8;
+    color: #744210;
+    border: 1px solid #faf089;
+}
+
+.message-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.form-info {
+    background: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.form-info .info-icon {
+    color: #3182ce;
+    font-size: 1.2rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-content p {
+    margin: 0 0 10px 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #2c5282;
+}
+
+.info-content ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #4a5568;
+}
+
+.info-content li {
+    margin-bottom: 5px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Animaciones */
+.form-section {
+    animation: fadeInUp 0.5s ease;
+    animation-fill-mode: both;
+}
+
+.form-section:nth-child(1) { animation-delay: 0.1s; }
+.form-section:nth-child(2) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .student-registration-form {
+        padding: 0 10px;
+    }
+
+    .section-label {
+        font-size: 1rem;
+    }
+
+    .file-upload-wrapper {
+        padding: 15px;
+    }
+
+    .file-input-container {
         flex-direction: column;
+        align-items: stretch;
     }
-    .MarcoFormulario2 input[type="file"]{
-        width: 40vw;
-        font-size: 3vw;
+
+    .upload-icon {
+        align-self: center;
+    }
+
+    .preview-header,
+    .preview-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .preview-header span,
+    .preview-row span {
+        font-size: 0.8rem;
+    }
+
+    .submit-button {
+        padding: 14px 25px;
+        font-size: 1.1rem;
+    }
+
+    .form-info {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    .file-input-label {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .message {
+        padding: 12px 15px;
+        font-size: 0.9rem;
     }
 }

@@ -1,105 +1,298 @@
+/* BandejaMsg.css */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
 .Contenido-Avisos {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-left: 10px;
-}
-
-.num-avisos {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    color: white;
-    font-size: 15px;
-    height: 22px;
-    width: 22px;
-    border-radius: 50%;
-    border: none;
-    background-color: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    font-weight: bold;
-    z-index: 1;
-}
-
-.casilla-avisos {
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    z-index: 6000;
-}
-
-.casilla-avisos > h4 {
-    font-size: 30px;
-    font-family: 'Allenoire';
-    margin: 0px;
-    padding: 5px;
-    border-bottom: solid 1px gray;
-}
-
-.casilla-avisos > ul {
-    list-style: none;
-    margin: 0px;
-}
-
-.Mensajes {
-    padding: 20px;
-    margin: 0px;
-    border-bottom: solid 1px rgb(224, 222, 222);
-    border-top: solid 1px rgb(224, 222, 222);
-    color: rgb(56, 56, 56);
+  position: relative;
+  display: inline-block;
 }
 
 .Megafono {
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #333;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  color: white;
+  font-size: 1.4rem;
 }
 
-/* === RESPONSIVE: Colocar el botón arriba a la izquierda en pantallas pequeñas === */
-@media (max-width: 600px) {
-    .Contenido-Avisos {
-        position: static;
-        margin-left: 0;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
+.Megafono:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
 
-    .Megafono {
-        position: static;
-        left: unset;
-        top: unset;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .num-avisos {
-        left: unset;
-        top: unset;
-        right: unset;
-        position: absolute;
-    }
-    .casilla-avisos {
-        z-index: 1000;
-        width: 90vw;
-        top: 200px;
-    }
+.Megafono:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.num-avisos {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
+  }
+}
+
+.casilla-avisos {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  width: 320px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  animation: slideDown 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.casilla-avisos::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  transform: rotate(45deg);
+  border-top: 1px solid #e2e8f0;
+  border-left: 1px solid #e2e8f0;
+}
+
+.casilla-avisos h4 {
+  background: linear-gradient(135deg, #1a296b 0%, #4a5568 100%);
+  color: white;
+  margin: 0;
+  padding: 20px;
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.casilla-avisos ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.casilla-avisos ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.casilla-avisos ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.casilla-avisos ul::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+.casilla-avisos ul::-webkit-scrollbar-thumb:hover {
+  display: none;
+}
+
+.Mensajes {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f3f4;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #2d3748;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.Mensajes:hover {
+  background: #f8f9fa;
+  transform: translateX(5px);
+}
+
+.Mensajes:last-child {
+  border-bottom: none;
+}
+
+.Mensajes:nth-child(-n+3) {
+  background: linear-gradient(to right, #f0fff4, white);
+  border-left: 3px solid #48bb78;
+}
+
+.Mensajes:nth-child(-n+3):hover {
+  background: linear-gradient(to right, #e6ffed, #f8f9fa);
+}
+
+.casilla-avisos li:not(.Mensajes) {
+  padding: 40px 20px;
+  text-align: center;
+  color: #a0aec0;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Efectos de animación para nuevos mensajes */
+.Mensajes:nth-child(-n+3) {
+  animation: highlightMessage 0.6s ease;
+}
+
+@keyframes highlightMessage {
+  0% {
+    background: linear-gradient(to right, #e6ffed, #f0fff4);
+    transform: translateX(-10px);
+  }
+  100% {
+    background: linear-gradient(to right, #f0fff4, white);
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .casilla-avisos {
+    width: 280px;
+    right: -50px;
+  }
+  
+  .casilla-avisos::before {
+    right: 60px;
+  }
+  
+  .Megafono {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .num-avisos {
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .casilla-avisos {
+    width: 250px;
+    right: -80px;
+  }
+  
+  .casilla-avisos::before {
+    right: 80px;
+  }
+  
+  .casilla-avisos h4 {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+  
+  .Mensajes {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Estados de empty state mejorados */
+.casilla-avisos li:not(.Mensajes)::before {
+  content: "💬";
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+/* Estados de carga y error */
+.loading-state,
+.error-state,
+.no-messages,
+.more-messages {
+    padding: 20px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+}
+
+.loading-state {
+    color: #667eea;
+}
+
+.error-state {
+    color: #e53e3e;
+    background: #fed7d7;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.more-messages {
+    background: #f7fafc;
+    color: #718096;
+    font-style: italic;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.8rem;
+}
+
+.no-messages {
+    color: #a0aec0;
+    font-style: italic;
+}
+
+/* Mejoras de accesibilidad */
+.Megafono:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.Megafono:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }

@@ -1,271 +1,581 @@
-.table-container {
-    width: 800px;
-    max-width: 90vw; /* Para evitar desbordamientos */
-    padding-bottom: 40px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    text-align: center;
-}
-.grades-vertical-table {
-  display: table;
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0 auto;
-  font-family: 'Allenoire', sans-serif;
-}
+/* GradesTable.css - Estilo Moderno */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-.table-header, .table-row {
-  display: table-row;
-}
-
-.header-cell, .category-cell, .cell {
-  display: table-cell;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-
-.table-header .header-cell {
-  background-color: #282829;
-  color: white;
-  font-weight: lighter;
-  font-family: 'Neka';
-  font-size: 15px;
-  text-align: center;
+.grades-page-wrapper {
+  position: relative;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  width: 200px;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #cad2f3 0%, #ece7ff 100%);
+  z-index: 1;
 }
 
-.category-cell {
-  background-color: #373838;
+.grades-page-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-image: url('../../../images/PatronFondo.png');
+  background-repeat: repeat;
+  background-size: 30%;
+  background-position: center;
+  opacity: 0.1;
+  animation: gradesMoveBackground 70s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes gradesMoveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+.grades-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 900px;
+  padding: 150px 20px 50px;
+  margin: 50px 0px;
+}
+
+.grades-page-header {
+  background: linear-gradient(135deg, #1a296b 0%, #4a5568 100%);
+  padding: 50px 0px;
+  border-radius: 25px; 
+  text-align: center;
+  margin-bottom: 40px;
   color: white;
-  font-weight: lighter;
-  font-family: 'Neka';
-  font-size: 20px;
 }
 
-.cell {
-  background-color: #f1f5f8;
-  color: #274690;
+.grades-page-header .grades-header-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
 }
 
-.cell:hover {
-  background-color: #e0e6ed;
+.grades-main-title {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.grades-vertical-table {
-  overflow-x: auto;
+.grades-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 300;
+  font-family: 'Rubik', sans-serif;
 }
 
-.cell input {
-  text-align: center;
-  width: 80px;
-  padding: 10px 0px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-family: 'Arial';
-  font-weight: bolder;
+.grades-main-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.col-dark {
-  background-color: #d4d8dd;
-  height: 30px;
-  width: 100px;
-  padding: 10px;
+
+/* Controls Card */
+.grades-controls-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 25px 30px;
+  border: 2px solid #e2e8f0;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
-.col-light {
-  background-color: #e8ecf0;
-  height: 30px;
-  width: 100px;
-  padding: 10px;
+
+.grades-year-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
-.cell input:focus {
+
+.grades-year-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.label-icon {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.grades-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.grades-input-wrapper:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.grades-year-input {
+  width: 120px;
+  padding: 12px 15px;
+  border: none;
+  background: transparent;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+  color: #2d3748;
   outline: none;
-  border-color: #0d3b66;
-  box-shadow: 0 0 4px rgba(13, 59, 102, 0.3);
-}
-
-
-/* MOBILE: convertir cada fila en tarjeta */
-@media (max-width: 600px) {
-  .grades-vertical-table {
-    display: block;
-  }
-  .table-header {
-    display: none;
-  }
-  .table-row {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-    background-color: #fafcfe;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    overflow: hidden;
-  }
-  .category-cell {
-    background-color: #0d3b66;
-    color: white;
-    padding: 14px;
-    font-size: 18px;
-  }
-  .cell {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    font-size: 16px;
-  }
-  .cell:before {
-    content: attr(data-periodo);
-    font-weight: bold;
-    color: #274690;
-  }
-}
-
-#yearSelect {
-  width: 200px;
-  padding: 10px;
-  border: 2px solid #2e2929;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  font-family: 'Allenoire';
-  font-size: 16px;
-  color: #2e2929;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
-.table-container > h2 {
-    text-align: center;
-    font-family: 'Allenoire';
-    font-weight: lighter;
-    font-size: 30px;
-    color: white;
-    background-color: rgb(27, 24, 24);
-    padding: 15px 0px;
-    border-radius: 10px 10px 0 0;
+.grades-controls-buttons {
+  display: flex;
+  gap: 10px;
 }
 
-/* === TABLA === */
-.Tabla-Notas {
-    width: 100%;
-    max-width: 800px;
-    border-collapse: collapse;
-    margin: 0 auto;
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  color: #4a5568;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
 }
 
-th, td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ccc;
-    font-family: 'Paradose';
-    font-weight: lighter;
-    font-size: 16px;
+.control-btn:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
 }
 
-#NotaNumero {
-    font-family: 'Allenoire';
+.btn-icon {
+  font-size: 0.9rem;
 }
 
-.Periodo {
-    background-color: #706565;
-    color: white;
+/* Error Message */
+.grades-error-message {
+  background: #fed7d7;
+  border: 1px solid #feb2b2;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #c53030;
 }
 
-th {
-    background-color: #2e2929;
-    color: white;
-    font-family: 'Allenoire';
+.error-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
 }
 
-tr:nth-child(even) {
-    background-color: #e6cfcf;
+.error-content h3 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  margin: 0 0 5px 0;
 }
 
-tr:hover {
-    background-color: #d1c5f3;
+.error-content p {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  font-size: 0.9rem;
 }
 
-/* === SELECTOR DE AÑO === */
-.contenidoSelect {
-    display: flex;
+/* Loading State */
+.grades-loading-state {
+  padding: 60px 40px;
+  text-align: center;
+  color: #718096;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-left: 4px solid #667eea;
+  border-radius: 50%;
+  animation: gradesSpin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes gradesSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Grades Accordion */
+.grades-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.period-grade-card {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.period-grade-card:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.period-grade-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.period-grade-header:hover {
+  background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+}
+
+.period-grade-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.period-icon {
+  font-size: 1.5rem;
+  color: #667eea;
+}
+
+.period-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.period-name {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0;
+}
+
+.period-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grades-count {
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+.comment-indicator {
+  color: #ed8936;
+  font-size: 0.9rem;
+}
+
+.period-toggle {
+  font-size: 1.2rem;
+  color: #a0aec0;
+  transition: transform 0.3s ease;
+}
+
+.period-grade-content {
+  padding: 0;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grades Table Section */
+.grades-table-section {
+  padding: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 20px 0;
+}
+
+.section-icon {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.grades-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grades-table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.grade-category-header,
+.grade-value-header {
+  padding: 15px 20px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.grade-category-header {
+  border-right: 1px solid #e2e8f0;
+}
+
+.grade-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.grade-row:hover {
+  background: #f7fafc;
+}
+
+.grade-row:last-child {
+  border-bottom: none;
+}
+
+.grade-category {
+  padding: 15px 20px;
+  font-family: 'Rubik', sans-serif;
+  color: #4a5568;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+}
+
+.grade-value {
+  padding: 15px 20px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grade-high {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.grade-medium {
+  background: #fefcbf;
+  color: #744210;
+}
+
+.grade-low {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.grade-default {
+  background: #f7fafc;
+  color: #718096;
+}
+
+/* Comments Section */
+.comments-section {
+  padding: 30px;
+  background: #f0fff4;
+  border-left: 4px solid #48bb78;
+}
+
+.comments-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.comments-icon {
+  color: #48bb78;
+  font-size: 1.2rem;
+}
+
+.comments-header h4 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #22543d;
+  margin: 0;
+}
+
+.comments-content {
+  font-family: 'Rubik', sans-serif;
+  color: #2d3748;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.no-comments-section {
+  padding: 30px;
+  text-align: center;
+  color: #718096;
+  background: #f7fafc;
+}
+
+.no-comments-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #cbd5e0;
+}
+
+.no-comments-section p {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grades-container {
+    padding: 120px 15px 30px;
+  }
+
+  .grades-main-title {
+    font-size: 2.2rem;
+  }
+
+  .grades-main-content {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .grades-controls-card {
     flex-direction: column;
-    align-items: center;
-    margin: 15px 0;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .grades-year-section {
+    justify-content: center;
+  }
+
+  .grades-controls-buttons {
+    justify-content: center;
+  }
+
+  .period-grade-header {
+    padding: 20px 25px;
+  }
+
+  .grades-table-section,
+  .comments-section,
+  .no-comments-section {
+    padding: 20px;
+  }
+
+  .grade-category,
+  .grade-value {
+    padding: 12px 15px;
+  }
 }
 
-#yearSelect {
-    width: 200px;
-    padding: 10px;
-    border: 2px solid #2e2929;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    font-family: 'Allenoire';
-    font-size: 16px;
-    color: #2e2929;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+@media (max-width: 480px) {
+  .grades-main-title {
+    font-size: 1.8rem;
+  }
+
+  .grades-main-content {
+    padding: 20px;
+  }
+
+  .period-grade-info {
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
+  }
+
+  .period-stats {
+    justify-content: center;
+  }
+
+  .grades-table {
+    font-size: 0.9rem;
+  }
+
+  .grade-category,
+  .grade-value {
+    padding: 10px 12px;
+  }
 }
 
-#yearSelect:hover {
-    background-color: #e6e6e6;
-}
-
-#yearSelect:focus {
-    outline: none;
-    border-color: #706565;
-}
-
-label[for="yearSelect"] {
-    font-family: 'Allenoire';
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #2e2929;
-}
-
-/* === MENSAJE DE ERROR === */
-.mensajeError {
-    font-family: 'Ristorante';
-    color: gray;
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 600px) {
-    .table-container {
-        width: 95vw;
-        padding: 15px;
-    }
-
-    .table-container > h2 {
-        font-size: 24px;
-        padding: 10px;
-    }
-
-    .Tabla-Notas {
-        width: 100%;
-        font-size: 14px;
-    }
-
-    .Tabla-Notas th, .Tabla-Notas td {
-        padding: 6px;
-        font-size: 14px;
-    }
-
-    .contenidoSelect {
-        width: 100%;
-    }
-
-    #yearSelect {
-        width: 90%;
-        font-size: 14px;
-    }
-
-    .mensajeError {
-        font-size: 14px;
-        margin-top: 5px;
-    }
+/* Efectos de profundidad */
+.grades-page-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
 }

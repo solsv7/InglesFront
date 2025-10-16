@@ -1,0 +1,508 @@
+/* CuotasPendientes.css */
+.cuotas-pendientes-container {
+  padding: 20px 0;
+}
+
+.cuotas-pendientes-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 25px;
+  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+  border-radius: 15px;
+  color: white;
+}
+
+.header-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.header-content h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Neka', 'Rubik', sans-serif;
+}
+
+.header-content p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+/* Alertas */
+.alertas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.alerta {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid;
+}
+
+.alerta-vencida {
+  background: #fed7d7;
+  border-left-color: #e53e3e;
+  color: #742a2a;
+}
+
+.alerta-proxima {
+  background: #feebc8;
+  border-left-color: #ed8936;
+  color: #744210;
+}
+
+.alerta-icon {
+  font-size: 1.5rem;
+  margin-top: 2px;
+}
+
+.alerta-content h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.alerta-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* Estadísticas */
+.estadisticas-pendientes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.estadistica-pendiente {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.estadistica-pendiente:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.estadistica-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.total .estadistica-icon {
+  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+}
+
+.proximas .estadistica-icon {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+}
+
+.vencidas .estadistica-icon {
+  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+}
+
+.estadistica-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  font-family: 'Neka', 'Rubik', sans-serif;
+}
+
+.estadistica-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #718096;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tabla */
+.table-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table-icon {
+  font-size: 1.3rem;
+  color: #667eea;
+}
+
+.table-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 600;
+  flex: 1;
+}
+
+.cuotas-count {
+  background: #ed8936;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.no-cuotas-pendientes {
+  text-align: center;
+  padding: 60px 20px;
+  color: #48bb78;
+}
+
+.no-cuotas-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.no-cuotas-pendientes h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+}
+
+.no-cuotas-pendientes p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.cuotas-pendientes-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.cuotas-pendientes-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.cuotas-pendientes-table th {
+  padding: 18px 20px;
+  text-align: left;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cuotas-pendientes-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.cuotas-pendientes-table tbody tr:hover {
+  background-color: #f7fafc;
+}
+
+.cuotas-pendientes-table tbody tr.vencimiento-vencida {
+  background-color: #fff5f5;
+  border-left: 4px solid #e53e3e;
+}
+
+.cuotas-pendientes-table tbody tr.vencimiento-proxima {
+  background-color: #fffaf0;
+  border-left: 4px solid #ed8936;
+}
+
+.cuotas-pendientes-table td {
+  padding: 18px 20px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.alumno-cell,
+.plan-cell,
+.fecha-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alumno-icon,
+.plan-icon,
+.fecha-icon {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.estado-vencimiento {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.vencimiento-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.estado-select-container {
+  min-width: 120px;
+}
+
+.actualizando-estado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.spinning-icon {
+  animation: spin 1s linear infinite;
+  color: #667eea;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.estado-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'Rubik', sans-serif;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.estado-select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+.btn-eliminar {
+  padding: 8px 12px;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-eliminar:hover {
+  background: #c53030;
+  transform: translateY(-1px);
+}
+
+/* Información */
+.info-pendientes {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.info-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.info-icon {
+  font-size: 1.3rem;
+  color: #667eea;
+}
+
+.info-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.info-content {
+  padding: 25px;
+}
+
+.info-content ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.info-content li {
+  margin-bottom: 10px;
+  color: #718096;
+  line-height: 1.5;
+}
+
+.info-content li:last-child {
+  margin-bottom: 0;
+}
+
+.info-content strong {
+  color: #2d3748;
+}
+
+/* Estados de carga y error */
+.cuotas-pendientes-loading,
+.cuotas-pendientes-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #e2e8f0;
+  border-left: 4px solid #ed8936;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+.cuotas-pendientes-error .error-icon {
+  font-size: 3rem;
+  color: #e53e3e;
+  margin-bottom: 15px;
+}
+
+.cuotas-pendientes-error h3 {
+  margin: 0 0 10px 0;
+  color: #4a5568;
+}
+
+.cuotas-pendientes-error p {
+  margin: 0 0 20px 0;
+  color: #718096;
+}
+
+.reload-btn {
+  padding: 12px 24px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.reload-btn:hover {
+  background: #5a6fd8;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cuotas-pendientes-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .estadisticas-pendientes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .alertas-container {
+    flex-direction: column;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .cuotas-pendientes-table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 480px) {
+  .estadisticas-pendientes {
+    grid-template-columns: 1fr;
+  }
+
+  .estadistica-pendiente {
+    padding: 20px;
+  }
+
+  .estadistica-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .estadistica-content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .estadistica-pendiente,
+  .btn-eliminar,
+  .reload-btn,
+  .cuotas-pendientes-table tbody tr {
+    transition: none;
+  }
+
+  .loading-spinner,
+  .spinning-icon {
+    animation: none;
+  }
+}

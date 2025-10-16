@@ -88,7 +88,7 @@ const App = () => {
             <Route path='/Asistencias' element={<AsistenciasPage />} />
             <Route path="/mis-asistencias" element={<AsistenciasPageAlumno />} />
             <Route path="/cuotas/*" element={<CuotasRouterPage />} />
-            <Route path="/diccionario*" element={<DiccionarioIngles />} />
+            <Route path="/diccionario/*" element={<DiccionarioIngles />} />
 
 
 

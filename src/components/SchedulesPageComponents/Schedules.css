@@ -1,89 +1,347 @@
-.Horarios{
-    padding: 0px;
-    margin: 0px;
+/* Schedules.css */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+.schedules-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.schedules-loading {
     display: flex;
-    justify-self: center;
-    padding-bottom: 40px;
-    margin-top: -440px;
-    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    color: #667eea;
+    font-family: 'Rubik', sans-serif;
 }
-.Horarios>h3{
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.schedules-header {
     text-align: center;
+    margin-bottom: 40px;
+    color: #2d3748;
+}
+
+.header-icon {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.schedules-header h2 {
+    font-family: 'Neka', 'Rubik', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #2d3748;
+}
+
+.schedules-header p {
+    font-size: 1.1rem;
+    color: #718096;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Tabla para desktop */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+    margin-bottom: 30px;
+}
+
+.schedules-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+}
+
+.schedules-table th {
+    background: linear-gradient(135deg, #cad2f3 0%, #ece7ff 100%);
+    color: white;
+    padding: 20px 15px;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+}
+
+.time-header {
+    background: #2d3748 !important;
+    min-width: 150px;
+}
+
+.th-icon {
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.day-header {
+    min-width: 120px;
+}
+
+.schedule-row {
+    transition: background-color 0.3s ease;
+}
+
+.schedule-row:hover {
+    background-color: #f8fafc;
+}
+
+.time-slot {
+    background: #f7fafc;
+    padding: 18px 15px;
+    font-weight: 600;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.95rem;
+}
+
+.level-cell {
+    padding: 18px 15px;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.level-cell.has-class {
+    background: #f0fff4;
+    color: #22543d;
+    font-weight: 500;
+    border-color: #9ae6b4;
+}
+
+.level-cell.no-class {
+    background: #f7fafc;
+    color: #a0aec0;
+    font-style: italic;
+}
+
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #718096;
+    font-style: italic;
+    background: #f7fafc;
+}
+
+/* Vista móvil */
+.mobile-schedules {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mobile-time-slot {
+    background: white;
+    border-radius: 12px;
     padding: 20px;
-    font-size: 30px;
-    font-family: 'Allenoire';
-    font-weight: lighter;
-    color: #ffffff;
-    background-color: rgb(27, 27, 27);
-    width: 400px;
-    border-radius: 22px;
-    position: absolute;
-    left: 440px;
-    margin-top: -100px;
-    box-shadow: 1px 1px 10px black;
-}
-.TablaHorarios {
-    width: 1000px;
-    position: absolute;
-    margin-top: -20px;
-    left: 10vw;
-    
-    background-color: rgba(255, 255, 255, 0.9);
-}
-.TablaHorarios>tr > td, .TablaHorarios> tr> th{
-    font-size: 1.8vw;
-}
-.TablaHorarios>th{
-    color: #141414 ;
-    background-color: rgb(230, 225, 225) ;
-    
-}
-.niveles{
-    font-family: 'Allenoire';
-    font-weight: lighter;
-    
-}
-.Horas{
-    font-family: 'Allenoire';
-    font-weight: lighter;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
 }
 
-@media (max-width:600px) {
-    .Horarios {
-        width: 100vw;
-        margin-top: -760px;
+.mobile-time {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f1f3f4;
+    text-align: center;
+}
+
+.mobile-days {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.mobile-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.day-name {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.9rem;
+    min-width: 40px;
+}
+
+.day-level {
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.85rem;
+    text-align: right;
+    flex: 1;
+    margin-left: 10px;
+}
+
+.day-level.has-class {
+    color: #22543d;
+    font-weight: 500;
+}
+
+.day-level.no-class {
+    color: #a0aec0;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .schedules-container {
+        padding: 60px 20px 40px;
+    }
+
+    .schedules-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .schedules-table th,
+    .time-slot,
+    .level-cell {
+        padding: 15px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .schedules-header h2 {
+        font-size: 2rem;
+    }
+
+    .schedules-header p {
+        font-size: 1rem;
+    }
+
+    .header-icon {
+        font-size: 2.5rem;
+    }
+
+    /* Ocultar tabla en móvil y mostrar vista móvil */
+    .table-wrapper {
+        display: none;
+    }
+
+    .mobile-schedules {
         display: flex;
-        flex-direction: column;
-        align-items: center; /* Centra los elementos */
     }
 
-    .Horarios > h3 {
-        font-size: 5vw;
-        width: 90vw;
-        text-align: center;
-        margin: 0 auto;
-        display: block;
-        position: relative;
-        left: auto;
+    .mobile-days {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
-    .TablaHorarios {
-        width: 90vw; /* Asegura que la tabla sea responsive */
-        margin: 0 auto; /* Centra la tabla */
-        left: auto; /* Elimina desplazamientos laterales */
-        position: relative; /* Para evitar que se salga del flujo */
+    .mobile-time-slot {
+        padding: 15px;
     }
-    .SeparadorTabla>table{
-        height: 50px;
+
+    .mobile-time {
+        font-size: 1rem;
+        margin-bottom: 12px;
     }
-    .TablaHorarios>tr>td,.TablaHorarios>tr>th{
-        font-size: 2vw;
+}
+
+@media (max-width: 480px) {
+    .schedules-container {
+        padding: 40px 15px 30px;
     }
-    .TablaHorarios>tr{
-        width: 2px;
+
+    .schedules-header h2 {
+        font-size: 1.8rem;
     }
-    .Horas{
-        width: 10px;
+
+    .schedules-header p {
+        font-size: 0.95rem;
     }
-   
+
+    .header-icon {
+        font-size: 2.2rem;
+    }
+
+    .mobile-time-slot {
+        padding: 12px;
+    }
+
+    .mobile-time {
+        font-size: 0.95rem;
+    }
+
+    .day-name {
+        font-size: 0.85rem;
+    }
+
+    .day-level {
+        font-size: 0.8rem;
+    }
+}
+
+/* Estados de hover mejorados */
+.schedule-row:hover .level-cell.has-class {
+    background: #e6ffed;
+    transform: scale(1.02);
+}
+
+.mobile-time-slot:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+}
+
+/* Animaciones de entrada */
+.schedules-table {
+    animation: fadeInUp 0.6s ease;
+}
+
+.mobile-time-slot {
+    animation: fadeInUp 0.6s ease;
+    animation-fill-mode: both;
+}
+
+.mobile-time-slot:nth-child(1) { animation-delay: 0.1s; }
+.mobile-time-slot:nth-child(2) { animation-delay: 0.2s; }
+.mobile-time-slot:nth-child(3) { animation-delay: 0.3s; }
+.mobile-time-slot:nth-child(4) { animation-delay: 0.4s; }
+.mobile-time-slot:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

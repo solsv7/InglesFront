@@ -1,0 +1,462 @@
+/* AsistenciasAlumnoPorRango.css */
+.rango-asistencias-container {
+  padding: 20px 0;
+}
+
+/* Header */
+.rango-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  color: white;
+}
+
+.rango-header-icon {
+  font-size: 2.5rem;
+  opacity: 0.9;
+}
+
+.rango-header-content h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'Neka', 'Rubik', sans-serif;
+}
+
+.rango-header-content p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+/* Formulario */
+.formulario-rango {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.form-icon {
+  font-size: 1.3rem;
+  color: #667eea;
+}
+
+.form-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.fechas-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 30px 25px;
+}
+
+.fecha-input-group {
+  flex: 1;
+}
+
+.fecha-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.9rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.fecha-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: 'Rubik', sans-serif;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.fecha-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.fecha-separator {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #a0aec0;
+  margin-bottom: 8px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 15px;
+  padding: 0 25px 25px;
+}
+
+.btn-buscar {
+  flex: 1;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-buscar:hover:not(:disabled) {
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+}
+
+.btn-buscar:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-limpiar {
+  padding: 15px 25px;
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-limpiar:hover:not(:disabled) {
+  background: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  font-size: 0.9rem;
+}
+
+/* Mensajes de Error */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background: #fed7d7;
+  border: 1px solid #feb2b2;
+  border-radius: 10px;
+  color: #c53030;
+  margin-bottom: 20px;
+}
+
+.error-icon {
+  font-size: 1.1rem;
+}
+
+/* Resultados */
+.resultados-container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.resultados-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.resultados-icon {
+  font-size: 1.3rem;
+  color: #667eea;
+}
+
+.resultados-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 600;
+  flex: 1;
+}
+
+.rango-fechas {
+  background: #667eea;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Métricas */
+.metricas-rango-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 25px;
+}
+
+.metrica-rango-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.metrica-rango-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.metrica-rango-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.metrica-rango-icon.total {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.metrica-rango-icon.presentes {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+}
+
+.metrica-rango-icon.faltas {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+}
+
+.metrica-rango-icon.porcentaje {
+  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+}
+
+.metrica-rango-content h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.metrica-rango-content p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tabla */
+.tabla-rango-container {
+  padding: 0 25px 25px;
+}
+
+.rango-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rango-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.rango-table th {
+  padding: 15px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rango-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rango-table td {
+  padding: 15px;
+  text-align: center;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+/* Análisis */
+.analisis-resultado {
+  background: #f7fafc;
+  margin: 0 25px 25px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.analisis-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.analisis-icon {
+  font-size: 1.1rem;
+  color: #667eea;
+}
+
+.analisis-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.analisis-content {
+  padding: 20px;
+}
+
+.analisis-content p {
+  margin: 0 0 10px 0;
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+.analisis-content p:last-child {
+  margin-bottom: 0;
+}
+
+.analisis-positivo {
+  color: #48bb78 !important;
+  font-weight: 600;
+}
+
+.analisis-neutral {
+  color: #ed8936 !important;
+  font-weight: 600;
+}
+
+.analisis-negativo {
+  color: #e53e3e !important;
+  font-weight: 600;
+}
+
+/* Estado Vacío */
+.estado-vacio {
+  text-align: center;
+  padding: 60px 20px;
+  color: #a0aec0;
+}
+
+.vacio-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.estado-vacio h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+}
+
+.estado-vacio p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rango-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .fechas-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .fecha-separator {
+    display: none;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .metricas-rango-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    padding: 20px;
+  }
+
+  .resultados-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .rango-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .metricas-rango-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rango-table th,
+  .rango-table td {
+    padding: 10px 8px;
+    font-size: 0.8rem;
+  }
+}

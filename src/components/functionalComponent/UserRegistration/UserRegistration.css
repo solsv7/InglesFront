@@ -1,118 +1,262 @@
-.user-registration {
-    width: 700px;
-    margin: 70px auto;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
-    background-color: white;
-    font-family: 'Allenoire', sans-serif; /* Fuente más estilizada */
+/* UserRegistration.css */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+.user-registration-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.form-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 0;
 }
 
-.user-registration h2 {
-    text-align: center;
-    color: #ffffff; /* Color rojo similar a tu estilo */
-    font-family: 'Allenoire';
-    width: 660px;
-    padding: 20px;
-    margin: 0%;
-    margin-bottom: 20px;
-    font-size: 30px;
-    background-color: rgb(27, 24, 24);
-}
-.MarcoFormulario{
-    margin-left: 50px;
-    width: 600px;
-    border: solid 1px rgb(189, 183, 183);
-    padding: 20px;
-    padding-right: 80px;
-    padding-left: 80px;
-    padding-bottom: 80px;
-    border-radius: 25px;
-
-}
-.user-registration form div {
-    margin: 0px;
-    width: 350px;
-    justify-self: center;
+.form-section {
+    margin-bottom: 25px;
 }
 
-.user-registration label {
-    display: block;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: -30px;
-    font-family: 'Paradose', sans-serif;
-}
-.user-registration input,
-.user-registration select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
-    font-family: 'Allenoire', sans-serif;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.user-registration input:focus,
-.user-registration select:focus {
-    outline: none;
-    border-color: #c71919; /* Resalta en rojo */
-    box-shadow: 0 0 5px rgba(199, 25, 25, 0.5); /* Efecto de enfoque */
-}
-
-.BotonCrearUser{
-    margin-left: 95px;
-    background-color: black;
-    border: none;
-    color: white;
-    font-family: 'Allenoire';
-    transition: background-color 0.3s ease;
-    font-size: 20px;
-    width: 40vw;
-    height: 50px;
-    border-radius: 5px;
+.section-label {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
-}
-.BotonCrearUser:hover{
-    background-color: rgb(209, 55, 55);
-    color: rgb(245, 237, 237);
-}
-.success {
-    color: #28a745;
-    text-align: center;
-    margin-bottom: 15px;
+    gap: 10px;
+    font-family: 'Neka', 'Rubik', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 12px;
 }
 
-.error {
-    color: #dc3545;
-    text-align: center;
-    margin-bottom: 15px;
+.label-icon {
+    color: #667eea;
+    font-size: 1rem;
 }
-@media (max-width:600px) {
-    .user-registration{
-        margin-top: -5vh;
-        width: 80vw !important;
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.input-wrapper:focus-within {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+svg.input-icon {
+    position: absolute;
+    left: 15px;
+    color: #a0aec0;
+    font-size: 1.1rem;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+.input-wrapper:focus-within .input-icon {
+    color: gray;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 15px 20px 15px 45px;
+    border: none;
+    background: transparent;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    color: #2d3748;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.modern-input::placeholder {
+    color: #a0aec0;
+    font-weight: 400;
+}
+
+.modern-input:focus {
+    background: transparent;
+}
+
+.input-hint {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 8px;
+    font-family: 'Rubik', sans-serif;
+    font-style: italic;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 16px 30px;
+    background: linear-gradient(135deg, #cad2f3 0%, #ece7ff 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Neka', 'Rubik', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    margin-top: 10px;
+}
+
+.submit-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-button:disabled {
+    background: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.button-icon {
+    font-size: 1.1rem;
+}
+
+.message {
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
     }
-    .MarcoFormulario {
-        border: none;
-        padding: 0px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    .MarcoFormulario div{
-        width: 40vw !important;
-        justify-self: center !important;
-        margin-top: 0 auto !important;
-        display: block;
+}
+
+.message.success {
+    background: #c6f6d5;
+    color: #22543d;
+    border: 1px solid #9ae6b4;
+}
+
+.message.error {
+    background: #fed7d7;
+    color: #c53030;
+    border: 1px solid #feb2b2;
+}
+
+.message-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Validación visual */
+.input-wrapper.valid {
+    border-color: #48bb78;
+}
+
+.input-wrapper.invalid {
+    border-color: #e53e3e;
+}
+
+/* Animaciones para los campos */
+.form-section {
+    animation: fadeInUp 0.5s ease;
+    animation-fill-mode: both;
+}
+
+.form-section:nth-child(1) { animation-delay: 0.1s; }
+.form-section:nth-child(2) { animation-delay: 0.2s; }
+.form-section:nth-child(3) { animation-delay: 0.3s; }
+.form-section:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
-    .user-registration input{
-        width: 40vw;
-        margin-top: 0 auto;
-        display: block;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-registration-form {
+        padding: 0 10px;
+    }
+
+    .section-label {
+        font-size: 1rem;
+    }
+
+    .modern-input {
+        font-size: 0.95rem;
+        padding: 12px 15px 12px 40px;
+    }
+
+    .submit-button {
+        padding: 14px 25px;
+        font-size: 1.1rem;
+    }
+
+    .input-icon {
+        left: 12px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    .modern-input {
+        padding: 12px 15px 12px 40px;
+    }
+
+    .message {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Estados de focus mejorados */
+.modern-input:focus {
+    background: #f7fafc;
+}
+
+/* Placeholder transitions */
+.modern-input::placeholder {
+    transition: color 0.3s ease;
+}
+
+.modern-input:focus::placeholder {
+    color: #cbd5e0;
 }

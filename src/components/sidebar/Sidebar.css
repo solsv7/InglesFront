@@ -29,6 +29,7 @@
 .arrow {
   font-size: 14px;
   transition: transform 0.3s ease;
+  color:white;
 }
 
 /* Flecha girada cuando está abierto */
@@ -53,8 +54,9 @@
 
 .dropdown-content a h4 {
   font-size: 14px;
-  color: #d1d1d1;
-  font-family: 'Arial';
+  color: white;
+  font-family: 'Neka';
+  font-weight: lighter;
   padding: 5px 0;
   margin: 0;
   transition: color 0.2s ease;

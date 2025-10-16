@@ -240,6 +240,7 @@
     color: white;
     padding-bottom: 30px;
     height: auto;
+    min-height: 200px;
 }
 .cuadros div{
     border-radius: 15px;
@@ -295,10 +296,16 @@
     color: white;
 }
 #sub-title{
-    margin-left: 10px;
-    width: auto;
+    padding: 0px 0px 0px 10px;
+    margin:0 auto;
     font-size: 18px;
     font-family: 'OneStory';
+}
+#Info-Clases{
+    margin:0px;
+    padding:20px 0px;
+    min-height: 70px;
+    height: auto;
 }
 
 
@@ -405,76 +412,156 @@
     color:  rgb(39, 13, 99);
 }
 @media (max-width:700px) {
-    .cuadros{
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        gap: 50px;
-    }
-    .home-lenguajes{
-        margin-bottom: -200px;
-    }
-    .formas-titulo{
-        margin-top: 0px;
-    }
-    .formas-titulo div{
-        display: flex;
-        flex-direction: column;
-    }
-    .formas-titulo h1{
-        font-size: 40px ;
-    }
-
-    /* responsive del slider*/
-    .slid-inicio,.slid-eventos{
-        position: absolute;
-        z-index: 5;
-        height: 600px;
-        width: 100vw !important;
-        filter: brightness(0.5);
-    }
-    .slid-eventos{
-        height: 750px;
-    }
-    .texto-inicio, .texto-eventos{
-        position: relative;
-        z-index: 6;
-    }
-    .texto-inicio h1, .texto-eventos h1{
-        color: white;
-    }
-    .texto-inicio p, .texto-eventos p{
-        color: gainsboro;
-    }
-    .titulo-ubicacion h1{
-        width: 100%;
-        font-size: 35px;
-    }
-    .titulo-ubicacion p{
-        font-size: 20px;
-        width: 100%;
-    }
-    .texto-inicio,
-    .texto-eventos{
-        width: 100%;
-        height: 600px;
-    }
-    .swiper-slide img {
-  height: 600px;
-  object-fit: cover;
-}
-    .slide-overlay {
-    display: none;
+  .contenido-home {
+    padding-top: 180px; /* Ajusta según la altura real de tu header */
+    background-color: #f0eded;
   }
-
-  .swiper-slide {
-    overflow: hidden; /* evita que salga del contenedor */
+  
+  .home-lenguajes, .home-eventos {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    position: relative;
+    
+  }
+  
+  .texto-inicio, .texto-eventos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90% !important;
+    padding: 20px;
+    height: auto;
+    z-index: 20;
+    text-align: center !important;
+    border-radius: 15px;
+  }
+  
+  .texto-inicio h1, .texto-eventos h1 {
+    color:white !important;
+    font-size: 38px !important;
+    text-align: left !important;
+    margin-bottom: 15px;
+  }
+  
+  .texto-inicio p, .texto-eventos p {
+    color:white !important;
+    text-align: left !important;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  
+  .texto-eventos button, .texto-inicio button {
+    align-self: left !important;
+    margin-top: 10px;
+    z-index: 25;
     position: relative;
   }
-
+  
+  .slid-inicio, .slid-eventos {
+    position: relative !important;
+    width: 100% !important;
+    height: 400px; /* Mayor altura para acomodar el texto encima */
+    filter: brightness(0.7);
+    z-index: 10;
+  }
+  
+  .swiper-slide img {
+    height: 400px !important;
+    object-fit: cover;
+  }
+  
   .slide-overlay {
-    max-width: 80%; /* por si se muestra de alguna forma */
+    display: none;
+  }
+  
+  .cuadros {
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 50px;
+    padding: 20px;
+  }
+  .formas-aprender{
+    padding: 0px;
+  }
+  .formas-titulo {
+    margin: 0 20px;
+    padding: 20px 0;
+  }
+  
+  .formas-titulo div {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .formas-titulo div button {
+    width: 100%;
+    max-width: 200px;
+    align-self: flex-end;
+    margin: 20px 0px;
+  }
+  
+  .formas-aprender h1 {
+    font-size: 35px;
+    padding: 10px 0;
+    margin: 0;
+    text-align: right;
+  }
+  
+  .formas-titulo p {
+    margin: 0;
+    padding: 10px;
+    text-align: right;
+  }
+  
+  .titulo-ubicacion {
+    text-align: center !important;
+    padding: 20px;
+  }
+  
+  .titulo-ubicacion h1 {
+    width: 100%;
+    font-size: 30px;
     text-align: center;
-    word-wrap: break-word;
+  }
+  
+  .titulo-ubicacion p {
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .presencial, .mixto, .virtual {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .cuadros p {
+    width: 100%;
+  }
+  
+  .contenedor-ubicacion {
+    margin-top: 0;
+    padding-top: 20px;
+  }
+  
+  .frame-ubicacion iframe {
+    height: 300px;
+  }
+  
+  /* Asegurar que el texto sea legible sobre las imágenes */
+  .home-lenguajes::before, .home-eventos::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+    z-index: 15;
+    pointer-events: none;
   }
 }

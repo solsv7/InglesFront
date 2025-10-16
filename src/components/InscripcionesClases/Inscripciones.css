@@ -1,146 +1,618 @@
-/* Estilo base similar al de Niveles */
-.ContenedorNiveles {
-  max-width: 600px;
-  margin: 60px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-  font-family: 'Allenoire', sans-serif;
-}
+/* Inscripciones.css - Estilo Moderno */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-.FormularioNivel {
+.inscripciones-page-wrapper {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  padding: 20px;
-  margin-bottom: 30px;
-}
-
-
-
-.select-button {
-  background-color: #29154e;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 8px;
-}
-
-.select-button:hover {
-  background-color: #fa3838;
-}
-.FormularioNivel button {
-  background-color: #fa3838;
-  color: #fff;
-  border: none;
-  font-family: 'Paradose';
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-.FormularioNivel button {
-  font-size: 16px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
   width: 100%;
-  max-width: 400px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #cad2f3 0%, #ece7ff 100%);
+  z-index: 1;
 }
 
-.FormularioNivel button:hover {
-  background-color: #29154e;
+.inscripciones-page-wrapper::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background-image: url('../../images/PatronFondo.png');
+  background-repeat: repeat;
+  background-size: 30%;
+  background-position: center;
+  opacity: 0.1;
+  animation: inscripcionesMoveBackground 70s linear infinite;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.ListaNiveles table {
+@keyframes inscripcionesMoveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+.inscripciones-container {
+  position: relative;
+  z-index: 2;
   width: 100%;
-  border-collapse: collapse;
-  font-family: 'Allenoire', sans-serif;
+  max-width: 900px;
+  padding: 150px 20px;
+  margin: 50px 0px;
 }
 
-.ListaNiveles th,
-.ListaNiveles td {
-  padding: 10px;
+.inscripciones-page-header {
+  background: linear-gradient(135deg, #1a296b 0%, #4a5568 100%);
+  padding: 50px 0px;
+  border-radius: 25px; 
   text-align: center;
-  border: 1px solid #ddd;
-}
-
-.ListaNiveles th {
-  background-color: #2e2828;
+  margin-bottom: 40px;
   color: white;
 }
 
-.ListaNiveles td {
-  background-color: #ffffff;
+.inscripciones-page-header .inscripciones-header-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
 }
 
-.ListaNiveles button {
-  margin: 0 2px;
-  padding: 5px 8px;
-  font-size: 11px;
-  background-color: #fa3838;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-family: 'Allenoire';
-  cursor: pointer;
+.inscripciones-main-title {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.ListaNiveles button:hover {
-  background-color: #29154e;
+.inscripciones-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 300;
+  font-family: 'Rubik', sans-serif;
 }
 
-.content-StudentSearch {
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
+.inscripciones-main-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.Input-Buscar {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
+.inscripciones-form-section {
+  margin-bottom: 0;
 }
 
-.lista-Estudiantes {
-  list-style: none;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fafafa;
-}
-
-.student-item {
+.inscripciones-section-header {
   display: flex;
   justify-content: space-between;
-  padding: 8px 12px;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
-
-
-.Mensaje-Seleccionado {
+.inscripciones-section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3748;
   margin: 0;
-  font-weight: bold;
 }
 
-.Mensaje-Seleccionado2 {
-  font-size: 17px;
-  color: #29154e;
-  font-weight: bold;
+.inscripciones-label-icon {
+  color: #667eea;
+  font-size: 1.2rem;
 }
 
-.erase-button {
-  font-size: 14px;
-  color: #fa3838;
+/* Cards */
+.inscripciones-controls-card,
+.inscripciones-content-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 30px;
+  border: 2px solid #e2e8f0;
+  margin-bottom: 25px;
+}
+
+/* Form Styles */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.label-icon {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.select-wrapper:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.select-icon {
+  position: absolute;
+  left: 15px;
+  color: #a0aec0;
+  font-size: 1.1rem;
+  z-index: 2;
+}
+
+.form-select {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  border: none;
+  background: transparent;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+  color: #2d3748;
+  outline: none;
   cursor: pointer;
-  margin: 5px 0;
-  text-decoration: underline;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+}
+
+.primary-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(72, 187, 120, 0.4);
+}
+
+.edit-btn {
+  background: #ed8936;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #dd6b20;
+  transform: translateY(-1px);
+}
+
+.delete-btn {
+  background: #f56565;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #e53e3e;
+  transform: translateY(-1px);
+}
+
+.save-btn {
+  background: #48bb78;
+  color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #38a169;
+  transform: translateY(-1px);
+}
+
+.cancel-btn {
+  background: #a0aec0;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #718096;
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  font-size: 0.9rem;
+}
+
+/* Inscriptos Container */
+.inscriptos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.inscriptos-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.inscriptos-icon {
+  color: #667eea;
+  font-size: 1.3rem;
+}
+
+.inscriptos-title h3 {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 1.3rem;
+  color: #2d3748;
+  margin: 0;
+  font-weight: 600;
+}
+
+.inscriptos-count {
+  background: #667eea;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Alumnos Grid */
+.alumnos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.alumno-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.alumno-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.alumno-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.alumno-avatar {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.avatar-icon {
+  font-size: 1.3rem;
+}
+
+.alumno-details {
+  flex: 1;
+}
+
+.alumno-name {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 5px 0;
+}
+
+.alumno-id {
+  font-family: 'Rubik', sans-serif;
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+.alumno-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edicion-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.clase-select-wrapper {
+  width: 100%;
+}
+
+.clase-select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.9rem;
+  color: #2d3748;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.clase-select:focus {
+  border-color: #667eea;
+}
+
+.edicion-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.acciones-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.acciones-buttons .action-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Message Styles */
+.inscripciones-message {
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 500;
+  animation: inscripcionesSlideIn 0.3s ease;
+}
+
+@keyframes inscripcionesSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inscripciones-message.success {
+  background: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.inscripciones-message.error {
+  background: #fed7d7;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+}
+
+.inscripciones-message-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Loading and Empty States */
+.loading-state,
+.empty-state {
+  padding: 60px 40px;
+  text-align: center;
+  color: #718096;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e2e8f0;
+  border-left: 4px solid #667eea;
+  border-radius: 50%;
+  animation: inscripcionesSpin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes inscripcionesSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #cbd5e0;
+}
+
+.empty-state h4 {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.empty-state p {
+  font-family: 'Rubik', sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inscripciones-container {
+    padding: 120px 15px 40px;
+  }
+
+  .inscripciones-main-title {
+    font-size: 2.2rem;
+  }
+
+  .inscripciones-main-content {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .inscriptos-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .alumnos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .alumno-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .edicion-buttons,
+  .acciones-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .inscripciones-main-title {
+    font-size: 1.8rem;
+  }
+
+  .inscripciones-main-content {
+    padding: 20px;
+  }
+
+  .alumno-card {
+    padding: 20px;
+  }
+}
+
+/* Efectos de profundidad */
+.inscripciones-page-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.swal-custom-popup {
+  border-radius: 20px !important;
+  padding: 30px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
+  border: 2px solid #e2e8f0 !important;
+  font-family: 'Rubik', sans-serif !important;
+  background: #ffffff !important;
+}
+
+.swal-custom-title {
+  font-family: 'Neka', 'Rubik', sans-serif !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #1a202c !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.swal-custom-confirm-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  padding: 10px 25px !important;
+  font-family: 'Rubik', sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal-custom-confirm-btn:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+  transform: translateY(-2px);
+}
+
+.swal2-icon {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+  color: #2d3748 !important;
 }
