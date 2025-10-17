@@ -104,7 +104,6 @@ const Register = () => {
                         >
                             {loading ? (
                                 <>
-                                    <div className='loading-spinner'></div>
                                     Creando cuenta...
                                 </>
                             ) : (

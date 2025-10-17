@@ -34,7 +34,7 @@ const HomePage = () => {
     Swal.fire({
       title: 'Inscripción requerida',
       text: 'Si deseas inscribirte debes crear una cuenta y completar el formulario de inscripción',
-      icon: 'info',
+      icon: '',
       showCancelButton: true,
       confirmButtonText: '¡Está bien!',
       cancelButtonText: 'No, gracias',
@@ -47,7 +47,7 @@ const HomePage = () => {
         Swal.fire(
           'Cancelado',
           'Puedes inscribirte en cualquier momento',
-          'info' // Cambié a 'info' en lugar de 'error' para que no parezca algo malo
+          'info' 
         );
       }
     });
@@ -149,7 +149,7 @@ const HomePage = () => {
               <div className="texto-eventos">
                   <h1>Nosotros tambien nos divertimos!</h1>
                   <p>Compartimos con nuestros estudiantes viajes al extranjero, donde podemos explorar y romper las del barreras idioma utilizando los conocimientos adquiridos!</p>
-                  <p>Sumado a los viajes realizamos actividades o eventos con los cursos para buscar integrar de mejor manera al grupo, invitandolos a participar en distintas actividades como campamentos, recolecta de caramelos durante Halloween, etc.</p>
+                  <p>Sumado a los viajes realizamos actividades o eventos con los cursos para buscar integrar de mejor manera al grupo, invitandolos a participar en distintas actividades como campamentos, recolecta de caramelos durante Halloween y más.</p>
                   {/* Agregar onClick al botón */}
                   <button onClick={handleInscripcionClick}>Inscribirme</button>
               </div>  

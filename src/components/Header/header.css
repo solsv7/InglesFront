@@ -391,6 +391,10 @@
     width: 140%;
     height: 180%;
   }
+  .header-top-ST-Thomas{
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /* Asegurar que el contenido principal no quede detrás del header */

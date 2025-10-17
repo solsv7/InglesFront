@@ -36,7 +36,7 @@ import AsistenciasPage from './components/Asistencias/AsistenciasPage.js';
 import AsistenciasPageAlumno from './components/Asistencias/AsistenciasPageAlumno.js';
 import CuotasRouterPage from './components/CuotasPage/CuotasRouterPage.js';
 import DiccionarioIngles from './components/DiccionarioIngles/DiccionarioIngles.js';
-import ScrollToTop from './components/functionalComponent/ScrollToTop/ScrollToTop';
+import ScrollToTop from './components/functionalComponent/ScrollToTop/ScrollToTop.js';
 import Navbar from './components/Navbar/Navbar.js';
 
 
@@ -53,7 +53,7 @@ const App = () => {
     return (
         <>
             <Header />
-            <ScrollToTop />
+            <ScrollToTop /> 
             <AnimatePresence mode='wait'>
                 
             <Routes location={location} key={location.pathname}>

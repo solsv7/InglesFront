@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+
 .slide-overlay {
   position: absolute;
   top: 50%;
@@ -66,11 +69,11 @@
     color: rgb(32, 31, 31);
     
 }
-.contenido-home p{
+.contenido-home p, .texto-inicio p, .texto-eventos p{
     color: rgb(63, 60, 60);
     margin-top: -5px;
-    font-family: 'Arial';
-    font-weight: lighter;
+    font-family: 'Rubik', sans-serif;
+    text-align: justify;
     font-size: 15px;
 }
 .texto-inicio button{
@@ -306,6 +309,7 @@
     padding:20px 0px;
     min-height: 70px;
     height: auto;
+    text-align: start;
 }
 
 
@@ -379,7 +383,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 0px 30px;
-    text-align: start;
+    text-align: justify;
 }
 .texto-eventos h1{
     text-align: end;
@@ -563,5 +567,136 @@
     background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
     z-index: 15;
     pointer-events: none;
+  }
+}
+/* Estilos personalizados para SweetAlert2 */
+.swal2-popup {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
+  font-family: 'Rubik', sans-serif;
+}
+
+.swal2-title {
+  font-family: 'Neka', 'Rubik', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.swal2-html-container {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  font-family: 'Rubik', sans-serif;
+}
+
+.swal2-confirm {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 12px 30px !important;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  box-shadow: 0 5px 20px rgba(72, 187, 120, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal2-confirm:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(72, 187, 120, 0.4) !important;
+  background: linear-gradient(135deg, #38a169 0%, #2f855a 100%) !important;
+}
+
+.swal2-cancel {
+  background: #718096 !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 12px 30px !important;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal2-cancel:hover {
+  background: #4a5568 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(113, 128, 150, 0.3) !important;
+}
+
+.swal2-actions {
+  gap: 15px !important;
+}
+
+/* Icono personalizado */
+.swal2-icon {
+  margin: 1.5rem auto 1rem !important;
+}
+
+.swal2-icon.swal2-info {
+  color: #48bb78 !important;
+  border-color: #48bb78 !important;
+}
+
+.swal2-icon.swal2-info .swal2-icon-content {
+  color: #48bb78 !important;
+  font-size: 3rem !important;
+}
+
+/* Animación de entrada */
+.swal2-show {
+  animation: swal2-show 0.3s ease !important;
+}
+
+@keyframes swal2-show {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .swal2-popup {
+    margin: 20px !important;
+    border-radius: 15px !important;
+  }
+  
+  .swal2-title {
+    font-size: 1.6rem !important;
+  }
+  
+  .swal2-html-container {
+    font-size: 1rem !important;
+  }
+  
+  .swal2-confirm,
+  .swal2-cancel {
+    padding: 10px 25px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .swal2-title {
+    font-size: 1.4rem !important;
+  }
+  
+  .swal2-actions {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .swal2-confirm,
+  .swal2-cancel {
+    width: 100% !important;
   }
 }

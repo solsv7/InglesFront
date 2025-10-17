@@ -414,9 +414,11 @@
     .register-background {
         padding: 15px;
     }
-
+    .register-content {
+        margin-top: 60px;
+    }
     .register-form {
-        padding: 30px 25px;
+        padding: 20px 40px;
     }
 
     .register-header h2 {
@@ -447,8 +449,11 @@
 
 @media (max-height: 700px) {
     .register-container {
-        padding: 40px 0;
+        padding: 20px 20px;
         align-items: flex-start;
+    }
+    .register-content{
+        margin-top: 120px;
     }
 }
 

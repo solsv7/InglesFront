@@ -99,7 +99,6 @@ const LoginComponent = () => {
                         >
                             {loading ? (
                                 <>
-                                    <div className='loading-spinner'></div>
                                     Iniciando sesión...
                                 </>
                             ) : (
