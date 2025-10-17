@@ -20,7 +20,15 @@ const LoginComponent = () => {
         setLoading(true);
         
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, { dni, password });
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, 
+                { dni, password },
+                {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            );
             const { token, user } = response.data;
 
             localStorage.setItem('token', token);
