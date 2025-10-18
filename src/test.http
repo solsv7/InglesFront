@@ -1,0 +1,14 @@
+### Test OPTIONS (CORS Preflight)
+OPTIONS https://inglesback-stx6.onrender.com/api/auth/login
+Origin: https://ingles-front.vercel.app
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: Content-Type, Authorization
+
+### Test POST Login
+POST https://inglesback-stx6.onrender.com/api/auth/login
+Content-Type: application/json
+
+{
+    "dni": "46411952",
+    "password": "1234567"
+}

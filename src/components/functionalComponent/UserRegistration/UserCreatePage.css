@@ -273,7 +273,8 @@
   }
 
   .UsersCreationContent {
-    padding: 0 15px;
+    margin-top: 140px;
+    padding: 20px 15px;
   }
 
   .users-creation-header h1 {

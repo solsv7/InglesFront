@@ -649,7 +649,9 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .niveles-container {
-    padding: 120px 15px 40px;
+    margin-top: 140px;
+    padding-top: 80px;
+    margin-bottom: 40px;
   }
 
   .niveles-main-title {

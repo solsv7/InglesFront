@@ -465,12 +465,13 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .AnimatedVideosWrapper {
-    padding-top: 140px;
+    padding-top: 80px;
     padding-bottom: 40px;
   }
 
   .VideosContent {
-    padding: 0 15px;
+    margin-top: 140px;
+    padding: 20px 15px;
   }
 
   .videos-header h1 {

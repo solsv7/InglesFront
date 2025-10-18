@@ -138,6 +138,7 @@
 }
 
 .first-button {
+  margin: 20px 0px;
   padding: 10px 20px;
   font-size: 20px;
   width: 150px !important;
@@ -207,22 +208,23 @@
 }
 
 @media (max-width: 700px) {
-  .header-content{
+  .header-content-ST-Thomas{
     height: auto;
     background-color: transparent;
     box-shadow: none;
   }
   
-  .header-top {
+  .header-top-ST-Thomas {
     flex-direction: column;
     text-align: center;
     background-color: #f0eded;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    height: 180px;
   }
 
   .nav-links {
     flex-direction: column;
-    padding: 10px;
+    padding: 30px;
   }
 
   .first-button {
@@ -274,6 +276,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .BotonSidebar{
+    margin: 20px 0px;
   }
 }
 /* Estilos para el botón resaltado */

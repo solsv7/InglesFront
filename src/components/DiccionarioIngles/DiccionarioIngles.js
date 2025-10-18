@@ -199,12 +199,12 @@ const DiccionarioIngles = () => {
             <div className="results-container">
               {traduccion && (
                 <div className="result-card translation-card">
-                  <div className="card-header">
+                  <div className="diccionario-card-header">
                     <div className="card-title">
                       <FaLanguage className="card-icon" />
                       <h3>Traducción al Español</h3>
                     </div>
-                    <div className="card-actions">
+                    <div className="diccionario-card-actions">
                       <button 
                         onClick={() => speakWord(palabra, 'en-US')}
                         className="action-btn"
@@ -232,12 +232,12 @@ const DiccionarioIngles = () => {
 
               {definiciones && (
                 <div className="result-card definitions-card">
-                  <div className="card-header">
+                  <div className="diccionario-card-header">
                     <div className="card-title">
                       <FaBook className="card-icon" />
                       <h3>Definiciones en Inglés</h3>
                     </div>
-                    <div className="card-actions">
+                    <div className="diccionario-card-actions">
                       <button 
                         onClick={() => speakWord(palabra, 'en-US')}
                         className="action-btn large"

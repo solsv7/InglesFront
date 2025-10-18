@@ -340,7 +340,13 @@
 
 @media (max-width: 768px) {
   .asistencias-container {
-    padding: 120px 15px 30px;
+    margin:0px;
+    padding: 0px 10px;
+  }
+  .asistencias-page-wrapper{
+    margin-top: 140px;
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
 
   .asistencias-main-title {

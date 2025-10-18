@@ -596,7 +596,9 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .periodos-container {
-    padding: 120px 15px 40px;
+    margin-top: 140px;
+    padding-top: 80px;
+    margin-bottom: 40px;
   }
 
   .periodos-main-title {
@@ -617,7 +619,14 @@
   .periodos-section-label {
     justify-content: center;
   }
-
+  .card-header{
+    display: flex !important;
+    flex-direction: row !important;
+  }
+  .periodo-card-actions{
+    display: flex !important;
+    flex-direction: row !important;
+  }
   .periodos-cards-header {
     flex-direction: column;
     gap: 15px;

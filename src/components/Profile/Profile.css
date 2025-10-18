@@ -429,7 +429,9 @@
 
 @media (max-width: 768px) {
   .profile-container {
-    padding: 120px 15px 30px;
+    margin-top: 140px;
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
 
   .profile-main-title {

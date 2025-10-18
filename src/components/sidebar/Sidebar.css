@@ -1,12 +1,14 @@
 .sidebar-dropdown {
   color: white;
   background-color: rgb(199, 25, 25);
-  width: 180px;
+  width: 100%; /* Cambiado de 180px a 100% */
+  margin-bottom: 3px;
 }
+
 .dropdown-header {
   display: flex;
-  justify-content: space-around;
-  padding: 0px 20px;
+  justify-content: space-between; /* Cambiado de space-around */
+  padding: 0px 0px; /* Reducido padding */
   align-items: center;
   cursor: pointer;
   font-size: 20px;
@@ -14,22 +16,27 @@
   height: 50px;
   background-color: rgb(199, 25, 25);
   text-align: center;
+  width: 100%; /* Asegurar ancho completo */
 }
+
 .dropdown-header:hover {
   background-color: rgb(151, 20, 20);
 }
-.dropdown-header h4{
+
+.dropdown-header h4 {
   font-family: 'Neka';
   font-weight: lighter;
-  width: 160px;
+  width: auto; /* Cambiado de 160px */
+  flex: 1; /* Ocupa el espacio disponible */
+  text-align: center;
+  margin: 0px 0px;
 }
-
-
 
 .arrow {
   font-size: 14px;
   transition: transform 0.3s ease;
-  color:white;
+  color: white;
+  margin: 0px 10px;
 }
 
 /* Flecha girada cuando está abierto */
@@ -44,12 +51,18 @@
   opacity: 0;
   padding-left: 10px;
   border-left: 2px solid rgba(255, 255, 255, 0.15);
+  width: 150px; /* Asegurar ancho completo */
 }
 
 .sidebar-dropdown.open .dropdown-content {
-  max-height: 500px; /* valor alto para permitir crecer con contenido */
+  max-height: 500px;
   opacity: 1;
   margin-top: 8px;
+}
+
+.dropdown-content a {
+  display: block;
+  width: 100%; /* Asegurar que los links ocupen todo el ancho */
 }
 
 .dropdown-content a h4 {
@@ -57,10 +70,12 @@
   color: white;
   font-family: 'Neka';
   font-weight: lighter;
-  padding: 5px 0;
+  padding: 8px 15px; /* Aumentado padding para mejor tap */
   margin: 0;
   transition: color 0.2s ease;
-  margin-bottom: 5px;
+  width: 100%; /* Ocupar todo el ancho disponible */
+  text-align: left;
+  box-sizing: border-box;
 }
 
 .dropdown-content a h4:hover {
@@ -69,15 +84,15 @@
   border-bottom-left-radius: 5px;
 }
 
-/* Ajuste principal para scroll */
+/* SIDEBAR BASE */
 .sidebar {
   position: fixed;
   top: 110px;
-  right: -300px; /* Oculta fuera de la pantalla */
+  right: -300px;
   left: auto;
   width: 180px;
-  max-height: calc(100vh - 30vh); /* Altura dinámica según viewport */
-  overflow-y: auto; /* Habilita scroll vertical si se necesita */
+  max-height: calc(100vh - 30vh);
+  overflow-y: auto;
   background-color: #f1efee;
   color: rgb(44, 40, 40);
   padding: 20px;
@@ -90,7 +105,6 @@
   border-top: solid 20px #f1efee;
   border-bottom: solid 20px #f1efee;
 }
-
 /* Eliminamos height fija por rol */
 .sidebar.rol-1,
 .sidebar.rol-3 {
@@ -107,31 +121,42 @@
 }
 
   .Divparasepararyquedebonito{
-    margin-top: -30px;
-  }
+  margin-top: -30px;
+  width: 100%; /* Asegurar que ocupe todo el ancho de la sidebar */
+}
   .sidebar.open {
     right: 0px;
   }
   .sidebar.closed>.Divparasepararyquedebonito{
     margin-top: -30px;
   }
-  #Blue2{
-    margin-top: 30px;
-    width: 160px;
-    padding: 10px;
-    background-color: rgb(31, 31, 112);
-  }
-  #Red2{
-    width: 160px;
-    padding: 10px;
-    background-color: rgb(199, 25, 25);
-  }
-  #Blue2:hover{
-    background-color: rgb(22, 22, 92);
-  }
-  #Red2:hover{
-    background-color: rgb(151, 20, 20);
-  }
+  #Blue2, #Red2 {
+  width: 100%; /* Cambiado de 160px a 100% */
+  padding: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  display: block; /* Asegurar que sean bloques */
+  box-sizing: border-box; /* Incluir padding en el ancho */
+  text-align: center;
+}
+
+#Blue2 {
+  margin-top: 30px;
+  background-color: rgb(31, 31, 112);
+}
+
+#Red2 {
+  background-color: rgb(199, 25, 25);
+}
+
+#Blue2:hover {
+  background-color: rgb(22, 22, 92);
+}
+
+#Red2:hover {
+  background-color: rgb(151, 20, 20);
+}
+
  
   .toggle-button, .close-button {
     background: none;
@@ -147,44 +172,38 @@
   .OpcionesSidebar{
     text-align: center;
   }
-  .OpcionSidebar{
-    color: rgb(227, 241, 231);
-    font-family: 'Neka';
-    letter-spacing: 0.5px;
-    font-weight: lighter;
-    font-size: 20px;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3px;
-    margin-bottom: 3px; 
-  }
-  .OpcionSidebaruno{
-    color: rgb(227, 241, 231);
-    font-family: 'Neka';
-    font-weight: lighter;
-    font-size: 18px;
-    height: 100% !important;
-    width: 120px !important;
-    margin-top: 1px;
-    margin-bottom: 3px; 
-    
-  }
-  .LogOutBTN{
-    background-color: rgb(44, 40, 40);
-    border: none;
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    font-family: 'Neka';
-    font-size: 20px;
-    width: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    color: white;
-    margin-top: 0px;
-  }
+  .OpcionSidebar, .OpcionSidebaruno {
+  color: rgb(227, 241, 231);
+  font-family: 'Neka';
+  letter-spacing: 0.5px;
+  font-weight: lighter;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  width: 100%; /* Asegurar ancho completo */
+  display: block;
+}
+.OpcionSidebaruno {
+  font-size: 18px;
+  height: auto !important; /* Cambiado de 100% */
+}
+  .LogOutBTN {
+  background-color: rgb(44, 40, 40);
+  border: none;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  font-family: 'Neka';
+  font-size: 20px;
+  width: 100%; /* Cambiado de 180px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
   .LogOutBTN:hover{
     color: white;
     background-color: black;
@@ -202,28 +221,49 @@
   }
   @media (max-width: 600px) {
   .sidebar {
-    top: 200px; /* Igual a la altura del header */
-    width: 60vw;
+    top: 200px;
+    width: 60vw; /* Cambiado de 60vw para más espacio */
     right: -85vw;
-    height: calc(100vh - 130px);
+    max-height: calc(100vh - 200px);
     border-radius: 0;
+    padding: 15px; /* Reducido padding */
   }
 
   .sidebar.open {
     right: 0;
   }
-  #Blue2, #Red2 {
-    width: 90%;
-    padding: 10px;
-    margin-top: 10px;
+
+  /* En mobile, todos los elementos usan 100% del ancho disponible */
+  #Blue2, 
+  #Red2,
+  .sidebar-dropdown,
+  .dropdown-header,
+  .dropdown-content,
+  .dropdown-content a h4,
+  .LogOutBTN {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .dropdown-header {
+    padding: 0px 10px; /* Padding reducido en mobile */
+  }
+
+  .dropdown-header h4 {
+    font-size: 18px; /* Tamaño reducido para mobile */
+  }
+
+  .dropdown-content a h4 {
+    padding: 10px 15px; /* Padding consistente */
+    font-size: 16px; /* Tamaño legible en mobile */
   }
 
   .sidebar.closed {
     right: -100vw;
   }
 
-  .LogOutBTN {
-    width: 98%;
+  .Divparasepararyquedebonito {
+    margin-top: -20px; /* Ajustado para mobile */
   }
 }
 
@@ -235,5 +275,5 @@
   height: 100vh;
   backdrop-filter: blur(4px);
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 2000; /* Debajo de la sidebar (2100) */
+  z-index: 2000;
 }

@@ -512,7 +512,9 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .inscripciones-container {
-    padding: 120px 15px 40px;
+    margin-top: 140px;
+    padding-top: 80px;
+    margin-bottom: 40px;
   }
 
   .inscripciones-main-title {
@@ -522,6 +524,9 @@
   .inscripciones-main-content {
     padding: 25px;
     border-radius: 15px;
+  }
+  .inscripciones-controls-card{
+    padding: 5px;
   }
 
   .inscriptos-header {
@@ -574,45 +579,33 @@
   z-index: 1;
 }
 
+/* En tu archivo Inscripciones.css o global */
 .swal-custom-popup {
-  border-radius: 20px !important;
-  padding: 30px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  border: 2px solid #e2e8f0 !important;
-  font-family: 'Rubik', sans-serif !important;
-  background: #ffffff !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .swal-custom-title {
-  font-family: 'Neka', 'Rubik', sans-serif !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  color: #1a202c !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-family: 'Neka', sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.swal-custom-html {
+  font-family: 'Segoe UI', sans-serif;
+  color: #555;
 }
 
 .swal-custom-confirm-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 10px !important;
-  font-weight: 600 !important;
-  padding: 10px 25px !important;
-  font-family: 'Rubik', sans-serif !important;
-  transition: all 0.3s ease !important;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.swal-custom-confirm-btn:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
-  transform: translateY(-2px);
-}
-
-.swal2-icon {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.swal2-title,
-.swal2-html-container {
-  color: #2d3748 !important;
+.swal-custom-cancel-btn {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }

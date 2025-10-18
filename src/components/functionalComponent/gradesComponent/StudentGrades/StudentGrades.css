@@ -118,6 +118,8 @@
 /* Responsividad */
 @media (max-width: 600px) {
   .student-grades{
-    margin-top: 250px !important;
+    margin-top: 140px !important;
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
 }

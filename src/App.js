@@ -98,7 +98,9 @@ const App = () => {
         </>
     );
 };
-
+//actualizar con swal el subir notas
+//Enviar avisos agregar swal.
+//
 export default App;
 
 

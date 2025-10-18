@@ -27,6 +27,21 @@ const Inscripciones = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
 
+  // Configuración personalizada de Swal
+  const swalConfig = {
+    customClass: {
+      popup: 'swal-custom-popup',
+      title: 'swal-custom-title',
+      htmlContainer: 'swal-custom-html',
+      confirmButton: 'swal-custom-confirm-btn',
+      cancelButton: 'swal-custom-cancel-btn',
+      icon: 'swal-custom-icon'
+    },
+    buttonsStyling: false,
+    allowOutsideClick: false,
+    allowEscapeKey: true
+  };
+
   const showMessage = (text, type = 'success') => {
     setMessage({ text, type });
     setTimeout(() => setMessage({ text: '', type: '' }), 5000);
@@ -67,16 +82,12 @@ const Inscripciones = () => {
 
   const inscribirAlumno = async () => {
     if (!nuevoAlumno || !claseSeleccionada) {
-      Swal.fire({
+      await Swal.fire({
         icon: 'warning',
         title: 'Atención',
         text: 'Debes seleccionar un alumno y una clase',
         confirmButtonColor: '#d33',
-        customClass: {
-          popup: 'swal-custom-popup',
-          title: 'swal-custom-title',
-          confirmButton: 'swal-custom-confirm-btn',
-        }
+        ...swalConfig
       });
       return;
     }
@@ -84,16 +95,12 @@ const Inscripciones = () => {
     // Verificar si el alumno ya está inscrito
     const alumnoYaInscripto = inscriptos.some(a => a.id_alumno === parseInt(nuevoAlumno));
     if (alumnoYaInscripto) {
-      Swal.fire({
+      await Swal.fire({
         icon: 'error',
         title: 'Alumno ya inscrito',
         text: 'Este alumno ya está inscrito en la clase seleccionada.',
         confirmButtonColor: '#d33',
-        customClass: {
-          popup: 'swal-custom-popup',
-          title: 'swal-custom-title',
-          confirmButton: 'swal-custom-confirm-btn',
-        }
+        ...swalConfig
       });
       return;
     }
@@ -105,16 +112,13 @@ const Inscripciones = () => {
       });
       
       setNuevoAlumno('');
-      Swal.fire({
+      
+      await Swal.fire({
         icon: 'success',
-        title: 'Alumno inscrito',
-        text: 'El alumno fue inscrito exitosamente.',
+        title: '¡Inscripción exitosa!',
+        text: 'El alumno fue inscrito correctamente en la clase.',
         confirmButtonColor: '#3085d6',
-        customClass: {
-          popup: 'swal-custom-popup',
-          title: 'swal-custom-title',
-          confirmButton: 'swal-custom-confirm-btn',
-        }
+        ...swalConfig
       });
       
       // Actualizar lista de inscriptos
@@ -122,26 +126,49 @@ const Inscripciones = () => {
       setInscriptos(res.data);
     } catch (err) {
       console.error('Error al inscribir:', err);
-      Swal.fire({
+      await Swal.fire({
         icon: 'error',
         title: 'Error al inscribir',
-        text: 'Ocurrió un problema al inscribir al alumno.',
+        text: 'Ocurrió un problema al inscribir al alumno. Por favor, intenta nuevamente.',
         confirmButtonColor: '#d33',
-        customClass: {
-          popup: 'swal-custom-popup',
-          title: 'swal-custom-title',
-          confirmButton: 'swal-custom-confirm-btn',
-        }
+        ...swalConfig
       });
     }
   };
 
-
   const cambiarAlumnoDeClase = async (id_alumno, alumnoNombre) => {
     if (!claseNueva) {
-      showMessage('⚠️ Debes seleccionar una clase destino', 'error');
+      await Swal.fire({
+        icon: 'warning',
+        title: 'Clase requerida',
+        text: 'Debes seleccionar una clase destino para realizar el cambio.',
+        confirmButtonColor: '#d33',
+        ...swalConfig
+      });
       return;
     }
+
+    const result = await Swal.fire({
+      icon: 'question',
+      title: '¿Cambiar de clase?',
+      html: `
+        <div style="text-align: center;">
+          <p>¿Estás seguro de que deseas cambiar a <strong>${alumnoNombre}</strong> de clase?</p>
+          <p style="font-size: 14px; color: #666; margin-top: 10px;">
+            Clase destino: <strong>${clases.find(c => c.id_clase === parseInt(claseNueva))?.nivel_nombre}</strong>
+          </p>
+        </div>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Sí, cambiar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      reverseButtons: true,
+      ...swalConfig
+    });
+
+    if (!result.isConfirmed) return;
 
     try {
       await axios.put(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
@@ -152,19 +179,52 @@ const Inscripciones = () => {
       
       setClaseNueva('');
       setEditandoAlumnoId(null);
-      showMessage(`✅ ${alumnoNombre} cambiado de clase exitosamente`, 'success');
+      
+      await Swal.fire({
+        icon: 'success',
+        title: '¡Cambio exitoso!',
+        text: `${alumnoNombre} ha sido cambiado de clase correctamente.`,
+        confirmButtonColor: '#3085d6',
+        ...swalConfig
+      });
       
       // Actualizar lista de inscriptos
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${claseSeleccionada}`);
       setInscriptos(res.data);
     } catch (err) {
       console.error('Error al cambiar alumno:', err);
-      showMessage('❌ Error al cambiar al alumno de clase', 'error');
+      await Swal.fire({
+        icon: 'error',
+        title: 'Error al cambiar',
+        text: 'Ocurrió un problema al cambiar al alumno de clase. Por favor, intenta nuevamente.',
+        confirmButtonColor: '#d33',
+        ...swalConfig
+      });
     }
   };
 
   const eliminarInscripcion = async (id_alumno, alumnoNombre) => {
-    if (!window.confirm(`¿Estás seguro de que deseas eliminar a ${alumnoNombre} de esta clase?`)) return;
+    const result = await Swal.fire({
+      icon: 'warning',
+      title: '¿Eliminar inscripción?',
+      html: `
+        <div style="text-align: center;">
+          <p>¿Estás seguro de que deseas eliminar a <strong>${alumnoNombre}</strong> de esta clase?</p>
+          <p style="font-size: 14px; color: #dc2626; margin-top: 10px;">
+            Esta acción no se puede deshacer.
+          </p>
+        </div>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#6b7280',
+      reverseButtons: true,
+      ...swalConfig
+    });
+
+    if (!result.isConfirmed) return;
 
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
@@ -172,10 +232,23 @@ const Inscripciones = () => {
       });
       
       setInscriptos(prev => prev.filter(a => a.id_alumno !== id_alumno));
-      showMessage(`✅ ${alumnoNombre} eliminado de la clase`, 'success');
+      
+      await Swal.fire({
+        icon: 'success',
+        title: '¡Eliminado!',
+        text: `${alumnoNombre} ha sido eliminado de la clase correctamente.`,
+        confirmButtonColor: '#3085d6',
+        ...swalConfig
+      });
     } catch (err) {
       console.error('Error al eliminar inscripción:', err);
-      showMessage('❌ Error al eliminar la inscripción', 'error');
+      await Swal.fire({
+        icon: 'error',
+        title: 'Error al eliminar',
+        text: 'Ocurrió un problema al eliminar la inscripción. Por favor, intenta nuevamente.',
+        confirmButtonColor: '#d33',
+        ...swalConfig
+      });
     }
   };
 
@@ -227,7 +300,6 @@ const Inscripciones = () => {
                     Seleccionar Clase
                   </label>
                   <div className="select-wrapper">
-                    <FaCalendarAlt className="select-icon" />
                     <select 
                       value={claseSeleccionada} 
                       onChange={(e) => setClaseSeleccionada(e.target.value)}

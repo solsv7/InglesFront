@@ -461,7 +461,11 @@
     gap: 15px;
     align-items: stretch;
   }
-
+  .search-input{
+    box-sizing: content-box !important;
+    width: 100%;
+    max-width: -webkit-fill-available;
+  }
   .filter-group {
     min-width: auto;
   }

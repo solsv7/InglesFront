@@ -229,9 +229,11 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.card-header {
+.diccionario-card-header {
   display: flex;
   justify-content: space-between;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, #1a296b 0%, #667eea 100%) !important;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -245,7 +247,8 @@
 .card-title h3 {
   font-family: 'Neka', 'Rubik', sans-serif;
   font-size: 1.3rem;
-  color: #2d3748;
+  color: white;
+  font-weight: lighter;
   margin: 0;
 }
 
@@ -254,7 +257,7 @@
   font-size: 1.2rem;
 }
 
-.card-actions {
+.diccionario-card-actions{
   display: flex;
   gap: 10px;
 }
@@ -458,7 +461,8 @@
   }
 
   .DictionaryContent {
-    padding: 0 15px;
+    margin-top: 140px;
+    padding: 20px 15px;
   }
 
   .dictionary-header h1 {
@@ -484,15 +488,18 @@
     min-width: auto;
   }
 
-  .card-header {
-    flex-direction: column;
+  .diccionario-card-header {
+    flex-direction: column !important;
+    padding: 25px 30px;
+  background: linear-gradient(135deg, #1a296b 0%, #667eea 100%) !important;
     gap: 15px;
     align-items: flex-start;
   }
 
-  .card-actions {
+  .diccionario-card-actions {
     width: 100%;
     justify-content: flex-end;
+    flex-direction: column;
   }
 
   .translation-content {
@@ -512,6 +519,9 @@
   .modern-input {
     font-size: 0.95rem;
     padding: 12px 15px 12px 40px;
+  }
+  .arrow-diccionario{
+    rotate: 90deg;
   }
 }
 

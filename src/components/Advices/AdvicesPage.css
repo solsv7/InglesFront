@@ -292,7 +292,8 @@
   }
 
   .AdviceContent {
-    padding: 0 15px;
+    margin-top: 140px;
+    padding: 20px 15px;
   }
 
   .advice-header h1 {
