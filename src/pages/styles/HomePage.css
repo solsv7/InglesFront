@@ -470,9 +470,12 @@
     filter: brightness(0.7);
     z-index: 10;
   }
+  .swiper-horizontal{
+    height: 500px !important;
+  }
   
   .swiper-slide img {
-    height: 400px !important;
+    height: 500px !important;
     object-fit: cover;
   }
   
