@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './AdminSchedules.css';
 import { FaEdit, FaSave, FaPlus, FaTrashAlt, FaCalendarAlt, FaClock, FaGraduationCap, FaTimes } from 'react-icons/fa';
 
-const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+const diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
 
 // Componente de Popup para agregar clase
 const AgregarClasePopup = ({ niveles, cargarHorarios, isOpen, onClose }) => {
@@ -94,7 +94,7 @@ const AgregarClasePopup = ({ niveles, cargarHorarios, isOpen, onClose }) => {
             <div className="form-group">
               <label>
                 <FaCalendarAlt className="input-icon" />
-                Día de la semana
+                DA-a de la semana
               </label>
               <select 
                 value={idDia} 
@@ -221,7 +221,7 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
   };
 
   const eliminarClase = async (id_clase) => {
-    if (window.confirm("¿Estás seguro de que deseas eliminar esta clase?")) {
+    if (window.confirm("A�EstA�s seguro de que deseas eliminar esta clase?")) {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/clases/eliminar`, {
           method: 'POST',
@@ -269,6 +269,12 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
       
       <div className="table-container">
         <table className="modern-table">
+          {/* NUEVO: colgroup para controlar anchos de columnas en pantallas grandes */}
+          <colgroup>
+            <col className="col-time" />
+            <col className="col-day" span="5" />
+          </colgroup>
+
           <thead>
             <tr>
               <th className="time-header">Horario</th>
@@ -327,7 +333,7 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
                               onClick={cancelarEdicion} 
                               className="cancel-btn"
                             >
-                              ×
+                              A-
                             </button>
                           </div>
                         </div>

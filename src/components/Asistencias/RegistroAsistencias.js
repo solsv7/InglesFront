@@ -48,7 +48,7 @@ const RegistroAsistencias = () => {
       } else {
         const alumnosConEstado = resAlumnos.data.map(alumno => ({
           ...alumno,
-          presente: false
+          presente: true
         }));
         setAlumnos(alumnosConEstado);
         setAsistenciasCargadas([]);
