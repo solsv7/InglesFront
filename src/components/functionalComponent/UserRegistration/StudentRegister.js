@@ -210,7 +210,7 @@ const CrearUsuarioNuevo = () => {
 
                 <div className="form-info">
                     <FaInfoCircle className="info-icon" />
-                    <div className="info-content">
+                    <div className="info-user-content">
                         <p><strong>Información importante:</strong></p>
                         <ul>
                             <li>El archivo Excel debe tener la estructura esperada por el sistema</li>

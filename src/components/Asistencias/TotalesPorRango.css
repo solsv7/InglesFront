@@ -1,4 +1,4 @@
-/* RegistroAsistencias.css */
+/* TotalesPorRango.css */
 .totales-clase-container {
   padding: 20px 0;
 }
@@ -53,13 +53,25 @@
   color: #2d3748;
 }
 
+.form-icon {
+  font-size: 1.3rem;
+  color: #667eea;
+}
+
+.form-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
 .clase-select-container {
   padding: 25px;
 }
 
 .rango-inputs-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
 
@@ -116,65 +128,6 @@
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.clase-select:disabled {
-  background-color: #f7fafc;
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-/* Radio buttons para asistencias */
-.radio-group {
-  display: flex;
-  gap: 15px;
-}
-
-.radio-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: white;
-}
-
-.radio-label:hover {
-  border-color: #cbd5e0;
-}
-
-.radio-label.radio-selected {
-  border-color: #667eea;
-  background-color: #f7fafc;
-}
-
-.radio-label input {
-  margin: 0;
-}
-
-.radio-text.presente {
-  color: #48bb78;
-  font-weight: 600;
-}
-
-.radio-text.ausente {
-  color: #e53e3e;
-  font-weight: 600;
-}
-
-/* Estados de asistencia */
-.estado-presente {
-  color: #48bb78;
-  font-weight: 700;
-}
-
-.estado-ausente {
-  color: #e53e3e;
-  font-weight: 700;
-}
-
-/* Form Actions */
 .form-actions {
   display: flex;
   gap: 15px;
@@ -207,6 +160,62 @@
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+.btn-limpiar {
+  padding: 15px 25px;
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-limpiar:hover {
+  background: #cbd5e0;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  font-size: 0.9rem;
+}
+
+/* Resumen del rango */
+.resumen-rango {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.resumen-info {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: #718096;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  color: #2d3748;
+  font-weight: 600;
 }
 
 /* Tabla de Resultados */
@@ -306,8 +315,7 @@
   font-weight: 700;
 }
 
-/* Estados */
-.estado-cargando,
+/* Estados vacíos */
 .estado-sin-resultados,
 .estado-vacio {
   text-align: center;
@@ -315,7 +323,6 @@
   color: #a0aec0;
 }
 
-.cargando-icon,
 .sin-resultados-icon,
 .vacio-icon {
   font-size: 3rem;
@@ -323,14 +330,12 @@
   opacity: 0.5;
 }
 
-.estado-cargando h3,
 .estado-sin-resultados h3,
 .estado-vacio h3 {
   margin: 0 0 10px 0;
   font-size: 1.3rem;
 }
 
-.estado-cargando p,
 .estado-sin-resultados p,
 .estado-vacio p {
   margin: 0;
@@ -351,11 +356,6 @@
     gap: 15px;
   }
 
-  .radio-group {
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .form-actions {
     flex-direction: column;
   }
@@ -364,6 +364,11 @@
     flex-direction: column;
     gap: 10px;
     text-align: center;
+  }
+
+  .resumen-info {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .totales-table-container {

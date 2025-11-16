@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Niveles.css';
 import { FaPlus, FaEdit, FaTrash, FaSave, FaTimes, FaLanguage, FaGraduationCap } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Niveles = () => {
   const [niveles, setNiveles] = useState([]);
@@ -9,7 +10,6 @@ const Niveles = () => {
   const [editando, setEditando] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [message, setMessage] = useState({ text: '', type: '' });
 
   // Opciones de idiomas disponibles
   const opcionesIdiomas = [
@@ -18,9 +18,36 @@ const Niveles = () => {
     { value: 'Portugués', label: 'Portugués' }
   ];
 
-  const showMessage = (text, type = 'success') => {
-    setMessage({ text, type });
-    setTimeout(() => setMessage({ text: '', type: '' }), 5000);
+  const showSuccessAlert = (title, text = '') => {
+    Swal.fire({
+      title: title,
+      text: text,
+      confirmButtonColor: '#48bb78',
+      confirmButtonText: 'Aceptar',
+      timer: 3000,
+      timerProgressBar: true
+    });
+  };
+
+  const showErrorAlert = (title, text = '') => {
+    Swal.fire({
+      title: title,
+      text: text,
+      confirmButtonColor: '#e53e3e',
+      confirmButtonText: 'Aceptar'
+    });
+  };
+
+  const showConfirmDialog = (title, text, confirmButtonText = 'Sí, eliminar') => {
+    return Swal.fire({
+      title: title,
+      text: text,
+      showCancelButton: true,
+      confirmButtonColor: '#e53e3e',
+      cancelButtonColor: '#718096',
+      confirmButtonText: confirmButtonText,
+      cancelButtonText: 'Cancelar'
+    });
   };
 
   const cargarNiveles = async () => {
@@ -31,7 +58,7 @@ const Niveles = () => {
       setNiveles(data);
     } catch (err) {
       console.error('Error al obtener niveles:', err);
-      showMessage('❌ Error al cargar los niveles', 'error');
+      showErrorAlert('Error', 'No se pudieron cargar los niveles');
     } finally {
       setIsLoading(false);
     }
@@ -55,7 +82,7 @@ const Niveles = () => {
 
   const agregarNivel = async () => {
     if (!nombre.trim() || !idioma.trim()) {
-      showMessage('⚠️ Todos los campos son obligatorios', 'error');
+      showErrorAlert('Campos incompletos', 'Todos los campos son obligatorios');
       return;
     }
 
@@ -67,17 +94,17 @@ const Niveles = () => {
       });
 
       if (response.ok) {
-        showMessage('✅ Nivel agregado exitosamente', 'success');
+        showSuccessAlert('¡Éxito!', 'Nivel agregado correctamente');
         setNombre('');
         setIdioma('');
         setShowForm(false);
         cargarNiveles();
       } else {
-        showMessage('❌ Error al agregar el nivel', 'error');
+        showErrorAlert('Error', 'No se pudo agregar el nivel');
       }
     } catch (error) {
       console.error('Error al agregar nivel:', error);
-      showMessage('❌ Error de conexión al servidor', 'error');
+      showErrorAlert('Error de conexión', 'No se pudo conectar con el servidor');
     }
   };
 
@@ -92,40 +119,46 @@ const Niveles = () => {
       });
 
       if (response.ok) {
-        showMessage('✅ Nivel actualizado exitosamente', 'success');
+        showSuccessAlert('¡Éxito!', 'Nivel actualizado correctamente');
         setEditando(null);
         setNombre('');
         setIdioma('');
         setShowForm(false);
         cargarNiveles();
       } else {
-        showMessage('❌ Error al actualizar el nivel', 'error');
+        showErrorAlert('Error', 'No se pudo actualizar el nivel');
       }
     } catch (error) {
       console.error('Error al actualizar nivel:', error);
-      showMessage('❌ Error de conexión al servidor', 'error');
+      showErrorAlert('Error de conexión', 'No se pudo conectar con el servidor');
     }
   };
 
   const eliminarNivel = async (id_nivel, nivelNombre) => {
-    if (!window.confirm(`¿Estás seguro de que deseas eliminar el nivel "${nivelNombre}"?`)) return;
+    const result = await showConfirmDialog(
+      '¿Estás seguro?',
+      `Esta acción eliminará el nivel "${nivelNombre}" permanentemente.`,
+      'Sí, eliminar nivel'
+    );
 
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/niveles/eliminar`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_nivel })
-      });
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/niveles/eliminar`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id_nivel })
+        });
 
-      if (response.ok) {
-        showMessage('✅ Nivel eliminado exitosamente', 'success');
-        cargarNiveles();
-      } else {
-        showMessage('❌ Error al eliminar el nivel', 'error');
+        if (response.ok) {
+          showSuccessAlert('¡Eliminado!', 'El nivel ha sido eliminado correctamente');
+          cargarNiveles();
+        } else {
+          showErrorAlert('Error', 'No se pudo eliminar el nivel');
+        }
+      } catch (err) {
+        console.error('Error al eliminar nivel:', err);
+        showErrorAlert('Error de conexión', 'No se pudo conectar con el servidor');
       }
-    } catch (err) {
-      console.error('Error al eliminar nivel:', err);
-      showMessage('❌ Error de conexión al servidor', 'error');
     }
   };
 
@@ -137,10 +170,30 @@ const Niveles = () => {
   };
 
   const cancelarEdicion = () => {
-    setEditando(null);
-    setNombre('');
-    setIdioma('');
-    setShowForm(false);
+    if (nombre.trim() || idioma.trim()) {
+      Swal.fire({
+        title: '¿Descartar cambios?',
+        text: 'Tienes cambios sin guardar. ¿Estás seguro de que quieres cancelar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e53e3e',
+        cancelButtonColor: '#718096',
+        confirmButtonText: 'Sí, descartar',
+        cancelButtonText: 'Seguir editando'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setEditando(null);
+          setNombre('');
+          setIdioma('');
+          setShowForm(false);
+        }
+      });
+    } else {
+      setEditando(null);
+      setNombre('');
+      setIdioma('');
+      setShowForm(false);
+    }
   };
 
   return (
@@ -169,15 +222,6 @@ const Niveles = () => {
                 Agregar Nivel
               </button>
             </div>
-
-            {message.text && (
-              <div className={`niveles-message niveles-${message.type}`}>
-                <div className="niveles-message-icon">
-                  {message.type === 'success' ? '✅' : '❌'}
-                </div>
-                {message.text}
-              </div>
-            )}
 
             {/* Cards de Niveles en lugar de tabla */}
             <div className="niveles-cards-container niveles-content-card">

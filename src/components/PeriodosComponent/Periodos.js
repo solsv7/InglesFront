@@ -10,6 +10,7 @@ import {
   FaClock,
   FaListAlt
 } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 import './Periodos.css';
 
 const Periodos = () => {
@@ -19,11 +20,37 @@ const Periodos = () => {
   const [editandoNombre, setEditandoNombre] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [message, setMessage] = useState({ text: '', type: '' });
 
-  const showMessage = (text, type = 'success') => {
-    setMessage({ text, type });
-    setTimeout(() => setMessage({ text: '', type: '' }), 5000);
+  const showSuccessAlert = (title, text = '') => {
+    Swal.fire({
+      title: title,
+      text: text,
+      confirmButtonColor: '#48bb78',
+      confirmButtonText: 'Aceptar',
+      timer: 3000,
+      timerProgressBar: true
+    });
+  };
+
+  const showErrorAlert = (title, text = '') => {
+    Swal.fire({
+      title: title,
+      text: text,
+      confirmButtonColor: '#e53e3e',
+      confirmButtonText: 'Aceptar'
+    });
+  };
+
+  const showConfirmDialog = (title, text, confirmButtonText = 'Sí, eliminar') => {
+    return Swal.fire({
+      title: title,
+      text: text,
+      showCancelButton: true,
+      confirmButtonColor: '#e53e3e',
+      cancelButtonColor: '#718096',
+      confirmButtonText: confirmButtonText,
+      cancelButtonText: 'Cancelar'
+    });
   };
 
   const obtenerPeriodos = async () => {
@@ -33,7 +60,7 @@ const Periodos = () => {
       setPeriodos(res.data);
     } catch (error) {
       console.error('Error al obtener periodos:', error);
-      showMessage('❌ Error al cargar los períodos', 'error');
+      showErrorAlert('Error', 'No se pudieron cargar los períodos');
     } finally {
       setIsLoading(false);
     }
@@ -41,7 +68,7 @@ const Periodos = () => {
 
   const crearPeriodo = async () => {
     if (!nuevoNombre.trim()) {
-      showMessage('⚠️ El nombre del período es obligatorio', 'error');
+      showErrorAlert('Campo incompleto', 'El nombre del período es obligatorio');
       return;
     }
 
@@ -51,17 +78,17 @@ const Periodos = () => {
       });
       setNuevoNombre('');
       setShowForm(false);
-      showMessage('✅ Período creado exitosamente', 'success');
+      showSuccessAlert('¡Éxito!', 'Período creado correctamente');
       obtenerPeriodos();
     } catch (error) {
       console.error('Error al crear periodo:', error);
-      showMessage('❌ Error al crear el período', 'error');
+      showErrorAlert('Error', 'No se pudo crear el período');
     }
   };
 
   const editarPeriodo = async (id) => {
     if (!editandoNombre.trim()) {
-      showMessage('⚠️ El nombre del período es obligatorio', 'error');
+      showErrorAlert('Campo incompleto', 'El nombre del período es obligatorio');
       return;
     }
 
@@ -71,24 +98,30 @@ const Periodos = () => {
       });
       setEditandoId(null);
       setEditandoNombre('');
-      showMessage('✅ Período actualizado exitosamente', 'success');
+      showSuccessAlert('¡Éxito!', 'Período actualizado correctamente');
       obtenerPeriodos();
     } catch (error) {
       console.error('Error al editar periodo:', error);
-      showMessage('❌ Error al actualizar el período', 'error');
+      showErrorAlert('Error', 'No se pudo actualizar el período');
     }
   };
 
   const eliminarPeriodo = async (id, nombre) => {
-    if (!window.confirm(`¿Estás seguro de que deseas eliminar el período "${nombre}"?`)) return;
+    const result = await showConfirmDialog(
+      '¿Estás seguro?',
+      `Esta acción eliminará el período "${nombre}" permanentemente.`,
+      'Sí, eliminar período'
+    );
 
-    try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/periodos/${id}`);
-      showMessage('✅ Período eliminado exitosamente', 'success');
-      obtenerPeriodos();
-    } catch (error) {
-      console.error('Error al eliminar periodo:', error);
-      showMessage('❌ Error al eliminar el período', 'error');
+    if (result.isConfirmed) {
+      try {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/periodos/${id}`);
+        showSuccessAlert('¡Eliminado!', 'El período ha sido eliminado correctamente');
+        obtenerPeriodos();
+      } catch (error) {
+        console.error('Error al eliminar periodo:', error);
+        showErrorAlert('Error', 'No se pudo eliminar el período');
+      }
     }
   };
 
@@ -98,13 +131,47 @@ const Periodos = () => {
   };
 
   const cancelarEdicion = () => {
-    setEditandoId(null);
-    setEditandoNombre('');
+    if (editandoNombre.trim() !== periodos.find(p => p.id_periodo === editandoId)?.nombre) {
+      Swal.fire({
+        title: '¿Descartar cambios?',
+        text: 'Tienes cambios sin guardar. ¿Estás seguro de que quieres cancelar?',
+        showCancelButton: true,
+        confirmButtonColor: '#e53e3e',
+        cancelButtonColor: '#718096',
+        confirmButtonText: 'Sí, descartar',
+        cancelButtonText: 'Seguir editando'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setEditandoId(null);
+          setEditandoNombre('');
+        }
+      });
+    } else {
+      setEditandoId(null);
+      setEditandoNombre('');
+    }
   };
 
   const cancelarCreacion = () => {
-    setShowForm(false);
-    setNuevoNombre('');
+    if (nuevoNombre.trim()) {
+      Swal.fire({
+        title: '¿Descartar período?',
+        text: 'Tienes un período sin guardar. ¿Estás seguro de que quieres cancelar?',
+        showCancelButton: true,
+        confirmButtonColor: '#e53e3e',
+        cancelButtonColor: '#718096',
+        confirmButtonText: 'Sí, descartar',
+        cancelButtonText: 'Seguir editando'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setShowForm(false);
+          setNuevoNombre('');
+        }
+      });
+    } else {
+      setShowForm(false);
+      setNuevoNombre('');
+    }
   };
 
   useEffect(() => {
@@ -137,15 +204,6 @@ const Periodos = () => {
                 Agregar Período
               </button>
             </div>
-
-            {message.text && (
-              <div className={`periodos-message periodos-${message.type}`}>
-                <div className="periodos-message-icon">
-                  {message.type === 'success' ? '✅' : '❌'}
-                </div>
-                {message.text}
-              </div>
-            )}
 
             {/* Cards de Períodos */}
             <div className="periodos-cards-container periodos-content-card">

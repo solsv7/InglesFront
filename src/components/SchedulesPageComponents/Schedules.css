@@ -1,14 +1,14 @@
 /* Schedules.css */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-.schedules-container {
+.schedules-page {
     max-width: 1200px;
     margin: 0 auto;
     padding: 80px 20px 60px;
     font-family: 'Rubik', sans-serif;
 }
 
-.schedules-loading {
+.schedules-page-loading {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,34 +18,34 @@
     font-family: 'Rubik', sans-serif;
 }
 
-.loading-spinner {
+.schedules-loading-spinner {
     width: 40px;
     height: 40px;
     border: 3px solid #f3f3f3;
     border-top: 3px solid #667eea;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: schedules-spin 1s linear infinite;
     margin-bottom: 15px;
 }
 
-@keyframes spin {
+@keyframes schedules-spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-.schedules-header {
+.schedules-page-header {
     text-align: center;
     margin-bottom: 40px;
     color: #2d3748;
 }
 
-.header-icon {
+.schedules-header-icon {
     font-size: 3rem;
     color: #667eea;
     margin-bottom: 15px;
 }
 
-.schedules-header h2 {
+.schedules-page-header h2 {
     font-family: 'Neka', 'Rubik', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
@@ -53,7 +53,7 @@
     color: #2d3748;
 }
 
-.schedules-header p {
+.schedules-page-header p {
     font-size: 1.1rem;
     color: #718096;
     margin: 0;
@@ -61,7 +61,7 @@
 }
 
 /* Tabla para desktop */
-.table-wrapper {
+.schedules-table-wrapper {
     overflow-x: auto;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -69,14 +69,14 @@
     margin-bottom: 30px;
 }
 
-.schedules-table {
+.schedules-page-table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     min-width: 600px;
 }
 
-.schedules-table th {
+.schedules-page-table th {
     background: linear-gradient(135deg, #cad2f3 0%, #ece7ff 100%);
     color: white;
     padding: 20px 15px;
@@ -87,29 +87,29 @@
     font-size: 1rem;
 }
 
-.time-header {
+.schedules-time-header {
     background: #2d3748 !important;
     min-width: 150px;
 }
 
-.th-icon {
+.schedules-th-icon {
     margin-right: 8px;
     font-size: 0.9rem;
 }
 
-.day-header {
+.schedules-day-header {
     min-width: 120px;
 }
 
-.schedule-row {
+.schedules-page-row {
     transition: background-color 0.3s ease;
 }
 
-.schedule-row:hover {
+.schedules-page-row:hover {
     background-color: #f8fafc;
 }
 
-.time-slot {
+.schedules-time-slot {
     background: #f7fafc;
     padding: 18px 15px;
     font-weight: 600;
@@ -120,7 +120,7 @@
     font-size: 0.95rem;
 }
 
-.level-cell {
+.schedules-level-cell {
     padding: 18px 15px;
     border: 1px solid #e2e8f0;
     text-align: center;
@@ -129,20 +129,20 @@
     transition: all 0.3s ease;
 }
 
-.level-cell.has-class {
+.schedules-has-class {
     background: #f0fff4;
     color: #22543d;
     font-weight: 500;
     border-color: #9ae6b4;
 }
 
-.level-cell.no-class {
+.schedules-no-class {
     background: #f7fafc;
     color: #a0aec0;
     font-style: italic;
 }
 
-.no-data {
+.schedules-no-data {
     text-align: center;
     padding: 40px;
     color: #718096;
@@ -151,21 +151,23 @@
 }
 
 /* Vista móvil */
-.mobile-schedules {
+.schedules-mobile-view {
     display: none;
     flex-direction: column;
     gap: 15px;
 }
 
-.mobile-time-slot {
+.schedules-mobile-time-slot {
     background: white;
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     border: 1px solid #e2e8f0;
+    animation: schedules-fadeInUp 0.6s ease;
+    animation-fill-mode: both;
 }
 
-.mobile-time {
+.schedules-mobile-time {
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
     color: #2d3748;
@@ -176,13 +178,13 @@
     text-align: center;
 }
 
-.mobile-days {
+.schedules-mobile-days {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
-.mobile-day {
+.schedules-mobile-day {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -192,7 +194,7 @@
     border: 1px solid #e2e8f0;
 }
 
-.day-name {
+.schedules-day-name {
     font-family: 'Rubik', sans-serif;
     font-weight: 600;
     color: #4a5568;
@@ -200,7 +202,7 @@
     min-width: 40px;
 }
 
-.day-level {
+.schedules-day-level {
     font-family: 'Rubik', sans-serif;
     font-size: 0.85rem;
     text-align: right;
@@ -208,134 +210,129 @@
     margin-left: 10px;
 }
 
-.day-level.has-class {
+.schedules-day-level.schedules-has-class {
     color: #22543d;
     font-weight: 500;
 }
 
-.day-level.no-class {
+.schedules-day-level.schedules-no-class {
     color: #a0aec0;
     font-style: italic;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .schedules-container {
+    .schedules-page {
         padding: 60px 20px 40px;
     }
 
-    .schedules-header h2 {
+    .schedules-page-header h2 {
         font-size: 2.2rem;
     }
 
-    .schedules-table th,
-    .time-slot,
-    .level-cell {
+    .schedules-page-table th,
+    .schedules-time-slot,
+    .schedules-level-cell {
         padding: 15px 12px;
         font-size: 0.9rem;
     }
 }
 
 @media (max-width: 768px) {
-    .schedules-header h2 {
+    .schedules-page-header h2 {
         font-size: 2rem;
     }
 
-    .schedules-header p {
+    .schedules-page-header p {
         font-size: 1rem;
     }
 
-    .header-icon {
+    .schedules-header-icon {
         font-size: 2.5rem;
     }
 
     /* Ocultar tabla en móvil y mostrar vista móvil */
-    .table-wrapper {
+    .schedules-table-wrapper {
         display: none;
     }
 
-    .mobile-schedules {
+    .schedules-mobile-view {
         display: flex;
     }
 
-    .mobile-days {
+    .schedules-mobile-days {
         grid-template-columns: 1fr;
         gap: 10px;
     }
 
-    .mobile-time-slot {
+    .schedules-mobile-time-slot {
         padding: 15px;
     }
 
-    .mobile-time {
+    .schedules-mobile-time {
         font-size: 1rem;
         margin-bottom: 12px;
     }
+
+    .schedules-mobile-time-slot:nth-child(1) { animation-delay: 0.1s; }
+    .schedules-mobile-time-slot:nth-child(2) { animation-delay: 0.2s; }
+    .schedules-mobile-time-slot:nth-child(3) { animation-delay: 0.3s; }
+    .schedules-mobile-time-slot:nth-child(4) { animation-delay: 0.4s; }
+    .schedules-mobile-time-slot:nth-child(5) { animation-delay: 0.5s; }
 }
 
 @media (max-width: 480px) {
-    .schedules-container {
+    .schedules-page {
         padding: 40px 15px 30px;
     }
 
-    .schedules-header h2 {
+    .schedules-page-header h2 {
         font-size: 1.8rem;
     }
 
-    .schedules-header p {
+    .schedules-page-header p {
         font-size: 0.95rem;
     }
 
-    .header-icon {
+    .schedules-header-icon {
         font-size: 2.2rem;
     }
 
-    .mobile-time-slot {
+    .schedules-mobile-time-slot {
         padding: 12px;
     }
 
-    .mobile-time {
+    .schedules-mobile-time {
         font-size: 0.95rem;
     }
 
-    .day-name {
+    .schedules-day-name {
         font-size: 0.85rem;
     }
 
-    .day-level {
+    .schedules-day-level {
         font-size: 0.8rem;
     }
 }
 
 /* Estados de hover mejorados */
-.schedule-row:hover .level-cell.has-class {
+.schedules-page-row:hover .schedules-level-cell.schedules-has-class {
     background: #e6ffed;
     transform: scale(1.02);
 }
 
-.mobile-time-slot:hover {
+.schedules-mobile-time-slot:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     transition: all 0.3s ease;
 }
 
 /* Animaciones de entrada */
-.schedules-table {
-    animation: fadeInUp 0.6s ease;
+.schedules-page-table {
+    animation: schedules-fadeInUp 0.6s ease;
 }
 
-.mobile-time-slot {
-    animation: fadeInUp 0.6s ease;
-    animation-fill-mode: both;
-}
-
-.mobile-time-slot:nth-child(1) { animation-delay: 0.1s; }
-.mobile-time-slot:nth-child(2) { animation-delay: 0.2s; }
-.mobile-time-slot:nth-child(3) { animation-delay: 0.3s; }
-.mobile-time-slot:nth-child(4) { animation-delay: 0.4s; }
-.mobile-time-slot:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes fadeInUp {
+@keyframes schedules-fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);

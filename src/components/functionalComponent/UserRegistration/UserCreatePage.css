@@ -1,7 +1,7 @@
 /* UserCreatePage.css */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-.AnimatedUsersCreationWrapper {
+.user-creation-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@
   z-index: 1;
 }
 
-.AnimatedUsersCreationWrapper::before {
+.user-creation-wrapper::before {
   content: "";
   position: absolute;
   width: 120%;
@@ -23,12 +23,12 @@
   background-size: 30%;
   background-position: center;
   opacity: 0.1;
-  animation:  MoveBackground 70s linear infinite;
+  animation: user-creation-moveBackground 70s linear infinite;
   z-index: 0;
   pointer-events: none;
 }
 
-@keyframes moveBackground {
+@keyframes user-creation-moveBackground {
   from {
     background-position: 0 0;
   }
@@ -37,7 +37,7 @@
   }
 }
 
-.UsersCreationContent {
+.user-creation-content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -46,7 +46,7 @@
   margin: 50px 0px;
 }
 
-.users-creation-header {
+.user-creation-header {
   background: linear-gradient(135deg, #1a296b 0%, #4a5568 100%);
   padding: 50px 0px;
   border-radius: 25px;
@@ -55,14 +55,14 @@
   color: white;
 }
 
-.users-creation-header .header-icon {
+.user-creation-header .user-creation-header-icon {
   font-size: 4rem;
   margin-bottom: 20px;
   opacity: 0.9;
   color: white;
 }
 
-.users-creation-header h1 {
+.user-creation-title {
   font-family: 'Neka', 'Rubik', sans-serif;
   font-size: 3rem;
   font-weight: 700;
@@ -71,7 +71,7 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.users-creation-header p {
+.user-creation-subtitle {
   font-size: 1.2rem;
   opacity: 0.9;
   margin: 0;
@@ -79,7 +79,7 @@
   font-family: 'Rubik', sans-serif;
 }
 
-.users-creation-form {
+.user-creation-form {
   background: white;
   padding: 40px;
   border-radius: 20px;
@@ -88,11 +88,11 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.form-section {
+.user-creation-section {
   margin-bottom: 30px;
 }
 
-.section-label {
+.user-creation-label {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -103,12 +103,12 @@
   margin-bottom: 15px;
 }
 
-.label-icon {
+.user-creation-label-icon {
   color: #667eea;
   font-size: 1.1rem;
 }
 
-.select-wrapper {
+.user-creation-select-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -119,13 +119,13 @@
   overflow: hidden;
 }
 
-.select-wrapper:focus-within {
+.user-creation-select-wrapper:focus-within {
   border-color: #667eea;
   background: white;
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.select-wrapper svg {
+.user-creation-select-wrapper svg {
   position: absolute;
   right: 15px;
   color: #667eea;
@@ -133,7 +133,7 @@
   z-index: 2;
 }
 
-.modern-select {
+.user-creation-select {
   width: 100%;
   padding: 15px 20px 15px 45px;
   border: none;
@@ -150,16 +150,17 @@
   background-size: 16px;
 }
 
-.form-container {
+.teacher-creation-container,
+.user-creation-container {
   margin-top: 30px;
   padding: 30px;
   background: #f8f9fa;
   border-radius: 15px;
   border: 2px solid #e2e8f0;
-  animation: slideDown 0.5s ease;
+  animation: user-creation-slideDown 0.5s ease;
 }
 
-@keyframes slideDown {
+@keyframes user-creation-slideDown {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -170,54 +171,63 @@
   }
 }
 
-.form-header {
-  text-align: center;
+.teacher-creation-header,
+.user-creation-form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e2e8f0;
+  padding: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  color: white;
 }
 
-.form-type-icon {
+.teacher-creation-icon,
+.user-creation-form-icon {
   font-size: 3rem;
-  color: #667eea;
+  color: white;
   margin-bottom: 15px;
 }
 
-.form-header h2 {
+.teacher-creation-title,
+.user-creation-form-title {
   font-family: 'Neka', 'Rubik', sans-serif;
   font-size: 2rem;
-  color: #2d3748;
+  color: white;
   margin: 0 0 10px 0;
   font-weight: 600;
 }
 
-.form-header p {
+.teacher-creation-subtitle,
+.user-creation-form-subtitle {
   font-family: 'Rubik', sans-serif;
-  color: #718096;
-  font-size: 1.1rem;
+  color: white;
+  font-size: 0.8rem;
   margin: 0;
 }
 
-.empty-selection {
+.user-creation-empty {
   text-align: center;
   padding: 60px 40px;
   color: #718096;
 }
 
-.empty-icon {
+.user-creation-empty-icon {
   font-size: 4rem;
   margin-bottom: 20px;
   color: #cbd5e0;
 }
 
-.empty-selection h3 {
+.user-creation-empty-title {
   font-family: 'Neka', 'Rubik', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #2d3748;
 }
 
-.empty-selection p {
+.user-creation-empty-text {
   font-family: 'Rubik', sans-serif;
   font-size: 1.1rem;
   margin: 0;
@@ -227,7 +237,7 @@
 }
 
 /* Animaciones */
-@keyframes fadeInUp {
+@keyframes user-creation-fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -238,21 +248,26 @@
   }
 }
 
-.users-creation-form {
-  animation: fadeInUp 0.6s ease;
+.user-creation-form {
+  animation: user-creation-fadeInUp 0.6s ease;
 }
 
-.form-section {
-  animation: fadeInUp 0.6s ease;
+.user-creation-section {
+  animation: user-creation-fadeInUp 0.6s ease;
   animation-fill-mode: both;
 }
 
-.form-section:nth-child(1) { animation-delay: 0.1s; }
-.form-container { animation-delay: 0.2s; }
-.empty-selection { animation-delay: 0.1s; }
+.user-creation-section:nth-child(1) { animation-delay: 0.1s; }
+.teacher-creation-container,
+.user-creation-container { 
+  animation: user-creation-fadeInUp 0.6s ease 0.2s both; 
+}
+.user-creation-empty { 
+  animation: user-creation-fadeInUp 0.6s ease 0.1s both; 
+}
 
 /* Efectos de profundidad mejorados */
-.AnimatedUsersCreationWrapper::after {
+.user-creation-wrapper::after {
   content: "";
   position: absolute;
   top: 0;
@@ -267,89 +282,105 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .AnimatedUsersCreationWrapper {
+  .user-creation-wrapper {
     padding-top: 80px;
     padding-bottom: 40px;
   }
 
-  .UsersCreationContent {
+  .user-creation-content {
     margin-top: 140px;
     padding: 20px 15px;
   }
 
-  .users-creation-header h1 {
+  .user-creation-title {
     font-size: 2.2rem;
   }
 
-  .users-creation-header p {
+  .user-creation-subtitle {
     font-size: 1.1rem;
   }
 
-  .users-creation-form {
+  .user-creation-form {
     padding: 25px;
     border-radius: 15px;
   }
 
-  .form-container {
+  .teacher-creation-container,
+  .user-creation-container {
     padding: 20px;
     margin-top: 20px;
   }
 
-  .form-header h2 {
+  .teacher-creation-title,
+  .user-creation-form-title {
     font-size: 1.6rem;
   }
 
-  .header-icon {
+  .user-creation-header-icon {
     font-size: 3rem;
   }
 
-  .section-label {
+  .user-creation-label {
     font-size: 1.1rem;
   }
 
-  .modern-select {
+  .user-creation-select {
     font-size: 0.95rem;
     padding: 12px 15px 12px 40px;
   }
 }
 
 @media (max-width: 480px) {
-  .users-creation-header h1 {
+  .user-creation-title {
     font-size: 1.8rem;
   }
 
-  .users-creation-form {
+  .user-creation-form {
     padding: 20px;
   }
 
-  .form-section {
+  .user-creation-section {
     margin-bottom: 20px;
   }
 
-  .form-container {
+  .teacher-creation-container,
+  .user-creation-container {
     padding: 15px;
   }
 
-  .form-type-icon {
+  .teacher-creation-icon,
+  .user-creation-form-icon {
     font-size: 2.5rem;
   }
 
-  .empty-selection {
+  .user-creation-empty {
     padding: 40px 20px;
   }
 
-  .empty-icon {
+  .user-creation-empty-icon {
     font-size: 3rem;
   }
 }
 
 /* Estados de selección visual */
-.select-wrapper.selected {
+.user-creation-select-wrapper.selected {
   border-color: #48bb78;
   background: #f0fff4;
 }
 
 /* Transiciones suaves */
-.form-container, .empty-selection {
+.teacher-creation-container,
+.user-creation-container,
+.user-creation-empty {
   transition: all 0.3s ease;
+}
+
+/* Estilos específicos para teacher creation */
+.teacher-creation-container {
+  border-left: 4px solid #667eea;
+}
+
+/* Estilos específicos para user creation */
+.user-creation-container {
+  border-left: 4px solid #48bb78;
 }

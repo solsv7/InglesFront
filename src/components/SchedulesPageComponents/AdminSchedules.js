@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './AdminSchedules.css';
 import { FaEdit, FaSave, FaPlus, FaTrashAlt, FaCalendarAlt, FaClock, FaGraduationCap, FaTimes } from 'react-icons/fa';
 
-const diasSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"];
+const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
 // Componente de Popup para agregar clase
 const AgregarClasePopup = ({ niveles, cargarHorarios, isOpen, onClose }) => {
@@ -58,29 +58,29 @@ const AgregarClasePopup = ({ niveles, cargarHorarios, isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <div className="popup-header">
-          <div className="popup-title">
-            <FaPlus className="popup-icon" />
+    <div className="admin-schedules-popup-overlay">
+      <div className="admin-schedules-popup-content">
+        <div className="admin-schedules-popup-header">
+          <div className="admin-schedules-popup-title">
+            <FaPlus className="admin-schedules-popup-icon" />
             <h3>Agregar Nueva Clase</h3>
           </div>
-          <button className="popup-close" onClick={handleClose}>
+          <button className="admin-schedules-popup-close" onClick={handleClose}>
             <FaTimes />
           </button>
         </div>
 
-        <div className="popup-body">
-          <div className="form-grid">
-            <div className="form-group">
+        <div className="admin-schedules-popup-body">
+          <div className="admin-schedules-form-grid">
+            <div className="admin-schedules-form-group">
               <label>
-                <FaGraduationCap className="input-icon" />
+                <FaGraduationCap className="admin-schedules-input-icon" />
                 Nivel
               </label>
               <select 
                 value={nuevoNivel} 
                 onChange={(e) => setNuevoNivel(e.target.value)}
-                className="modern-select"
+                className="admin-schedules-select"
               >
                 <option value="">Selecciona un nivel</option>
                 {niveles.map(nivel => (
@@ -91,15 +91,15 @@ const AgregarClasePopup = ({ niveles, cargarHorarios, isOpen, onClose }) => {
               </select>
             </div>
 
-            <div className="form-group">
+            <div className="admin-schedules-form-group">
               <label>
-                <FaCalendarAlt className="input-icon" />
-                DA-a de la semana
+                <FaCalendarAlt className="admin-schedules-input-icon" />
+                Día de la semana
               </label>
               <select 
                 value={idDia} 
                 onChange={(e) => setIdDia(e.target.value)}
-                className="modern-select"
+                className="admin-schedules-select"
               >
                 {diasSemana.map((dia, index) => (
                   <option key={index} value={index + 1}>
@@ -108,48 +108,49 @@ const AgregarClasePopup = ({ niveles, cargarHorarios, isOpen, onClose }) => {
                 ))}
               </select>
             </div>
+              <div className="admin-schedules-time-group">
+                <div className="admin-schedules-form-group">
+                  <label>
+                    <FaClock className="admin-schedules-input-icon" />
+                    Hora de inicio
+                  </label>
+                  <input 
+                    type="time" 
+                    value={horaInicio} 
+                    onChange={(e) => setHoraInicio(e.target.value)}
+                    className="admin-schedules-time-input"
+                  />
+                </div>
 
-            <div className="form-group">
-              <label>
-                <FaClock className="input-icon" />
-                Hora de inicio
-              </label>
-              <input 
-                type="time" 
-                value={horaInicio} 
-                onChange={(e) => setHoraInicio(e.target.value)}
-                className="time-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>
-                <FaClock className="input-icon" />
-                Hora de fin
-              </label>
-              <input 
-                type="time" 
-                value={horaFin} 
-                onChange={(e) => setHoraFin(e.target.value)}
-                className="time-input"
-              />
+                <div className="admin-schedules-form-group">
+                  <label>
+                    <FaClock className="admin-schedules-input-icon" />
+                    Hora de fin
+                  </label>
+                  <input 
+                    type="time" 
+                    value={horaFin} 
+                    onChange={(e) => setHoraFin(e.target.value)}
+                    className="admin-schedules-time-input"
+                  />
+                </div>
             </div>
           </div>
         </div>
 
-        <div className="popup-footer">
+        <div className="admin-schedules-popup-footer">
           <button 
             onClick={handleClose}
-            className="popup-btn cancel-btn"
+            className="admin-schedules-popup-btn admin-schedules-cancel-btn"
           >
             Cancelar
           </button>
           <button 
             onClick={agregarClase} 
-            className="popup-btn confirm-btn"
+            className="admin-schedules-popup-btn admin-schedules-confirm-btn"
             disabled={isSubmitting}
           >
-            <FaPlus className="btn-icon" />
+            <FaPlus className="admin-schedules-btn-icon" />
             {isSubmitting ? "Agregando..." : "Agregar Clase"}
           </button>
         </div>
@@ -221,7 +222,7 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
   };
 
   const eliminarClase = async (id_clase) => {
-    if (window.confirm("A�EstA�s seguro de que deseas eliminar esta clase?")) {
+    if (window.confirm("¿Estás seguro de que deseas eliminar esta clase?")) {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/clases/eliminar`, {
           method: 'POST',
@@ -246,40 +247,39 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
   };
 
   return (
-    <div className="schedule-table-card">
-      <div className="card-header">
-        <div className="header-left">
-          <FaCalendarAlt className="header-icon" />
-          <div className="header-info">
+    <div className="admin-schedules-card">
+      <div className="admin-schedules-card-header">
+        <div className="admin-schedules-header-left">
+          <FaCalendarAlt className="admin-schedules-header-icon" />
+          <div className="admin-schedules-header-info">
             <h3>Horario de Clases</h3>
-            <span className="classes-count">
+            <span className="admin-schedules-classes-count">
               {horarios.length} clase{horarios.length !== 1 ? 's' : ''} registrada{horarios.length !== 1 ? 's' : ''}
             </span>
           </div>
         </div>
         <button 
-          className="add-class-button"
+          className="admin-schedules-add-button"
           onClick={onAddClass}
           title="Agregar nueva clase"
         >
-          <FaPlus className="add-icon" />
+          <FaPlus className="admin-schedules-add-icon" />
           Agregar Clase
         </button>
       </div>
       
-      <div className="table-container">
-        <table className="modern-table">
-          {/* NUEVO: colgroup para controlar anchos de columnas en pantallas grandes */}
+      <div className="admin-schedules-table-container">
+        <table className="admin-schedules-table">
           <colgroup>
-            <col className="col-time" />
-            <col className="col-day" span="5" />
+            <col className="admin-schedules-col-time" />
+            <col className="admin-schedules-col-day" span="5" />
           </colgroup>
 
           <thead>
             <tr>
-              <th className="time-header">Horario</th>
+              <th className="admin-schedules-time-header">Horario</th>
               {diasSemana.map((dia, index) => (
-                <th key={index} className="day-header">
+                <th key={index} className="admin-schedules-day-header">
                   {dia}
                 </th>
               ))}
@@ -287,18 +287,18 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
           </thead>
           <tbody>
             {intervalosTiempo.map((intervalo, index) => (
-              <tr key={index} className="schedule-row">
-                <td className="time-slot">{intervalo}</td>
+              <tr key={index} className="admin-schedules-row">
+                <td className="admin-schedules-time-slot">{intervalo}</td>
                 {diasSemana.map((dia, idx) => {
                   const clase = obtenerClase(dia, intervalo);
                   return (
-                    <td key={idx} className={`class-cell ${clase ? 'has-class' : 'empty'}`}>
+                    <td key={idx} className={`admin-schedules-class-cell ${clase ? 'admin-schedules-has-class' : 'admin-schedules-empty'}`}>
                       {editandoCelda && editandoCelda.dia === dia && editandoCelda.intervalo === intervalo ? (
-                        <div className="edit-form">
+                        <div className="admin-schedules-edit-form">
                           <select 
                             value={nuevoNivel} 
                             onChange={(e) => setNuevoNivel(e.target.value)}
-                            className="edit-select"
+                            className="admin-schedules-edit-select"
                           >
                             <option value="">Seleccionar nivel</option>
                             {niveles.map(n => (
@@ -307,53 +307,53 @@ const EditarClase = ({ horarios, niveles, cargarHorarios, onAddClass }) => {
                               </option>
                             ))}
                           </select>
-                          <div className="time-inputs">
+                          <div className="admin-schedules-time-inputs">
                             <input 
                               type="time" 
                               value={nuevoInicio} 
                               onChange={(e) => setNuevoInicio(e.target.value)}
-                              className="edit-time"
+                              className="admin-schedules-edit-time"
                             />
                             <input 
                               type="time" 
                               value={nuevoFin} 
                               onChange={(e) => setNuevoFin(e.target.value)}
-                              className="edit-time"
+                              className="admin-schedules-edit-time"
                             />
                           </div>
-                          <div className="edit-actions">
+                          <div className="admin-schedules-edit-actions">
                             <button 
                               onClick={manejarGuardarEdicion} 
-                              className="save-btn"
+                              className="admin-schedules-save-btn"
                               disabled={isSubmitting}
                             >
                               <FaSave />
                             </button>
                             <button 
                               onClick={cancelarEdicion} 
-                              className="cancel-btn"
+                              className="admin-schedules-cancel-edit-btn"
                             >
-                              A-
+                              ×
                             </button>
                           </div>
                         </div>
                       ) : (
-                        <div className="class-info">
-                          <span className="class-name">
+                        <div className="admin-schedules-class-info">
+                          <span className="admin-schedules-class-name">
                             {clase ? clase.nivel_nombre : "Disponible"}
                           </span>
                           {clase && (
-                            <div className="class-actions">
+                            <div className="admin-schedules-class-actions">
                               <button 
                                 onClick={() => manejarEditarCelda(dia, intervalo)}
-                                className="action-btn edit-btn"
+                                className="admin-schedules-action-btn admin-schedules-edit-btn"
                                 title="Editar clase"
                               >
                                 <FaEdit />
                               </button>
                               <button 
                                 onClick={() => eliminarClase(clase.id_clase)}
-                                className="action-btn delete-btn"
+                                className="admin-schedules-action-btn admin-schedules-delete-btn"
                                 title="Eliminar clase"
                               >
                                 <FaTrashAlt />
@@ -413,15 +413,15 @@ const AdminSchedules = () => {
   if (isLoading) {
     return (
       <div className="admin-schedules-loading">
-        <div className="loading-spinner"></div>
+        <div className="admin-schedules-loading-spinner"></div>
         <p>Cargando horarios...</p>
       </div>
     );
   }
 
   return (
-    <div className="admin-schedules">
-      <div className="schedules-container">
+    <div className="admin-schedules-page">
+      <div className="admin-schedules-container">
         <EditarClase 
           horarios={horarios} 
           niveles={niveles} 

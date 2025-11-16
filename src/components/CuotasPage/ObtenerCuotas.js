@@ -17,6 +17,7 @@ import './ObtenerCuotas.css';
 
 const ObtenerCuotas = () => {
   const [cuotas, setCuotas] = useState([]);
+  const [cuotasMesActual, setCuotasMesActual] = useState([]);
   const [planes, setPlanes] = useState([]);
   const [editandoId, setEditandoId] = useState(null);
   const [formData, setFormData] = useState({});
@@ -29,6 +30,26 @@ const ObtenerCuotas = () => {
     cargarDatos();
   }, []);
 
+  const obtenerMesActual = () => {
+    const ahora = new Date();
+    return {
+      anio: ahora.getFullYear(),
+      mes: ahora.getMonth() + 1
+    };
+  };
+
+  const filtrarCuotasMesActual = (cuotas) => {
+    const { anio, mes } = obtenerMesActual();
+    
+    return cuotas.filter(cuota => {
+      const fechaCuota = new Date(cuota.fecha_inicio);
+      const anioCuota = fechaCuota.getFullYear();
+      const mesCuota = fechaCuota.getMonth() + 1;
+      
+      return anioCuota === anio && mesCuota === mes;
+    });
+  };
+
   const cargarDatos = async () => {
     try {
       setLoading(true);
@@ -40,6 +61,8 @@ const ObtenerCuotas = () => {
       ]);
 
       setCuotas(cuotasRes.data);
+      const cuotasFiltradas = filtrarCuotasMesActual(cuotasRes.data);
+      setCuotasMesActual(cuotasFiltradas);
       setPlanes(Array.isArray(planesRes.data) ? planesRes.data : [planesRes.data]);
     } catch (err) {
       console.error('Error al cargar datos:', err);
@@ -56,7 +79,9 @@ const ObtenerCuotas = () => {
 
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/api/cuotas/eliminar/${id}`);
+      // Actualizar ambos estados
       setCuotas(prev => prev.filter(c => c.id_cuota !== id));
+      setCuotasMesActual(prev => prev.filter(c => c.id_cuota !== id));
     } catch (error) {
       console.error('Error al eliminar cuota:', error);
       alert('Error al eliminar la cuota');
@@ -76,7 +101,11 @@ const ObtenerCuotas = () => {
   const handleGuardar = async (id) => {
     try {
       await axios.put(`${process.env.REACT_APP_API_URL}/api/cuotas/editar/${id}`, formData);
+      // Actualizar ambos estados
       setCuotas(prev =>
+        prev.map(c => c.id_cuota === id ? { ...c, ...formData } : c)
+      );
+      setCuotasMesActual(prev =>
         prev.map(c => c.id_cuota === id ? { ...c, ...formData } : c)
       );
       setEditandoId(null);
@@ -113,24 +142,26 @@ const ObtenerCuotas = () => {
     return new Date(fecha).toLocaleDateString('es-ES');
   };
 
-  const cuotasFiltradas = cuotas.filter(cuota => {
+  const obtenerNombreMes = () => {
+    const { mes } = obtenerMesActual();
+    const meses = [
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+    ];
+    return meses[mes - 1];
+  };
+
+  const cuotasFiltradas = cuotasMesActual.filter(cuota => {
     const coincideEstado = filtroEstado === 'todos' || cuota.estado_pago === filtroEstado;
     const coincideBusqueda = cuota.nombre_alumno.toLowerCase().includes(busqueda.toLowerCase());
     return coincideEstado && coincideBusqueda;
   });
 
-  const estadisticas = {
-    total: cuotas.length,
-    pagas: cuotas.filter(c => c.estado_pago === 'paga').length,
-    pendientes: cuotas.filter(c => c.estado_pago === 'pendiente').length,
-    vencidas: cuotas.filter(c => c.estado_pago === 'vencida').length
-  };
-
   if (loading) {
     return (
       <div className="cuotas-loading">
         <div className="loading-spinner"></div>
-        <p>Cargando cuotas...</p>
+        <p>Cargando cuotas del mes actual...</p>
       </div>
     );
   }
@@ -150,47 +181,13 @@ const ObtenerCuotas = () => {
 
   return (
     <div className="obtener-cuotas-container">
-
-
-      {/* Estadísticas */}
-      <div className="estadisticas-grid">
-        <div className="estadistica-card total">
-          <div className="estadistica-icon">
-            <FaMoneyBillWave />
-          </div>
-          <div className="estadistica-content">
-            <h3>{estadisticas.total}</h3>
-            <p>Total Cuotas</p>
-          </div>
-        </div>
-
-        <div className="estadistica-card pagas">
-          <div className="estadistica-icon">
-            <FaCheckCircle />
-          </div>
-          <div className="estadistica-content">
-            <h3>{estadisticas.pagas}</h3>
-            <p>Pagadas</p>
-          </div>
-        </div>
-
-        <div className="estadistica-card pendientes">
-          <div className="estadistica-icon">
-            <FaClock />
-          </div>
-          <div className="estadistica-content">
-            <h3>{estadisticas.pendientes}</h3>
-            <p>Pendientes</p>
-          </div>
-        </div>
-
-        <div className="estadistica-card vencidas">
-          <div className="estadistica-icon">
-            <FaExclamationTriangle />
-          </div>
-          <div className="estadistica-content">
-            <h3>{estadisticas.vencidas}</h3>
-            <p>Vencidas</p>
+      {/* Header con información del mes actual */}
+      <div className="mes-actual-header">
+        <div className="mes-actual-content">
+          <FaCalendarAlt className="mes-actual-icon" />
+          <div className="mes-actual-info">
+            <h2>Cuotas del Mes Actual</h2>
+            <p>{obtenerNombreMes()} {obtenerMesActual().anio}</p>
           </div>
         </div>
       </div>
@@ -204,7 +201,7 @@ const ObtenerCuotas = () => {
             placeholder="Buscar por nombre de alumno..."
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
-            className="search-input"
+            className="search-fees-input"
           />
         </div>
 
@@ -241,7 +238,7 @@ const ObtenerCuotas = () => {
               <tr>
                 <td colSpan="6" className="no-data">
                   <FaSearch className="no-data-icon" />
-                  <p>No se encontraron cuotas</p>
+                  <p>No se encontraron cuotas para este mes</p>
                 </td>
               </tr>
             ) : (
@@ -359,20 +356,6 @@ const ObtenerCuotas = () => {
             )}
           </tbody>
         </table>
-      </div>
-
-      {/* Resumen */}
-      <div className="resumen-container">
-        <div className="resumen-header">
-          <FaMoneyBillWave className="resumen-icon" />
-          <h4>Resumen</h4>
-        </div>
-        <div className="resumen-content">
-          <p>
-            Mostrando <strong>{cuotasFiltradas.length}</strong> de <strong>{cuotas.length}</strong> cuotas
-            {filtroEstado !== 'todos' && ` (filtrado por: ${filtroEstado})`}
-          </p>
-        </div>
       </div>
     </div>
   );

@@ -137,7 +137,6 @@ const StudentSearch = ({ onSelectStudent }) => {
         {/* Estado de carga */}
         {isLoading && (
           <div className="loading-state">
-            <FaSpinner className="loading-spinner" />
             <p>Cargando lista de estudiantes...</p>
           </div>
         )}

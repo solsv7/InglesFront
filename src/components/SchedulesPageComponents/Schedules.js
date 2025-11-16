@@ -42,31 +42,31 @@ const Schedules = () => {
 
     if (isLoading) {
         return (
-            <div className="schedules-loading">
-                <div className="loading-spinner"></div>
+            <div className="schedules-page-loading">
+                <div className="schedules-loading-spinner"></div>
                 <p>Cargando horarios...</p>
             </div>
         );
     }
 
     return (
-        <div className="schedules-container">
-            <div className="schedules-header">
-                <FaCalendarAlt className="header-icon" />
+        <div className="schedules-page">
+            <div className="schedules-page-header">
+                <FaCalendarAlt className="schedules-header-icon" />
                 <h2>Nuestros Horarios</h2>
                 <p>Encuentra el horario que mejor se adapte a tus necesidades</p>
             </div>
 
-            <div className="table-wrapper">
-                <table className="schedules-table">
+            <div className="schedules-table-wrapper">
+                <table className="schedules-page-table">
                     <thead>
                         <tr>
-                            <th className="time-header">
-                                <FaClock className="th-icon" />
+                            <th className="schedules-time-header">
+                                <FaClock className="schedules-th-icon" />
                                 Horario
                             </th>
                             {diasSemana.map((dia, index) => (
-                                <th key={index} className="day-header">
+                                <th key={index} className="schedules-day-header">
                                     {dia}
                                 </th>
                             ))}
@@ -75,12 +75,12 @@ const Schedules = () => {
                     <tbody>
                         {intervalosTiempo.length > 0 ? (
                             intervalosTiempo.map((intervalo, index) => (
-                                <tr key={index} className="schedule-row">
-                                    <td className="time-slot">{intervalo}</td>
+                                <tr key={index} className="schedules-page-row">
+                                    <td className="schedules-time-slot">{intervalo}</td>
                                     {diasSemana.map((dia, idx) => (
                                         <td 
                                             key={idx} 
-                                            className={`level-cell ${obtenerNivelClase(dia, intervalo) !== '-' ? 'has-class' : 'no-class'}`}
+                                            className={`schedules-level-cell ${obtenerNivelClase(dia, intervalo) !== '-' ? 'schedules-has-class' : 'schedules-no-class'}`}
                                         >
                                             {obtenerNivelClase(dia, intervalo)}
                                         </td>
@@ -89,7 +89,7 @@ const Schedules = () => {
                             ))
                         ) : (
                             <tr>
-                                <td colSpan={6} className="no-data">
+                                <td colSpan={6} className="schedules-no-data">
                                     No hay horarios disponibles en este momento
                                 </td>
                             </tr>
@@ -99,17 +99,17 @@ const Schedules = () => {
             </div>
 
             {/* Vista móvil alternativa */}
-            <div className="mobile-schedules">
+            <div className="schedules-mobile-view">
                 {intervalosTiempo.map((intervalo, index) => (
-                    <div key={index} className="mobile-time-slot">
-                        <div className="mobile-time">{intervalo}</div>
-                        <div className="mobile-days">
+                    <div key={index} className="schedules-mobile-time-slot">
+                        <div className="schedules-mobile-time">{intervalo}</div>
+                        <div className="schedules-mobile-days">
                             {diasSemana.map((dia, idx) => {
                                 const nivel = obtenerNivelClase(dia, intervalo);
                                 return (
-                                    <div key={idx} className="mobile-day">
-                                        <span className="day-name">{dia.substring(0, 3)}</span>
-                                        <span className={`day-level ${nivel !== '-' ? 'has-class' : 'no-class'}`}>
+                                    <div key={idx} className="schedules-mobile-day">
+                                        <span className="schedules-day-name">{dia.substring(0, 3)}</span>
+                                        <span className={`schedules-day-level ${nivel !== '-' ? 'schedules-has-class' : 'schedules-no-class'}`}>
                                             {nivel}
                                         </span>
                                     </div>

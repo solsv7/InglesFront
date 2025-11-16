@@ -127,7 +127,7 @@ const HomePage = () => {
                   <p>Está ubicada en Batilana 11, Junín, Provincia de Buenos Aires</p>
               </div>
               <div className="frame-ubicacion">
-                  <iframe title="ubicacion" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.982241708955!2d-60.959887083531974!3d-34.57931588970195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b895b362444c09%3A0xa818af599dd5adc7!2s%22St%20Thomas%22%20Centro%20de%20Idiomas%3A%20Ingl%C3%A9s%20y%20Portugu%C3%A9s!5e0!3m2!1ses!2sar!4v1750291895745!5m2!1ses!2sar"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  <iframe title="ubicacion" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.982241708955!2d-60.959887083531974!3d-34.57931588970195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b895b362444c09%3A0xa818af599dd5adc7!2s%22St%20Thomas%22%20Centro%20de%20Idiomas%3A%20Ingl%C3%A9s%20y%20Portugu%C3%A9s!5e0!3m2!1ses!2sar!4v1750291895745!5m2!1ses!2sar"  loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
               </div>
           </div>
           <div className="home-eventos">

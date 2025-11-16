@@ -12,7 +12,8 @@ import {
   FaPlus,
   FaCalendarAlt,
   FaChalkboardTeacher,
-  FaSearch
+  FaSearch,
+  FaSpinner
 } from 'react-icons/fa';
 import StudentSearch from '../functionalComponent/gradesComponent/StudentSearch/StudentSearch.js';
 import './Inscripciones.css';
@@ -25,21 +26,47 @@ const Inscripciones = () => {
   const [editandoAlumnoId, setEditandoAlumnoId] = useState(null);
   const [claseNueva, setClaseNueva] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isInscribiendo, setIsInscribiendo] = useState(false);
+  const [isCambiandoClase, setIsCambiandoClase] = useState(false);
+  const [isEliminando, setIsEliminando] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
 
-  // Configuración personalizada de Swal
-  const swalConfig = {
-    customClass: {
-      popup: 'swal-custom-popup',
-      title: 'swal-custom-title',
-      htmlContainer: 'swal-custom-html',
-      confirmButton: 'swal-custom-confirm-btn',
-      cancelButton: 'swal-custom-cancel-btn',
-      icon: 'swal-custom-icon'
-    },
-    buttonsStyling: false,
-    allowOutsideClick: false,
-    allowEscapeKey: true
+  const showSuccessAlert = (title, text = '') => {
+    Swal.fire({
+      title: title,
+      text: text,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar',
+      timer: 3000,
+      timerProgressBar: true,
+      background: '#f0f2f5ff',
+      color: 'white'
+    });
+  };
+
+  const showErrorAlert = (title, text = '') => {
+    Swal.fire({
+      title: title,
+      text: text,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      background: '#f0f2f5ff',
+      color: 'white'
+    });
+  };
+
+  const showConfirmDialog = (title, text, confirmButtonText = 'Sí, cambiar') => {
+    return Swal.fire({
+      title: title,
+      text: text,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: confirmButtonText,
+      cancelButtonText: 'Cancelar',
+      background: '#f0f2f5ff',
+      color: 'white'
+    });
   };
 
   const showMessage = (text, type = 'success') => {
@@ -81,29 +108,22 @@ const Inscripciones = () => {
   }, [claseSeleccionada]);
 
   const inscribirAlumno = async () => {
+    // Bloquear múltiples clics
+    if (isInscribiendo) return;
+    
     if (!nuevoAlumno || !claseSeleccionada) {
-      await Swal.fire({
-        icon: 'warning',
-        title: 'Atención',
-        text: 'Debes seleccionar un alumno y una clase',
-        confirmButtonColor: '#d33',
-        ...swalConfig
-      });
+      showErrorAlert('Atención', 'Debes seleccionar un alumno y una clase');
       return;
     }
 
     // Verificar si el alumno ya está inscrito
     const alumnoYaInscripto = inscriptos.some(a => a.id_alumno === parseInt(nuevoAlumno));
     if (alumnoYaInscripto) {
-      await Swal.fire({
-        icon: 'error',
-        title: 'Alumno ya inscrito',
-        text: 'Este alumno ya está inscrito en la clase seleccionada.',
-        confirmButtonColor: '#d33',
-        ...swalConfig
-      });
+      showErrorAlert('Alumno ya inscrito', 'Este alumno ya está inscrito en la clase seleccionada.');
       return;
     }
+
+    setIsInscribiendo(true);
 
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
@@ -112,63 +132,37 @@ const Inscripciones = () => {
       });
       
       setNuevoAlumno('');
-      
-      await Swal.fire({
-        icon: 'success',
-        title: '¡Inscripción exitosa!',
-        text: 'El alumno fue inscrito correctamente en la clase.',
-        confirmButtonColor: '#3085d6',
-        ...swalConfig
-      });
+      showSuccessAlert('¡Inscripción exitosa!', 'El alumno fue inscrito correctamente en la clase.');
       
       // Actualizar lista de inscriptos
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${claseSeleccionada}`);
       setInscriptos(res.data);
     } catch (err) {
       console.error('Error al inscribir:', err);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Error al inscribir',
-        text: 'Ocurrió un problema al inscribir al alumno. Por favor, intenta nuevamente.',
-        confirmButtonColor: '#d33',
-        ...swalConfig
-      });
+      showErrorAlert('Error al inscribir', 'Ocurrió un problema al inscribir al alumno. Por favor, intenta nuevamente.');
+    } finally {
+      setIsInscribiendo(false);
     }
   };
 
   const cambiarAlumnoDeClase = async (id_alumno, alumnoNombre) => {
+    // Bloquear múltiples clics
+    if (isCambiandoClase) return;
+    
     if (!claseNueva) {
-      await Swal.fire({
-        icon: 'warning',
-        title: 'Clase requerida',
-        text: 'Debes seleccionar una clase destino para realizar el cambio.',
-        confirmButtonColor: '#d33',
-        ...swalConfig
-      });
+      showErrorAlert('Clase requerida', 'Debes seleccionar una clase destino para realizar el cambio.');
       return;
     }
 
-    const result = await Swal.fire({
-      icon: 'question',
-      title: '¿Cambiar de clase?',
-      html: `
-        <div style="text-align: center;">
-          <p>¿Estás seguro de que deseas cambiar a <strong>${alumnoNombre}</strong> de clase?</p>
-          <p style="font-size: 14px; color: #666; margin-top: 10px;">
-            Clase destino: <strong>${clases.find(c => c.id_clase === parseInt(claseNueva))?.nivel_nombre}</strong>
-          </p>
-        </div>
-      `,
-      showCancelButton: true,
-      confirmButtonText: 'Sí, cambiar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      reverseButtons: true,
-      ...swalConfig
-    });
+    const result = await showConfirmDialog(
+      '¿Cambiar de clase?',
+      `¿Estás seguro de que deseas cambiar a ${alumnoNombre} de clase?\n\nClase destino: ${clases.find(c => c.id_clase === parseInt(claseNueva))?.nivel_nombre}`,
+      'Sí, cambiar'
+    );
 
     if (!result.isConfirmed) return;
+
+    setIsCambiandoClase(true);
 
     try {
       await axios.put(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
@@ -179,52 +173,32 @@ const Inscripciones = () => {
       
       setClaseNueva('');
       setEditandoAlumnoId(null);
-      
-      await Swal.fire({
-        icon: 'success',
-        title: '¡Cambio exitoso!',
-        text: `${alumnoNombre} ha sido cambiado de clase correctamente.`,
-        confirmButtonColor: '#3085d6',
-        ...swalConfig
-      });
+      showSuccessAlert('¡Cambio exitoso!', `${alumnoNombre} ha sido cambiado de clase correctamente.`);
       
       // Actualizar lista de inscriptos
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/clases-alumnos/por-clase/${claseSeleccionada}`);
       setInscriptos(res.data);
     } catch (err) {
       console.error('Error al cambiar alumno:', err);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Error al cambiar',
-        text: 'Ocurrió un problema al cambiar al alumno de clase. Por favor, intenta nuevamente.',
-        confirmButtonColor: '#d33',
-        ...swalConfig
-      });
+      showErrorAlert('Error al cambiar', 'Ocurrió un problema al cambiar al alumno de clase. Por favor, intenta nuevamente.');
+    } finally {
+      setIsCambiandoClase(false);
     }
   };
 
   const eliminarInscripcion = async (id_alumno, alumnoNombre) => {
-    const result = await Swal.fire({
-      icon: 'warning',
-      title: '¿Eliminar inscripción?',
-      html: `
-        <div style="text-align: center;">
-          <p>¿Estás seguro de que deseas eliminar a <strong>${alumnoNombre}</strong> de esta clase?</p>
-          <p style="font-size: 14px; color: #dc2626; margin-top: 10px;">
-            Esta acción no se puede deshacer.
-          </p>
-        </div>
-      `,
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#6b7280',
-      reverseButtons: true,
-      ...swalConfig
-    });
+    // Bloquear múltiples clics
+    if (isEliminando) return;
+    
+    const result = await showConfirmDialog(
+      '¿Eliminar inscripción?',
+      `¿Estás seguro de que deseas eliminar a ${alumnoNombre} de esta clase?\n\nEsta acción no se puede deshacer.`,
+      'Sí, eliminar'
+    );
 
     if (!result.isConfirmed) return;
+
+    setIsEliminando(true);
 
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/api/clases-alumnos`, {
@@ -232,23 +206,12 @@ const Inscripciones = () => {
       });
       
       setInscriptos(prev => prev.filter(a => a.id_alumno !== id_alumno));
-      
-      await Swal.fire({
-        icon: 'success',
-        title: '¡Eliminado!',
-        text: `${alumnoNombre} ha sido eliminado de la clase correctamente.`,
-        confirmButtonColor: '#3085d6',
-        ...swalConfig
-      });
+      showSuccessAlert('¡Eliminado!', `${alumnoNombre} ha sido eliminado de la clase correctamente.`);
     } catch (err) {
       console.error('Error al eliminar inscripción:', err);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Error al eliminar',
-        text: 'Ocurrió un problema al eliminar la inscripción. Por favor, intenta nuevamente.',
-        confirmButtonColor: '#d33',
-        ...swalConfig
-      });
+      showErrorAlert('Error al eliminar', 'Ocurrió un problema al eliminar la inscripción. Por favor, intenta nuevamente.');
+    } finally {
+      setIsEliminando(false);
     }
   };
 
@@ -329,10 +292,18 @@ const Inscripciones = () => {
                       <button 
                         onClick={inscribirAlumno}
                         className="action-btn primary-btn"
-                        disabled={!nuevoAlumno}
+                        disabled={!nuevoAlumno || isInscribiendo}
                       >
-                        <FaPlus className="btn-icon" />
-                        Inscribir Alumno
+                        {isInscribiendo ? (
+                          <>
+                            Inscribiendo...
+                          </>
+                        ) : (
+                          <>
+                            <FaPlus className="btn-icon" />
+                            Inscribir Alumno
+                          </>
+                        )}
                       </button>
                     </div>
                   </>
@@ -357,7 +328,6 @@ const Inscripciones = () => {
 
                 {isLoading ? (
                   <div className="loading-state">
-                    <div className="loading-spinner"></div>
                     <p>Cargando alumnos inscriptos...</p>
                   </div>
                 ) : inscriptos.length > 0 ? (
@@ -397,14 +367,23 @@ const Inscripciones = () => {
                                 <button 
                                   onClick={() => cambiarAlumnoDeClase(alumno.id_alumno, alumno.nombre_alumno)}
                                   className="action-btn save-btn"
-                                  disabled={!claseNueva}
+                                  disabled={!claseNueva || isCambiandoClase}
                                 >
-                                  <FaSave className="btn-icon" />
-                                  Guardar
+                                  {isCambiandoClase ? (
+                                    <>
+                                      Cambiando...
+                                    </>
+                                  ) : (
+                                    <>
+                                      <FaSave className="btn-icon" />
+                                      Guardar
+                                    </>
+                                  )}
                                 </button>
                                 <button 
                                   onClick={cancelarEdicion}
                                   className="action-btn cancel-btn"
+                                  disabled={isCambiandoClase}
                                 >
                                   <FaTimes className="btn-icon" />
                                   Cancelar
@@ -417,6 +396,7 @@ const Inscripciones = () => {
                                 onClick={() => setEditandoAlumnoId(alumno.id_alumno)}
                                 className="action-btn edit-btn"
                                 title="Cambiar de clase"
+                                disabled={isCambiandoClase || isEliminando}
                               >
                                 <FaExchangeAlt className="btn-icon" />
                                 Cambiar
@@ -425,9 +405,18 @@ const Inscripciones = () => {
                                 onClick={() => eliminarInscripcion(alumno.id_alumno, alumno.nombre_alumno)}
                                 className="action-btn delete-btn"
                                 title="Eliminar inscripción"
+                                disabled={isEliminando || isCambiandoClase}
                               >
-                                <FaTrash className="btn-icon" />
-                                Eliminar
+                                {isEliminando ? (
+                                  <>
+                                    Eliminando...
+                                  </>
+                                ) : (
+                                  <>
+                                    <FaTrash className="btn-icon" />
+                                    Eliminar
+                                  </>
+                                )}
                               </button>
                             </div>
                           )}
